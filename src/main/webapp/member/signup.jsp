@@ -399,7 +399,7 @@
 
               <div class="btns">
                 <input type="submit" value="회원가입" id="signup_btn"> <input type="reset" value="다시입력" id="reset_btn">
-                <input type="button" value="뒤로가기" id="back_btn">
+                <a href="javascript:history.back()"><input type="button" value="뒤로가기" id="back_btn"></a>
               </div>
             </div>
           </div>
@@ -423,19 +423,20 @@
         let zipcode = $("#zipcode");
         let addr1 = $("#addr1");
         let addr2 = $("#addr2");
+        let reset_btn = $("#reset_btn");
 
         $(function () {
           id_dup_check.on("click", function () {
             $.ajax({
-              uri: "/idCheck.mem",
+              url: "/idCheck.mem",
               data: { id: id.val() }
             }).done(function (resp) {
-              if (resp == "true") {
+              if (resp=="true") {
                 id_dup_check_result.css("color", "red");
-                id_dup_check_result.text("이미 사용중인 ID 입니다.")
+                id_dup_check_result.text("이미 사용중인 ID 입니다.");
               } else {
                 id_dup_check_result.css("color", "green");
-                id_dup_check_result.text("사용가능한 ID 입니다.")
+                id_dup_check_result.text("사용가능한 ID 입니다.");
               }
             })
           })
@@ -535,6 +536,11 @@
             }
           }).open();
         }
+
+        reset_btn.on("click",function(){
+          id_dup_check_result.text("");
+          pw_check_result.text("");
+        })
       </script>
     </body>
 

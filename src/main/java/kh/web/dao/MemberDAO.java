@@ -51,7 +51,7 @@ public class MemberDAO {
 	}
 	
 	public boolean isIdExist(String id) throws Exception{
-		String sql = "select * from member where id =?";
+		String sql = "select * from member where mem_id =?";
 		try(Connection con = this.getConnection();
 				PreparedStatement pstat = con.prepareStatement(sql);){
 			pstat.setString(1, id);
@@ -59,6 +59,35 @@ public class MemberDAO {
 				return rs.next();
 			}
 		}
-
+	}
+	
+	public boolean login(String id, String pw) throws Exception{
+		String sql = "select * from member where mem_id=? and mem_pw=?";
+		try(Connection con = this.getConnection();
+				PreparedStatement pstat = con.prepareStatement(sql)){
+			pstat.setString(1, id);
+			pstat.setString(2, pw);
+			try(ResultSet rs =pstat.executeQuery();){
+				return rs.next();
+			}
+		}
+	}
+	
+	public String searchId(String name, String birth, String phone) throws Exception{
+		String sql = "select mem_id from member where mem_name = ? and mem_birth = ? and mem_phone = ?";
+		try(Connection con = this.getConnection();
+				PreparedStatement pstat = con.prepareStatement(sql);){
+			pstat.setString(1, name);
+			pstat.setString(2, birth);
+			pstat.setString(3, phone);
+			try(ResultSet rs = pstat.executeQuery();){
+				String id = null;
+				if(rs.next()) {
+					id = rs.getString("mem_id");
+				}
+				return id;
+			}
+			
+		}
 	}
 }
