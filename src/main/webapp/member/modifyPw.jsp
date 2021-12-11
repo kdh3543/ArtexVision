@@ -5,7 +5,7 @@
 
     <head>
       <meta charset="UTF-8">
-      <title>Insert title here</title>
+      <title>modifyPw</title>
       <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
       <style>
         /* 전체 설정 css start */
@@ -280,7 +280,7 @@
             </div>
             <div class="btns">
               <input type="submit" value="패스워드 변경" id="reset_pw_btn">
-              <input type="button" value="뒤로가기" id="back_btn">
+              <a href="javascript:history.back()"><input type="button" value="뒤로가기" id="back_btn">
             </div>
           </div>
         </div>

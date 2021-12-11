@@ -249,10 +249,12 @@
         #find_zipcode_wrap {
           padding-left: 30px;
         }
+
       </style>
     </head>
 
     <body>
+    <form action="/modifyPw.mem" method="post">
       <div class="reset_pw_box">
         <div class="reset_pw_logo">
           <h2>비밀번호 재설정</h2>
@@ -266,18 +268,6 @@
             <div class="input_id">
               <input type="text" name="id" id="id" placeholder="아이디를 입력하세요">
             </div>
-            <!-- <div class="label">
-          <label for="pw1">패스워드</label>
-        </div>
-        <div class="input_pw">
-          <input type="password" name="pw1" id="pw1" placeholder="비밀번호를 입력하세요">
-        </div>
-        <div class="label">
-          <label for="pw2">패스워드 확인</label>
-        </div>
-        <div class="input_pw2">
-          <input type="password" name="pw2" id="pw2" placeholder="비밀번호 확인을 입력하세요">
-        </div> -->
             <div class="label">
               <label for="name">이름</label>
             </div>
@@ -314,6 +304,7 @@
           </div>
         </div>
       </div>
+      </form>
     </body>
 
     </html>

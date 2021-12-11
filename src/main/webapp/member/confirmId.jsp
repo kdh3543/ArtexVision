@@ -141,6 +141,14 @@
           height: 50px;
           text-align: center;
         }
+        input[type="button"] {
+          background-color: var(--color7);
+          color: var(--color2);
+          border: none;
+          width: 25%;
+          height: 30px;
+          cursor: pointer;
+        }
       </style>
     </head>
 
@@ -170,7 +178,7 @@
     </body>
 	<script>
 		$("#backLogin").on("click",function(){
-      location.href="/login.jsp";
+      location.href="/index.jsp";
     })
 	</script>
     </html>
