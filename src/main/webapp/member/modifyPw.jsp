@@ -249,42 +249,124 @@
         #find_zipcode_wrap {
           padding-left: 30px;
         }
+
+        .find_pw_box {
+          margin: auto;
+          width: 450px;
+          margin-top: 100px;
+          padding-top: 50px;
+          background-color: var(--color3);
+          color: var(--color2);
+          text-align: center;
+        }
+
+        .pw_check_result {
+          height: 10px;
+          line-height: 10px;
+          padding-left: 20px;
+          font-size: 0.8rem;
+          font-weight: bold;
+          margin-bottom: 10px;
+        }
       </style>
     </head>
 
     <body>
-      <div class="reset_pw_box">
-        <div class="reset_pw_logo">
-          <h2>비밀번호 재설정</h2>
-          <hr>
-        </div>
-        <div class="reset_pw_contents">
-          <div class="reset_pw_input">
-            <div class="label">
-              <label for="id">아이디</label>
+      <c:choose>
+        <c:when test="${id!=null }">
+          <form action="/modifyPw.mem" method="post">
+            <div class="reset_pw_box">
+              <div class="reset_pw_logo">
+                <h2>비밀번호 재설정</h2>
+                <hr>
+              </div>
+              <div class="reset_pw_contents">
+                <div class="reset_pw_input">
+                  <div class="label">
+                    <label for="id">아이디</label>
+                  </div>
+                  <div class="input_id">
+                    <input type="hidden" name="id" value="${id}">
+                    ${id}
+                  </div>
+                  <div class="label">
+                    <label for="pw1">패스워드</label>
+                  </div>
+                  <div class="input_pw">
+                    <input type="password" name="pw1" id="pw1" placeholder="새로운 비밀번호를 입력하세요">
+                  </div>
+                  <div class="label">
+                    <label for="pw2">패스워드 확인</label>
+                  </div>
+                  <div class="input_pw2">
+                    <input type="password" name="pw2" id="pw2" placeholder="비밀번호를 한 번 더 입력하세요">
+                  </div>
+                  <div class="pw_check_result" id="pw_check_result">
+
+                  </div>
+                  <div class="btns">
+                    <input type="submit" value="패스워드 변경" id="reset_pw_btn">
+                    <a href="javascript:history.back()"><input type="button" value="뒤로가기" id="back_btn"></a>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="input_id">
-              11hertz
-            </div>
-            <div class="label">
-              <label for="pw1">패스워드</label>
-            </div>
-            <div class="input_pw">
-              <input type="password" name="pw1" id="pw1" placeholder="새로운 비밀번호를 입력하세요">
-            </div>
-            <div class="label">
-              <label for="pw2">패스워드 확인</label>
-            </div>
-            <div class="input_pw2">
-              <input type="password" name="pw2" id="pw2" placeholder="비밀번호를 한 번 더 입력하세요">
-            </div>
+          </form>
+        </c:when>
+        <c:otherwise>
+          <div class="find_pw_box">
+            등록되지 않은 정보입니다.<br>
+            정보를 다시 입력하시거나 회원가입을 진행해주세요.
             <div class="btns">
-              <input type="submit" value="패스워드 변경" id="reset_pw_btn">
-              <a href="javascript:history.back()"><input type="button" value="뒤로가기" id="back_btn">
+              <a href="/confirmInfor.mem"><input type="button" value="다시 입력"> </a>
+              <a href="/signup.mem"><input type="button" value="회원 가입"> </a>
+              <a href="/home.mem"><input type="button" value="홈으로"></a>
             </div>
           </div>
-        </div>
-      </div>
+        </c:otherwise>
+      </c:choose>
+
+      <script>
+        let pw1 = $("#pw1");
+        let pw2 = $("#pw2");
+        let pw_check_result = $("#pw_check_result");
+        let reset_pw_btn = $("#reset_pw_btn");
+
+        pw2.on("keyup", function () {
+          if (pw1.val() != pw2.val()) {
+            pw_check_result.css("color", "red");
+            pw_check_result.text("비밀번호가 일치하지 않습니다.");
+          } else {
+            pw_check_result.css("color", "green");
+            pw_check_result.text("비밀번호가 일치합니다.");
+          }
+          if (pw1.val() == "" && pw2.val() == "") {
+            pw_check_result.text("");
+          }
+        })
+
+        pw1.on("keyup", function () {
+          if (pw1.val() != pw2.val()) {
+            pw_check_result.css("color", "red");
+            pw_check_result.text("비밀번호가 일치하지 않습니다.");
+          } else {
+            pw_check_result.css("color", "green");
+            pw_check_result.text("비밀번호가 일치합니다.");
+          }
+          if (pw1.val() == "" && pw2.val() == "") {
+            pw_check_result.text("");
+          }
+        })
+        
+        reset_pw_btn.on("click",function(){
+        	if(pw2.val()!=pw1.val()){
+        		alert("비밀번호가 일치하지 않습니다.\n다시 입력해주세요.");
+        		pw1.val("");
+        		pw2.val("");
+        		return false;
+        	}
+        })
+      </script>
     </body>
 
     </html>

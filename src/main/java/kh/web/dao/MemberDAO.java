@@ -90,4 +90,35 @@ public class MemberDAO {
 			
 		}
 	}
+	
+	public String checkInfor(String id, String name, String email, String phone) throws Exception{
+		String sql = "select mem_id from member where mem_id=? and mem_name=? and mem_email=? and mem_phone=?";
+		try(Connection con = this.getConnection();
+				PreparedStatement pstat = con.prepareStatement(sql);){
+			pstat.setString(1, id);
+			pstat.setString(2, name);
+			pstat.setString(3, email);
+			pstat.setString(4, phone);
+			
+			try(ResultSet rs = pstat.executeQuery();){
+				String getId = null;
+				if(rs.next()) {
+					getId=rs.getString("mem_id");
+				}
+				return getId;
+			}
+		}
+	}
+	
+	public int updatePw(String id, String pw) throws Exception{
+		String sql = "update member set mem_pw=? where mem_id=?";
+		try(Connection con = this.getConnection();
+				PreparedStatement pstat = con.prepareStatement(sql);){
+			pstat.setString(1,pw);
+			pstat.setString(2, id);
+			
+			int result = pstat.executeUpdate();
+			return result;
+		}
+	}
 }

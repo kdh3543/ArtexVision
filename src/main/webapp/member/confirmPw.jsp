@@ -1,13 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-    <!DOCTYPE html>
-    <html>
-
-    <head>
-      <meta charset="UTF-8">
-      <title>Insert title here</title>
-      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-      <style>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<style>
         /* 전체 설정 css start */
         input:-webkit-autofill,
         input:-webkit-autofill:hover,
@@ -126,7 +126,7 @@
           /* border: 1px solid black; */
         }
 
-        .find_id_box {
+        .confirm_pw_box {
           margin: auto;    
           width: 450px;
           margin-top: 100px;
@@ -154,9 +154,9 @@
 
     <body>
       <c:choose>
-        <c:when test="${id!=null}">
-          <div class="find_id_box">
-            회원님의 아이디는 ${id } 입니다.<br>
+        <c:when test="${result==1}">
+          <div class="confirm_pw_box">
+            비밀번호가 변경되었습니다.<br>
             로그인 화면으로 돌아가시겠습니까?
             <div class="btns">
               <input type="button" value="로그인" id="backLogin">
@@ -165,15 +165,7 @@
           </div>
         </c:when>
         <c:otherwise>
-          <div class="find_id_box">
-            등록된 정보가 없습니다.<br>
-            <div class="btns">
-              <a href="/findId.mem"><input type="button" value="다시 찾기"> </a>
-              <a href="/signup.mem"><input type="button" value="회원 가입"> </a>
-              <a href="/home.mem"><input type="button" value="홈으로"></a>
-            </div>
-
-          </div>
+          
         </c:otherwise>
       </c:choose>
     </body>
@@ -182,4 +174,4 @@
       location.href="/index.jsp";
     })
 	</script>
-    </html>
+</html>

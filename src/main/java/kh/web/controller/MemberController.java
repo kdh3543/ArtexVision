@@ -14,7 +14,7 @@ import kh.web.dto.MemberDTO;
 import kh.web.utils.EncryptionUtils;
 
 @WebServlet("*.mem")
-public class MembersController extends HttpServlet {
+public class MemberController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String uri = request.getRequestURI();
@@ -77,8 +77,26 @@ public class MembersController extends HttpServlet {
 				request.setAttribute("id", id);
 				request.getRequestDispatcher("/member/confirmId.jsp").forward(request, response);
 				
-			}else if(cmd.equals("/login.mem")) {
+			}else if(cmd.equals("/confirm.mem")) {
+				String id = request.getParameter("id");
+				String name = request.getParameter("name");
+				String email = request.getParameter("email");
+				String phone = request.getParameter("phone")+request.getParameter("phone1")+request.getParameter("phone2");
+				String getId = dao.checkInfor(id,name,email,phone);
+				
+				request.setAttribute("id", getId);
+				request.getRequestDispatcher("member/modifyPw.jsp").forward(request, response);
+			
+			}else if(cmd.equals("/home.mem")) {
 				response.sendRedirect("/index.jsp");
+			
+			}else if(cmd.equals("/modifyPw.mem")) {
+				String id = request.getParameter("id");
+				String pw = EncryptionUtils.pwdEncrypt(request.getParameter("pw1"));
+				
+				int result = dao.updatePw(id,pw);
+				request.setAttribute("result", result);
+				request.getRequestDispatcher("member/confirmPw.jsp").forward(request, response);
 			}
 		}catch(Exception e) { // 에러 났을 때 에러페이지로 이동
 			e.printStackTrace();

@@ -254,7 +254,7 @@
     </head>
 
     <body>
-    <form action="/modifyPw.mem" method="post">
+    <form action="/confirm.mem" method="post">
       <div class="reset_pw_box">
         <div class="reset_pw_logo">
           <h2>비밀번호 재설정</h2>
