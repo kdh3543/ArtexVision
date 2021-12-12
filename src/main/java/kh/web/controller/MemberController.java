@@ -26,14 +26,9 @@ public class MemberController extends HttpServlet {
 		try {
 			if(cmd.equals("/idCheck.mem")) { //id 중복 체크
 				String id = request.getParameter("id");
-
-				try {
-					boolean result = dao.isIdExist(id);
-					response.getWriter().append(String.valueOf(result));
-				}catch(Exception e) {
-					e.printStackTrace();
-				}
-				
+				boolean result = dao.isIdExist(id);
+				response.getWriter().append(String.valueOf(result));
+	
 			}else if(cmd.equals("/insert.mem")) { // 회원가입 폼에서 회원가입 버튼 눌렀을 때
 				String id = request.getParameter("id");
 				String pw = EncryptionUtils.pwdEncrypt(request.getParameter("pw1"));
