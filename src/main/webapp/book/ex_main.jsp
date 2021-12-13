@@ -267,6 +267,11 @@
         height: 80%;
         text-align: center;
     }
+    
+    .ex_main img {
+    	width: 100%;
+    	height: 100%;
+    }
 
     .ex_title{
         width: 100%;
@@ -339,50 +344,50 @@
         <div class="contents_wrap">
           <div class="contents_item1">
               <div>
-                  <div class="ex_main"><a href=""><img src="img/ex_img.png" width="100%" height="100%"></a></div>
+                  <div class="ex_main"><a href="/ex_desc1.book"><img src="img/ex_img.png"></a></div>
                   <div class="ex_title">전시명</div>
                   <div class="ex_desc">장소, 일시</div>
               </div>
               <div>
-                <div class="ex_main"><a href=""><img src="img/ex_img.png" width="100%" height="100%"></a></div>
+                <div class="ex_main"><a href=""><img src="img/ex_img.png"></a></div>
                 <div class="ex_title">전시명</div>
                 <div class="ex_desc">장소, 일시</div>
               </div>
               <div>
-                <div class="ex_main"><a href=""><img src="img/ex_img.png" width="100%" height="100%"></a></div>
+                <div class="ex_main"><a href=""><img src="img/ex_img.png"></a></div>
                 <div class="ex_title">전시명</div>
                 <div class="ex_desc">장소, 일시</div>
               </div>
               <div>
-                <div class="ex_main"><a href=""><img src="img/ex_img.png" width="100%" height="100%"></a></div>
+                <div class="ex_main"><a href=""><img src="img/ex_img.png"></a></div>
                 <div class="ex_title">전시명</div>
                 <div class="ex_desc">장소, 일시</div>
               </div>
           </div>
           <div class="contents_item2">
             <div>
-                <div class="ex_main"><a href=""><img src="img/ex_img.png" width="100%" height="100%"></a></div>
+                <div class="ex_main"><a href=""><img src="img/ex_img.png"></a></div>
                 <div class="ex_title">전시명</div>
                 <div class="ex_desc">장소, 일시</div>
             </div>
             <div>
-              <div class="ex_main"><a href=""><img src="img/ex_img.png" width="100%" height="100%"></a></div>
+              <div class="ex_main"><a href=""><img src="img/ex_img.png"></a></div>
               <div class="ex_title">전시명</div>
               <div class="ex_desc">장소, 일시</div>
             </div>
             <div>
-              <div class="ex_main"><a href=""><img src="img/ex_img.png" width="100%" height="100%"></a></div>
+              <div class="ex_main"><a href=""><img src="img/ex_img.png"></a></div>
               <div class="ex_title">전시명</div>
               <div class="ex_desc">장소, 일시</div>
             </div>
             <div>
-              <div class="ex_main"><a href=""><img src="img/ex_img.png" width="100%" height="100%"></a></div>
+              <div class="ex_main"><a href=""><img src="img/ex_img.png"></a></div>
               <div class="ex_title">전시명</div>
             <div class="ex_desc">장소, 일시</div>
             </div>  
           </div>
           <div class="contents_item3">
-            << 1    2   3   4  >>
+            << 1 2 3 4 >>
           </div>
         </div>
       </div>
