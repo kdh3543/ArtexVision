@@ -20,6 +20,10 @@ public class BookController extends HttpServlet {
 		String cmd = uri.substring(ctxPath.length());
 		BookDAO dao = BookDAO.getInstance();
 		System.out.println(cmd);
+		
+		if(cmd.equals("/ex_desc1.book")) {
+			request.getRequestDispatcher("/book/ex_desc01.jsp").forward(request, response);
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
