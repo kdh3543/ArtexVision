@@ -374,10 +374,12 @@
     </div>
 
     <div class="nav">
+      <a href="/input_ex_dashboard.admin">
       <div class="nav_items">
         <div class="nav_icon"><i class="fas fa-chart-line"></i></div>
         <div class="nav_title">DASHBOARD</div>
       </div>
+      </a>
       <div class="nav_items">
         <div class="nav_icon"><i class="fas fa-address-card"></i></div>
         <div class="nav_title">MEMBERS</div>
@@ -390,7 +392,7 @@
         <div class="nav_icon"><i class="fas fa-crown"></i></div>
         <div class="nav_title">GRADE</div>
       </div>
-      <a href="/input_ex.admin">
+      <a href="/input_ex_form.admin">
       <div class="nav_items">
         <div class="nav_icon"><i class="fas fa-pen-square"></i></div>
         <div class="nav_title">EXHIBITION</div>
