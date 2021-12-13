@@ -33,6 +33,13 @@ public class AdminController extends HttpServlet {
 				} else {
 					response.sendRedirect("/admin/admin_login.jsp");
 				}
+			} else if(cmd.equals("/logout.admin")) {
+				request.getSession().removeAttribute("loginID");
+				response.sendRedirect("/admin/admin_login.jsp");
+			} else if(cmd.equals("/input_ex_form.admin")) {
+				request.getRequestDispatcher("/admin/admin_input_ex.jsp").forward(request, response);
+			} else if(cmd.equals("/input_ex_dashboard.admin")) {
+				request.getRequestDispatcher("/admin/admin_index.jsp").forward(request, response);
 			}
 		} catch(Exception e) {
 			e.printStackTrace();
