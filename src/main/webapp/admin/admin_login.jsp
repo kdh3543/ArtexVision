@@ -42,6 +42,16 @@
       box-sizing: border-box;
     }
 
+	input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    input:-webkit-autofill:active {
+      /* transition: background-color 5000s ease-in-out 0s; */
+      transition: background-color 9999s ease-out;
+      box-shadow: 0 0 0px 1000px transparent inset !important;
+      -webkit-text-fill-color: var(--color2) !important;
+    }
+
     .login_box {
       margin: auto;
       background-color: var(--color3);
@@ -107,6 +117,7 @@
 </head>
 
 <body>
+  <form action="/admin_login.admin" method="post">
   <div class="login_box">
     <div class="login_logo">
       <h2>ADMIN LOGIN</h2>
@@ -125,5 +136,6 @@
       </div>
     </div>
   </div>
+  </form>
 </body>
 </html>
