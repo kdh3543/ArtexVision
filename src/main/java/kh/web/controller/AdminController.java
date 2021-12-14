@@ -76,7 +76,7 @@ public class AdminController extends HttpServlet {
 				int result = dao.insertEx(eDto);
 				if(result > 0) {
 					dao.insertExImg(0, oriName, sysName, ex_id);
-					System.out.println("INSERT OK");
+					System.out.println("OK");
 				}
 			}
 		} catch(Exception e) {
