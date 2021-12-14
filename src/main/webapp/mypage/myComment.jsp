@@ -512,8 +512,6 @@
               <div class="search">
                 <select>
                   <option>제목</option>
-                  <option>내용</option>
-                  <option>아이디</option>
                 </select>
                 <input type="text" placeholder="검색어를 입력하세요.">
                 <input type="button" value="검색">

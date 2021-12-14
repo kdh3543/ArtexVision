@@ -357,14 +357,14 @@
             pw_check_result.text("");
           }
         })
-        
-        reset_pw_btn.on("click",function(){
-        	if(pw2.val()!=pw1.val()){
-        		alert("비밀번호가 일치하지 않습니다.\n다시 입력해주세요.");
-        		pw1.val("");
-        		pw2.val("");
-        		return false;
-        	}
+
+        reset_pw_btn.on("click", function () {
+          if (pw2.val() != pw1.val()) {
+            alert("비밀번호가 일치하지 않습니다.\n다시 입력해주세요.");
+            pw1.val("");
+            pw2.val("");
+            return false;
+          }
         })
       </script>
     </body>
