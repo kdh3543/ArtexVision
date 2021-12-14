@@ -119,7 +119,7 @@
     }
 
     div {
-      border: 1px solid black;
+      border: 1px solid black; 
     }
 
     input:-webkit-autofill,
@@ -129,7 +129,7 @@
       /* transition: background-color 5000s ease-in-out 0s; */
       transition: background-color 9999s ease-out;
       box-shadow: 0 0 0px 1000px transparent inset !important;
-      -webkit-text-fill-color: var(--text-color) !important;
+      -webkit-text-fill-color: var(--footer color) !important;
     }
 
 	a {
@@ -224,6 +224,7 @@
     .ex_img_show {
       width: 80%;
       height: 80%;
+      border: 1px solid var(--footer-color)
     }
 
     .ex_img_show img {
@@ -288,6 +289,22 @@
       color: var(--sub-color1);
     }
 
+	input[type="submit"] {
+	  background-color: var(--sub-color1);
+      color: var(--text-color);
+      width: 80%;
+      height: 30px;
+      border: var(--color1);
+	}
+
+	input[type="button"] {
+	  background-color: var(--sub-color1);
+      color: var(--text-color);
+      height: 30px;
+      border: var(--color1);
+	}
+	
+
     /* input_ex end */
 
     /* footer start */
@@ -347,7 +364,20 @@
         }).open();
       };
 
+      let nav_items = document.querySelectorAll(".nav_items");
+      let nav_icon = document.querySelectorAll(".nav_icon");
+      let nav_title = document.querySelectorAll(".nav_title");
 
+      for(let i = 0; nav_items.length; i++){
+        nav_items[i].onmouseover = function(){
+          this.style.color = "#998ab4";
+          this.style.cursor = "pointer";
+        }
+
+        nav_items[i].onmouseleave = function(){
+          this.style.color = "#ffffff";
+        }
+      }
     }
 
   </script>
@@ -392,7 +422,7 @@
       </div>
       </a>
     </div>
-    <form action="/add_ex.admin" enctype="multipart/form-data">
+    <form action="/add_ex.admin" method="post" enctype="multipart/form-data">
     <div class="contents">
       <div class="input_ex_wrap">
         <div class="ex_img_show_wrap">
