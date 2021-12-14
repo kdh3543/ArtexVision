@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
   <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-  <!DOCTYPE html>
+    <!DOCTYPE html>
     <html>
 
     <head>
       <meta charset="UTF-8">
-      <title>Index</title>
+      <title>Insert title here</title>
       <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
       <style>
         /* 전체 설정 css start */
@@ -122,77 +122,31 @@
           box-sizing: border-box;
         }
 
-        .login_box {
-          margin: auto;
+        div {
+          /* border: 1px solid black; */
+        }
+
+        .find_id_box {
+          margin: auto;    
+          width: 450px;
+          margin-top: 100px;
+          padding-top: 50px;
           background-color: var(--color3);
-          width: 350px;
-          height: 600px;
-        }
-
-        .login_logo {
           color: var(--color2);
           text-align: center;
-          height: 20%;
-          line-height: 50px;
-          padding-left: 20px;
-          padding-right: 20px;
         }
-
-        .login_input {
-          text-align: center;
-        }
-
-        #id,
-        #pw {
-          text-align: center;
-          width: 80%;
-          height: 40px;
-          background-color: transparent;
-          color: var(--color2);
-          border: 0;
-          border-bottom: 1px solid var(--color5);
-        }
-
-        #id:focus,
-        #pw:focus {
-          outline: none;
-        }
-
-        #id::placeholder,
-        #pw::placeholder {
-          color: var(--color2);
-        }
-
-        .login_btn_wrap {
+        .btns{
           width: 100%;
-          height: 100px;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-
-        .login_btn {
-          background-color: var(--color7);
-          width: 90%;
-          height: 30px;
-          color: var(--color2);
-          border: var(--color1);
-          cursor: pointer;
-        }
-
-        .btns {
-          width: 100%;
+          margin-top: 20px;
           height: 50px;
           text-align: center;
-          line-height: 50px;
         }
-
-        button {
-          width: 30%;
-          height: 30px;
+        input[type="button"] {
           background-color: var(--color7);
           color: var(--color2);
-          border: var(--color1);
+          border: none;
+          width: 25%;
+          height: 30px;
           cursor: pointer;
         }
       </style>
@@ -200,42 +154,28 @@
 
     <body>
       <c:choose>
-        <c:when test="${loginId != null}">
-          <div>
-            로그인 성공!!
+        <c:when test="${result==1}">
+          <div class="find_id_box">
+            회원탈퇴가 완료되었습니다.<br>
+            <div class="btns">
+              <input type="button" value="로그인" id="backLogin">
+            </div>
           </div>
         </c:when>
         <c:otherwise>
-          <form action="/login.mem" method="post">
-            <div class="login_box">
-              <div class="login_logo">
-                <h2>LOGIN</h2>
-                <hr>
-              </div>
-              <div class="login_contents">
-                <div class="login_input">
-                  <div class="input_id">
-                    <input type="text" name="id" id="id" placeholder="Input your ID">
-                  </div>
-                  <div class="input_pw">
-                    <input type="password" name="pw" id="pw" placeholder="Input your PASSWORD">
-                  </div>
-                </div>
-                <div class="login_btn_wrap">
-                  <input type="submit" value="LOGIN" class="login_btn" id="login_btn">
-                </div>
-              </div>
-              <div class="btns_wrap">
-                <div class="btns">
-                  <a href="/signup.mem"><button type="button" id="signup_btn" class="signup_btn">회원가입</button></a>
-                  <a href="/findId.mem"><button type="button" id="find_id_btn" class="find_id_btn">아이디 찾기</button></a>
-                  <a href="/confirmInfor.mem"><button type="button" id="modify_pw_btn" class="modify_pw_btn">비밀번호
-                      변경</button></a>
-                </div>
-              </div>
+          <div class="find_id_box">
+            비밀번호를 잘못 입력하였습니다.<br>
+            다시 입력해주세요.
+            <div class="btns">
+              <a href="javascript:history.back()"><input type="button" value="뒤로가기"></a>
             </div>
-          </form>
+          </div>
         </c:otherwise>
       </c:choose>
     </body>
+    <script>
+      $("#backLogin").on("click",function(){
+        location.href="/index.jsp";
+      })
+    </script>
     </html>

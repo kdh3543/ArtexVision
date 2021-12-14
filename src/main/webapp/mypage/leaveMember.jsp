@@ -309,7 +309,7 @@
 
         .contents_wrap {
           width: 90%;
-          
+
         }
 
         .contents_title {
@@ -321,7 +321,7 @@
           line-height: 70px;
           font-weight: bold;
         }
-        
+
         .contents_notice_resign {
           margin: auto;
           width: 100%;
@@ -360,28 +360,13 @@
           border-bottom: 1px solid white;
           border-top: 1px solid white;
           font-weight: bolder;
+
         }
 
-        .resign_title>div {
-          float: left;
-        }
-
-        .resign_contents {
-          height: 15%;
-          border-bottom: 1px solid white;
-        }
-
-        .resign_contents>div {
-          float: left;
-        }
-
-        .rtitle {
-          width: 20%;
-          height: 100%;
-          text-align: center;
-          line-height: 47px;
-        }
-
+		table{
+			width:100%;
+			text-align: center;
+		}
         .write_pw>div {
           float: left;
           width: 50%;
@@ -408,18 +393,17 @@
           width: 100%;
           height: 100%;
         }
-
-        input[type="button"],
-        input[type="submit"],
-        input[type="reset"] {
+        
+        input[type="submit"]{
           background-color: var(--color7);
+          font-weight: bold;
+          margin-top: 10px;
           color: var(--color2);
           border: none;
           width: 25%;
           height: 30px;
           cursor: pointer;
         }
-        
       </style>
     </head>
 
@@ -427,9 +411,9 @@
       <div class="container">
         <div class="header">
           <ul class="header_list">
-            <li class="user_detail"><span id="user_grade"><i class="fas fa-crown"></i> SILVER</li></span>
-            <li> USER001 님 환영합니다.</li>
-            <li><a href="#">마이페이지</a></li>
+            <li class="user_detail"><span id="user_grade"><i class="fas fa-crown"></i> ${dto.grade}</li></span>
+            <li> ${loginId } 님 환영합니다.</li>
+            <li><a href="/modifyForm.mem">마이페이지</a></li>
             <li><a href="#">장바구니</a></li>
             <!-- <li><a href="#">로그인</a></li> -->
             <li><a href="#">로그아웃</a></li>
@@ -518,30 +502,34 @@
                   </tr>
                 </table>
               </div>
+              <form action="/leave.mem" method="post">
               <div class="contents_resign_mem">
                 <div>
                   회원탈퇴시 아래 정보는 모두 삭제됩니다.
                 </div>
                 <div class="resign_title">
-                  <div class="rtitle"></div>
-                  <div class="rtitle">보유쿠폰</div>
-                  <div class="rtitle">포인트</div>
-                  <div class="rtitle">회원등급</div>
-                </div>
-                <div class="resign_contents">
-                  <div class="rtitle"></div>
-                  <div class="rtitle">1개</div>
-                  <div class="rtitle">2,700원</div>
-                  <div class="rtitle">SILVER</div>
+                  <table>
+                    <tr>
+                      <td>보유쿠폰</td>
+                      <td>포인트</td>
+                      <td>회원등급</td>
+                    </tr>
+                    <tr>
+                      <td>1개</td>
+                      <td>2,700원</td>
+                      <td>SILVER</td>
+                    </tr>
+                  </table>
                 </div>
                 <div class="write_pw">
-                  비밀번호 <input type="password">
+                  비밀번호 <input type="password" name="pw">
                 </div>
-                <div class="resign_btn">
-                  <input type="button" value="탈퇴">
-                  <input type="button" value="취소">
-                </div>
+                
               </div>
+              <div class="resign_btn">
+                <input type="submit" value="회원탈퇴">
+              </div>
+              </form>
             </div>
           </div>
           <div class="empty"></div>
