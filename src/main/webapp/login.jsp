@@ -198,14 +198,7 @@
       </style>
     </head>
 
-    <body>
-      <c:choose>
-        <c:when test="${loginId != null}">
-          <div>
-            <a href="/modifyForm.mem">로그인 성공!!</a>
-          </div>
-        </c:when>
-        <c:otherwise>
+    <body>  
           <form action="/login.mem" method="post">
             <div class="login_box">
               <div class="login_logo">
@@ -225,6 +218,7 @@
                   <input type="submit" value="LOGIN" class="login_btn" id="login_btn">
                 </div>
               </div>
+              </form>
               <div class="btns_wrap">
                 <div class="btns">
                   <a href="/signup.mem"><button type="button" id="signup_btn" class="signup_btn">회원가입</button></a>
@@ -234,8 +228,6 @@
                 </div>
               </div>
             </div>
-          </form>
-        </c:otherwise>
-      </c:choose>
+          
     </body>
     </html>
