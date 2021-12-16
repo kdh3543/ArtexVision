@@ -8,6 +8,8 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import kh.web.dto.ExhibitionDTO;
+
 public class AdminDAO {
 	private static AdminDAO instance = null;
 
@@ -37,6 +39,40 @@ public class AdminDAO {
 			ResultSet rs = pstmt.executeQuery();
 		
 			return rs.next();
+		}
+	}
+	
+	public int insertEx(ExhibitionDTO dto) throws Exception {
+		String sql = "insert into exhibition values(?, ?, ?, ?, ?, ?, ?, ?)";
+		try(Connection conn = this.getConnection();
+			PreparedStatement pstmt = conn.prepareStatement(sql);)
+		{
+			pstmt.setString(1, dto.getEx_id());
+			pstmt.setString(2, dto.getEx_title());
+			pstmt.setString(3, dto.getEx_desc());
+			pstmt.setInt(4, dto.getEx_price());
+			pstmt.setString(5, dto.getEx_location());
+			pstmt.setInt(6, dto.getEx_score());
+			pstmt.setDate(7, dto.getEx_start_date());
+			pstmt.setDate(8, dto.getEx_end_date());
+			int result = pstmt.executeUpdate();
+			conn.commit();
+			return result;
+		}
+	}
+	
+	public int insertExImg(int exi_seq, String exi_oriName, String exi_sysName, String exi_ex_id) throws Exception {
+		String sql = "insert into exhibitionimg values(?, ?, ?, ?)";
+		try(Connection conn = this.getConnection();
+			PreparedStatement pstmt = conn.prepareStatement(sql);)
+		{
+			pstmt.setInt(1, exi_seq);
+			pstmt.setString(2, exi_oriName);
+			pstmt.setString(3, exi_sysName);
+			pstmt.setString(4, exi_ex_id);
+			int result = pstmt.executeUpdate();
+			conn.commit();
+			return result;
 		}
 	}
 }
