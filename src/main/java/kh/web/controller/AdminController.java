@@ -3,6 +3,7 @@ package kh.web.controller;
 import java.io.File;
 import java.io.IOException;
 import java.sql.Date;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,6 +16,7 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import kh.web.dao.AdminDAO;
 import kh.web.dto.ExhibitionDTO;
+import kh.web.dto.MemberDTO;
 import kh.web.utils.EncryptionUtils;
 
 
@@ -53,7 +55,6 @@ public class AdminController extends HttpServlet {
 				String savePath = request.getServletContext().getRealPath("files");
 				File filePath = new File(savePath);
 
-				// 경로가 없다면 폴더 만들기
 				if(!filePath.exists()) {
 					filePath.mkdir();
 				}
@@ -78,6 +79,10 @@ public class AdminController extends HttpServlet {
 					dao.insertExImg(0, oriName, sysName, ex_id);
 					System.out.println("OK");
 				}
+			} else if(cmd.equals("/member_list.admin")) {
+				List<MemberDTO> list = dao.selectAllMember();
+				request.setAttribute("list", list);
+				request.getRequestDispatcher("/admin/admin_member_list.jsp").forward(request, response);
 			}
 		} catch(Exception e) {
 			e.printStackTrace();
