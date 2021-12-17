@@ -7,9 +7,14 @@
       <meta charset="UTF-8">
       <title>Insert title here</title>
       <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+      <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+      <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
       <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
         integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-
       <style>
         /* 전체 설정 css start */
         input:-webkit-autofill,
@@ -322,7 +327,6 @@
         .reservation {
           margin-top: 50px;
           width: 100%;
-          height: 80%;
           background-color: var(--color3);
           color: var(--color2);
         }
@@ -330,7 +334,7 @@
         .reserve_title {
           margin-top: 10px;
           width: 100%;
-          height: 10%;
+          height: 60px;
           background-color: #80808040;
           line-height: 60px;
           border-bottom: 1px solid white;
@@ -347,8 +351,9 @@
         .reserve_contents {
           height: 20%;
           width: 100%;
-          line-height: 120px;
+          height: 100px;
           border-bottom: 1px solid white;
+          text-align: center;
         }
 
         .reserve_contents>div {
@@ -397,20 +402,13 @@
       <div class="container">
         <div class="header">
           <ul class="header_list">
-            <li class="user_detail"><span id="user_grade"><i class="fas fa-crown"></i> SILVER</li></span>
-            <li> USER001 님 환영합니다.</li>
-            <li><a href="#">마이페이지</a></li>
+            <li class="user_detail"><span id="user_grade"><i class="fas fa-crown"></i> ${dto.grade}</li></span>
+            <li> ${loginId } 님 환영합니다.</li>
+            <li><a href="/modifyForm.mem">마이페이지</a></li>
             <li><a href="#">장바구니</a></li>
             <!-- <li><a href="#">로그인</a></li> -->
-            <li><a href="#">로그아웃</a></li>
+            <li><a href="/logout.mem">로그아웃</a></li>
             <!-- <li><a href="#">회원가입</a></li> -->
-            <li>
-              <span class="search_wrap">
-                <input type="text" id="search_text" name="search_text" class="search_text"
-                  placeholder="INPUT SEARCH ITEM" maxlength="25">
-                <a href=""><i class="fas fa-search"></i></a>
-              </span>
-            </li>
           </ul>
         </div>
         <div class="nav">
@@ -424,7 +422,6 @@
                 <li><a href="#">Artex Vision</a></li>
                 <li><a href="#">전시</a></li>
                 <li><a href="#">이벤트</a></li>
-                <li><a href="#">커뮤니티</a></li>
               </ul>
             </div>
           </div>
@@ -441,20 +438,14 @@
             <h2 class="list_title">마이페이지</h2><br>
             <h3 class="list_title">회원 정보</h3>
             <ul class="sidebar_item_list">
-              <li class="sidebar_item"><a href="">회원 정보 수정</a></li>
-              <li class="sidebar_item"><a href="">내가 쓴 글/댓글</a></li>
-              <li class="sidebar_item"><a href="">회원 등급</a></li>
-              <li class="sidebar_item"><a href="">회원 탈퇴</a></li>
+              <li class="sidebar_item"><a href="/modifyForm.mem">회원 정보 수정</a></li>
+              <li class="sidebar_item"><a href="/myCommentForm.mem">내가 쓴 글/댓글</a></li>
+              <li class="sidebar_item"><a href="/leaveForm.mem">회원 탈퇴</a></li>
             </ul>
             <h3 class="list_title">예매 내역</h3>
             <ul class="sidebar_item_list">
-              <li class="sidebar_item"><a href="">예매내역 조회</a></li>
-              <li class="sidebar_item"><a href="">예매내역 취소</a></li>
-            </ul>
-            <h3 class="list_title">즐겨찾기</h3>
-            <ul class="sidebar_item_list">
-              <li class="sidebar_item"><a href="">찜한 전시회</a></li>
-            </ul>
+              <li class="sidebar_item"><a href="">예매내역 조회/취소</a></li>
+            </ul>          
             <!-- 마이페이지 end -->
 
           </div>
@@ -476,21 +467,29 @@
                   <div>예매 날짜</div>
                   <div>선택</div>
                 </div>
-                <div class="reserve_contents">
-                  <div>예매한 상품</div>
-                  <div>22-645243</div>
-                  <div>2021-12-07</div>
-                  <div><input type="checkbox"></div>
-                </div>
-                <div class="reserve_contents">
-                  <div>예매한 상품</div>
-                  <div>22-645243</div>
-                  <div>2021-12-07</div>
-                  <div><input type="checkbox"></div>
-                </div>
-                <div class="cancel_btn">
-                  <input type="button" value="예매취소">
-                </div>
+                <table class="reserve_table" style="width: 100%; table-layout:fixed;">
+                  <tr class="reserve_contents" data-tr_value="1">
+                    <td>예매 내역</td>
+                    <td>예매 번호1</td>
+                    <td>예매 날짜</td>
+                    <td><input type="checkbox" name="check" value="1"></td>
+                  </tr>
+                  <tr class="reserve_contents" data-tr_value="2">
+                    <td>예매 내역</td>
+                    <td>예매 번호2</td>
+                    <td>예매 날짜</td>
+                    <td><input type="checkbox" name="check" value="1"></td>
+                  </tr>
+                  <tr class="reserve_contents" data-tr_value="3">
+                    <td>예매 내역</td>
+                    <td>예매 번호3</td>
+                    <td>예매 날짜</td>
+                    <td><input type="checkbox" name="check" value="1"></td>
+                  </tr>
+                </table>
+              </div>
+              <div class="cancel_btn">
+                <input type="button" value="예매취소" id="cancel">
               </div>
             </div>
           </div>
@@ -499,6 +498,19 @@
 
         </div>
       </div>
+      <script>
+        $('#cancel').click(function(){
+        if(confirm("예매를 취소하시겠습니까?")){
+          $("input[name=check]:checked").each(function(){
+                let tr_value =$(this).val();
+                let tr=$("tr[data-tr_value='"+tr_value+"']");
+                tr.remove();
+            });
+        }else{
+            return false;
+        }
+    });
+      </script>
     </body>
 
     </html>

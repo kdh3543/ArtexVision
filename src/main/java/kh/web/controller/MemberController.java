@@ -29,6 +29,12 @@ public class MemberController extends HttpServlet {
 				boolean result = dao.isIdExist(id);
 				response.getWriter().append(String.valueOf(result));
 	
+			}else if(cmd.equals("/phoneCheck.mem")) {
+				String phone = request.getParameter("phone");
+				System.out.println(phone);
+				boolean result = dao.isPhoneExist(phone);
+				response.getWriter().append(String.valueOf(result));
+			
 			}else if(cmd.equals("/insert.mem")) { // 회원가입 폼에서 회원가입 버튼 눌렀을 때
 				String id = request.getParameter("id");
 				String pw = EncryptionUtils.pwdEncrypt(request.getParameter("pw1"));
@@ -53,9 +59,11 @@ public class MemberController extends HttpServlet {
 				boolean result = dao.login(id, pw);
 				if(result) { 
 					HttpSession session = request.getSession(); 
-					session.setAttribute("loginId", id); 
+					session.setAttribute("loginId", id);
+					request.getRequestDispatcher("mypage/modifyInfor.jsp").forward(request, response);
+				}else {
+					response.sendRedirect("/loginFail.jsp");
 				}
-				response.sendRedirect("/login.jsp");
 				
 			}else if(cmd.equals("/findId.mem")) { // 로그인 화면에서 아이디 찾기 버튼을 눌렀을 때
 				response.sendRedirect("member/findId.jsp");
@@ -63,16 +71,16 @@ public class MemberController extends HttpServlet {
 			}else if(cmd.equals("/confirmInfor.mem")) {// 로그인 화면에서 비밀번호 찾기 버튼을 눌렀을 때
 				response.sendRedirect("member/confirmInfor.jsp");
 				
-			}else if(cmd.equals("/confirmId.mem")) {
+			}else if(cmd.equals("/confirmId.mem")) { // id 찾기 화면에서 개인정보 입력 후 id 찾기 버튼을 눌렀을 때
 				String name = request.getParameter("name");
 				String birth = request.getParameter("birth");
 				String phone = request.getParameter("phone")+request.getParameter("phone1")+request.getParameter("phone2");
 				String id = dao.searchId(name,birth,phone);
-				System.out.println(id);
+
 				request.setAttribute("id", id);
 				request.getRequestDispatcher("/member/confirmId.jsp").forward(request, response);
 				
-			}else if(cmd.equals("/confirm.mem")) {
+			}else if(cmd.equals("/confirm.mem")) { // 로그인 화면에서 비밀번호 찾기 버튼을 누른 후 개인정보 입력 후에 비밀번호 재설정 버튼을 눌렀을 때
 				String id = request.getParameter("id");
 				String name = request.getParameter("name");
 				String email = request.getParameter("email");
@@ -82,10 +90,10 @@ public class MemberController extends HttpServlet {
 				request.setAttribute("id", getId);
 				request.getRequestDispatcher("member/modifyPw.jsp").forward(request, response);
 			
-			}else if(cmd.equals("/home.mem")) {
+			}else if(cmd.equals("/home.mem")) { // 홈으로 버튼을 눌렀을 때 
 				response.sendRedirect("/login.jsp");
 			
-			}else if(cmd.equals("/modifyPw.mem")) {
+			}else if(cmd.equals("/modifyPw.mem")) { // 패스워드 변경 버튼 눌렀을 시
 				String id = request.getParameter("id");
 				String pw = EncryptionUtils.pwdEncrypt(request.getParameter("pw1"));
 				
@@ -93,15 +101,16 @@ public class MemberController extends HttpServlet {
 				request.setAttribute("result", result);
 				request.getRequestDispatcher("member/confirmPw.jsp").forward(request, response);
 			
-			}else if(cmd.equals("/leave.mem")) {
+			}else if(cmd.equals("/leave.mem")) { //회원탈퇴 버튼 눌렀을 시
 				String pw = EncryptionUtils.pwdEncrypt(request.getParameter("pw"));
 				String id = (String)request.getSession().getAttribute("loginId");
 				
 				int result = dao.deleteMember(id,pw);
+				request.getSession().invalidate();
 				request.setAttribute("result", result);
 				request.getRequestDispatcher("member/leaveSuccess.jsp").forward(request, response);
 			
-			}else if(cmd.equals("/modifyInfor.mem")) {
+			}else if(cmd.equals("/modifyInfor.mem")) { //회원정보 수정에서 수정하기 버튼을 눌렀을 시
 				String id = (String)request.getSession().getAttribute("loginId");
 				String pw = EncryptionUtils.pwdEncrypt(request.getParameter("pw1"));
 				String email = request.getParameter("email");
@@ -132,15 +141,28 @@ public class MemberController extends HttpServlet {
 				
 				dao.updateInfor(id,pw,email,phone,zipcode,addr1,addr2);
 			
-			}else if(cmd.equals("/memberGrade.mem")) {
+			}else if(cmd.equals("/memberGrade.mem")) { //회원정보 수정에서 회원 등급 버튼 눌렀을 시
 				response.sendRedirect("mypage/memberRank.jsp");
 				
-			}else if(cmd.equals("/modifyForm.mem")) {
+			}else if(cmd.equals("/modifyForm.mem")) { // 마이페이지 버튼 누르거나 회원정보 수정 버튼 눌렀을 시
 				String id = (String)request.getSession().getAttribute("loginId");
 				MemberDTO dto = dao.selectById(id);
-				System.out.println(dto.getName());
 				request.setAttribute("dto", dto);
 				request.getRequestDispatcher("mypage/modifyInfor.jsp").forward(request, response);
+			
+			}else if(cmd.equals("/myCommentForm.mem")) { //내가 쓴 글, 댓글 버튼 눌렀을 시
+				response.sendRedirect("mypage/myComment.jsp");
+				
+			}else if(cmd.equals("/leaveForm.mem")) {// 회원탈퇴 버튼 눌렀을 시
+				String id = (String)request.getSession().getAttribute("loginId");
+				MemberDTO dto = dao.selectById(id);
+				request.setAttribute("dto", dto);
+				request.getRequestDispatcher("mypage/leaveMember.jsp").forward(request, response);
+				
+			}else if(cmd.equals("/logout.mem")) { // 로그아웃 버튼 눌렸을 시
+				request.getSession().removeAttribute("loginId");
+				response.sendRedirect("/login.jsp");
+				
 			}
 		}catch(Exception e) { // 에러 났을 때 에러페이지로 이동
 			e.printStackTrace();

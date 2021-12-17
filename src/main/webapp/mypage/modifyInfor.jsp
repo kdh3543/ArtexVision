@@ -13,6 +13,8 @@
         crossorigin="anonymous"></script>
       <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
       <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+      <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
       <style>
         /* 전체 설정 css start */
         input:-webkit-autofill,
@@ -508,15 +510,8 @@
             <li><a href="/modifyForm.mem">마이페이지</a></li>
             <li><a href="#">장바구니</a></li>
             <!-- <li><a href="#">로그인</a></li> -->
-            <li><a href="#">로그아웃</a></li>
+            <li><a href="/logout.mem">로그아웃</a></li>
             <!-- <li><a href="#">회원가입</a></li> -->
-            <li>
-              <span class="search_wrap">
-                <input type="text" id="search_text" name="search_text" class="search_text"
-                  placeholder="INPUT SEARCH ITEM" maxlength="25">
-                <a href=""><i class="fas fa-search"></i></a>
-              </span>
-            </li>
           </ul>
         </div>
         <div class="nav">
@@ -530,7 +525,6 @@
                 <li><a href="#">Artex Vision</a></li>
                 <li><a href="#">전시</a></li>
                 <li><a href="#">이벤트</a></li>
-                <li><a href="#">커뮤니티</a></li>
               </ul>
             </div>
           </div>
@@ -547,18 +541,14 @@
             <h2 class="list_title">마이페이지</h2><br>
             <h3 class="list_title">회원 정보</h3>
             <ul class="sidebar_item_list">
-              <li class="sidebar_item"><a href="">회원 정보 수정</a></li>
-              <li class="sidebar_item"><a href="">내가 쓴 글/댓글</a></li>
-              <li class="sidebar_item"><a href="">회원 탈퇴</a></li>
+              <li class="sidebar_item"><a href="/modifyForm.mem">회원 정보 수정</a></li>
+              <li class="sidebar_item"><a href="/myCommentForm.mem">내가 쓴 글/댓글</a></li>
+              <li class="sidebar_item"><a href="/leaveForm.mem">회원 탈퇴</a></li>
             </ul>
             <h3 class="list_title">예매 내역</h3>
             <ul class="sidebar_item_list">
               <li class="sidebar_item"><a href="">예매내역 조회/취소</a></li>
-            </ul>
-            <h3 class="list_title">즐겨찾기</h3>
-            <ul class="sidebar_item_list">
-              <li class="sidebar_item"><a href="">찜한 전시회</a></li>
-            </ul>
+            </ul>          
             <!-- 마이페이지 end -->
 
           </div>
@@ -688,7 +678,7 @@
         </div>
         <script>
           function openPop() {
-            var popup = window.open("/memberGrade.mem", '회원 등급', 'width=1000px,height=700px,scrollbars=yes top=200px, left=200px');
+            var popup = window.open("/memberGrade.mem", '회원 등급', 'width=800px,height=600px,scrollbars=yes top=200px, left=200px');
           }
 
           let frm = $("#frm");

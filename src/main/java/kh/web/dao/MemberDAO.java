@@ -62,6 +62,17 @@ public class MemberDAO {
 		}
 	}
 	
+	public boolean isPhoneExist(String phone) throws Exception{
+		String sql = "select * from member where mem_phone=?";
+		try(Connection con = this.getConnection();
+				PreparedStatement pstat = con.prepareStatement(sql);){
+			pstat.setString(1, phone);
+			try(ResultSet rs = pstat.executeQuery();){
+				return rs.next();
+			}
+		}
+	}
+	
 	public MemberDTO selectById(String id) throws Exception{
 		String sql = "select * from member where mem_id =?";
 		try(Connection con = this.getConnection();

@@ -182,6 +182,7 @@
           padding-left: 20px;
         }
 
+        .phone_dup_check_result,
         .id_dup_check_result,
         .pw_check_result {
           height: 10px;
@@ -191,7 +192,6 @@
           font-weight: bold;
           margin-bottom: 10px;
         }
-
 
         #id,
         #pw1,
@@ -296,6 +296,9 @@
         #id_dup_check {
           width: 75px;
         }
+        #phone_dup_chekc{
+          width: 100px;
+        }
 
         #find_zipcode_wrap {
           padding-left: 30px;
@@ -368,7 +371,9 @@
                   <option value="019">019</option>
                 </select> - <input type="text" name="phone1" id="phone1"> - <input type="text" name="phone2"
                   id="phone2">
+                  <span id="phone_dup_check_wrap"> <input type="button" value="전화번호인증" id="phone_dup_check">
               </div>
+              <div class="phone_dup_check_result" id="phone_dup_check_result"></div>
               <div class="label">
                 <label for="zipcode">우편번호</label>
               </div>
@@ -417,6 +422,7 @@
         let name = $("#name");
         let birth = $("#birth");
         let email = $("#email");
+        let phone = $("#phone");
         let phone1 = $("#phone1");
         let phone2 = $("#phone2");
         let find_zipcode = $("#find_zipcode");
@@ -424,6 +430,25 @@
         let addr1 = $("#addr1");
         let addr2 = $("#addr2");
         let reset_btn = $("#reset_btn");
+        let phone_dup_check = $("#phone_dup_check");
+        let phone_dup_check_result = $("#phone_dup_check_result");
+
+        $(function(){
+          phone_dup_check.on("click",function(){
+            $.ajax({
+              url: "/phoneCheck.mem",
+              data: {phone:(phone.val()+phone1.val()+phone2.val())}
+            }).done(function(resp){
+              if(resp == "true"){
+                phone_dup_check_result.css("color", "red");
+                phone_dup_check_result.text("존재하는 전화번호 입니다. 다른 번호를 입력해주세요.");
+              }else{
+                phone_dup_check_result.css("color", "green");
+                phone_dup_check_result.text("사용가능한 전화번호 입니다.");
+              }
+            })
+          })
+        })
 
         $(function () {
           id_dup_check.on("click", function () {
@@ -540,6 +565,7 @@
         reset_btn.on("click",function(){
           id_dup_check_result.text("");
           pw_check_result.text("");
+          phone_dup_check_result.text("");
         })
       </script>
     </body>

@@ -35,11 +35,12 @@ public class AdminController extends HttpServlet {
 				String id = request.getParameter("id");
 				String pw = EncryptionUtils.pwdEncrypt(request.getParameter("pw"));
 				boolean result = dao.login(id, pw);
+				System.out.println(result);
 				if(result) {
 					request.getSession().setAttribute("loginID", id);
 					request.getRequestDispatcher("/admin/admin_index.jsp").forward(request, response);
 				} else {
-					response.sendRedirect("/admin/admin_login.jsp");
+					response.sendRedirect("/loginFail.jsp");
 				}
 			} else if(cmd.equals("/logout.admin")) {
 				request.getSession().removeAttribute("loginID");

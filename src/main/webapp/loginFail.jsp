@@ -1,12 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-    <!DOCTYPE html>
-    <html>
-
-    <head>
-      <meta charset="UTF-8">
-      <title>Insert title here</title>
-      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
       <style>
         /* 전체 설정 css start */
         input:-webkit-autofill,
@@ -126,7 +126,7 @@
           /* border: 1px solid black; */
         }
 
-        .find_id_box {
+        .fail_login_box {
           margin: auto;    
           width: 450px;
           margin-top: 100px;
@@ -134,13 +134,9 @@
           background-color: var(--color3);
           color: var(--color2);
           text-align: center;
+
         }
-        .btns{
-          width: 100%;
-          margin-top: 20px;
-          height: 50px;
-          text-align: center;
-        }
+
         input[type="button"] {
           background-color: var(--color7);
           color: var(--color2);
@@ -149,33 +145,19 @@
           height: 30px;
           cursor: pointer;
         }
+        .btns{
+          padding-top: 20px;
+          padding-bottom: 20px;
+        }
       </style>
-    </head>
-
-    <body>
-      <c:choose>
-        <c:when test="${result==1}">
-          <div class="find_id_box">
-            회원탈퇴가 완료되었습니다.<br>
-            <div class="btns">
-              <input type="button" value="로그인" id="backLogin">
-            </div>
-          </div>
-        </c:when>
-        <c:otherwise>
-          <div class="find_id_box">
-            비밀번호를 잘못 입력하였습니다.<br>
-            다시 입력해주세요.
-            <div class="btns">
-              <a href="javascript:history.back()"><input type="button" value="뒤로가기"></a>
-            </div>
-          </div>
-        </c:otherwise>
-      </c:choose>
-    </body>
-    <script>
-      $("#backLogin").on("click",function(){
-        location.href="/logout.mem";
-      })
-    </script>
-    </html>
+</head>
+<body>
+	<div class="fail_login_box">
+		아이디 또는 비밀번호를 잘못입력하셨습니다.<br> 
+		아이디와 비밀번호를 다시 입력해주십시오.
+		<div class="btns">
+			<a href="javascript:history.back()"><input type="button" value="다시 입력"></a>
+		</div>
+	</div>
+</body>
+</html>
