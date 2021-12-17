@@ -401,8 +401,7 @@
           float: left;
       }
 
-
-          a{
+        a{
          	text-align: center;
   			text-decoration: none; /* 링크의 밑줄 제거 */
  		 	color: inherit; /* 링크의 색상 제거 */
@@ -411,6 +410,7 @@
         a:hover{
             color: black; /* 링크의 색상 제거 */
         }
+  
   
   
       
@@ -470,122 +470,43 @@
   
         <div class="contents">
           <div class="contents_wrap">
-          <div style="text-align: center; font-weight:bold; font-size: larger; color: rgb(104, 104, 104);">현재 전시</div>
+          <div style="text-align: center; font-weight:bold; font-size: larger; color: rgb(104, 104, 104);">예정된 전시</div>
             <hr style="width: 200px;">
             <div class="contents_item1">
                 <div>
-                  <div class="ex_main"><img src="img/hashtag.png"width="100%" height="100%">
+                  <div class="ex_main"><img src="img/asia.png"width="100%" height="100%">
                     <div>
                       <br>
-                      <h4>프로젝트 해시테그</h4>
+                      <h4>漆, 아시아를 칠하다</h4>
                       <br>
-                      <p>[ 전시 기간 ] <br> 21-11-03 ~ 22-02-06</p>
+                      <p>[ 전시 기간 ] <br> 21-12-21 ~ 22-03-20</p>
                       <br>
-                      <p>[ 장소 ] <br> 국립 현대 미술관</p>
+                      <p>[ 장소 ] <br> 국립 중앙 미술관</p>
                     </div>
-                    <a href="../now_ex/ex1_desc.jsp"></a>
+                    <a href="../future_ex/ex13_desc.jsp"></a>
                   </div>
                 </div>
                 <div>
-                  <div class="ex_main"><img src="img/russian.png" width="100%" height="100%">
+                  <div class="ex_main"><img src="img/book.png" width="100%" height="100%">
                     <div>
                       <br>
-                      <h4>러시아 아방가르드</h4>
+                      <h4>내맘쏙 : <br>모두의 그림책 전</h4>
                       <br>
-                      <p>[ 전시 기간 ] <br> 21-12-31 ~ 22-04-17</p>
+                      <p>[ 전시 기간 ] <br>21-12-24 ~ 22-03-27</p>
                       <br>
-                      <p>[ 장소 ] <br> 세종 문화 회관</p>
+                      <p>[ 장소 ] <br> 예술의 전당</p>
                     </div>
-                    <a href="../now_ex/ex7_desc.jsp"></a>
+                    <a href="../future_ex/ex14_desc.jsp"></a>
                   </div>
                 </div>
-                <div>
-                  <div class="ex_main"><img src="img/josun.png" width="100%" height="100%">
-                    <div>
-                      <br>
-                      <h4>조선의 승려 장인</h4>
-                      <br>
-                      <p>[ 전시 기간 ] <br> 21-12-07 ~ 22-03-06</p>
-                      <br>
-                      <p>[ 장소 ] <br> 국립 중앙 박물관</p>
-                    </div>
-                    <a href="../now_ex/ex4_desc.jsp"></a>
-                  </div>
-                </div>
-                <div>
-                  <div class="ex_main"><img src="img/chagall.png" width="100%" height="100%">
-                    <div>
-                      <br>
-                      <h4>샤갈 특별전</h4>
-                      <br>
-                      <p>[ 전시 기간 ] <br> 21-11-25 ~ 22-04-10</p>
-                      <br>
-                      <p>[ 장소 ] <br> 마이 아트 뮤지엄</p>
-                    </div>
-                    <a href="../now_ex/ex3_desc.jsp"></a>
-                  </div>
-                </div>
+                
             </div>
-            <div class="contents_item2">
-              <div>
-                  <div class="ex_main"><img src="img/countdown.png" width="100%" height="100%">
-                    <div>
-                      <br>
-                      <h4>중견작가전 COUNTDOWN</h4>
-                      <br>
-                      <p>[ 전시 기간 ] <br> 21-12-03 ~ 21-12-26</p>
-                      <br>
-                      <p>[ 장소 ] <br> 세종 문화 회관</p>
-                    </div>
-                    <a href="../now_ex/ex8_desc.jsp"></a>
-                  </div>
-              </div>
-              <div>
-                <div class="ex_main"><img src="img/love.png" width="100%" height="100%">
-                  <div>
-                    <br>
-                    <h4>연애의 온도 : <br>두 번째 이야기</h4>
-                    <br>
-                    <p>[ 전시 기간 ] <br> 21-09-15 ~ 22-02</p>
-                    <br>
-                    <p>[ 장소 ] <br> 석파정 서울미술관</p>
-                  </div>
-                  <a href="../now_ex/ex5_desc.jsp"></a>
-                </div>
-              </div>
-              <div>
-                <div class="ex_main"><img src="img/yosigo.png" width="100%" height="100%">
-                  <div>
-                    <br>
-                    <h4>요시고 사진전</h4>
-                    <br>
-                    <p>[ 전시 기간 ] <br> 21-06-23 ~ 22-03-01</p>
-                    <br>
-                    <p>[ 장소 ] <br> 그라운드 시소</p>
-                  </div>
-                  <a href="../now_ex/ex6_desc.jsp"></a>
-                </div>
-              </div>
-              <div>
-                <div class="ex_main"><img src="img/weiwei.png" width="100%" height="100%">
-                  <div>
-                    <br>
-                    <h4>아이 웨이웨이</h4>
-                    <br>
-                    <p>[ 전시 기간 ] <br> 21-12-11 ~ 22-04-17</p>
-                    <br>
-                    <p>[ 장소 ] <br> 국립 현대 미술관</p>
-                  </div>
-                  <a href="../now_ex/ex2_desc.jsp"></a>
-                </div>
-                </div>
-              </div> 
             </div> 
         </div>
       </div>
       <div class="footer"></div>
     </div>
-  
+
 
 
     <!-- hover시 발생하는거 -->
