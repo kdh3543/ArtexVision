@@ -458,7 +458,7 @@
             </ul>
             <h3 class="list_title">예매 내역</h3>
             <ul class="sidebar_item_list">
-              <li class="sidebar_item"><a href="">예매내역 조회/취소</a></li>
+              <li class="sidebar_item"><a href="/bookTest.book">예매내역 조회/취소</a></li>
             </ul>          
             <!-- 마이페이지 end -->
 

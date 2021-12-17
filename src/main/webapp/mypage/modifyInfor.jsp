@@ -727,7 +727,6 @@
               oncomplete: function (data) {
                 document.getElementById("zipcode").value = data.zonecode;
                 document.getElementById("addr1").value = data.roadAddress;
-                document.getElementById("addr2").value = data.jibunAddress;
               }
             }).open();
           }

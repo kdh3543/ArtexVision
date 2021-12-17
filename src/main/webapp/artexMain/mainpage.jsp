@@ -422,20 +422,13 @@
         <!-- 헤더 -->
         <div class="header">
             <ul class="header_list">
-                <li  class="user_detail"><span id="user_grade" style="display:none;"><i class="fas fa-crown"></i> SILVER</li></span>
-                <li style="display:none;" id="welcome"> USER001 님 환영합니다.</li>
-                <li style="display:none;" id="mypage"><a href="#">마이페이지</a></li>
+                <li  class="user_detail"><span id="user_grade" style="display:none;"><i class="fas fa-crown"></i> ${dto.mem_grade}</li></span>
+                <li style="display:none;" id="welcome"> ${loginId } 님 환영합니다.</li>
+                <li style="display:none;" id="mypage"><a href="/modifyForm.mem">마이페이지</a></li>
                 <li style="display:none;" id="basket"><a href="#">장바구니</a></li>
-                <li id=login><a href="#">로그인</a></li>
-                <li style="display:none;" id=logout><a href="#">로그아웃</a></li>
-                <li id=signup><a href="#">회원가입</a></li>
-                <li>
-                    <span class="search_wrap">
-                        <input type="text" id="search_text" name="search_text" class="search_text"
-                            placeholder="INPUT SEARCH ITEM" maxlength="25">
-                        <a href=""><i class="fas fa-search"></i></a>
-                    </span>
-                </li>
+                <li id=login><a href="/home.mem">로그인</a></li>
+                <li style="display:none;" id=logout><a href="/logout.mem">로그아웃</a></li>
+                <li id=signup><a href="/signup.mem">회원가입</a></li>
             </ul>
         </div>
         
@@ -455,7 +448,6 @@
                         <li><a href="../artexDesc/artex_desc.jsp">Artex Vision</a></li>
                         <li><a href="#">전시</a></li>
                         <li><a href="#">이벤트</a></li>
-                        <li><a href="#">커뮤니티</a></li>
                     </ul>
                 </div>
             </div>

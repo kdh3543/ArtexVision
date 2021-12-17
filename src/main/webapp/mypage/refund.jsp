@@ -325,14 +325,14 @@
           font-weight: bold;
         }
 
-        .reservation {
+        .booking {
           margin-top: 50px;
           width: 100%;
           background-color: var(--color3);
           color: var(--color2);
         }
 
-        .reserve_title {
+        .book_title {
           margin-top: 10px;
           width: 100%;
           height: 60px;
@@ -342,14 +342,20 @@
           border-top: 1px solid white;
         }
 
-        .reserve_title>div {
+        .book_title>div {
           text-align: center;
           height: 100%;
           width: 25%;
           float: left;
         }
 
-        .reserve_contents {
+        .book_table{
+          width: 100%; 
+          table-layout:fixed;
+          border-collapse: collapse;
+        }
+        
+        .book_contents {
           height: 20%;
           width: 100%;
           height: 100px;
@@ -357,7 +363,7 @@
           text-align: center;
         }
 
-        .reserve_contents>div {
+        .book_contents>div {
           text-align: center;
           float: left;
           width: 25%;
@@ -455,38 +461,46 @@
               <div class="contents_title">
                 예매내역 취소/환불
               </div>
-              <div class="reservation">
+              <div class="booking">
                 <select>
                   <option>검색</option>
                   <option>단체예약 확인</option>
                   <option>전시회 예약 확인</option>
                   <option>신청일 기준 확인</option>
                 </select>
-                <div class="reserve_title">
+                <div class="book_title">
                   <div>예매 내역</div>
                   <div>예매 번호</div>
-                  <div>예매 날짜</div>
+                  <div>전시회 날짜</div>
                   <div>선택</div>
                 </div>
-                <table class="reserve_table" style="width: 100%; table-layout:fixed;">
-                  <tr class="reserve_contents">
+                <table class="book_table" >
+                  <c:forEach var="book_dto" items="${list}">
+                    <tr class="book_contents">
+                      <td>${book_dto.bk_id}</td>
+                      <td>${book_dto.bk_ex_id}</td>
+                      <td>${book_dto.bk_ex_start_date} ~ ${book_dto.bk_ex_end_date}</td>
+                      <td><input type="checkbox" name="check" id="check"></td>
+                    </tr>
+                  </c:forEach>
+                  <!-- <tr class="book_contents">
                     <td>예매 내역</td>
                     <td>예매 번호1</td>
                     <td>예매 날짜</td>
                     <td><input type="checkbox" name="check" id="check"></td>
                   </tr>
-                  <tr class="reserve_contents">
+                  <tr class="book_contents">
                     <td>예매 내역</td>
                     <td>예매 번호2</td>
                     <td>예매 날짜</td>
                     <td><input type="checkbox" name="check" id="check"></td>
                   </tr>
-                  <tr class="reserve_contents">
+                  <tr class="book_contents">
                     <td>예매 내역</td>
                     <td>예매 번호3</td>
                     <td>예매 날짜</td>
                     <td><input type="checkbox" name="check" id="check"></td>
-                  </tr>
+                  </tr> -->
                 </table>
               </div>
               <div class="cancel_btn">

@@ -381,9 +381,143 @@
           line-height: 40px;
         }
 
-        .search {
-          width: 100%;
+        .board_nb_content {
+          float: left;
+          width: 85%;
+          padding: 15px;
+        }
+
+        .board_nb_head {
+          margin-top: 10px;
+          border-top: 1px solid black;
+          border-bottom: 1px solid black;
+          overflow: hidden;
           text-align: center;
+          height: 30px;
+          line-height: 30px;
+        }
+
+        .board_nb_head>div {
+          float: left;
+        }
+
+        .board_nb_num {
+          width: 10%;
+        }
+
+        .board_nb_title {
+          width: 55%;
+        }
+
+        .board_nb_writer {
+          width: 10%;
+        }
+
+        .board_nb_write_date {
+          width: 15%;
+        }
+
+        .board_nb_view_count {
+          width: 10%;
+        }
+
+        .board_nb_notice {
+          border-bottom: 1px solid black;
+          overflow: hidden;
+          text-align: center;
+          background-color: lightgray;
+          height: 30px;
+          line-height: 30px;
+        }
+
+        .board_nb_notice>div {
+          float: left;
+        }
+
+        .board_nb_notice_num {
+          width: 10%;
+        }
+
+        .board_nb_notice_title {
+          width: 55%;
+        }
+
+        .board_nb_notice_title:hover {
+          cursor: pointer;
+        }
+
+        .board_nb_notice_writer {
+          width: 10%;
+        }
+
+        .board_nb_notice_write_date {
+          width: 15%;
+        }
+
+        .board_nb_notice_view_count {
+          width: 10%;
+        }
+
+        .board_nb_user_write {
+          border-bottom: 1px solid black;
+          overflow: hidden;
+          text-align: center;
+          height: 30px;
+          line-height: 30px;
+        }
+
+        .board_nb_user_write>div {
+          float: left;
+        }
+
+        .board_nb_user_num {
+          width: 10%;
+        }
+
+        .board_nb_user_title {
+          width: 55%;
+        }
+
+        .board_nb_user_title:hover {
+          cursor: pointer;
+        }
+
+        .board_nb_user_writer {
+          width: 10%;
+        }
+
+        .board_nb_user_write_date {
+          width: 15%;
+        }
+
+        .board_nb_user_view_count {
+          width: 10%;
+        }
+
+        .board_nb_search_area {
+          text-align: center;
+        }
+
+        .board_nb_search_area>select {
+          width: 10%;
+        }
+
+        .board_nb_search {
+          width: 40%;
+          height: 25px;
+        }
+
+        .board_nb_search_btn {
+          height: 25px;
+        }
+
+        .board_nb_pagination {
+          overflow: hidden;
+          text-align: center;
+        }
+
+        .board_nb_page {
+          text-align: text;
         }
 
         .footer {
@@ -449,7 +583,7 @@
             <h3 class="list_title">예매 내역</h3>
             <ul class="sidebar_item_list">
               <li class="sidebar_item"><a href="">예매내역 조회/취소</a></li>
-            </ul>          
+            </ul>
             <!-- 마이페이지 end -->
 
           </div>
@@ -458,60 +592,46 @@
               <div class="contents_title">
                 내가 쓴 글, 댓글 조회
               </div>
-              <div class="user_write">
-                <div class="user_title">
-                  <div class="wnum">글번호</div>
-                  <div class="wtitle">제목</div>
-                  <div class="wdate">작성날짜</div>
-                  <div class="wreadnum">조회수</div>
+              <div class="board_nb_head">
+                <div class="board_nb_num">글번호</div>
+                <div class="board_nb_title">제목</div>
+                <div class="board_nb_writer">아이디</div>
+                <div class="board_nb_write_date">작성일</div>
+                <div class="board_nb_view_count">조회수</div>
+              </div>
+              <div class="board_nb_notice">
+                <div class="board_nb_notice_num">-</div>
+                <div class="board_nb_notice_title">올린글</div>
+                <div class="board_nb_notice_writer">올린사람 id</div>
+                <div class="board_nb_notice_write_date">방금 전</div>
+                <div class="board_nb_notice_view_count">100</div>
+              </div>
+              <c:forEach var="noticeboard_dto" items="${nb_list}">
+                <div class="board_nb_user_write">
+                  <div class="board_nb_user_num">${noticeboard_dto.nb_seq }</div>
+                  <div class="board_nb_user_title"><a href="/nb_detail.board?nb_seq=${noticeboard_dto.nb_seq }"
+                      style="text-decoration:none; color:black;">${board_dto.nb_title }</a></div>
+                  <div class="board_nb_user_writer">${noticeboard_dto.nb_mem_id }</div>
+                  <div class="board_nb_user_write_date">${noticeboard_dto.detailDate }</div>
+                  <div class="board_nb_user_view_count">${noticeboard_dto.nb_view_count }</div>
                 </div>
-                <div class="rank_contents">
-                  <div class="wnum">1</div>
-                  <div class="wtitle">제목</div>
-                  <div class="wdate">작성날짜</div>
-                  <div class="wreadnum">11</div>
-                </div>
-                <div class="rank_contents">
-                  <div class="wnum">2</div>
-                  <div class="wtitle">제목</div>
-                  <div class="wdate">작성날짜</div>
-                  <div class="wreadnum">3</div>
-                </div>
-                <div class="rank_contents">
-                  <div class="wnum">3</div>
-                  <div class="wtitle">제목</div>
-                  <div class="wdate">작성날짜</div>
-                  <div class="wreadnum">24</div>
-                </div>
-                <div class="rank_contents">
-                  <div class="wnum">4</div>
-                  <div class="wtitle">제목</div>
-                  <div class="wdate">작성날짜</div>
-                  <div class="wreadnum">16</div>
-                </div>
-                <div class="rank_contents">
-                  <div class="wnum">5</div>
-                  <div class="wtitle">제목</div>
-                  <div class="wdate">작성날짜</div>
-                  <div class="wreadnum">18</div>
+              </c:forEach>
+              <br>
+              <div class="board_nb_user_writebtn" style="text-align: right;">
+                <a href="/nb_write.board"><button type=button>글쓰기</button></a>
+              </div>
+              <div class="board_nb_pagination">
+                <div class="board_nb_page">
+                  <div>${nb_navi }</div>
                 </div>
               </div>
-              <div class="page">
-                <input type="button" value="<">
-                <input type="button" value="1">
-                <input type="button" value="2">
-                <input type="button" value="3">
-                <input type="button" value="4">
-                <input type="button" value="5">
-                <input type="button" value=">">
-              </div>
-              <div class="search">
+              <div class="board_nb_search_area">
                 <select>
                   <option>제목</option>
-                </select>
-                <input type="text" placeholder="검색어를 입력하세요.">
-                <input type="button" value="검색">
+                </select> <input type=text placeholder="검색어를 입력하세요" class="board_nb_search">
+                <input type=button value="검색" class="board_nb_search_btn">
               </div>
+
             </div>
           </div>
 

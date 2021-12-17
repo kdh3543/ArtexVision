@@ -550,6 +550,11 @@
             phone1.focus();
             return false;
           }
+
+          if(addr2.val()==""){
+            alert("상세주소를 입력해주세요.");
+            return false;
+          }
         })
 
         document.getElementById("find_zipcode").onclick = function () {
@@ -557,7 +562,6 @@
             oncomplete: function (data) {
               document.getElementById("zipcode").value = data.zonecode;
               document.getElementById("addr1").value = data.roadAddress;
-              document.getElementById("addr2").value = data.jibunAddress;
             }
           }).open();
         }

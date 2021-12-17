@@ -60,7 +60,7 @@ public class MemberController extends HttpServlet {
 				if(result) { 
 					HttpSession session = request.getSession(); 
 					session.setAttribute("loginId", id);
-					request.getRequestDispatcher("mypage/modifyInfor.jsp").forward(request, response);
+					request.getRequestDispatcher("/artexMain/mainpage.jsp").forward(request, response);
 				}else {
 					response.sendRedirect("/loginFail.jsp");
 				}
