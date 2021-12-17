@@ -1,4 +1,3 @@
-<!-- 사이드바 잘보이게 하려고 500px 줬음 수정필요-->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>

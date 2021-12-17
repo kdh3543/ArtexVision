@@ -5,15 +5,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
-import java.sql.Timestamp;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-import kh.web.dto.BoardDTO;
-import kh.web.dto.MemberDTO;
-import kh.web.statics.Statics;
+import kh.web.dto.Nb_BoardDTO;
+import kh.web.statics.paging_Statics;
 
 public class Nb_BoardDAO {
 	private static Nb_BoardDAO instance = null;
@@ -51,12 +49,12 @@ public class Nb_BoardDAO {
 
 		// 총 몇개의 페이지가 만들어질까?
 		int pageTotalCount = 0;
-		if (recordTotalCount % Statics.RECORD_COUNT_PER_PAGE == 0) {
+		if (recordTotalCount % paging_Statics.RECORD_COUNT_PER_PAGE == 0) {
 			// 나눌 페이지 수가 총 페이지수랑 나눴을때 딱 나누어 떨어질때는 요기
-			pageTotalCount = recordTotalCount / Statics.RECORD_COUNT_PER_PAGE;
+			pageTotalCount = recordTotalCount / paging_Statics.RECORD_COUNT_PER_PAGE;
 		} else {
 			// 그 외에는 하나 더해줘야지!
-			pageTotalCount = recordTotalCount / Statics.RECORD_COUNT_PER_PAGE + 1;
+			pageTotalCount = recordTotalCount / paging_Statics.RECORD_COUNT_PER_PAGE + 1;
 		}
 		return pageTotalCount;
 	}
@@ -67,20 +65,20 @@ public class Nb_BoardDAO {
 
 		// 총 몇개의 페이지가 만들어질까?
 		int pageTotalCount = 0;
-		if (recordTotalCount % Statics.RECORD_COUNT_PER_PAGE == 0) {
+		if (recordTotalCount % paging_Statics.RECORD_COUNT_PER_PAGE == 0) {
 			// 나눌 페이지 수가 총 페이지수랑 나눴을때 딱 나누어 떨어질때는 요기
-			pageTotalCount = recordTotalCount / Statics.RECORD_COUNT_PER_PAGE;
+			pageTotalCount = recordTotalCount / paging_Statics.RECORD_COUNT_PER_PAGE;
 		} else {
 			// 그 외에는 하나 더해줘야지!
-			pageTotalCount = recordTotalCount / Statics.RECORD_COUNT_PER_PAGE + 1;
+			pageTotalCount = recordTotalCount / paging_Statics.RECORD_COUNT_PER_PAGE + 1;
 		}
 		
 		// 현재 클라이언트가 있는 페이지의 위치야
 		// int currentPage = 4;
 
 		// 현재 클라이언트가 있는 페이지를 기준으로 시작 번호와 끝 번호를 지정해주는 코드야
-		int startNavi = (currentPage - 1) / Statics.NAVI_COUNT_PER_PAGE * Statics.NAVI_COUNT_PER_PAGE + 1;
-		int endNavi = startNavi + Statics.NAVI_COUNT_PER_PAGE - 1;
+		int startNavi = (currentPage - 1) / paging_Statics.NAVI_COUNT_PER_PAGE * paging_Statics.NAVI_COUNT_PER_PAGE + 1;
+		int endNavi = startNavi + paging_Statics.NAVI_COUNT_PER_PAGE - 1;
 
 		// 유지보수
 		if (endNavi > pageTotalCount) {
@@ -145,12 +143,12 @@ public class Nb_BoardDAO {
 				List<Nb_BoardDTO> list = new ArrayList<>();
 				while (rs.next()) {
 					Nb_BoardDTO noticeboard_dto = new Nb_BoardDTO();
-					noticeboard_dto.setFb_seq(rs.getInt("nb_seq"));
-					noticeboard_dto.setFb_title(rs.getString("nb_title"));
-					noticeboard_dto.setFb_contents(rs.getString("nb_contents"));
-					noticeboard_dto.setFb_mem_id(rs.getString("nb_mem_id"));
-					noticeboard_dto.setFb_write_date(rs.getTimestamp("nb_write_date"));
-					noticeboard_dto.setFb_view_count(rs.getInt("nb_view_count"));
+					noticeboard_dto.setNb_seq(rs.getInt("nb_seq"));
+					noticeboard_dto.setNb_title(rs.getString("nb_title"));
+					noticeboard_dto.setNb_contents(rs.getString("nb_contents"));
+					noticeboard_dto.setNb_mem_id(rs.getString("nb_mem_id"));
+					noticeboard_dto.setNb_write_date(rs.getTimestamp("nb_write_date"));
+					noticeboard_dto.setNb_view_count(rs.getInt("nb_view_count"));
 					list.add(noticeboard_dto);
 				}
 				return list;

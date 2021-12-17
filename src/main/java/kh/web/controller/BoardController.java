@@ -9,16 +9,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import kh.web.dao.BoardDAO;
-import kh.web.dto.BoardDTO;
-import kh.web.statics.Statics;
+import kh.web.dao.Nb_BoardDAO;
+import kh.web.dto.Nb_BoardDTO;
+import kh.web.statics.paging_Statics;
 
 @WebServlet("*.board")
-public class fb_BoardController extends HttpServlet {
+public class BoardController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		request.setCharacterEncoding("utf8");
-		BoardDAO dao = BoardDAO.getInstance();
+		Nb_BoardDAO dao = Nb_BoardDAO.getInstance();
 		String uri = request.getRequestURI();
 		String ctxPath = request.getContextPath();
 		String cmd = uri.substring(ctxPath.length());
@@ -29,8 +29,8 @@ public class fb_BoardController extends HttpServlet {
 				if(currentPage < 1) {currentPage = 1;}
 				if(currentPage > pageTotalCount) {currentPage = pageTotalCount;}
 				
-				int start = currentPage * Statics.RECORD_COUNT_PER_PAGE - (Statics.RECORD_COUNT_PER_PAGE-1);
-				int end = currentPage * Statics.RECORD_COUNT_PER_PAGE;
+				int start = currentPage * paging_Statics.RECORD_COUNT_PER_PAGE - (paging_Statics.RECORD_COUNT_PER_PAGE-1);
+				int end = currentPage * paging_Statics.RECORD_COUNT_PER_PAGE;
 				
 				List<Nb_BoardDTO> list = dao.selectByBound(start, end);
 				String navi = dao.getPageNavi(currentPage);
