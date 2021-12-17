@@ -34,16 +34,16 @@ public class MemberDAO {
 		String sql = "insert into member values(?,?,?,?,?,?,?,?,?,sysdate,default,?)";
 		try(Connection con = this.getConnection();
 				PreparedStatement pstat = con.prepareStatement(sql);){
-			pstat.setString(1, dto.getId());
-			pstat.setString(2, dto.getPw());
-			pstat.setString(3, dto.getName());
-			pstat.setString(4, dto.getBirth());
-			pstat.setString(5, dto.getEmail());
-			pstat.setString(6, dto.getPhone());
-			pstat.setString(7, dto.getZipcode());
-			pstat.setString(8, dto.getAddr1());
-			pstat.setString(9, dto.getAddr2());
-			pstat.setString(10, dto.getAccount());
+			pstat.setString(1, dto.getMem_id());
+			pstat.setString(2, dto.getMem_pw());
+			pstat.setString(3, dto.getMem_name());
+			pstat.setString(4, dto.getMem_birth());
+			pstat.setString(5, dto.getMem_email());
+			pstat.setString(6, dto.getMem_phone());
+			pstat.setString(7, dto.getMem_zipcode());
+			pstat.setString(8, dto.getMem_addr1());
+			pstat.setString(9, dto.getMem_addr2());
+			pstat.setString(10, dto.getMem_account());
 			
 			int result = pstat.executeUpdate();
 			

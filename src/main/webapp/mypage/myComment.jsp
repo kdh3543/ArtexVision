@@ -406,7 +406,7 @@
       <div class="container">
         <div class="header">
           <ul class="header_list">
-            <li class="user_detail"><span id="user_grade"><i class="fas fa-crown"></i> ${dto.grade}</li></span>
+            <li class="user_detail"><span id="user_grade"><i class="fas fa-crown"></i> ${dto.mem_grade}</li></span>
             <li> ${loginId } 님 환영합니다.</li>
             <li><a href="/modifyForm.mem">마이페이지</a></li>
             <li><a href="#">장바구니</a></li>
