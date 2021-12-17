@@ -420,7 +420,7 @@
     <div class="container">
 
         <!-- 헤더 -->
-        <div class="header">
+        <div class="header"  id="topTarget" >
             <ul class="header_list">
                 <li  class="user_detail"><span id="user_grade" style="display:none;"><i class="fas fa-crown"></i> ${dto.mem_grade}</li></span>
                 <li style="display:none;" id="welcome"> ${loginId } 님 환영합니다.</li>
@@ -439,14 +439,14 @@
         <!-- 네비바 -->
         <div class="nav">
             <div class="nav_logo">
-                <a href="mainpage.jsp" id="topTarget" ><i class="fab fa-artstation"> Artex Vision</i></a>
+                <a href="mainpage.jsp"><i class="fab fa-artstation"> Artex Vision</i></a>
             </div>
             <div class="nav_side">
                 <div class="nav_menu">
                     <ul class="nav_menu_list">
                         <li><a href="#">NOTICE</a></li>
                         <li><a href="../artexDesc/artex_desc.jsp">Artex Vision</a></li>
-                        <li><a href="#">전시</a></li>
+                        <li><a href="../exhibition/main_ex/now_main_ex.jsp">전시</a></li>
                         <li><a href="#">이벤트</a></li>
                     </ul>
                 </div>
@@ -500,7 +500,7 @@
                             <div><a href="../exhibition/now_ex/ex1_desc.jsp"><img src="img/main_hashtag.png" width="90%" height="100%"></a></div>
                         </div>
                     </div>
-                    <a href=""><div class="more">더 보기 <span style="color:gray"><i class="fas fa-angle-double-right"></i></span></div></a>
+                    <a href="../exhibition/main_ex/now_main_ex.jsp"><div class="more">더 보기 <span style="color:gray"><i class="fas fa-angle-double-right"></i></span></div></a>
                 </div>
 
 

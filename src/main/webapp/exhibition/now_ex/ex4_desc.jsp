@@ -208,7 +208,7 @@
     }
 
     .sidebar_item:hover {
-      background-color: var(--color5);
+      background-color: var(--color11);
     }
 
     .sidebar_item a {
@@ -402,7 +402,7 @@
           <ul class="nav_menu_list">
             <li><a href="#">NOTICE</a></li>
             <li><a href="../../artexDesc/artex_desc.jsp">Artex Vision</a></li>
-            <li><a href="#">전시</a></li>
+            <li><a href="../main_ex/now_main_ex.jsp">전시</a></li>
             <li><a href="#">이벤트</a></li>
             <li><a href="#">커뮤니티</a></li>
           </ul>
@@ -411,16 +411,16 @@
     </div>
     <div class="carousel_timeline">
       <div class="carousel">
-        <img src="img/sample_carousel.png" class="carousel_img">
+        <img src="../img/artex_main_img.png" class="carousel_img">
       </div>
     </div>
     <div class="main">
       <div class="sidebar">
         <h2 class="list_title">전시</h2>
         <ul class="sidebar_item_list">
-          <li class="sidebar_item"><a href="">현재 전시</a></li>
-          <li class="sidebar_item"><a href="">예정된 전시</a></li>
-          <li class="sidebar_item"><a href="">마감된 전시</a></li>
+          <li class="sidebar_item"><a href="../main_ex/now_main_ex.jsp">현재 전시</a></li>
+          <li class="sidebar_item"><a href="../main_ex/future_main_ex.jsp">예정된 전시</a></li>
+          <li class="sidebar_item"><a href="../main_ex/end_main_ex.jsp">마감된 전시</a></li>
         </ul>
       </div>
 

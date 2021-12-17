@@ -380,10 +380,12 @@
         <div class="nav_title">DASHBOARD</div>
       </div>
       </a>
+      <a href="/member_list.admin">
       <div class="nav_items">
         <div class="nav_icon"><i class="fas fa-address-card"></i></div>
         <div class="nav_title">MEMBERS</div>
       </div>
+      </a>
       <div class="nav_items">
         <div class="nav_icon"><i class="far fa-clipboard"></i></div>
         <div class="nav_title">BOARD</div>
