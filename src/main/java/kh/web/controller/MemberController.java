@@ -60,7 +60,7 @@ public class MemberController extends HttpServlet {
 				if(result) { 
 					HttpSession session = request.getSession(); 
 					session.setAttribute("loginId", id);
-					request.getRequestDispatcher("mypage/modifyInfor.jsp").forward(request, response);
+					request.getRequestDispatcher("/artexMain/mainpage.jsp").forward(request, response);
 				}else {
 					response.sendRedirect("/loginFail.jsp");
 				}
@@ -121,22 +121,22 @@ public class MemberController extends HttpServlet {
 				
 				MemberDTO dto = dao.selectById(id);
 				if(pw.equals("")) {
-					pw = dto.getPw();
+					pw = dto.getMem_pw();
 				}
 				if(email.equals("")) {
-					email = dto.getEmail();
+					email = dto.getMem_email();
 				}
 				if(request.getParameter("phone1").equals("")||request.getParameter("phone2").equals("")) {
-					phone = dto.getPhone();
+					phone = dto.getMem_phone();
 				}
 				if(zipcode.equals("")) {
-					zipcode = dto.getZipcode();
+					zipcode = dto.getMem_zipcode();
 				}
 				if(addr1.equals("")) {
-					addr1 = dto.getAddr1();
+					addr1 = dto.getMem_addr1();
 				}
 				if(addr2.equals("")) {
-					addr2 = dto.getAddr2();
+					addr2 = dto.getMem_addr2();
 				}
 				
 				dao.updateInfor(id,pw,email,phone,zipcode,addr1,addr2);

@@ -6,6 +6,7 @@
     <head>
       <meta charset="UTF-8">
       <title>Insert title here</title>
+     
       <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
       <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
@@ -324,14 +325,14 @@
           font-weight: bold;
         }
 
-        .reservation {
+        .booking {
           margin-top: 50px;
           width: 100%;
           background-color: var(--color3);
           color: var(--color2);
         }
 
-        .reserve_title {
+        .book_title {
           margin-top: 10px;
           width: 100%;
           height: 60px;
@@ -341,14 +342,20 @@
           border-top: 1px solid white;
         }
 
-        .reserve_title>div {
+        .book_title>div {
           text-align: center;
           height: 100%;
           width: 25%;
           float: left;
         }
 
-        .reserve_contents {
+        .book_table{
+          width: 100%; 
+          table-layout:fixed;
+          border-collapse: collapse;
+        }
+        
+        .book_contents {
           height: 20%;
           width: 100%;
           height: 100px;
@@ -356,7 +363,7 @@
           text-align: center;
         }
 
-        .reserve_contents>div {
+        .book_contents>div {
           text-align: center;
           float: left;
           width: 25%;
@@ -378,7 +385,7 @@
           width: 100%;
           height: 100%;
         }
-        
+
         input[type="button"],
         input[type="submit"],
         input[type="reset"] {
@@ -390,7 +397,7 @@
           cursor: pointer;
         }
 
-        input[type="checkbox"]{
+        input[type="checkbox"] {
           width: 15px;
           height: 15px;
           cursor: pointer;
@@ -402,7 +409,7 @@
       <div class="container">
         <div class="header">
           <ul class="header_list">
-            <li class="user_detail"><span id="user_grade"><i class="fas fa-crown"></i> ${dto.grade}</li></span>
+            <li class="user_detail"><span id="user_grade"><i class="fas fa-crown"></i> ${dto.mem_grade}</li></span>
             <li> ${loginId } 님 환영합니다.</li>
             <li><a href="/modifyForm.mem">마이페이지</a></li>
             <li><a href="#">장바구니</a></li>
@@ -445,7 +452,7 @@
             <h3 class="list_title">예매 내역</h3>
             <ul class="sidebar_item_list">
               <li class="sidebar_item"><a href="">예매내역 조회/취소</a></li>
-            </ul>          
+            </ul>
             <!-- 마이페이지 end -->
 
           </div>
@@ -454,38 +461,46 @@
               <div class="contents_title">
                 예매내역 취소/환불
               </div>
-              <div class="reservation">
+              <div class="booking">
                 <select>
                   <option>검색</option>
                   <option>단체예약 확인</option>
                   <option>전시회 예약 확인</option>
                   <option>신청일 기준 확인</option>
                 </select>
-                <div class="reserve_title">
+                <div class="book_title">
                   <div>예매 내역</div>
                   <div>예매 번호</div>
-                  <div>예매 날짜</div>
+                  <div>전시회 날짜</div>
                   <div>선택</div>
                 </div>
-                <table class="reserve_table" style="width: 100%; table-layout:fixed;">
-                  <tr class="reserve_contents" data-tr_value="1">
+                <table class="book_table" >
+                  <c:forEach var="book_dto" items="${list}">
+                    <tr class="book_contents">
+                      <td>${book_dto.bk_id}</td>
+                      <td>${book_dto.bk_ex_id}</td>
+                      <td>${book_dto.bk_ex_start_date} ~ ${book_dto.bk_ex_end_date}</td>
+                      <td><input type="checkbox" name="check" id="check"></td>
+                    </tr>
+                  </c:forEach>
+                  <!-- <tr class="book_contents">
                     <td>예매 내역</td>
                     <td>예매 번호1</td>
                     <td>예매 날짜</td>
-                    <td><input type="checkbox" name="check" value="1"></td>
+                    <td><input type="checkbox" name="check" id="check"></td>
                   </tr>
-                  <tr class="reserve_contents" data-tr_value="2">
+                  <tr class="book_contents">
                     <td>예매 내역</td>
                     <td>예매 번호2</td>
                     <td>예매 날짜</td>
-                    <td><input type="checkbox" name="check" value="1"></td>
+                    <td><input type="checkbox" name="check" id="check"></td>
                   </tr>
-                  <tr class="reserve_contents" data-tr_value="3">
+                  <tr class="book_contents">
                     <td>예매 내역</td>
                     <td>예매 번호3</td>
                     <td>예매 날짜</td>
-                    <td><input type="checkbox" name="check" value="1"></td>
-                  </tr>
+                    <td><input type="checkbox" name="check" id="check"></td>
+                  </tr> -->
                 </table>
               </div>
               <div class="cancel_btn">
@@ -499,17 +514,18 @@
         </div>
       </div>
       <script>
-        $('#cancel').click(function(){
-        if(confirm("예매를 취소하시겠습니까?")){
-          $("input[name=check]:checked").each(function(){
-                let tr_value =$(this).val();
-                let tr=$("tr[data-tr_value='"+tr_value+"']");
-                tr.remove();
-            });
-        }else{
-            return false;
-        }
-    });
+        let cancel = $("#cancel");
+        let check = $("input[type='checkbox']");
+        cancel.on("click", function(){
+          let trs=$("tr");
+          
+          for(let i =0;i<trs.length;i++){
+            if(check.eq(i).is(":checked")){
+            	confirm("정말 취소하시겠습니까?");
+              $(trs[i]).remove();
+            }
+          }
+        })
       </script>
     </body>
 

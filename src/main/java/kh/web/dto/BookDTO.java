@@ -1,9 +1,11 @@
 package kh.web.dto;
 
+import java.sql.Date;
+
 public class BookDTO {
 	private String bk_id;
 	private int bk_person;
-	private int generation;
+	private int bk_generation;
 	private boolean bk_cancel;
 	private String bk_ex_id;
 	private String bk_ex_title;
@@ -18,16 +20,19 @@ public class BookDTO {
 	private String bk_mem_addr2;
 	private String bk_mem_grade;
 	private String bk_mem_account;
+	private Date bk_ex_start_date;
+	private Date bk_ex_end_date;
 	
 	public BookDTO() {}
 
-	public BookDTO(String bk_id, int bk_person, int generation, boolean bk_cancel, String bk_ex_id, String bk_ex_title,
-			int bk_ex_price, String bk_mem_id, String bk_mem_name, String bk_mem_email, String bk_mem_birth,
-			String bk_mem_phone, String bk_mem_zipcode, String bk_mem_addr1, String bk_mem_addr2, String bk_mem_grade,
-			String bk_mem_account) {
+	public BookDTO(String bk_id, int bk_person, int bk_generation, boolean bk_cancel, String bk_ex_id,
+			String bk_ex_title, int bk_ex_price, String bk_mem_id, String bk_mem_name, String bk_mem_email,
+			String bk_mem_birth, String bk_mem_phone, String bk_mem_zipcode, String bk_mem_addr1, String bk_mem_addr2,
+			String bk_mem_grade, String bk_mem_account, Date bk_ex_start_date, Date bk_ex_end_date) {
+		super();
 		this.bk_id = bk_id;
 		this.bk_person = bk_person;
-		this.generation = generation;
+		this.bk_generation = bk_generation;
 		this.bk_cancel = bk_cancel;
 		this.bk_ex_id = bk_ex_id;
 		this.bk_ex_title = bk_ex_title;
@@ -42,6 +47,8 @@ public class BookDTO {
 		this.bk_mem_addr2 = bk_mem_addr2;
 		this.bk_mem_grade = bk_mem_grade;
 		this.bk_mem_account = bk_mem_account;
+		this.bk_ex_start_date = bk_ex_start_date;
+		this.bk_ex_end_date = bk_ex_end_date;
 	}
 
 	public String getBk_id() {
@@ -60,12 +67,12 @@ public class BookDTO {
 		this.bk_person = bk_person;
 	}
 
-	public int getGeneration() {
-		return generation;
+	public int getBk_generation() {
+		return bk_generation;
 	}
 
-	public void setGeneration(int generation) {
-		this.generation = generation;
+	public void setBk_generation(int bk_generation) {
+		this.bk_generation = bk_generation;
 	}
 
 	public boolean isBk_cancel() {
@@ -179,4 +186,22 @@ public class BookDTO {
 	public void setBk_mem_account(String bk_mem_account) {
 		this.bk_mem_account = bk_mem_account;
 	}
+
+	public Date getBk_ex_start_date() {
+		return bk_ex_start_date;
+	}
+
+	public void setBk_ex_start_date(Date bk_ex_start_date) {
+		this.bk_ex_start_date = bk_ex_start_date;
+	}
+
+	public Date getBk_ex_end_date() {
+		return bk_ex_end_date;
+	}
+
+	public void setBk_ex_end_date(Date bk_ex_end_date) {
+		this.bk_ex_end_date = bk_ex_end_date;
+	}
+
+	
 }

@@ -179,7 +179,7 @@
     </body>
 	<script>
 		$("#backLogin").on("click",function(){
-      location.href="/index.jsp";
+      location.href="/login.jsp";
     })
 	</script>
     </html>
