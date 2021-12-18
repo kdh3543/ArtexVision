@@ -11,10 +11,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import kh.web.dao.AdminDAO;
+import kh.web.dto.DashboardDTO;
 import kh.web.dto.ExhibitionDTO;
 import kh.web.dto.MemberDTO;
 import kh.web.utils.EncryptionUtils;
@@ -29,6 +31,8 @@ public class AdminController extends HttpServlet {
 		String cmd = uri.substring(ctxPath.length());
 		AdminDAO dao = AdminDAO.getInstance();
 		System.out.println(cmd);
+		
+		Gson g = new Gson();
 
 		try {
 			if(cmd.equals("/admin_login.admin")) {
@@ -84,6 +88,11 @@ public class AdminController extends HttpServlet {
 				List<MemberDTO> list = dao.selectAllMember();
 				request.setAttribute("list", list);
 				request.getRequestDispatcher("/admin/admin_member_list.jsp").forward(request, response);
+			} else if(cmd.equals("/weeklyData.admin")) {
+				List<DashboardDTO> list = dao.selectMonthlyData();
+				String result = g.toJson(list);
+				System.out.println(result);
+				response.getWriter().append(result);
 			}
 		} catch(Exception e) {
 			e.printStackTrace();
