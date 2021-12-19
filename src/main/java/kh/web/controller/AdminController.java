@@ -88,10 +88,13 @@ public class AdminController extends HttpServlet {
 				List<MemberDTO> list = dao.selectAllMember();
 				request.setAttribute("list", list);
 				request.getRequestDispatcher("/admin/admin_member_list.jsp").forward(request, response);
-			} else if(cmd.equals("/weeklyData.admin")) {
+			} else if(cmd.equals("/monthlyData.admin")) {
 				List<DashboardDTO> list = dao.selectMonthlyData();
 				String result = g.toJson(list);
-				System.out.println(result);
+				response.getWriter().append(result);
+			} else if(cmd.equals("/dailyData.admin")) {
+				List<DashboardDTO> list = dao.selectDailyData();
+				String result = g.toJson(list);
 				response.getWriter().append(result);
 			}
 		} catch(Exception e) {

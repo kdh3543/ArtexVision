@@ -170,6 +170,8 @@
 
     .dashboard_contents {
       width: 30%;
+      overflow-y:auto; 
+      overflow-x:hidden;
     }
 
     .dashboard_contents_item {
@@ -180,6 +182,7 @@
       margin: 5px;
       align-items: center;
       text-align: center;
+
       /* border: 1px solid black; */
     }
 
@@ -341,65 +344,21 @@
 				</div>
 			</div> -->
 			<div class="select_btn_form">
-				<button type="button" class="select_btn" id="select_btn">월별 가입자 통계 보기</button>
-				<button type="button" class="select_btn" >xx별 가입자 통계 보기</button>
+				<button type="button" class="select_btn" id="daily_btn">일간 가입자 통계 보기</button>
+				<button type="button" class="select_btn" id="monthly_btn">월간 가입자 통계 보기</button>
 			</div>
 		</div>
 
 		<div class="contents">
 			<div class="dashboard_wrap">
 				<div class="dashboard_contents">
-					<div class="dashboard_contents_item">
+					<!-- <div class="dashboard_contents_item">
 						<div class="dashboard_contents_item_title"></div>
 						<div class="dashboard_contents_item_data"></div>
-					</div>
-					<div class="dashboard_contents_item">
-						<div class="dashboard_contents_item_title"></div>
-						<div class="dashboard_contents_item_data"></div>
-					</div>
-					<div class="dashboard_contents_item">
-						<div class="dashboard_contents_item_title"></div>
-						<div class="dashboard_contents_item_data"></div>
-					</div>
-					<div class="dashboard_contents_item">
-						<div class="dashboard_contents_item_title"></div>
-						<div class="dashboard_contents_item_data"></div>
-					</div>
-					<div class="dashboard_contents_item">
-						<div class="dashboard_contents_item_title"></div>
-						<div class="dashboard_contents_item_data"></div>
-					</div>
-					<div class="dashboard_contents_item">
-						<div class="dashboard_contents_item_title"></div>
-						<div class="dashboard_contents_item_data"></div>
-					</div>
-					<div class="dashboard_contents_item">
-						<div class="dashboard_contents_item_title"></div>
-						<div class="dashboard_contents_item_data"></div>
-					</div>
-					<div class="dashboard_contents_item">
-						<div class="dashboard_contents_item_title"></div>
-						<div class="dashboard_contents_item_data"></div>
-					</div>
-					<div class="dashboard_contents_item">
-						<div class="dashboard_contents_item_title"></div>
-						<div class="dashboard_contents_item_data"></div>
-					</div>
-					<div class="dashboard_contents_item">
-						<div class="dashboard_contents_item_title"></div>
-						<div class="dashboard_contents_item_data"></div>
-					</div>
-					<div class="dashboard_contents_item">
-						<div class="dashboard_contents_item_title"></div>
-						<div class="dashboard_contents_item_data"></div>
-					</div>
-					<div class="dashboard_contents_item">
-						<div class="dashboard_contents_item_title"></div>
-						<div class="dashboard_contents_item_data"></div>
-					</div>
+					</div> -->
 				</div>
 				<div class="dashboard_graph">
-					<canvas id="myChart"></canvas>
+					<%-- <canvas id="myChart"></canvas> --%>
 				</div>
 			</div>
 		</div>
@@ -450,29 +409,96 @@
 	</div>
 </body>
 <script>
-	
-	const dateArr = [];
-	const cntArr = [];
-	$("#select_btn").on("click", function(){
+	let weekly_btn = document.getElementById("weekly_btn");
+	let daily_btn = document.getElementById("daily_btn");
+	const dashboard_contents = document.querySelector(".dashboard_contents");
+	const dashboard_graph = document.querySelector(".dashboard_graph");
+	daily_btn.onclick = function(){
+		$(".dashboard_contents").empty();
+		$(".dashboard_graph").empty();
 		$.ajax({
-			url: "/weeklyData.admin"
+			url: "/dailyData.admin"
 		}).done(function(resp){
 			let result = JSON.parse(resp);
+			let dateArr = [];
+			let cntArr = [];
 			for(let i = 0; i < result.length; i++) {
 				dateArr.push(result[i].mem_signup_date);
 				cntArr.push(parseInt(result[i].cnt));
-				document.querySelectorAll(".dashboard_contents_item_data")[i].innerHTML = result[i].cnt; 
-				document.querySelectorAll(".dashboard_contents_item_title")[i].innerHTML = result[i].mem_signup_date;
+				
+				let div1 = document.createElement("div");
+				div1.classList.add("dashboard_contents_item");
+				
+				let div2 = document.createElement("div");
+				div2.classList.add("dashboard_contents_item_title");
+				div2.innerText = result[i].mem_signup_date;
+				
+				let div3 = document.createElement("div");
+				div3.classList.add("dashboard_contents_item_data");
+				div3.innerText = result[i].cnt;
+				
+				div1.appendChild(div2);
+				div1.appendChild(div3);
+				dashboard_contents.append(div1);
 			}
-
+			
+			let canvas = document.createElement("canvas");
+			canvas.id = "myChart";
+			dashboard_graph.appendChild(canvas);
+			
+			drawChart(dateArr, cntArr);
+	  });
+	}
+	
+	monthly_btn.onclick = function(){
+		$(".dashboard_contents").empty();
+		$(".dashboard_graph").empty();
+		$.ajax({
+			url: "/monthlyData.admin"
+		}).done(function(resp){
+			let result = JSON.parse(resp);
+			let dateArr = [];
+			let cntArr = [];
+			for(let i = 0; i < result.length; i++) {
+				dateArr.push(result[i].mem_signup_date);
+				cntArr.push(parseInt(result[i].cnt));
+				
+				let div1 = document.createElement("div");
+				div1.classList.add("dashboard_contents_item");
+				
+				let div2 = document.createElement("div");
+				div2.classList.add("dashboard_contents_item_title");
+				div2.innerText = result[i].mem_signup_date;
+				
+				let div3 = document.createElement("div");
+				div3.classList.add("dashboard_contents_item_data");
+				div3.innerText = result[i].cnt;
+				
+				div1.appendChild(div2);
+				div1.appendChild(div3);
+				dashboard_contents.append(div1);
+			}
+			
+			let canvas = document.createElement("canvas");
+			canvas.id = "myChart";
+			dashboard_graph.appendChild(canvas);
+			
+			drawChart(dateArr, cntArr);
+	  });
+	}
+	
+	function drawChart(dateArr, cntArr){
 		let ctx = document.getElementById('myChart');
+		let title_arr = dateArr;
+		let contents_arr = cntArr;
+		
 		let myChart = new Chart(ctx, {
 			type: 'bar',
 			data: {
-				labels: [dateArr[0], dateArr[1], dateArr[2], dateArr[3], dateArr[4], dateArr[5], dateArr[6], dateArr[7], dateArr[8], dateArr[9], dateArr[10], dateArr[11]],
+				labels: title_arr,
 				datasets: [{
 					label: '2021년',
-					data: [cntArr[0], cntArr[1], cntArr[2], cntArr[3], cntArr[4], cntArr[5], cntArr[6], cntArr[7], cntArr[8], cntArr[9], cntArr[10], cntArr[11]],
+					data: contents_arr,
 					backgroundColor: [
 						'rgba(255, 99, 132, 0.2)',
 						'rgba(255, 159, 64, 0.2)',
@@ -489,10 +515,7 @@
 				}]
 			}
 		});
-		});
-	});	
-	
-	
+	}
 	
 	
 </script>
