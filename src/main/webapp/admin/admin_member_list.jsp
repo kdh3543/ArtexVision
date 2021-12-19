@@ -341,14 +341,14 @@
           <c:forEach items="${list }" var="list" varStatus="s">
           	<tr>
           		<td>${s.count }</td>
-          		<td>${list.id }</td>
-          		<td>${list.name }</td>
-          		<td>${list.birth }</td>
-          		<td>${list.email }</td>
-          		<td>${list.phone }</td>
-          		<td>${list.addr1 } ${list.addr2 }</td>
-          		<td>${list.grade }</td>
-          		<td>${list.signup_date }</td>
+          		<td>${list.mem_id }</td>
+          		<td>${list.mem_name }</td>
+          		<td>${list.mem_birth }</td>
+          		<td>${list.mem_email }</td>
+          		<td>${list.mem_phone }</td>
+          		<td>${list.mem_addr1 } ${mem_list.addr2 }</td>
+          		<td>${list.mem_grade }</td>
+          		<td>${list.mem_signup_date }</td>
           	</tr>
           </c:forEach>
         </table>
