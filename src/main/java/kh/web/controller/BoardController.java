@@ -67,7 +67,7 @@ public class BoardController extends HttpServlet {
 				int result = dao.delete(nb_seq);
 				response.sendRedirect("/nb_list.board?cpage=1");
 			
-			}		
+			}
 		}catch(Exception e) {
 			e.printStackTrace();
 			response.sendRedirect("/error.jsp");

@@ -6,7 +6,7 @@
     <head>
       <meta charset="UTF-8">
       <title>마이페이지</title>
-     
+
       <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
       <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
@@ -350,12 +350,12 @@
           float: left;
         }
 
-        .book_table{
-          width: 100%; 
-          table-layout:fixed;
+        .book_table {
+          width: 100%;
+          table-layout: fixed;
           border-collapse: collapse;
         }
-        
+
         .book_contents {
           height: 20%;
           width: 100%;
@@ -403,7 +403,7 @@
           height: 15px;
           cursor: pointer;
         }
-        
+
         a {
           text-align: center;
           text-decoration: none;
@@ -429,7 +429,7 @@
                 <li id="welcome"> ${loginId } 님 환영합니다.</li>
                 <li id="mypage"><a href="/modifyForm.mem">마이페이지</a></li>
                 <li id="basket"><a href="/basket/basket.jsp" id="basket">장바구니</a></li>
-                <li id=logout><a href="/logout.mem"  id="logout">로그아웃</a></li>
+                <li id=logout><a href="/logout.mem" id="logout">로그아웃</a></li>
               </ul>
             </div>
           </c:when>
@@ -459,8 +459,8 @@
         </div>
         <div class="carousel_timeline">
           <div class="carousel">
-        		<img src="/exhibition/img/artex_main_img.png" class="carousel_img">
-      		</div>
+            <img src="/exhibition/img/artex_main_img.png" class="carousel_img">
+          </div>
         </div>
         <div class="main">
           <div class="sidebar">
@@ -492,12 +492,12 @@
                   <div>전시회 날짜</div>
                   <div>선택</div>
                 </div>
-                <table class="book_table" >
+                <table class="book_table">
                   <c:forEach var="book_dto" items="${list}">
                     <tr class="book_contents">
-                      <td>${book_dto.bk_id}</td>
-                      <td>${book_dto.bk_ex_id}</td>
-                      <td>${book_dto.bk_ex_start_date} ~ ${book_dto.bk_ex_end_date}</td>
+                      <td id="bookName">${book_dto.bk_id}<input type="hidden" name=""></td>
+                      <td id="exLocation">${book_dto.bk_ex_id}</td>
+                      <td id="exDate">${book_dto.bk_ex_start_date} ~ ${book_dto.bk_ex_end_date}</td>
                       <td><input type="checkbox" name="check" id="check"></td>
                     </tr>
                   </c:forEach>
@@ -516,36 +516,42 @@
       <script>
         let cancel = $("#cancel");
         let check = $("input[type='checkbox']");
-        cancel.on("click", function(){
-          let trs=$("tr");
+        let bookName = $("#bookName");
+        let exLocation = $("#exLocation");
+        let exDate = $("#exDate");
+        cancel.on("click", function () {
+          let trs = $("tr");
           alert("현재 기능은 구현중에 있습니다.");
-          for(let i =0;i<trs.length;i++){
-        	  
-            /* if(check.eq(i).is(":checked")){
-            	confirm("정말 취소하시겠습니까?");
+          for (let i = 0; i < trs.length; i++) {
+
+            if(check.eq(i).is(":checked")){
+              confirm("정말 취소하시겠습니까?");
+              
+              
               $(trs[i]).remove();
-            } */
+
+            }
           }
         })
-        
-        $("#logout").on("click",function(){
-			if(!confirm("로그아웃 하시겠습니까?")){
-				return false;
-			}
-		})
-		
-		$("#basket").on("click",function(){
-			alert("현재 기능은 구현중에 있습니다.");
-			return false;
-		})
-		$("#notice").on("click",function(){
-			alert("현재 기능은 구현중에 있습니다.");
-			return false;
-		})
-		$("#event").on("click",function(){
-			alert("현재 기능은 구현중에 있습니다.");
-			return false;
-		})
+
+        $("#logout").on("click", function () {
+          if (!confirm("로그아웃 하시겠습니까?")) {
+            return false;
+          }
+        })
+
+        $("#basket").on("click", function () {
+          alert("현재 기능은 구현중에 있습니다.");
+          return false;
+        })
+        $("#notice").on("click", function () {
+          alert("현재 기능은 구현중에 있습니다.");
+          return false;
+        })
+        $("#event").on("click", function () {
+          alert("현재 기능은 구현중에 있습니다.");
+          return false;
+        })
       </script>
     </body>
 
