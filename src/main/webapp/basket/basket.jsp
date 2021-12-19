@@ -345,7 +345,7 @@
         .book_title>div {
           text-align: center;
           height: 100%;
-          width: 25%;
+          width: 20%;
           float: left;
         }
 
@@ -444,7 +444,7 @@
       <div class="nav_side">
         <div class="nav_menu">
           <ul class="nav_menu_list">
-            <li><a href="#" id="notice">NOTICE</a></li>
+            <li><a href="/nb_list.board?cpage=1" id="notice">NOTICE</a></li>
             <li><a href="/artexDesc/artex_desc.jsp">Artex Vision</a></li>
             <li><a href="/exhibition/main_ex/now_main_ex.jsp">전시</a></li>
             <li><a href="#" id="event">이벤트</a></li>
@@ -478,29 +478,28 @@
           <div class="contents">
             <div class="contents_wrap">
               <div class="contents_title">
-                예매내역 취소/환불
+                장바구니
               </div>
               <div class="booking">
                 <div class="book_title">
                 	<div>선택</div>
-	                <div>예매 내역</div>
-	                <div>예매 번호</div>
+	                <div>전시회명</div>
+	                <div>전시회 지역</div>
 	                <div>전시회 날짜</div>
-	                <div>선택</div>
+	                <div>판매가</div>
                 </div>
                 <table class="book_table" >
-                  <c:forEach var="book_dto" items="${list}">
-                    <tr class="book_contents">
-                      <td>${book_dto.bk_id}</td>
-                      <td>${book_dto.bk_ex_id}</td>
-                      <td>${book_dto.bk_ex_start_date} ~ ${book_dto.bk_ex_end_date}</td>
-                      <td><input type="checkbox" name="check" id="check"></td>
-                    </tr>
-                  </c:forEach>
+                   <tr class="book_contents">
+                     <td><input type="checkbox" name="check" id="check"></td>
+                     <td>들어갈 전시회이름</td>
+                     <td>지역 이름</td>
+                     <td>날짜</td>
+                     <td>100만원</td>
+                   </tr>
                 </table>
               </div>
               <div class="cancel_btn">
-                <input type="button" value="예매취소" id="cancel">
+                <input type="button" value="예매하기" id="book">
               </div>
             </div>
           </div>
@@ -510,7 +509,7 @@
         </div>
       </div>
       <script>
-        let cancel = $("#cancel");
+        let book = $("#book");
         let check = $("input[type='checkbox']");
         cancel.on("click", function(){
           let trs=$("tr");
@@ -533,10 +532,7 @@
 			alert("현재 기능은 구현중에 있습니다.");
 			return false;
 		})
-		$("#notice").on("click",function(){
-			alert("현재 기능은 구현중에 있습니다.");
-			return false;
-		})
+		
 		$("#event").on("click",function(){
 			alert("현재 기능은 구현중에 있습니다.");
 			return false;

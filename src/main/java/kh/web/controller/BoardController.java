@@ -66,10 +66,7 @@ public class BoardController extends HttpServlet {
 				int nb_seq = Integer.parseInt(request.getParameter("nb_seq"));
 				int result = dao.delete(nb_seq);
 				response.sendRedirect("/nb_list.board?cpage=1");
-			
-<<<<<<< HEAD
-			}
-=======
+
 			}else if(cmd.equals("/nb_search.board")) {
 				String searchMethod = request.getParameter("searchOption");
 
@@ -80,7 +77,6 @@ public class BoardController extends HttpServlet {
 				}
 			}
 			
->>>>>>> ca1c9a6688a9890359c54f49161873619db04be3
 		}catch(Exception e) {
 			e.printStackTrace();
 			response.sendRedirect("/error.jsp");

@@ -68,4 +68,14 @@ public class BookDAO {
 			return list;
 		}
 	}
+	
+	public int deleteById(String bk_Id) throws Exception{
+		String sql = "delete * from book where bk_id=?";
+		try(Connection con = this.getConnection();
+				PreparedStatement pstat = con.prepareStatement(sql);){
+			pstat.setString(1, bk_Id);
+			int result = pstat.executeUpdate();
+			return result;
+		}
+	}
 }

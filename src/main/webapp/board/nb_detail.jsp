@@ -132,6 +132,10 @@
             width: 1200px;
             margin: auto;
         }
+        
+        .container>div{
+        	width: 1200px;
+        }
 
         /* container end */
 
@@ -251,7 +255,7 @@
             display: flex;
         }
 
-        .main {
+        .container2 {
             height: 800px;
         }
 
@@ -259,7 +263,7 @@
             width: 15%;
             height: 100%;
             background-color: var(--color3);
-            margin-top: 15px;
+            
         }
 
         .list_title {
@@ -309,7 +313,7 @@
         .sidebar {
             float: left;
             width: 15%;
-            height: 500px;
+            height: 100%;
         }
 
         .board_nb_content {
@@ -469,46 +473,64 @@
         .board_nb_page {
             text-align: text;
         }
+        a {
+          text-align: center;
+          text-decoration: none;
+          /* 링크의 밑줄 제거 */
+          color: inherit;
+          /* 링크의 색상 제거 */
+        }
+
+        a:hover {
+          color: black;
+          /* 링크의 색상 제거 */
+        }
     </style>
 </head>
 
 <body>
     <div class="container">
-        <div class="header">
-            <ul class="header_list">
-                <li class="user_detail"><span id="user_grade"><i class="fas fa-crown"></i> SILVER</li></span>
-                <li> USER001 님 환영합니다.</li>
-                <li><a href="#">마이페이지</a></li>
-                <li><a href="#">장바구니</a></li>
-                <!-- <li><a href="#">로그인</a></li> -->
-                <li><a href="#">로그아웃</a></li>
-                <!-- <li><a href="#">회원가입</a></li> -->
-                <li>
-                    <span class="search_wrap">
-                        <input type="text" id="search_text" name="search_text" class="search_text"
-                            placeholder="INPUT SEARCH ITEM" maxlength="25">
-                        <a href=""><i class="fas fa-search"></i></a>
-                    </span>
-                </li>
-            </ul>
-        </div>
+        <c:choose>
+          <c:when test="${loginId!=null}">
+            <div class="header" id="topTarget">
+              <ul class="header_list">
+                <li class="user_detail"><span id="user_grade"><i class="fas fa-crown"></i> ${dto.mem_grade}</li></span>
+                <li id="welcome"> ${loginId } 님 환영합니다.</li>
+                <li id="mypage"><a href="/modifyForm.mem">마이페이지</a></li>
+                <li id="basket"><a href="/basket/basket.jsp" id="basket">장바구니</a></li>
+                <li id=logout><a href="/logout.mem" id="logout">로그아웃</a></li>
+              </ul>
+            </div>
+          </c:when>
+          <c:otherwise>
+            <div class="header" id="topTarget">
+              <ul class="header_list">
+                <li id=login><a href="/home.mem">로그인</a></li>
+                <li id=signup><a href="/signup.mem">회원가입</a></li>
+              </ul>
+            </div>
+          </c:otherwise>
+        </c:choose>
         <div class="nav">
-            <div class="nav_logo">
-                <i class="fab fa-artstation"> Artex Vision</i>
+          <div class="nav_logo">
+            <a href="/artexMain/mainpage.jsp"><i class="fab fa-artstation"> Artex Vision</i></a>
+          </div>
+          <div class="nav_side">
+            <div class="nav_menu">
+              <ul class="nav_menu_list">
+                <li><a href="/nb_list.board?cpage=1" id="notice">NOTICE</a></li>
+                <li><a href="/exhibition/artexDesc/artex_desc.jsp">Artex Vision</a></li>
+                <li><a href="/exhibition/exhibition/main_ex/now_main_ex.jsp">전시</a></li>
+                <li><a href="#" id="event">이벤트</a></li>
+              </ul>
             </div>
-            <div class="nav_side">
-                <div class="nav_menu">
-                    <ul class="nav_menu_list">
-                        <li><a href="#">NOTICE</a></li>
-                        <li><a href="#">Artex Vision</a></li>
-                        <li><a href="#">전시</a></li>
-                        <li><a href="#">이벤트</a></li>
-                        <li><a href="/nb_list.board?cpage=1">커뮤니티</a></li>
-                    </ul>
-                </div>
-            </div>
+          </div>
         </div>
-
+		<div class="carousel_timeline">
+          <div class="carousel">
+            <img src="/exhibition/img/artex_main_img.png" class="carousel_img">
+          </div>
+        </div>
         <div class="container2">
             <div class="sidebar">
                 <h2 class="list_title">NOTICE </h2>
@@ -549,6 +571,9 @@
             </div>
         </div>
         <!-- 커뮤니티 end -->
+        <div class="footer">
+
+        </div>
     </div>
     
     <script>
@@ -596,6 +621,22 @@
 				$("#modCancel").css("display","none");
 			}
 		})
+		
+		$("#logout").on("click", function () {
+          if (!confirm("로그아웃 하시겠습니까?")) {
+            return false;
+          }
+        })
+
+        $("#basket").on("click", function () {
+          alert("현재 기능은 구현중에 있습니다.");
+          return false;
+        })
+       
+        $("#event").on("click", function () {
+          alert("현재 기능은 구현중에 있습니다.");
+          return false;
+        })
 	</script>
 </body>
 
