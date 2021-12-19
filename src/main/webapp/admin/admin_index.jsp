@@ -170,6 +170,8 @@
 
     .dashboard_contents {
       width: 30%;
+      overflow-y:auto; 
+      overflow-x:hidden;
     }
 
     .dashboard_contents_item {
@@ -180,6 +182,7 @@
       margin: 5px;
       align-items: center;
       text-align: center;
+
       /* border: 1px solid black; */
     }
 
