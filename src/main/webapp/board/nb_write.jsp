@@ -511,17 +511,19 @@
 
         <div class="container2">
             <div class="sidebar">
-                <h2 class="list_title">커뮤니티 </h2>
+                <h2 class="list_title">NOTICE </h2>
                 <ul class="sidebar_item_list">
-                    <li class="sidebar_item"><a href="/nb_list.board?cpage=1">자유게시판</a></li>
+                    <li class="sidebar_item"><a href="/nb_list.board?cpage=1">공지사항</a></li>
+                    <li class="sidebar_item"><a href="">Q&A</a></li>
+                    <li class="sidebar_item"><a href="/board/faq_home.jsp">FAQ</a></li>
                 </ul>
             </div>
             <br>
             <div class="board_nb_content">
                 <div class="board_nb_boardname">
-                    <div class="board_nb_prevboard">게시판</div>
+                    <div class="board_nb_prevboard">NOTICE</div>
                     <div>></div>
-                    <div class="board_nb_presentboard"><a href="/nb_list.board?cpage=1">자유게시판</a></div>
+                    <div class="board_nb_presentboard"><a href="/nb_list.board?cpage=1">공지사항</a></div>
                 </div>
                 <hr>
                 <form action="/nb_writeProc.board" id="frmWrite">
