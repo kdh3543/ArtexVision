@@ -5,7 +5,7 @@
 
     <head>
       <meta charset="UTF-8">
-      <title>Insert title here</title>
+      <title>successSignup</title>
       <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
       <style>
         /* 전체 설정 css start */
@@ -126,7 +126,7 @@
           /* border: 1px solid black; */
         }
 
-        .find_id_box {
+        .successSignup {
           margin: auto;    
           width: 450px;
           margin-top: 100px;
@@ -153,7 +153,7 @@
     </head>
 
     <body>
-          <div class="find_id_box">
+          <div class="successSignup">
             회원가입이 완료되었습니다!!<br>
             <div class="btns">
               <a href="/insert.mem"><input type="button" value="로그인하기"></a>

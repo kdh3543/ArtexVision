@@ -5,7 +5,7 @@
 
     <head>
       <meta charset="UTF-8">
-      <title>Index</title>
+      <title>ArtexVision Login</title>
       <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
       <style>
         /* 전체 설정 css start */
@@ -200,7 +200,7 @@
     </head>
 
     <body>  
-          <form action="/successSignup.mem" method="post">
+          <form action="/login.mem" method="post">
             <div class="login_box">
               <div class="login_logo">
                 <h2>LOGIN</h2>

@@ -26,7 +26,7 @@ public class BookController extends HttpServlet {
 		try {
 			if(cmd.equals("/ex_desc1.book")) {
 				request.getRequestDispatcher("/book/ex_desc01.jsp").forward(request, response);
-			}else if(cmd.equals("/bookTest.book")) {
+			}else if(cmd.equals("/bookRefund.book")) {
 				List<BookDTO> list = dao.selectAll();
 				
 				System.out.println(list.size());

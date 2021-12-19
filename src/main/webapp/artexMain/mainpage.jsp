@@ -496,7 +496,6 @@
       <div class="container">
 
         <!-- 헤더 -->
-
         <c:choose>
           <c:when test="${loginId!=null}">
             <div class="header" id="topTarget">
@@ -504,8 +503,8 @@
                 <li class="user_detail"><span id="user_grade"><i class="fas fa-crown"></i> ${dto.mem_grade}</li></span>
                 <li id="welcome"> ${loginId } 님 환영합니다.</li>
                 <li id="mypage"><a href="/modifyForm.mem">마이페이지</a></li>
-                <li id="basket"><a href="#">장바구니</a></li>
-                <li id=logout><a href="/logout.mem">로그아웃</a></li>
+                <li id="basket"><a href="/basket/basket.jsp" id="basket">장바구니</a></li>
+                <li id=logout><a href="/logout.mem"  id="logout">로그아웃</a></li>
               </ul>
             </div>
           </c:when>
@@ -518,7 +517,8 @@
             </div>
           </c:otherwise>
         </c:choose>
-
+		
+		
         <!-- 네비바 -->
         <div class="nav">
           <div class="nav_logo">
@@ -527,10 +527,10 @@
           <div class="nav_side">
             <div class="nav_menu">
               <ul class="nav_menu_list">
-                <li><a href="#">NOTICE</a></li>
+                <li><a href="#" id="notice">NOTICE</a></li>
                 <li><a href="../artexDesc/artex_desc.jsp">Artex Vision</a></li>
                 <li><a href="../exhibition/main_ex/now_main_ex.jsp">전시</a></li>
-                <li><a href="#">이벤트</a></li>
+                <li><a href="#" id="event">이벤트</a></li>
               </ul>
             </div>
           </div>
@@ -691,5 +691,24 @@
         <div class="footer"></div>
 
     </body>
-
+	<script>
+			$("#logout").on("click",function(){
+				if(!confirm("로그아웃 하시겠습니까?")){
+					return false;
+				}
+			})
+			
+			$("#basket").on("click",function(){
+				alert("현재 기능은 구현중에 있습니다.");
+				return false;
+			})
+			$("#notice").on("click",function(){
+				alert("현재 기능은 구현중에 있습니다.");
+				return false;
+			})
+			$("#event").on("click",function(){
+				alert("현재 기능은 구현중에 있습니다.");
+				return false;
+			})
+	</script>
     </html>
