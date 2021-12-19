@@ -62,6 +62,10 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p,
 	width: 1200px;
 	margin: auto;
 }
+
+.container>div{
+	width: 1200px;
+}
 /* container end */
 
 /* header start */
@@ -441,17 +445,20 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p,
 
 		<div class="container2">
 			<div class="sidebar">
-				<h2 class="list_title">커뮤니티</h2>
+				<h2 class="list_title">NOTICE</h2>
 				<ul class="sidebar_item_list">
-					<li class="sidebar_item"><a href="/nb_list.board?cpage=1">자유게시판</a></li>
+					<li class="sidebar_item"><a href="/nb_list.board?cpage=1">공지사항</a></li>					
+                    <li class="sidebar_item"><a href="">Q&A</a></li>
+                    <li class="sidebar_item"><a href="/board/faq_home.jsp">FAQ</a></li>
 				</ul>
 			</div>
 			<div class="board_nb_content">
 				<br>
 				<div class="board_nb_boardname">
-					<div class="board_nb_prevboard">게시판</div>
+					<div class="board_nb_prevboard">NOTICE</div>
 					<div>></div>
-					<div class="board_nb_presentboard">자유게시판</div>
+					<div class="board_nb_presentboard">공지사항</div>
+					
 				</div>
 				<hr>
 				<div class="board_nb_head">
@@ -461,20 +468,13 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p,
 					<div class="board_nb_write_date">작성일</div>
 					<div class="board_nb_view_count">조회수</div>
 				</div>
-				<div class="board_nb_notice">
-					<div class="board_nb_notice_num">-</div>
-					<div class="board_nb_notice_title">공지사항</div>
-					<div class="board_nb_notice_writer">관리자</div>
-					<div class="board_nb_notice_write_date">방금 전</div>
-					<div class="board_nb_notice_view_count">100</div>
-				</div>
 				<c:forEach var="noticeboard_dto" items="${nb_list}">
-				<div class="board_nb_user_write">
-						<div class="board_nb_user_num">${noticeboard_dto.nb_seq }</div>
-						<div class="board_nb_user_title"><a href="/nb_detail.board?nb_seq=${noticeboard_dto.nb_seq }" style="text-decoration:none; color:black;">${board_dto.nb_title }</a></div>
-						<div class="board_nb_user_writer">${noticeboard_dto.nb_mem_id }</div>
-						<div class="board_nb_user_write_date">${noticeboard_dto.detailDate }</div>
-						<div class="board_nb_user_view_count">${noticeboard_dto.nb_view_count }</div>
+				<div class="board_nb_notice">
+					<div class="board_nb_notice_num">${noticeboard_dto.nb_seq }</div>
+					<div class="board_nb_notice_title"><a href="/nb_detail.board?nb_seq=${noticeboard_dto.nb_seq }" style="text-decoration:none; color:black;">${noticeboard_dto.nb_title }</a></div>
+					<div class="board_nb_notice_writer">${noticeboard_dto.nb_mem_id }</div>
+					<div class="board_nb_notice_write_date">${noticeboard_dto.detailDate }</div>
+					<div class="board_nb_notice_view_count">${noticeboard_dto.nb_view_count }</div>
 				</div>
 				</c:forEach>
 				<br>
@@ -486,17 +486,34 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p,
 						<div>${nb_navi }</div>
 					</div>
 				</div>
+				<form action="/nb_search.board" id="frmSearch">
 				<div class="board_nb_search_area">
-					<select>
-						<option>제목</option>
-						<option>아이디</option>
+					<select id="searchOption" name="searchOption">
+						<option name="searchTitle">제목</option>
+						<option name="searchId">아이디</option>
 					</select> <input type=text placeholder="검색어를 입력하세요" class="board_nb_search">
-					<input type=button value="검색" class="board_nb_search_btn">
+					<input type=button value="검색" class="board_nb_search_btn" onclick="search();">
 				</div>
+				</form>
 			</div>
 		</div>
 		<!-- 커뮤니티 end -->
+		
+		<div class="footer"></div>
 	</div>
-	<div class="footer"></div>
+	
+	
+	<script>
+		function search(){
+			let searchOption = document.getElementById("searchOption");
+			let searchOptionIndex = document.getElementById("searchOption").options.selectedIndex;
+			
+			if(searchOption.options[searchOptionIndex].value != ""){
+
+				$("#frmSearch").submit();
+			}
+			console.log("선택된 옵션 : " + searchOption.options[searchOptionIndex].value);
+		}
+	</script>
 </body>
 </html>
