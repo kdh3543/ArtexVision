@@ -5,7 +5,7 @@
 
     <head>
       <meta charset="UTF-8">
-      <title>Insert title here</title>
+      <title>signup</title>
       <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
       <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
@@ -308,7 +308,7 @@
 
     <body>
 
-      <form action="/insert.mem" method="post" id="frm">
+      <form action="/successSignup.mem" method="post" id="frm">
         <div class="signup_box">
           <div class="signup_logo">
             <h2>회원가입</h2>
@@ -550,6 +550,11 @@
             phone1.focus();
             return false;
           }
+
+          if(addr2.val()==""){
+            alert("상세주소를 입력해주세요.");
+            return false;
+          }
         })
 
         document.getElementById("find_zipcode").onclick = function () {
@@ -557,7 +562,6 @@
             oncomplete: function (data) {
               document.getElementById("zipcode").value = data.zonecode;
               document.getElementById("addr1").value = data.roadAddress;
-              document.getElementById("addr2").value = data.jibunAddress;
             }
           }).open();
         }

@@ -3,6 +3,7 @@ package kh.web.controller;
 import java.io.File;
 import java.io.IOException;
 import java.sql.Date;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,11 +11,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import kh.web.dao.AdminDAO;
+import kh.web.dto.DashboardDTO;
 import kh.web.dto.ExhibitionDTO;
+import kh.web.dto.MemberDTO;
 import kh.web.utils.EncryptionUtils;
 
 
@@ -27,6 +31,8 @@ public class AdminController extends HttpServlet {
 		String cmd = uri.substring(ctxPath.length());
 		AdminDAO dao = AdminDAO.getInstance();
 		System.out.println(cmd);
+		
+		Gson g = new Gson();
 
 		try {
 			if(cmd.equals("/admin_login.admin")) {
@@ -54,7 +60,6 @@ public class AdminController extends HttpServlet {
 				String savePath = request.getServletContext().getRealPath("files");
 				File filePath = new File(savePath);
 
-				// 경로가 없다면 폴더 만들기
 				if(!filePath.exists()) {
 					filePath.mkdir();
 				}
@@ -79,6 +84,15 @@ public class AdminController extends HttpServlet {
 					dao.insertExImg(0, oriName, sysName, ex_id);
 					System.out.println("OK");
 				}
+			} else if(cmd.equals("/member_list.admin")) {
+				List<MemberDTO> list = dao.selectAllMember();
+				request.setAttribute("list", list);
+				request.getRequestDispatcher("/admin/admin_member_list.jsp").forward(request, response);
+			} else if(cmd.equals("/weeklyData.admin")) {
+				List<DashboardDTO> list = dao.selectMonthlyData();
+				String result = g.toJson(list);
+				System.out.println(result);
+				response.getWriter().append(result);
 			}
 		} catch(Exception e) {
 			e.printStackTrace();

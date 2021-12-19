@@ -1,14 +1,19 @@
 package kh.web.dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import kh.web.dto.DashboardDTO;
 import kh.web.dto.ExhibitionDTO;
+import kh.web.dto.MemberDTO;
 
 public class AdminDAO {
 	private static AdminDAO instance = null;
@@ -73,6 +78,55 @@ public class AdminDAO {
 			int result = pstmt.executeUpdate();
 			conn.commit();
 			return result;
+		}
+	}
+	
+	public List<MemberDTO> selectAllMember() throws Exception {
+		String sql = "select * from member";
+		try(Connection conn = this.getConnection();
+			PreparedStatement pstmt = conn.prepareStatement(sql);)
+		{
+			ResultSet rs = pstmt.executeQuery();
+			
+			List<MemberDTO> list = new ArrayList<MemberDTO>();
+			MemberDTO mDto = null;
+			while(rs.next()) {
+				String mem_id = rs.getString("mem_id");
+				String mem_pw = rs.getString("mem_pw");
+				String mem_name = rs.getString("mem_name");
+				String mem_birth = rs.getString("mem_birth");
+				String mem_email = rs.getString("mem_email");
+				String mem_phone = rs.getString("mem_phone");
+				String mem_zipcode = rs.getString("mem_zipcode");
+				String mem_addr1 = rs.getString("mem_addr1");
+				String mem_addr2 = rs.getString("mem_addr2");
+				Date mem_signup_date = rs.getDate("mem_signup_date");
+				String mem_grade = rs.getString("mem_grade");
+				String mem_account = rs.getString("mem_account");
+				
+				mDto = new MemberDTO(mem_id, mem_pw, mem_name, mem_birth, mem_email, mem_phone, mem_zipcode, mem_addr1, mem_addr2, mem_signup_date, mem_grade, mem_account);
+				list.add(mDto);
+			}
+			return list;
+		}
+	}
+	
+	public List<DashboardDTO> selectMonthlyData() throws Exception {
+		String sql = "SELECT TO_CHAR(b.dt, 'YYYY-MM') AS mem_signup_date, NVL(SUM(a.cnt), 0) cnt FROM ( SELECT TO_CHAR(mem_signup_date, 'YYYY-MM-DD') AS mem_signup_date, COUNT(*) cnt FROM member WHERE mem_signup_date BETWEEN TO_DATE('2021-01-01', 'YYYY-MM-DD') AND TO_DATE('2021-12-31', 'YYYY-MM-DD') GROUP BY mem_signup_date) a, ( SELECT TO_DATE('2021-01-01','YYYY-MM-DD') + LEVEL - 1 AS dt FROM dual CONNECT BY LEVEL <= (TO_DATE('2021-12-31','YYYY-MM-DD') - TO_DATE('2021-01-01','YYYY-MM-DD') + 1)) b WHERE b.dt = a.mem_signup_date(+) GROUP BY TO_CHAR(b.dt, 'YYYY-MM') ORDER BY TO_CHAR(b.dt, 'YYYY-MM')";
+		try(Connection conn = this.getConnection();
+			PreparedStatement pstmt = conn.prepareStatement(sql);)
+		{
+			ResultSet rs = pstmt.executeQuery();
+			
+			List<DashboardDTO> list = new ArrayList<DashboardDTO>();
+			DashboardDTO dDto = null;
+			while(rs.next()) {
+				String mem_signup_date = rs.getString("mem_signup_date");
+				int cnt = rs.getInt("cnt");
+				dDto = new DashboardDTO(mem_signup_date,  cnt);
+				list.add(dDto);
+			}
+			return list;
 		}
 	}
 }

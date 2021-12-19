@@ -5,7 +5,8 @@
 
     <head>
       <meta charset="UTF-8">
-      <title>Insert title here</title>
+      <title>마이페이지</title>
+     
       <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
       <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
@@ -322,16 +323,17 @@
           padding: 3px;
           border-bottom: 2px solid black;
           font-weight: bold;
+          line-height: 70px;
         }
 
-        .reservation {
+        .booking {
           margin-top: 50px;
           width: 100%;
           background-color: var(--color3);
           color: var(--color2);
         }
 
-        .reserve_title {
+        .book_title {
           margin-top: 10px;
           width: 100%;
           height: 60px;
@@ -341,14 +343,20 @@
           border-top: 1px solid white;
         }
 
-        .reserve_title>div {
+        .book_title>div {
           text-align: center;
           height: 100%;
           width: 25%;
           float: left;
         }
 
-        .reserve_contents {
+        .book_table{
+          width: 100%; 
+          table-layout:fixed;
+          border-collapse: collapse;
+        }
+        
+        .book_contents {
           height: 20%;
           width: 100%;
           height: 100px;
@@ -356,7 +364,7 @@
           text-align: center;
         }
 
-        .reserve_contents>div {
+        .book_contents>div {
           text-align: center;
           float: left;
           width: 25%;
@@ -378,7 +386,7 @@
           width: 100%;
           height: 100%;
         }
-        
+
         input[type="button"],
         input[type="submit"],
         input[type="reset"] {
@@ -390,46 +398,69 @@
           cursor: pointer;
         }
 
-        input[type="checkbox"]{
+        input[type="checkbox"] {
           width: 15px;
           height: 15px;
           cursor: pointer;
+        }
+        
+        a {
+          text-align: center;
+          text-decoration: none;
+          /* 링크의 밑줄 제거 */
+          color: inherit;
+          /* 링크의 색상 제거 */
+        }
+
+        a:hover {
+          color: black;
+          /* 링크의 색상 제거 */
         }
       </style>
     </head>
 
     <body>
       <div class="container">
-        <div class="header">
-          <ul class="header_list">
-            <li class="user_detail"><span id="user_grade"><i class="fas fa-crown"></i> ${dto.grade}</li></span>
-            <li> ${loginId } 님 환영합니다.</li>
-            <li><a href="/modifyForm.mem">마이페이지</a></li>
-            <li><a href="#">장바구니</a></li>
-            <!-- <li><a href="#">로그인</a></li> -->
-            <li><a href="/logout.mem">로그아웃</a></li>
-            <!-- <li><a href="#">회원가입</a></li> -->
-          </ul>
-        </div>
+        <c:choose>
+          <c:when test="${loginId!=null}">
+            <div class="header" id="topTarget">
+              <ul class="header_list">
+                <li class="user_detail"><span id="user_grade"><i class="fas fa-crown"></i> ${dto.mem_grade}</li></span>
+                <li id="welcome"> ${loginId } 님 환영합니다.</li>
+                <li id="mypage"><a href="/modifyForm.mem">마이페이지</a></li>
+                <li id="basket"><a href="/basket/basket.jsp" id="basket">장바구니</a></li>
+                <li id=logout><a href="/logout.mem"  id="logout">로그아웃</a></li>
+              </ul>
+            </div>
+          </c:when>
+          <c:otherwise>
+            <div class="header" id="topTarget">
+              <ul class="header_list">
+                <li id=login><a href="/home.mem">로그인</a></li>
+                <li id=signup><a href="/signup.mem">회원가입</a></li>
+              </ul>
+            </div>
+          </c:otherwise>
+        </c:choose>
         <div class="nav">
           <div class="nav_logo">
-            <i class="fab fa-artstation"> Artex Vision</i>
+            <a href="/artexMain/mainpage.jsp"><i class="fab fa-artstation"> Artex Vision</i></a>
           </div>
           <div class="nav_side">
             <div class="nav_menu">
               <ul class="nav_menu_list">
-                <li><a href="#">NOTICE</a></li>
-                <li><a href="#">Artex Vision</a></li>
-                <li><a href="#">전시</a></li>
-                <li><a href="#">이벤트</a></li>
+                <li><a href="#" id="notice">NOTICE</a></li>
+                <li><a href="../artexDesc/artex_desc.jsp">Artex Vision</a></li>
+                <li><a href="../exhibition/main_ex/now_main_ex.jsp">전시</a></li>
+                <li><a href="#" id="event">이벤트</a></li>
               </ul>
             </div>
           </div>
         </div>
         <div class="carousel_timeline">
           <div class="carousel">
-            <img src="sample_carousel.png" class="carousel_img">
-          </div>
+        		<img src="/exhibition/img/artex_main_img.png" class="carousel_img">
+      		</div>
         </div>
         <div class="main">
           <div class="sidebar">
@@ -444,8 +475,8 @@
             </ul>
             <h3 class="list_title">예매 내역</h3>
             <ul class="sidebar_item_list">
-              <li class="sidebar_item"><a href="">예매내역 조회/취소</a></li>
-            </ul>          
+              <li class="sidebar_item"><a href="/bookRefund.book">예매내역 조회/취소</a></li>
+            </ul>
             <!-- 마이페이지 end -->
 
           </div>
@@ -454,38 +485,22 @@
               <div class="contents_title">
                 예매내역 취소/환불
               </div>
-              <div class="reservation">
-                <select>
-                  <option>검색</option>
-                  <option>단체예약 확인</option>
-                  <option>전시회 예약 확인</option>
-                  <option>신청일 기준 확인</option>
-                </select>
-                <div class="reserve_title">
+              <div class="booking">
+                <div class="book_title">
                   <div>예매 내역</div>
-                  <div>예매 번호</div>
-                  <div>예매 날짜</div>
+                  <div>전시회 장소</div>
+                  <div>전시회 날짜</div>
                   <div>선택</div>
                 </div>
-                <table class="reserve_table" style="width: 100%; table-layout:fixed;">
-                  <tr class="reserve_contents" data-tr_value="1">
-                    <td>예매 내역</td>
-                    <td>예매 번호1</td>
-                    <td>예매 날짜</td>
-                    <td><input type="checkbox" name="check" value="1"></td>
-                  </tr>
-                  <tr class="reserve_contents" data-tr_value="2">
-                    <td>예매 내역</td>
-                    <td>예매 번호2</td>
-                    <td>예매 날짜</td>
-                    <td><input type="checkbox" name="check" value="1"></td>
-                  </tr>
-                  <tr class="reserve_contents" data-tr_value="3">
-                    <td>예매 내역</td>
-                    <td>예매 번호3</td>
-                    <td>예매 날짜</td>
-                    <td><input type="checkbox" name="check" value="1"></td>
-                  </tr>
+                <table class="book_table" >
+                  <c:forEach var="book_dto" items="${list}">
+                    <tr class="book_contents">
+                      <td>${book_dto.bk_id}</td>
+                      <td>${book_dto.bk_ex_id}</td>
+                      <td>${book_dto.bk_ex_start_date} ~ ${book_dto.bk_ex_end_date}</td>
+                      <td><input type="checkbox" name="check" id="check"></td>
+                    </tr>
+                  </c:forEach>
                 </table>
               </div>
               <div class="cancel_btn">
@@ -499,17 +514,38 @@
         </div>
       </div>
       <script>
-        $('#cancel').click(function(){
-        if(confirm("예매를 취소하시겠습니까?")){
-          $("input[name=check]:checked").each(function(){
-                let tr_value =$(this).val();
-                let tr=$("tr[data-tr_value='"+tr_value+"']");
-                tr.remove();
-            });
-        }else{
-            return false;
-        }
-    });
+        let cancel = $("#cancel");
+        let check = $("input[type='checkbox']");
+        cancel.on("click", function(){
+          let trs=$("tr");
+          alert("현재 기능은 구현중에 있습니다.");
+          for(let i =0;i<trs.length;i++){
+        	  
+            /* if(check.eq(i).is(":checked")){
+            	confirm("정말 취소하시겠습니까?");
+              $(trs[i]).remove();
+            } */
+          }
+        })
+        
+        $("#logout").on("click",function(){
+			if(!confirm("로그아웃 하시겠습니까?")){
+				return false;
+			}
+		})
+		
+		$("#basket").on("click",function(){
+			alert("현재 기능은 구현중에 있습니다.");
+			return false;
+		})
+		$("#notice").on("click",function(){
+			alert("현재 기능은 구현중에 있습니다.");
+			return false;
+		})
+		$("#event").on("click",function(){
+			alert("현재 기능은 구현중에 있습니다.");
+			return false;
+		})
       </script>
     </body>
 
