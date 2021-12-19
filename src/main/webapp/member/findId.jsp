@@ -278,7 +278,7 @@
 
               <div class="btns">
                 <input type="submit" value="찾기" id="find_id_btn">
-                <a href="javascript:history.back()"><input type="button" value="뒤로가기" id="back_btn"></a>
+                <a href="/home.mem"><input type="button" value="홈으로" id="back_btn"></a>
               </div>
             </div>
           </div>

@@ -35,7 +35,7 @@ public class MemberController extends HttpServlet {
 				boolean result = dao.isPhoneExist(phone);
 				response.getWriter().append(String.valueOf(result));
 			
-			}else if(cmd.equals("/insert.mem")) { // 회원가입 폼에서 회원가입 버튼 눌렀을 때
+			}else if(cmd.equals("/successSignup.mem")) {// 회원가입 폼에서 회원가입 버튼 눌렀을 때
 				String id = request.getParameter("id");
 				String pw = EncryptionUtils.pwdEncrypt(request.getParameter("pw1"));
 				String name = request.getParameter("name");
@@ -48,6 +48,9 @@ public class MemberController extends HttpServlet {
 				String account = request.getParameter("account");
 				MemberDTO dto = new MemberDTO(id,pw,name,birth,email,phone,zipcode,addr1,addr2,null,null,account);
 				dao.insert(dto);
+				response.sendRedirect("/member/successSignup.jsp");
+				
+			}else if(cmd.equals("/insert.mem")) { 
 				response.sendRedirect("/login.jsp");
 				
 			}else if(cmd.equals("/signup.mem")) { // 로그인 화면에서 회원가입 버튼을 눌렀을 때 회원가입 화면으로 이동
@@ -60,7 +63,7 @@ public class MemberController extends HttpServlet {
 				if(result) { 
 					HttpSession session = request.getSession(); 
 					session.setAttribute("loginId", id);
-					request.getRequestDispatcher("/artexMain/mainpage.jsp").forward(request, response);
+					response.sendRedirect("/artexMain/mainpage.jsp");
 				}else {
 					response.sendRedirect("/loginFail.jsp");
 				}

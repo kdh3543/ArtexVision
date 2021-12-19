@@ -124,6 +124,7 @@
 
         .login_box {
           margin: auto;
+          margin-top: 100px;
           background-color: var(--color3);
           width: 350px;
           height: 600px;
@@ -199,7 +200,7 @@
     </head>
 
     <body>  
-          <form action="/login.mem" method="post">
+          <form action="/successSignup.mem" method="post">
             <div class="login_box">
               <div class="login_logo">
                 <h2>LOGIN</h2>

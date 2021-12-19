@@ -483,24 +483,6 @@
                       <td><input type="checkbox" name="check" id="check"></td>
                     </tr>
                   </c:forEach>
-                  <!-- <tr class="book_contents">
-                    <td>예매 내역</td>
-                    <td>예매 번호1</td>
-                    <td>예매 날짜</td>
-                    <td><input type="checkbox" name="check" id="check"></td>
-                  </tr>
-                  <tr class="book_contents">
-                    <td>예매 내역</td>
-                    <td>예매 번호2</td>
-                    <td>예매 날짜</td>
-                    <td><input type="checkbox" name="check" id="check"></td>
-                  </tr>
-                  <tr class="book_contents">
-                    <td>예매 내역</td>
-                    <td>예매 번호3</td>
-                    <td>예매 날짜</td>
-                    <td><input type="checkbox" name="check" id="check"></td>
-                  </tr> -->
                 </table>
               </div>
               <div class="cancel_btn">
