@@ -387,7 +387,7 @@
         <i class="fab fa-artstation"> Artex Vision Admin Page</i>
       </div>
       <div class="userDetail">
-        <i class="fas fa-user-circle"> ADMIN 님 환영합니다.</i>
+        <i class="fas fa-user-circle"> ${loginID } 님 환영합니다.</i> 
         <i class="fas fa-sign-out-alt"> LOGOUT</i>
       </div>
     </div>
