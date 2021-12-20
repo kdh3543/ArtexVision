@@ -59,6 +59,10 @@
             width: 1200px;
             margin: auto;
         }
+        
+        .container>div{
+        width: 1200px;
+        }
 
         /* container end */
 
@@ -414,6 +418,7 @@
             color: black; /* 링크의 색상 제거 */
             }
     </style>
+    
 </head>
 
 <body>
@@ -443,20 +448,22 @@
  		 <script type="text/javascript">
  		 </script>
 
+
+
         <!-- 네비바 -->
         <div class="nav">
             <div class="nav_logo">
-                <a href="mainpage.jsp"><i class="fab fa-artstation"> Artex Vision</i></a>
+                <a href="/artexMain/mainpage.jsp" ><i class="fab fa-artstation"> Artex Vision</i></a>
             </div>
             <div class="nav_side">
                 <div class="nav_menu">
                     <ul class="nav_menu_list">
-                        <li><a href="#">NOTICE</a></li>
-                        <li><a href="../artexDesc/artex_desc.jsp">Artex Vision</a></li>
-                        <li><a href="../exhibition/main_ex/now_main_ex.jsp">전시</a></li>
-                        <li><a href="#">이벤트</a></li>
-                        <li><a href="#">커뮤니티</a></li>
-                    </ul>
+            			<li><a href="#">NOTICE</a></li>
+        	  			<li><a href="/artexDesc/artex_desc.jsp">Artex Vision</a></li>
+            			<li><a href="/exhibition/main_ex/now_main_ex.jsp">전시</a></li>
+         			   	<li><a href="#">이벤트</a></li>
+            			<li><a href="#">커뮤니티</a></li>
+          			</ul>
                 </div>
             </div>
         </div>
@@ -496,19 +503,19 @@
                     <hr>
                     <div class="ex_intro">
                         <div class="ex_intro_top">
-                            <div><a href="../exhibition/now_ex/ex2_desc.jsp"><img src="img/main_weiwei.png" width="90%" height="100%"></a></div>
-                            <div><a href="../exhibition/now_ex/ex8_desc.jsp"><img src="img/main_countdown.png" width="90%" height="100%"></a></div>
-                            <div><a href="../exhibition/now_ex/ex5_desc.jsp"><img src="img/main_love.png" width="90%" height="100%"></a></div>
-                            <div><a href="../exhibition/now_ex/ex3_desc.jsp"><img src="img/main_shagall.png" width="90%" height="100%"></a></div>
+                            <div><a href="/exhibition/now_ex/ex2_desc.jsp"><img src="img/main_weiwei.png" width="90%" height="100%"></a></div>
+                            <div><a href="/exhibition/now_ex/ex8_desc.jsp"><img src="img/main_countdown.png" width="90%" height="100%"></a></div>
+                            <div><a href="/exhibition/now_ex/ex5_desc.jsp"><img src="img/main_love.png" width="90%" height="100%"></a></div>
+                            <div><a href="/exhibition/now_ex/ex3_desc.jsp"><img src="img/main_shagall.png" width="90%" height="100%"></a></div>
                         </div>
                         <div class="ex_intro_bottom">
-                            <div><a href="../exhibition/now_ex/ex6_desc.jsp"><img src="img/main_yosigo.png" width="90%" height="100%"></a></div>
-                            <div><a href="../exhibition/now_ex/ex4_desc.jsp"><img src="img/main_josun.png" width="90%" height="100%"></a></div>
-                            <div><a href="../exhibition/now_ex/ex7_desc.jsp"><img src="img/main_russian.png" width="90%" height="100%"></a></div>
-                            <div><a href="../exhibition/now_ex/ex1_desc.jsp"><img src="img/main_hashtag.png" width="90%" height="100%"></a></div>
+                            <div><a href="/exhibition/now_ex/ex6_desc.jsp"><img src="img/main_yosigo.png" width="90%" height="100%"></a></div>
+                            <div><a href="/exhibition/now_ex/ex4_desc.jsp"><img src="img/main_josun.png" width="90%" height="100%"></a></div>
+                            <div><a href="/exhibition/now_ex/ex7_desc.jsp"><img src="img/main_russian.png" width="90%" height="100%"></a></div>
+                            <div><a href="/exhibition/now_ex/ex1_desc.jsp"><img src="img/main_hashtag.png" width="90%" height="100%"></a></div>
                         </div>
                     </div>
-                    <a href="../exhibition/main_ex/now_main_ex.jsp"><div class="more">더 보기 <span style="color:gray"><i class="fas fa-angle-double-right"></i></span></div></a>
+                    <a href="/exhibition/main_ex/now_main_ex.jsp"><div class="more">더 보기 <span style="color:gray"><i class="fas fa-angle-double-right"></i></span></div></a>
                 </div>
 
 
