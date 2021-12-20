@@ -540,7 +540,7 @@
                 <div class="board_nb_boardname">
                     <div class="board_nb_prevboard">NOTICE</div>
                     <div>></div>
-                    <div class="board_nb_presentboard"><a href="/nb_list.board?cpage=1">공지사항</a></div>
+                    <div class="board_nb_presentboard"><a href="/nb_list.board?cpage=1" style="text-decoration:none; color:black;">공지사항</a></div>
                 </div>
                 <hr>
                 <form action="/nb_writeProc.board" id="frmWrite">
