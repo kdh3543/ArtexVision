@@ -62,6 +62,9 @@
             width: 1200px;
             margin: auto;
         }
+        .container>div{
+        	width: 1200px;
+        }
 
         /* container end */
 
@@ -178,8 +181,6 @@
 
         .main {
             height: 1000px;
-            margin-top: 15px;
-            
         }
 
         .sidebar {
@@ -203,8 +204,6 @@
             float:left;
             margin-right: 5px;
         }
-
-        
 
         .artexvision_introduce_message{
             margin-left:30px;
@@ -273,6 +272,9 @@
         a:hover{
             color: black; /* 링크의 색상 제거 */
         }
+        .carousel_timeline {
+            display: flex;
+        }
     </style>
 </head>
 
@@ -306,7 +308,7 @@
           <div class="nav_side">
             <div class="nav_menu">
               <ul class="nav_menu_list">
-                <li><a href="#" id="notice">NOTICE</a></li>
+                <li><a href="/nb_list.board?cpage=1" id="notice">NOTICE</a></li>
                 <li><a href="../artexDesc/artex_desc.jsp">Artex Vision</a></li>
                 <li><a href="../exhibition/main_ex/now_main_ex.jsp">전시</a></li>
                 <li><a href="#" id="event">이벤트</a></li>
@@ -314,7 +316,11 @@
             </div>
           </div>
         </div>
-
+		<div class="carousel_timeline">
+          <div class="carousel">
+            <img src="/exhibition/img/artex_main_img.png" class="carousel_img">
+          </div>
+        </div>
         <div class="main">
             <div class="sidebar">
                 <h2 class="list_title">Artex Vision</h2>
@@ -356,10 +362,7 @@
 		alert("현재 기능은 구현중에 있습니다.");
 		return false;
 	})
-	$("#notice").on("click",function(){
-		alert("현재 기능은 구현중에 있습니다.");
-		return false;
-	})
+	
 	$("#event").on("click",function(){
 		alert("현재 기능은 구현중에 있습니다.");
 		return false;

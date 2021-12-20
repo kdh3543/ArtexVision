@@ -66,7 +66,7 @@ public class BoardController extends HttpServlet {
 				int nb_seq = Integer.parseInt(request.getParameter("nb_seq"));
 				int result = dao.delete(nb_seq);
 				response.sendRedirect("/nb_list.board?cpage=1");
-			
+
 			}else if(cmd.equals("/nb_search.board")) {
 				String searchMethod = request.getParameter("searchOption");
 

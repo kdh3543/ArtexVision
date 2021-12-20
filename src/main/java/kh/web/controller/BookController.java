@@ -34,6 +34,11 @@ public class BookController extends HttpServlet {
 				request.setAttribute("list", list);
 				
 				request.getRequestDispatcher("mypage/refund.jsp").forward(request, response);
+			}else if(cmd.equals("/cancelBook.book")) {
+				String bookVal = request.getParameter("bookVal");
+				System.out.println(bookVal);
+//				int result = dao.deleteById(bookVal);
+//				response.getWriter().append(bookVal);
 			}
 		}catch(Exception e) {
 			e.printStackTrace();

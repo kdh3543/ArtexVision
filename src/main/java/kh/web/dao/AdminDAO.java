@@ -129,4 +129,24 @@ public class AdminDAO {
 			return list;
 		}
 	}
+	
+	public List<DashboardDTO> selectDailyData() throws Exception {
+		String sql = "select TO_CHAR(mem_signup_date, 'YYYY-MM-DD') as mem_signup_date, count(*) as cnt from member where mem_signup_date >='20210101' and mem_signup_date <= to_char(sysdate+1,'YYYY-MM-DD') GROUP BY to_char(mem_signup_date, 'YYYY-MM-DD') order by mem_signup_date";
+		try(Connection conn = this.getConnection();
+			PreparedStatement pstmt = conn.prepareStatement(sql);)
+		{
+			ResultSet rs = pstmt.executeQuery();
+			
+			List<DashboardDTO> list = new ArrayList<DashboardDTO>();
+			DashboardDTO dDto = null;
+			while(rs.next()) {
+				String mem_signup_date = rs.getString("mem_signup_date");
+				int cnt = rs.getInt("cnt");
+				dDto = new DashboardDTO(mem_signup_date,  cnt);
+				list.add(dDto);
+			}
+			return list;
+		}
+	}
+	
 }
