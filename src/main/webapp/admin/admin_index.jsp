@@ -352,6 +352,8 @@
 			<div class="select_btn_form">
 				<button type="button" class="select_btn" id="daily_btn">일간 가입자 통계 보기</button>
 				<button type="button" class="select_btn" id="monthly_btn">월간 가입자 통계 보기</button>
+				<button type="button" class="select_btn" id="daily_visit_btn">일간 방문자 통계 보기</button>
+				<button type="button" class="select_btn" id="monthly_visit_btn">월간 방문자 통계 보기</button>
 			</div>
 		</div>
 
@@ -426,10 +428,14 @@
 		alert("구현중입니다.");
 	}
 
-	let weekly_btn = document.getElementById("weekly_btn");
+	let monthly_btn = document.getElementById("monthly_btn");
 	let daily_btn = document.getElementById("daily_btn");
+	let daily_visit_btn = document.getElementById("daily_visit_btn");
+	let monthly_visit_btn = document.getElementById("monthly_visit_btn");
+	
 	const dashboard_contents = document.querySelector(".dashboard_contents");
 	const dashboard_graph = document.querySelector(".dashboard_graph");
+	
 	daily_btn.onclick = function(){
 		$(".dashboard_contents").empty();
 		$(".dashboard_graph").empty();
@@ -503,6 +509,81 @@
 			drawChart(dateArr, cntArr);
 	  });
 	}
+	
+	daily_visit_btn.onclick = function(){
+		$(".dashboard_contents").empty();
+		$(".dashboard_graph").empty();
+		$.ajax({
+			url: "/dailyVisitData.admin"
+		}).done(function(resp){
+			let result = JSON.parse(resp);
+			let dateArr = [];
+			let cntArr = [];
+			for(let i = 0; i < result.length; i++) {
+				dateArr.push(result[i].mem_signup_date);
+				cntArr.push(parseInt(result[i].cnt));
+				
+				let div1 = document.createElement("div");
+				div1.classList.add("dashboard_contents_item");
+				
+				let div2 = document.createElement("div");
+				div2.classList.add("dashboard_contents_item_title");
+				div2.innerText = result[i].mem_signup_date;
+				
+				let div3 = document.createElement("div");
+				div3.classList.add("dashboard_contents_item_data");
+				div3.innerText = result[i].cnt;
+				
+				div1.appendChild(div2);
+				div1.appendChild(div3);
+				dashboard_contents.append(div1);
+			}
+			
+			let canvas = document.createElement("canvas");
+			canvas.id = "myChart";
+			dashboard_graph.appendChild(canvas);
+			
+			drawChart(dateArr, cntArr);
+	  });
+	}
+	
+	monthly_visit_btn.onclick = function(){
+		$(".dashboard_contents").empty();
+		$(".dashboard_graph").empty();
+		$.ajax({
+			url: "/monthlyVisitData.admin"
+		}).done(function(resp){
+			let result = JSON.parse(resp);
+			let dateArr = [];
+			let cntArr = [];
+			for(let i = 0; i < result.length; i++) {
+				dateArr.push(result[i].mem_signup_date);
+				cntArr.push(parseInt(result[i].cnt));
+				
+				let div1 = document.createElement("div");
+				div1.classList.add("dashboard_contents_item");
+				
+				let div2 = document.createElement("div");
+				div2.classList.add("dashboard_contents_item_title");
+				div2.innerText = result[i].mem_signup_date;
+				
+				let div3 = document.createElement("div");
+				div3.classList.add("dashboard_contents_item_data");
+				div3.innerText = result[i].cnt;
+				
+				div1.appendChild(div2);
+				div1.appendChild(div3);
+				dashboard_contents.append(div1);
+			}
+			
+			let canvas = document.createElement("canvas");
+			canvas.id = "myChart";
+			dashboard_graph.appendChild(canvas);
+			
+			drawChart(dateArr, cntArr);
+	  });
+	}
+	
 	
 	function drawChart(dateArr, cntArr){
 		let ctx = document.getElementById('myChart');
