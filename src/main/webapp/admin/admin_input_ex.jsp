@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -119,7 +120,7 @@
     }
 
     div {
-      border: 1px solid black; 
+      /* border: 1px solid black;  */
     }
 
     input:-webkit-autofill,
@@ -173,6 +174,10 @@
       padding: 20px;
     }
 
+	#logout_btn {
+      text-decoration: none;
+      color: var(--footer-color);
+    }
     /* header end */
 
     /* nav start */
@@ -235,6 +240,7 @@
     .input_ex_contents_wrap {
       width: 70%;
       display: flex;
+      padding-top: 30px;
     }
 
     .input_ex_title_wrap {
@@ -380,10 +386,14 @@
       }
     }
 
+    
   </script>
 </head>
 
 <body>
+  <c:if test="${empty loginID}">
+    	<script>location.href="/admin/admin_login.jsp"</script>
+  </c:if>
   <div class="container">
 
     <div class="header">
@@ -391,9 +401,11 @@
         <i class="fab fa-artstation"> Artex Vision Admin Page</i>
       </div>
       <div class="userDetail">
-        <i class="fas fa-user-circle"> ADMIN 님 환영합니다.</i>
-        <i class="fas fa-sign-out-alt"> LOGOUT</i>
-      </div>
+	    <i class="fas fa-user-circle"> ${loginID } 님 환영합니다.</i> 
+		  <a href="/logout.admin" id="logout_btn">
+		    <i class="fas fa-sign-out-alt"> LOGOUT</i>
+		  </a>
+	  </div>
     </div>
 
     <div class="nav">
@@ -409,11 +421,11 @@
         <div class="nav_title">MEMBERS</div>
       </div>
       </a>
-      <div class="nav_items">
+      <div class="nav_items" id="working1">
         <div class="nav_icon"><i class="far fa-clipboard"></i></div>
         <div class="nav_title">BOARD</div>
       </div>
-      <div class="nav_items">
+      <div class="nav_items" id="working2">
         <div class="nav_icon"><i class="fas fa-crown"></i></div>
         <div class="nav_title">GRADE</div>
       </div>
@@ -430,7 +442,7 @@
       <div class="input_ex_wrap">
         <div class="ex_img_show_wrap">
           <div class="ex_img_show">
-            <img src="" alt="NO IMAGE" id="preview_img">
+            <img src="" alt="이미지를 선택해 주세요" id="preview_img">
           </div>
         </div>
         <div class="input_ex_contents_wrap">
@@ -488,9 +500,17 @@
         neque</div>
     </div>
   </div>
+  <script>
+  	  let working1 = document.getElementById("working1");
+	  let working2 = document.getElementById("working2");
+	
+	  working1.onclick = function() {
+		  alert("구현중입니다.");
+	  }
+	
+	  working2.onclick = function() {
+		  alert("구현중입니다.");
+	  }
+  </script>
 </body>
-<script>
-
-</script>
-
 </html>
