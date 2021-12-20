@@ -62,9 +62,6 @@
             width: 1200px;
             margin: auto;
         }
-        .container>div{
-        	width: 1200px;
-        }
 
         /* container end */
 
@@ -181,6 +178,8 @@
 
         .main {
             height: 1000px;
+            margin-top: 15px;
+            
         }
 
         .sidebar {
@@ -204,6 +203,8 @@
             float:left;
             margin-right: 5px;
         }
+
+        
 
         .artexvision_introduce_message{
             margin-left:30px;
@@ -272,61 +273,52 @@
         a:hover{
             color: black; /* 링크의 색상 제거 */
         }
-        .carousel_timeline {
-            display: flex;
-        }
     </style>
 </head>
 
 <body>
     <div class="container">
-        <c:choose>
-          <c:when test="${loginId!=null}">
-            <div class="header" id="topTarget">
-              <ul class="header_list">
-                <li class="user_detail"><span id="user_grade"><i class="fas fa-crown"></i> ${dto.mem_grade}</li></span>
-                <li id="welcome"> ${loginId } 님 환영합니다.</li>
-                <li id="mypage"><a href="/modifyForm.mem">마이페이지</a></li>
-                <li id="basket"><a href="/basket/basket.jsp" id="basket">장바구니</a></li>
-                <li id=logout><a href="/logout.mem"  id="logout">로그아웃</a></li>
-              </ul>
-            </div>
-          </c:when>
-          <c:otherwise>
-            <div class="header" id="topTarget">
-              <ul class="header_list">
-                <li id=login><a href="/home.mem">로그인</a></li>
-                <li id=signup><a href="/signup.mem">회원가입</a></li>
-              </ul>
-            </div>
-          </c:otherwise>
-        </c:choose>
+        <div class="header">
+            <ul class="header_list">
+                <li class="user_detail"><span id="user_grade"><i class="fas fa-crown"></i> SILVER</li></span>
+                <li> USER001 님 환영합니다.</li>
+                <li><a href="#">마이페이지</a></li>
+                <li><a href="#">장바구니</a></li>
+                <!-- <li><a href="#">로그인</a></li> -->
+                <li><a href="#">로그아웃</a></li>
+                <!-- <li><a href="#">회원가입</a></li> -->
+                <li>
+                    <span class="search_wrap">
+                        <input type="text" id="search_text" name="search_text" class="search_text"
+                            placeholder="INPUT SEARCH ITEM" maxlength="25">
+                        <a href=""><i class="fas fa-search"></i></a>
+                    </span>
+                </li>
+            </ul>
+        </div>
         <div class="nav">
-          <div class="nav_logo">
-            <a href="/artexMain/mainpage.jsp"><i class="fab fa-artstation"> Artex Vision</i></a>
-          </div>
-          <div class="nav_side">
-            <div class="nav_menu">
-              <ul class="nav_menu_list">
-                <li><a href="/nb_list.board?cpage=1" id="notice">NOTICE</a></li>
-                <li><a href="../artexDesc/artex_desc.jsp">Artex Vision</a></li>
-                <li><a href="../exhibition/main_ex/now_main_ex.jsp">전시</a></li>
-                <li><a href="#" id="event">이벤트</a></li>
-              </ul>
+            <div class="nav_logo">
+               <a href="/artexMain/mainpage.jsp" ><i class="fab fa-artstation"> Artex Vision</i></a>
             </div>
-          </div>
+            <div class="nav_side">
+                <div class="nav_menu">
+                    <ul class="nav_menu_list">
+            			<li><a href="#">NOTICE</a></li>
+            			<li><a href="/artexDesc/artex_desc.jsp">Artex Vision</a></li>
+            			<li><a href="/exhibition/main_ex/now_main_ex.jsp">전시</a></li>
+            			<li><a href="#">이벤트</a></li>
+            			<li><a href="#">커뮤니티</a></li>
+          			</ul>
+                </div>
+            </div>
         </div>
-		<div class="carousel_timeline">
-          <div class="carousel">
-            <img src="/exhibition/img/artex_main_img.png" class="carousel_img">
-          </div>
-        </div>
+
         <div class="main">
             <div class="sidebar">
                 <h2 class="list_title">Artex Vision</h2>
                 <ul class="sidebar_item_list">
                     <li class="sidebar_item"><a href="artex_desc.jsp">Artex Vision 소개</a></li>
-                    <li class="sidebar_item"><a href="" id="siteMap">사이트맵</a></li>
+                    <li class="sidebar_item"><a href="">사이트맵</a></li>
                 </ul>
             </div>
             <div class="artexvision_introduce_area">	
@@ -351,25 +343,5 @@
     
     
 </body>
-<script>
-	$("#logout").on("click",function(){
-		if(!confirm("로그아웃 하시겠습니까?")){
-			return false;
-		}
-	})
-	
-	$("#basket").on("click",function(){
-		alert("현재 기능은 구현중에 있습니다.");
-		return false;
-	})
-	
-	$("#event").on("click",function(){
-		alert("현재 기능은 구현중에 있습니다.");
-		return false;
-	})
-	$("#siteMap").on("click",function(){
-		alert("현재 기능은 구현중에 있습니다.");
-		return false;
-	})
-</script>
+
 </html>
