@@ -84,6 +84,7 @@ public class AdminController extends HttpServlet {
 					dao.insertExImg(0, oriName, sysName, ex_id);
 					System.out.println("OK");
 				}
+				request.getRequestDispatcher("/admin/admin_input_ex.jsp").forward(request, response);
 			} else if(cmd.equals("/member_list.admin")) {
 				List<MemberDTO> list = dao.selectAllMember();
 				request.setAttribute("list", list);
