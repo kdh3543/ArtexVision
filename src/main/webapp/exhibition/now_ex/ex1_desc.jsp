@@ -374,98 +374,41 @@
   
   
 	<!-- 댓글 기능 -->
-	<style>
-        *{
-            box-sizing: border-box;
-        }
-        .re_container{
-            margin: auto;
-            width: 600px;
-            height: 100px;
-            border: 2px solid black;
-        }
-        .re_top{
-            height: 30%;
-            width: 100%;
-            background-color: gray;
-        }
-        .re_bottom{
-            width: 100%;
-            height: 70%;
-        }
-        .re_inputBox{
-            width: 80%;
-            height: 100%;
-            float: left;
-            border: 1px solid black;
-            overflow-y: auto;
-        }
-        .re_btn{
-            width: 20%;
-            height: 100%;
-            float: left;
-        }
-        #replyBtn{
-            width: 100%;
-            height: 100%;
-        }
-        #replyBtn:hover{
-            cursor: pointer;
-        }
-        .re_subBody{
-            width: 100%;
-            float: left;
-        }
 
-    </style>
 </head>
 
 <body>
   <div class="container">
-    <c:choose>
-          <c:when test="${loginId!=null}">
-            <div class="header" id="topTarget">
-              <ul class="header_list">
-                <li class="user_detail"><span id="user_grade"><i class="fas fa-crown"></i> ${dto.mem_grade}</li></span>
-                <li id="welcome"> ${loginId } 님 환영합니다.</li>
-                <li id="mypage"><a href="/modifyForm.mem">마이페이지</a></li>
-                <li id="basket"><a href="/basket/basket.jsp" id="basket">장바구니</a></li>
-                <li id=logout><a href="/logout.mem"  id="logout">로그아웃</a></li>
-              </ul>
-            </div>
-          </c:when>
-          <c:otherwise>
-            <div class="header" id="topTarget">
-              <ul class="header_list">
-                <li id=login><a href="/home.mem">로그인</a></li>
-                <li id=signup><a href="/signup.mem">회원가입</a></li>
-              </ul>
-            </div>
-          </c:otherwise>
-     </c:choose>
+    <div class="header">
+      <ul class="header_list">
+        <li class="user_detail"><span id="user_grade"><i class="fas fa-crown"></i> SILVER</li></span>
+        <li> USER001 님 환영합니다.</li>
+        <li><a href="#">마이페이지</a></li>
+        <li><a href="#">장바구니</a></li>
+        <!-- <li><a href="#">로그인</a></li> -->
+        <li><a href="#">로그아웃</a></li>
+        <!-- <li><a href="#">회원가입</a></li> -->
+        <li>
+          <span class="search_wrap">
+            <input type="text" id="search_text" name="search_text" class="search_text" placeholder="INPUT SEARCH ITEM"
+              maxlength="25">
+            <a href=""><i class="fas fa-search"></i></a>
+          </span>
+        </li>
+      </ul>
+    </div>
     <div class="nav">
       <div class="nav_logo">
-<<<<<<< HEAD
         <a href="/artexMain/mainpage.jsp" ><i class="fab fa-artstation"> Artex Vision</i></a>
-=======
-        <a href="/artexMain/mainpage.jsp"><i class="fab fa-artstation"> Artex Vision</i></a>
->>>>>>> 0a44f0ae9f6223a30be667d0158a57b79c34a085
       </div>
       <div class="nav_side">
         <div class="nav_menu">
           <ul class="nav_menu_list">
-<<<<<<< HEAD
             <li><a href="#">NOTICE</a></li>
             <li><a href="/artexDesc/artex_desc.jsp">Artex Vision</a></li>
             <li><a href="/exhibition/main_ex/now_main_ex.jsp">전시</a></li>
             <li><a href="#">이벤트</a></li>
             <li><a href="#">커뮤니티</a></li>
-=======
-            <li><a href="/nb_list.board?cpage=1" id="notice">NOTICE</a></li>
-            <li><a href="/artexDesc/artex_desc.jsp">Artex Vision</a></li>
-            <li><a href="/exhibition/main_ex/now_main_ex.jsp">전시</a></li>
-            <li><a href="#" id="event">이벤트</a></li>
->>>>>>> 0a44f0ae9f6223a30be667d0158a57b79c34a085
           </ul>
         </div>
       </div>
@@ -551,20 +494,7 @@
             리뷰입니다.
           </div>
           <div class="menu_content3">
-            <!-- 댓글 기능 -->
-			<div class="re_container">
-        		<div class="re_top">
-            		<input type="text" placeholder="작성자" class="who">
-        		</div>
-        	<div class="re_bottom">
-            	<div class="re_inputBox" contenteditable="true"></div>
-            	<div class="re_btn">
-                	<button id="re_replyBtn">Reply</button>
-            	</div>
-        	</div>
-   		 	</div>
-    		<hr>
-   			 <div class=re_subBody></div>
+            기대평입니다.
 		  </div>
           </div>
         </div>
@@ -644,21 +574,7 @@
 		
 	})
 	
-	$("#logout").on("click",function(){
-		if(!confirm("로그아웃 하시겠습니까?")){
-			return false;
-		}
-	})
 	
-	$("#basket").on("click",function(){
-		alert("현재 기능은 구현중에 있습니다.");
-		return false;
-	})
-	
-	$("#event").on("click",function(){
-		alert("현재 기능은 구현중에 있습니다.");
-		return false;
-	})
   </script>
   
   
@@ -718,61 +634,6 @@
 	marker.setMap(map);
 
 	</script>
-	
-	<!-- 댓글 script -->
-	 <script>
-        $("#replyBtn").on("click",function(){
-
-            let leftBox = $("<div>");
-            leftBox.addClass("leftBox");
-            leftBox.css({"width":"80%", "height":"100%","border":"1px solid black","float":"left"});
-
-            let divCon = $("<div>");
-            divCon.addClass("divCon")
-            divCon.css({"border":"2px solid black", "width":"600px", "height":"100px", "margin":"auto", "padding":"2px", "overflow-y": "auto"});
-            
-            let rightBox = $("<div>");
-            rightBox.addClass("rightBox")
-            rightBox.css({"width":"20%", "height":"100%", "float":"left"});
-
-            let writer = $("<div>");
-            writer.addClass("writer")
-            writer.css({"width":"100%","height":"25px","line-height":"25px","color":"white","background-color":"gray", "float":"left", "padding":"2px"})
-            writer.text($(".who").val()+"님의 말")
-
-            let replBox = $("<div>");
-            replBox.addClass("replBox");
-            replBox.css({"width":"100%", "height":"75px", "float":"left"});
-            replBox.html($(".re_inputBox").html());
-
-            let delBtn = $("<button>");
-            delBtn.addClass("delBtn")
-            delBtn.css({"width":"100%", "height":"100%"})
-            delBtn.html("삭제");
-
-            // 작성자 공란일 경우
-            if($(".who").val()==""){
-                alert("작성자를 입력하세요.");
-                return false;
-            }
-
-            divCon.prepend(leftBox);
-            divCon.append(rightBox);
-            leftBox.prepend(writer);
-            leftBox.append(replBox);
-            rightBox.prepend(delBtn);
-
-            $(".re_subBody").append(divCon);
-
-            $(".re_inputBox").html("");
-            $(".who").val("");
-            $(".who").focus();
-        })
-
-        $(".re_subBody").on("click",".delBtn",function(){
-            $(this).parent().parent().remove();
-        })
-    </script>
 </body>
 
 </html>

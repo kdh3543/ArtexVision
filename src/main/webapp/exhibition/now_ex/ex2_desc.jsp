@@ -375,50 +375,36 @@
 
 <body>
   <div class="container">
-    <c:choose>
-          <c:when test="${loginId!=null}">
-            <div class="header" id="topTarget">
-              <ul class="header_list">
-                <li class="user_detail"><span id="user_grade"><i class="fas fa-crown"></i> ${dto.mem_grade}</li></span>
-                <li id="welcome"> ${loginId } 님 환영합니다.</li>
-                <li id="mypage"><a href="/modifyForm.mem">마이페이지</a></li>
-                <li id="basket"><a href="/basket/basket.jsp" id="basket">장바구니</a></li>
-                <li id=logout><a href="/logout.mem"  id="logout">로그아웃</a></li>
-              </ul>
-            </div>
-          </c:when>
-          <c:otherwise>
-            <div class="header" id="topTarget">
-              <ul class="header_list">
-                <li id=login><a href="/home.mem">로그인</a></li>
-                <li id=signup><a href="/signup.mem">회원가입</a></li>
-              </ul>
-            </div>
-          </c:otherwise>
-     </c:choose>
+    <div class="header">
+      <ul class="header_list">
+        <li class="user_detail"><span id="user_grade"><i class="fas fa-crown"></i> SILVER</li></span>
+        <li> USER001 님 환영합니다.</li>
+        <li><a href="#">마이페이지</a></li>
+        <li><a href="#">장바구니</a></li>
+        <!-- <li><a href="#">로그인</a></li> -->
+        <li><a href="#">로그아웃</a></li>
+        <!-- <li><a href="#">회원가입</a></li> -->
+        <li>
+          <span class="search_wrap">
+            <input type="text" id="search_text" name="search_text" class="search_text" placeholder="INPUT SEARCH ITEM"
+              maxlength="25">
+            <a href=""><i class="fas fa-search"></i></a>
+          </span>
+        </li>
+      </ul>
+    </div>
     <div class="nav">
       <div class="nav_logo">
-<<<<<<< HEAD
         <a href="/artexMain/mainpage.jsp" ><i class="fab fa-artstation"> Artex Vision</i></a>
-=======
-        <a href="/artexMain/mainpage.jsp"><i class="fab fa-artstation"> Artex Vision</i></a>
->>>>>>> 0a44f0ae9f6223a30be667d0158a57b79c34a085
       </div>
       <div class="nav_side">
         <div class="nav_menu">
           <ul class="nav_menu_list">
-<<<<<<< HEAD
             <li><a href="#">NOTICE</a></li>
             <li><a href="/artexDesc/artex_desc.jsp">Artex Vision</a></li>
             <li><a href="/exhibition/main_ex/now_main_ex.jsp">전시</a></li>
             <li><a href="#">이벤트</a></li>
             <li><a href="#">커뮤니티</a></li>
-=======
-            <li><a href="/nb_list.board?cpage=1" id="notice">NOTICE</a></li>
-            <li><a href="/artexDesc/artex_desc.jsp">Artex Vision</a></li>
-            <li><a href="/exhibition/main_ex/now_main_ex.jsp">전시</a></li>
-            <li><a href="#" id="event">이벤트</a></li>
->>>>>>> 0a44f0ae9f6223a30be667d0158a57b79c34a085
           </ul>
         </div>
       </div>
@@ -586,21 +572,7 @@
 		
 	})
 	
-	$("#logout").on("click",function(){
-		if(!confirm("로그아웃 하시겠습니까?")){
-			return false;
-		}
-	})
 	
-	$("#basket").on("click",function(){
-		alert("현재 기능은 구현중에 있습니다.");
-		return false;
-	})
-	
-	$("#event").on("click",function(){
-		alert("현재 기능은 구현중에 있습니다.");
-		return false;
-	})
   </script>
   
   
