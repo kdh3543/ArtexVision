@@ -82,7 +82,7 @@ public class AdminDAO {
 	}
 	
 	public List<MemberDTO> selectAllMember() throws Exception {
-		String sql = "select * from member";
+		String sql = "select * from member order by mem_signup_date";
 		try(Connection conn = this.getConnection();
 			PreparedStatement pstmt = conn.prepareStatement(sql);)
 		{
