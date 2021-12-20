@@ -283,17 +283,16 @@
 </head>
 
 <body>
-	<c:if test="${!empty loginID}">
 	<div class="container">
+
 		<div class="header">
 			<div class="admin_logo">
 				<i class="fab fa-artstation"> Artex Vision Admin Page</i>
 			</div>
 			<div class="userDetail">
-				<i class="fas fa-user-circle"> ${loginID } 님 환영합니다.</i> 
-				<a href="/logout.admin" id="logout_btn">
-				<i class="fas fa-sign-out-alt"> LOGOUT</i></a>
-				
+				<i class="fas fa-user-circle"> ADMIN 님 환영합니다.</i> <a
+					href="/logout.admin" id="logout_btn"><i
+					class="fas fa-sign-out-alt"> LOGOUT</i></a>
 			</div>
 		</div>
 
@@ -305,8 +304,7 @@
 					</div>
 					<div class="nav_title">DASHBOARD</div>
 				</div>
-			</a> 
-			<a href="/member_list.admin">
+			</a> <a href="/member_list.admin">
 				<div class="nav_items">
 					<div class="nav_icon">
 						<i class="fas fa-address-card"></i>
@@ -314,22 +312,18 @@
 					<div class="nav_title">MEMBERS</div>
 				</div>
 			</a>
-			
-			<div class="nav_items" id="working1">
+			<div class="nav_items">
 				<div class="nav_icon">
 					<i class="far fa-clipboard"></i>
 				</div>
 				<div class="nav_title">BOARD</div>
 			</div>
-			
-			
-			<div class="nav_items" id="working2">
+			<div class="nav_items">
 				<div class="nav_icon">
 					<i class="fas fa-crown"></i>
 				</div>
 				<div class="nav_title">GRADE</div>
 			</div>
-			
 			<a href="/input_ex_form.admin">
 				<div class="nav_items">
 					<div class="nav_icon">
@@ -413,24 +407,8 @@
 				adipisicing elit. Animi doloremque, fuga nihil neque</div>
 		</div>
 	</div>
-	</c:if>
-	<c:if test="${empty loginID}">
-		<script>
-			location.href = "/admin/admin_login.jsp"
-		</script>
-	</c:if>
 </body>
 <script>
-	let working1 = document.getElementById("working1");
-	let working2 = document.getElementById("working2");
-	
-	working1.onclick = function() {
-		alert("현재 작업중입니다.");
-	}
-	working2.onclick = function() {
-		alert("현재 작업중입니다.");
-	}
-
 	let weekly_btn = document.getElementById("weekly_btn");
 	let daily_btn = document.getElementById("daily_btn");
 	const dashboard_contents = document.querySelector(".dashboard_contents");
@@ -538,6 +516,8 @@
 			}
 		});
 	}
+	
+	
 </script>
 
 </html>

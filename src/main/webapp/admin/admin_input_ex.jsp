@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -120,7 +119,7 @@
     }
 
     div {
-      /* border: 1px solid black;  */
+      border: 1px solid black; 
     }
 
     input:-webkit-autofill,
@@ -365,17 +364,22 @@
         }).open();
       };
 
-      let working1 = document.getElementById("working1");
-  	  let working2 = document.getElementById("working2");
-  	
-	  working1.onclick = function() {
-	  	alert("현재 작업중입니다.");
-	  }
-	  
-	  working2.onclick = function() {
-	  	alert("현재 작업중입니다.");
-	  }
+      let nav_items = document.querySelectorAll(".nav_items");
+      let nav_icon = document.querySelectorAll(".nav_icon");
+      let nav_title = document.querySelectorAll(".nav_title");
+
+      for(let i = 0; nav_items.length; i++){
+        nav_items[i].onmouseover = function(){
+          this.style.color = "#998ab4";
+          this.style.cursor = "pointer";
+        }
+
+        nav_items[i].onmouseleave = function(){
+          this.style.color = "#ffffff";
+        }
+      }
     }
+
   </script>
 </head>
 
@@ -405,11 +409,11 @@
         <div class="nav_title">MEMBERS</div>
       </div>
       </a>
-      <div class="nav_items" id="working1">
+      <div class="nav_items">
         <div class="nav_icon"><i class="far fa-clipboard"></i></div>
         <div class="nav_title">BOARD</div>
       </div>
-      <div class="nav_items" id="working2">
+      <div class="nav_items">
         <div class="nav_icon"><i class="fas fa-crown"></i></div>
         <div class="nav_title">GRADE</div>
       </div>
@@ -484,11 +488,6 @@
         neque</div>
     </div>
   </div>
-  <c:if test="${empty loginID}">
-		<script>
-			location.href = "/admin/admin_login.jsp"
-		</script>
-	</c:if>
 </body>
 <script>
 

@@ -119,7 +119,7 @@
     }
 
     div {
-      /* border: 1px solid black; */
+      border: 1px solid black;
     }
 
     a {
@@ -277,17 +277,6 @@
 
     /* footer end */
   </style>
-  <script>
-    let working1 = document.getElementById("working1");
-	let working2 = document.getElementById("working2");
-	
-	working1.onclick = function() {
-		alert("현재 작업중입니다.");
-	}
-	working2.onclick = function() {
-		alert("현재 작업중입니다.");
-	}
-  </script>
 </head>
 
 <body>
@@ -315,11 +304,11 @@
         <div class="nav_title">MEMBERS</div>
       </div>
       </a>
-      <div class="nav_items" id="working1">
+      <div class="nav_items">
         <div class="nav_icon"><i class="far fa-clipboard"></i></div>
         <div class="nav_title">BOARD</div>
       </div>
-      <div class="nav_items" id="working2">
+      <div class="nav_items">
         <div class="nav_icon"><i class="fas fa-crown"></i></div>
         <div class="nav_title">GRADE</div>
       </div>
@@ -375,11 +364,10 @@
         neque</div>
     </div>
   </div>
-  <c:if test="${empty loginID}">
-		<script>
-			location.href = "/admin/admin_login.jsp"
-		</script>
-	</c:if>
+  <script>
+    let checkbox = document.querySelectorAll(".list_check");
+    console.log(checkbox);
+  </script>
 </body>
 
 </html>

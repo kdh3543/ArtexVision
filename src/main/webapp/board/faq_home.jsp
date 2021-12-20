@@ -481,7 +481,7 @@
               <ul class="nav_menu_list">
                 <li><a href="/nb_list.board?cpage=1" id="notice">NOTICE</a></li>
                 <li><a href="/exhibition/artexDesc/artex_desc.jsp">Artex Vision</a></li>
-                <li><a href="/exhibition/exhibition/main_ex/now_main_ex.jsp">전시</a></li>
+                <li><a href="/exhibition/main_ex/now_main_ex.jsp">전시</a></li>
                 <li><a href="#" id="event">이벤트</a></li>
               </ul>
             </div>

@@ -1,4 +1,3 @@
-<!-- 사이드바 잘보이게 하려고 500px 줬음 수정필요-->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -473,6 +472,12 @@
         .board_nb_page {
             text-align: text;
         }
+
+        
+        #nb_title, #nb_contents{
+        	border: 0px;
+        }
+
         a {
           text-align: center;
           text-decoration: none;
@@ -551,10 +556,11 @@
                 <form action="/nb_modify.board" id = "frmDetail">
                     <div class="board_nb_write" style="width:100%;">
                     	<input type=hidden value="${noticeboard_dto.nb_seq }" name=nb_seq>
-                        <div class="board_nb_title"><input type=text pceholder="제목을 입력하세요"
+                        <div class="board_nb_title"><input type=text placeholder="제목을 입력하세요"
                                 style="width:100%;" name="nb_title" id="nb_title" readonly value="${noticeboard_dto.nb_title }"></div>
+                                <hr>
                         <div class="board_nb_contents"><textarea placeholder="내용을 입력하세요."
-                                style="width:100%; height: 330px;" readonly name="nb_contents" id="nb_contents">${noticeboard_dto.nb_contents }</textarea></div>
+                                style="width:100%; margin-top:10px; height: 330px;" readonly name="nb_contents" id="nb_contents">${noticeboard_dto.nb_contents }</textarea></div>
                     </div>
                     <br>
                     <div class="board_nb_user_writebtn" style="text-align: right;">
@@ -570,10 +576,15 @@
                 <br>
             </div>
         </div>
+
+        <!-- 커뮤니티 end -->        
+        <div class="footer"></div>        
+
         <!-- 커뮤니티 end -->
         <div class="footer">
 
         </div>
+
     </div>
     
     <script>

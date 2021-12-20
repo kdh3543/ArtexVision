@@ -375,36 +375,38 @@
 
 <body>
   <div class="container">
-    <div class="header">
-      <ul class="header_list">
-        <li class="user_detail"><span id="user_grade"><i class="fas fa-crown"></i> SILVER</li></span>
-        <li> USER001 님 환영합니다.</li>
-        <li><a href="#">마이페이지</a></li>
-        <li><a href="#">장바구니</a></li>
-        <!-- <li><a href="#">로그인</a></li> -->
-        <li><a href="#">로그아웃</a></li>
-        <!-- <li><a href="#">회원가입</a></li> -->
-        <li>
-          <span class="search_wrap">
-            <input type="text" id="search_text" name="search_text" class="search_text" placeholder="INPUT SEARCH ITEM"
-              maxlength="25">
-            <a href=""><i class="fas fa-search"></i></a>
-          </span>
-        </li>
-      </ul>
-    </div>
+    <c:choose>
+          <c:when test="${loginId!=null}">
+            <div class="header" id="topTarget">
+              <ul class="header_list">
+                <li class="user_detail"><span id="user_grade"><i class="fas fa-crown"></i> ${dto.mem_grade}</li></span>
+                <li id="welcome"> ${loginId } 님 환영합니다.</li>
+                <li id="mypage"><a href="/modifyForm.mem">마이페이지</a></li>
+                <li id="basket"><a href="/basket/basket.jsp" id="basket">장바구니</a></li>
+                <li id=logout><a href="/logout.mem"  id="logout">로그아웃</a></li>
+              </ul>
+            </div>
+          </c:when>
+          <c:otherwise>
+            <div class="header" id="topTarget">
+              <ul class="header_list">
+                <li id=login><a href="/home.mem">로그인</a></li>
+                <li id=signup><a href="/signup.mem">회원가입</a></li>
+              </ul>
+            </div>
+          </c:otherwise>
+     </c:choose>
     <div class="nav">
       <div class="nav_logo">
-        <a href="/artexMain/mainpage.jsp" ><i class="fab fa-artstation"> Artex Vision</i></a>
+        <a href="/artexMain/mainpage.jsp"><i class="fab fa-artstation"> Artex Vision</i></a>
       </div>
       <div class="nav_side">
         <div class="nav_menu">
           <ul class="nav_menu_list">
-            <li><a href="#">NOTICE</a></li>
+            <li><a href="/nb_list.board?cpage=1" id="notice">NOTICE</a></li>
             <li><a href="/artexDesc/artex_desc.jsp">Artex Vision</a></li>
             <li><a href="/exhibition/main_ex/now_main_ex.jsp">전시</a></li>
-            <li><a href="#">이벤트</a></li>
-            <li><a href="#">커뮤니티</a></li>
+            <li><a href="#" id="event">이벤트</a></li>
           </ul>
         </div>
       </div>
@@ -447,19 +449,19 @@
           </div>
           <div class="ex_price">
             <div>가격</div>
-            <div id="price">4000</div>
+            <div>4,000원</div>
           </div>
           <div class="ex_person" >
             <div>인원</div>
             <div>
-            <select name="person" style="width:120px; height:40px;" id="person">
+            <select name="person" style="width:120px; height:40px;">
               <option >인원 선택</option>
-              <option value=1 >1</option>
-              <option value=2 >2</option>
-              <option value=3 >3</option>
-              <option value=4 >4</option>
-              <option value=5 >5</option>
-              <option value=6 >6</option>
+              <option >1</option>
+              <option >2</option>
+              <option >3</option>
+              <option >4</option>
+              <option >5</option>
+              <option >6</option>
             </select></div>
           </div>
           <div class="ex_date">
@@ -468,7 +470,7 @@
           </div>
           <div class="ex_buy">
             <div>결제가격</div>
-            <div id="realprice"></div>
+            <div>000,000원</div>
           </div>
           <div class="buy" style="height: 30%; text-align: center;  padding-top: 30px; padding-left: 30px;">
             <button id="buy_btn">예매하기</button>
@@ -478,7 +480,7 @@
           <div class="menu_top">
             <div id="desc">상세정보</div>
             <div id="review">이용후기</div>
-            <div id="expect">기대평</div>
+            <div id="qna">Q&A</div>
           </div>
           <hr>
           <div class="menu_content1">
@@ -497,7 +499,7 @@
             리뷰입니다.
           </div>
           <div class="menu_content3">
-             기대평입니다.
+             qna입니다.
           </div>
         </div>
       </div>
@@ -505,46 +507,7 @@
 
     <div class="footer"> </div>
   </div>
-   <!-- 예매하기 버튼 클릭 시  -->
-  <script>
-  $("#buy_btn").on("click",function(){
-	  
-      if(!($('#person > option:selected').val())) {
-    	    alert("인원을 선택하세요.");
-    	    return false;
-    	}
-      
-      if(!$("#realprice").text()) {
-    	    alert("인원을 선택하세요");
-    	    return false;
-    	}
-      
-      if(!$("#choiceDate").val()) {
-  	    alert("날짜를 선택하세요");
-  	    return false;
-  		}
-     
-          
-	  let price = $("#realprice").text(); 
-	  let result = confirm(price+"원 결제하시겠습니까?");
-	  if(result){
-		  location.href="/book/ex_pay2.jsp";
-	  }
-  })
-  </script>
   
-  <!-- 인원수 선택시 -->
-  <script>
-  $("#person").change(function(){
-	  /* location.href="/buy.exbuy"; */
- 	  let price = parseInt($("#price").text()); 
-	  let person = parseInt($("#person option:selected").val()); 
-  	  let realpriceInt = price*person; 
-	  let realprice = realpriceInt.toString();  
-	  $("#realprice").text(realprice);
-  });
-  
-  </script>
   <!-- 상세설명, 리뷰, q&a 클릭에 따른 div 보여주기 코드  -->
   <script type="text/javascript">
   /*  상세 정보 클릭 시  */
@@ -566,7 +529,7 @@
 	})
 	
 	/*  qna 클릭 시  */
-  $("#expect").on("click", function(){
+  $("#qna").on("click", function(){
 
 		$(".menu_content2").css("display", "none");
 		$(".menu_content3").css("display", "inline");
@@ -574,12 +537,26 @@
 		
 	})
 	
+	$("#logout").on("click",function(){
+		if(!confirm("로그아웃 하시겠습니까?")){
+			return false;
+		}
+	})
 	
+	$("#basket").on("click",function(){
+		alert("현재 기능은 구현중에 있습니다.");
+		return false;
+	})
+	
+	$("#event").on("click",function(){
+		alert("현재 기능은 구현중에 있습니다.");
+		return false;
+	})
   </script>
   
   
   <!--  날짜 api  -->
-  <script type="text/javascript">
+  	<script type="text/javascript">
     $(document).ready(function () {
             $.datepicker.setDefaults($.datepicker.regional['ko']); 
             $( "#choiceDate" ).datepicker({
@@ -601,6 +578,7 @@
             });
              
     });
+    
 	</script>
 
 
