@@ -447,6 +447,22 @@
       <div class="nav_logo">
         <a href="/artexMain/mainpage.jsp"><i class="fab fa-artstation"> Artex Vision</i></a>
       </div>
+<<<<<<< HEAD
+      <div class="nav">
+        <div class="nav_logo">
+           <a href="/artexMain/mainpage.jsp" ><i class="fab fa-artstation"> Artex Vision</i></a>
+        </div>
+        <div class="nav_side">
+          <div class="nav_menu">
+            <ul class="nav_menu_list">
+            	<li><a href="#">NOTICE</a></li>
+            	<li><a href="/artexDesc/artex_desc.jsp">Artex Vision</a></li>
+           		<li><a href="/exhibition/main_ex/now_main_ex.jsp">전시</a></li>
+            	<li><a href="#">이벤트</a></li>
+            	<li><a href="#">커뮤니티</a></li>
+          </ul>
+          </div>
+=======
       <div class="nav_side">
         <div class="nav_menu">
           <ul class="nav_menu_list">
@@ -455,6 +471,7 @@
             <li><a href="/exhibition/main_ex/now_main_ex.jsp">전시</a></li>
             <li><a href="#" id="event">이벤트</a></li>
           </ul>
+>>>>>>> 0a44f0ae9f6223a30be667d0158a57b79c34a085
         </div>
       </div>
     </div>
@@ -468,10 +485,10 @@
         <div class="sidebar">
           <h2 class="list_title">전시</h2>
           <ul class="sidebar_item_list">
-            <li class="sidebar_item"><a href="now_main_ex.jsp">현재 전시</a></li>
-            <li class="sidebar_item"><a href="future_main_ex.jsp">예정된 전시</a></li>
-            <li class="sidebar_item"><a href="end_main_ex.jsp">마감된 전시</a></li>
-          </ul>
+          	<li class="sidebar_item"><a href="/exhibition/main_ex/now_main_ex.jsp">현재 전시</a></li>
+          	<li class="sidebar_item"><a href="/exhibition/main_ex/future_main_ex.jsp">예정된 전시</a></li>
+          	<li class="sidebar_item"><a href="/exhibition/main_ex/end_main_ex.jsp">마감된 전시</a></li>
+        </ul>
         </div>
   
         <div class="contents">

@@ -337,7 +337,7 @@
       display : none;
     }
     .menu_content3{
-      padding: 20px;
+      /* padding: 20px; */
       display : none;
     }
 
@@ -371,6 +371,53 @@
             color: black; /* 링크의 색상 제거 */
         }
   </style>
+  
+  
+	<!-- 댓글 기능 -->
+	<style>
+        *{
+            box-sizing: border-box;
+        }
+        .re_container{
+            margin: auto;
+            width: 600px;
+            height: 100px;
+            border: 2px solid black;
+        }
+        .re_top{
+            height: 30%;
+            width: 100%;
+            background-color: gray;
+        }
+        .re_bottom{
+            width: 100%;
+            height: 70%;
+        }
+        .re_inputBox{
+            width: 80%;
+            height: 100%;
+            float: left;
+            border: 1px solid black;
+            overflow-y: auto;
+        }
+        .re_btn{
+            width: 20%;
+            height: 100%;
+            float: left;
+        }
+        #replyBtn{
+            width: 100%;
+            height: 100%;
+        }
+        #replyBtn:hover{
+            cursor: pointer;
+        }
+        .re_subBody{
+            width: 100%;
+            float: left;
+        }
+
+    </style>
 </head>
 
 <body>
@@ -398,15 +445,27 @@
      </c:choose>
     <div class="nav">
       <div class="nav_logo">
+<<<<<<< HEAD
+        <a href="/artexMain/mainpage.jsp" ><i class="fab fa-artstation"> Artex Vision</i></a>
+=======
         <a href="/artexMain/mainpage.jsp"><i class="fab fa-artstation"> Artex Vision</i></a>
+>>>>>>> 0a44f0ae9f6223a30be667d0158a57b79c34a085
       </div>
       <div class="nav_side">
         <div class="nav_menu">
           <ul class="nav_menu_list">
+<<<<<<< HEAD
+            <li><a href="#">NOTICE</a></li>
+            <li><a href="/artexDesc/artex_desc.jsp">Artex Vision</a></li>
+            <li><a href="/exhibition/main_ex/now_main_ex.jsp">전시</a></li>
+            <li><a href="#">이벤트</a></li>
+            <li><a href="#">커뮤니티</a></li>
+=======
             <li><a href="/nb_list.board?cpage=1" id="notice">NOTICE</a></li>
             <li><a href="/artexDesc/artex_desc.jsp">Artex Vision</a></li>
             <li><a href="/exhibition/main_ex/now_main_ex.jsp">전시</a></li>
             <li><a href="#" id="event">이벤트</a></li>
+>>>>>>> 0a44f0ae9f6223a30be667d0158a57b79c34a085
           </ul>
         </div>
       </div>
@@ -420,9 +479,9 @@
       <div class="sidebar">
         <h2 class="list_title">전시</h2>
         <ul class="sidebar_item_list">
-          <li class="sidebar_item"><a href="../main_ex/now_main_ex.jsp">현재 전시</a></li>
-          <li class="sidebar_item"><a href="../main_ex/future_main_ex.jsp">예정된 전시</a></li>
-          <li class="sidebar_item"><a href="../main_ex/end_main_ex.jsp">마감된 전시</a></li>
+          <li class="sidebar_item"><a href="/exhibition/main_ex/now_main_ex.jsp">현재 전시</a></li>
+          <li class="sidebar_item"><a href="/exhibition/main_ex/future_main_ex.jsp">예정된 전시</a></li>
+          <li class="sidebar_item"><a href="/exhibition/main_ex/end_main_ex.jsp">마감된 전시</a></li>
         </ul>
       </div>
 
@@ -449,19 +508,19 @@
           </div>
           <div class="ex_price">
             <div>가격</div>
-            <div>4,000원</div>
+            <div id="price">4000</div>
           </div>
           <div class="ex_person" >
             <div>인원</div>
             <div>
-            <select name="person" style="width:120px; height:40px;">
+            <select name="person" style="width:120px; height:40px;" id="person">
               <option >인원 선택</option>
-              <option >1</option>
-              <option >2</option>
-              <option >3</option>
-              <option >4</option>
-              <option >5</option>
-              <option >6</option>
+              <option value=1 >1</option>
+              <option value=2 >2</option>
+              <option value=3 >3</option>
+              <option value=4 >4</option>
+              <option value=5 >5</option>
+              <option value=6 >6</option>
             </select></div>
           </div>
           <div class="ex_date">
@@ -470,17 +529,17 @@
           </div>
           <div class="ex_buy">
             <div>결제가격</div>
-            <div>000,000원</div>
+            <div id="realprice"></div>
           </div>
           <div class="buy" style="height: 30%; text-align: center;  padding-top: 30px; padding-left: 30px;">
-            <button id="buy_btn">예매하기</button>
+            <button id="buy_btn" type="button">예매하기</button>
           </div>
         </div>
         <div class="contents_wrap3">
           <div class="menu_top">
             <div id="desc">상세정보</div>
             <div id="review">이용후기</div>
-            <div id="qna">Q&A</div>
+            <div id="expect">기대평</div>
           </div>
           <hr>
           <div class="menu_content1">
@@ -492,14 +551,69 @@
             리뷰입니다.
           </div>
           <div class="menu_content3">
-             qna입니다.
+            <!-- 댓글 기능 -->
+			<div class="re_container">
+        		<div class="re_top">
+            		<input type="text" placeholder="작성자" class="who">
+        		</div>
+        	<div class="re_bottom">
+            	<div class="re_inputBox" contenteditable="true"></div>
+            	<div class="re_btn">
+                	<button id="re_replyBtn">Reply</button>
+            	</div>
+        	</div>
+   		 	</div>
+    		<hr>
+   			 <div class=re_subBody></div>
+		  </div>
           </div>
         </div>
       </div>
     </div>
-
     <div class="footer"> </div>
   </div>
+  
+  
+  <!-- 예매하기 버튼 클릭 시  -->
+  <script>
+  $("#buy_btn").on("click",function(){
+	  
+      if(!($('#person > option:selected').val())) {
+    	    alert("인원을 선택하세요.");
+    	    return false;
+    	}
+      
+      if(!$("#realprice").text()) {
+    	    alert("인원을 선택하세요");
+    	    return false;
+    	}
+      
+      if(!$("#choiceDate").val()) {
+  	    alert("날짜를 선택하세요");
+  	    return false;
+  		}
+     
+          
+	  let price = $("#realprice").text(); 
+	  let result = confirm(price+"원 결제하시겠습니까?");
+	  if(result){
+		  location.href="/book/ex_pay2.jsp";
+	  }
+  })
+  </script>
+  
+  <!-- 인원수 선택시 -->
+  <script>
+  $("#person").change(function(){
+	  /* location.href="/buy.exbuy"; */
+ 	  let price = parseInt($("#price").text()); 
+	  let person = parseInt($("#person option:selected").val()); 
+  	  let realpriceInt = price*person; 
+	  let realprice = realpriceInt.toString();  
+	  $("#realprice").text(realprice);
+  });
+  
+  </script>
   
   <!-- 상세설명, 리뷰, q&a 클릭에 따른 div 보여주기 코드  -->
   <script type="text/javascript">
@@ -522,7 +636,7 @@
 	})
 	
 	/*  qna 클릭 시  */
-  $("#qna").on("click", function(){
+  $("#expect").on("click", function(){
 
 		$(".menu_content2").css("display", "none");
 		$(".menu_content3").css("display", "inline");
@@ -604,6 +718,61 @@
 	marker.setMap(map);
 
 	</script>
+	
+	<!-- 댓글 script -->
+	 <script>
+        $("#replyBtn").on("click",function(){
+
+            let leftBox = $("<div>");
+            leftBox.addClass("leftBox");
+            leftBox.css({"width":"80%", "height":"100%","border":"1px solid black","float":"left"});
+
+            let divCon = $("<div>");
+            divCon.addClass("divCon")
+            divCon.css({"border":"2px solid black", "width":"600px", "height":"100px", "margin":"auto", "padding":"2px", "overflow-y": "auto"});
+            
+            let rightBox = $("<div>");
+            rightBox.addClass("rightBox")
+            rightBox.css({"width":"20%", "height":"100%", "float":"left"});
+
+            let writer = $("<div>");
+            writer.addClass("writer")
+            writer.css({"width":"100%","height":"25px","line-height":"25px","color":"white","background-color":"gray", "float":"left", "padding":"2px"})
+            writer.text($(".who").val()+"님의 말")
+
+            let replBox = $("<div>");
+            replBox.addClass("replBox");
+            replBox.css({"width":"100%", "height":"75px", "float":"left"});
+            replBox.html($(".re_inputBox").html());
+
+            let delBtn = $("<button>");
+            delBtn.addClass("delBtn")
+            delBtn.css({"width":"100%", "height":"100%"})
+            delBtn.html("삭제");
+
+            // 작성자 공란일 경우
+            if($(".who").val()==""){
+                alert("작성자를 입력하세요.");
+                return false;
+            }
+
+            divCon.prepend(leftBox);
+            divCon.append(rightBox);
+            leftBox.prepend(writer);
+            leftBox.append(replBox);
+            rightBox.prepend(delBtn);
+
+            $(".re_subBody").append(divCon);
+
+            $(".re_inputBox").html("");
+            $(".who").val("");
+            $(".who").focus();
+        })
+
+        $(".re_subBody").on("click",".delBtn",function(){
+            $(this).parent().parent().remove();
+        })
+    </script>
 </body>
 
 </html>

@@ -130,6 +130,10 @@
           width: 1200px;
           margin: auto;
         }
+        
+        .container>div{
+        width: 1200px;
+        }
 
         /* container end */
 
@@ -473,8 +477,29 @@
         }
 
         .top:hover {
+<<<<<<< HEAD
+            cursor: pointer;
+        }
+        
+            a{
+         text-align: center;
+  		text-decoration: none; /* 링크의 밑줄 제거 */
+ 		 color: inherit; /* 링크의 색상 제거 */
+            }
+            
+            a:hover{
+            color: black; /* 링크의 색상 제거 */
+            }
+    </style>
+    
+</head>
+
+<body>
+    <div class="container">
+=======
           cursor: pointer;
         }
+>>>>>>> 0a44f0ae9f6223a30be667d0158a57b79c34a085
 
         a {
           text-align: center;
@@ -493,6 +518,25 @@
 
     <body>
 
+<<<<<<< HEAD
+
+
+        <!-- 네비바 -->
+        <div class="nav">
+            <div class="nav_logo">
+                <a href="/artexMain/mainpage.jsp" ><i class="fab fa-artstation"> Artex Vision</i></a>
+            </div>
+            <div class="nav_side">
+                <div class="nav_menu">
+                    <ul class="nav_menu_list">
+            			<li><a href="#">NOTICE</a></li>
+        	  			<li><a href="/artexDesc/artex_desc.jsp">Artex Vision</a></li>
+            			<li><a href="/exhibition/main_ex/now_main_ex.jsp">전시</a></li>
+         			   	<li><a href="#">이벤트</a></li>
+            			<li><a href="#">커뮤니티</a></li>
+          			</ul>
+                </div>
+=======
       <div class="container">
 
         <!-- 헤더 -->
@@ -532,6 +576,7 @@
                 <li><a href="../exhibition/main_ex/now_main_ex.jsp">전시</a></li>
                 <li><a href="#" id="event">이벤트</a></li>
               </ul>
+>>>>>>> 0a44f0ae9f6223a30be667d0158a57b79c34a085
             </div>
           </div>
         </div>
@@ -564,6 +609,27 @@
                 </button>
               </div>
             </div>
+<<<<<<< HEAD
+<!-- 전시 파트(간략히 보여주고 링크로 세부페이지 연결) -->
+                <div class="exhibition_con">
+                    <div class="ex_title">전시회 안내&nbsp <span>Exhibition</span></div>
+                    <hr>
+                    <div class="ex_intro">
+                        <div class="ex_intro_top">
+                            <div><a href="/exhibition/now_ex/ex2_desc.jsp"><img src="img/main_weiwei.png" width="90%" height="100%"></a></div>
+                            <div><a href="/exhibition/now_ex/ex8_desc.jsp"><img src="img/main_countdown.png" width="90%" height="100%"></a></div>
+                            <div><a href="/exhibition/now_ex/ex5_desc.jsp"><img src="img/main_love.png" width="90%" height="100%"></a></div>
+                            <div><a href="/exhibition/now_ex/ex3_desc.jsp"><img src="img/main_shagall.png" width="90%" height="100%"></a></div>
+                        </div>
+                        <div class="ex_intro_bottom">
+                            <div><a href="/exhibition/now_ex/ex6_desc.jsp"><img src="img/main_yosigo.png" width="90%" height="100%"></a></div>
+                            <div><a href="/exhibition/now_ex/ex4_desc.jsp"><img src="img/main_josun.png" width="90%" height="100%"></a></div>
+                            <div><a href="/exhibition/now_ex/ex7_desc.jsp"><img src="img/main_russian.png" width="90%" height="100%"></a></div>
+                            <div><a href="/exhibition/now_ex/ex1_desc.jsp"><img src="img/main_hashtag.png" width="90%" height="100%"></a></div>
+                        </div>
+                    </div>
+                    <a href="/exhibition/main_ex/now_main_ex.jsp"><div class="more">더 보기 <span style="color:gray"><i class="fas fa-angle-double-right"></i></span></div></a>
+=======
           </div>
           <!-- 전시 파트(간략히 보여주고 링크로 세부페이지 연결) -->
           <div class="exhibition_con">
@@ -612,6 +678,7 @@
               <div>
                 <div id="star_icon">
                   <i class="fas fa-star fa-2x"></i>
+>>>>>>> 0a44f0ae9f6223a30be667d0158a57b79c34a085
                 </div>
                 <div id="score"> 4.5 </div>
               </div>

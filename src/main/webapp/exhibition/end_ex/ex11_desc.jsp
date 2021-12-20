@@ -398,15 +398,27 @@
      </c:choose>
     <div class="nav">
       <div class="nav_logo">
+<<<<<<< HEAD
+        <a href="/artexMain/mainpage.jsp" ><i class="fab fa-artstation"> Artex Vision</i></a>
+=======
         <a href="/artexMain/mainpage.jsp"><i class="fab fa-artstation"> Artex Vision</i></a>
+>>>>>>> 0a44f0ae9f6223a30be667d0158a57b79c34a085
       </div>
       <div class="nav_side">
         <div class="nav_menu">
           <ul class="nav_menu_list">
+<<<<<<< HEAD
+            <li><a href="#">NOTICE</a></li>
+            <li><a href="/artexDesc/artex_desc.jsp">Artex Vision</a></li>
+            <li><a href="/exhibition/main_ex/now_main_ex.jsp">전시</a></li>
+            <li><a href="#">이벤트</a></li>
+            <li><a href="#">커뮤니티</a></li>
+=======
             <li><a href="/nb_list.board?cpage=1" id="notice">NOTICE</a></li>
             <li><a href="/artexDesc/artex_desc.jsp">Artex Vision</a></li>
             <li><a href="/exhibition/main_ex/now_main_ex.jsp">전시</a></li>
             <li><a href="#" id="event">이벤트</a></li>
+>>>>>>> 0a44f0ae9f6223a30be667d0158a57b79c34a085
           </ul>
         </div>
       </div>
@@ -420,9 +432,9 @@
       <div class="sidebar">
         <h2 class="list_title">전시</h2>
         <ul class="sidebar_item_list">
-          <li class="sidebar_item"><a href="../main_ex/now_main_ex.jsp">현재 전시</a></li>
-          <li class="sidebar_item"><a href="../main_ex/future_main_ex.jsp">예정된 전시</a></li>
-          <li class="sidebar_item"><a href="../main_ex/end_main_ex.jsp">마감된 전시</a></li>
+          <li class="sidebar_item"><a href="/exhibition/main_ex/now_main_ex.jsp">현재 전시</a></li>
+          <li class="sidebar_item"><a href="/exhibition/main_ex/future_main_ex.jsp">예정된 전시</a></li>
+          <li class="sidebar_item"><a href="/exhibition/main_ex/end_main_ex.jsp">마감된 전시</a></li>
         </ul>
       </div>
 
@@ -449,18 +461,19 @@
           </div>
           <div class="ex_price">
             <div>가격</div>
-            <div>18,000</div>
+            <div id="price">18000</div>
           </div>
           <div class="ex_person" >
             <div>인원</div>
             <div>
-            <select name="person" style="width:120px; height:40px;">
+            <select name="person" style="width:120px; height:40px;" id="person">
               <option >인원 선택</option>
-              <option >1</option>
-              <option >2</option>
-              <option >3</option>
-              <option >4</option>
-              <option >5</option>
+              <option value=1 >1</option>
+              <option value=2 >2</option>
+              <option value=3 >3</option>
+              <option value=4 >4</option>
+              <option value=5 >5</option>
+              <option value=6 >6</option>
               <option >6</option>
             </select></div>
           </div>
@@ -470,7 +483,7 @@
           </div>
           <div class="ex_buy">
             <div>결제가격</div>
-            <div>000,000원</div>
+            <div id="realprice"></div>
           </div>
           <div class="buy" style="height: 30%; text-align: center;  padding-top: 30px; padding-left: 30px;">
             <button id="buy_btn">예매하기</button>
@@ -480,7 +493,7 @@
           <div class="menu_top">
             <div id="desc">상세정보</div>
             <div id="review">이용후기</div>
-            <div id="qna">Q&A</div>
+            <div id="expect">기대평</div>
           </div>
           <hr>
           <div class="menu_content1">
@@ -495,7 +508,7 @@
             리뷰입니다.
           </div>
           <div class="menu_content3">
-             qna입니다.
+            기대평입니다.
           </div>
         </div>
       </div>
@@ -503,7 +516,18 @@
 
     <div class="footer"> </div>
   </div>
+    <!-- 인원수 선택시 -->
+  <script>
+  $("#person").change(function(){
+	  /* location.href="/buy.exbuy"; */
+ 	  let price = parseInt($("#price").text()); 
+	  let person = parseInt($("#person option:selected").val()); 
+  	  let realpriceInt = price*person; 
+	  let realprice = realpriceInt.toString();  
+	  $("#realprice").text(realprice);
+  });
   
+  </script>
   <!-- 예매 종료 alert창 띄우기 -->
   <script>
   /*  예매 버튼 클릭 시  */ 
@@ -535,7 +559,7 @@
 	})
 	
 	/*  qna 클릭 시  */
-  $("#qna").on("click", function(){
+  $("#expect").on("click", function(){
 
 		$(".menu_content2").css("display", "none");
 		$(".menu_content3").css("display", "inline");
