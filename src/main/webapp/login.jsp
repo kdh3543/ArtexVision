@@ -5,7 +5,7 @@
 
     <head>
       <meta charset="UTF-8">
-      <title>Index</title>
+      <title>ArtexVision Login</title>
       <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
       <style>
         /* 전체 설정 css start */
@@ -124,6 +124,7 @@
 
         .login_box {
           margin: auto;
+          margin-top: 100px;
           background-color: var(--color3);
           width: 350px;
           height: 600px;

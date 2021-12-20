@@ -66,8 +66,17 @@ public class BoardController extends HttpServlet {
 				int nb_seq = Integer.parseInt(request.getParameter("nb_seq"));
 				int result = dao.delete(nb_seq);
 				response.sendRedirect("/nb_list.board?cpage=1");
+
+			}else if(cmd.equals("/nb_search.board")) {
+				String searchMethod = request.getParameter("searchOption");
+
+				if(searchMethod.equals("제목")) {
+					System.out.println("제목으로 찾는 중");
+				}else if(searchMethod.equals("아이디")) {
+					System.out.println("아이디로 찾는 중");
+				}
+			}
 			
-			}		
 		}catch(Exception e) {
 			e.printStackTrace();
 			response.sendRedirect("/error.jsp");

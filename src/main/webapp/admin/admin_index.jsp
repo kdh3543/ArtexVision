@@ -1,17 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-  <style>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Page</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<link rel="stylesheet"
+	href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+	integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+	crossorigin="anonymous" />
+<style>
     :root {
       --main-color: #5f4b8b;
       --sub-color1: #998ab4;
@@ -49,12 +53,12 @@
 	a {
       text-decoration: none;
       color: var(--text-color);
-	}
-	
-	a:active {
+    }
+
+    a:active {
       text-decoration: none;
       color: var(--text-color);
-	}
+    }
 
     .container {
       width: 1200px;
@@ -86,6 +90,10 @@
       padding: 20px;
     }
 
+	#logout_btn {
+      text-decoration: none;
+      color: var(--footer-color);
+    }
     /* header end */
 
     /* nav start */
@@ -99,10 +107,10 @@
       color: var(--text-color);
     }
 
-	#logout_btn {
-	  text-decoration: none;
-	  color: var(--footer-color);
-	}
+	.nav_items:hover {
+      color: var(--sub-color1);
+      cursor: pointer;
+    }
 
     .nav_icon {
       font-size: 1.5rem;
@@ -117,87 +125,28 @@
     /* selection start */
     .selection {
       display: flex;
+      justify-content: left;
       height: 75px;
       background-color: var(--sub-color2);
     }
 
-    .dropdown_form {
-      width: 25%;
-      text-align: center;
-      line-height: 75px;
-    }
-
-    .category {
-      width: 150px;
-      height: 30px;
-      border: 0;
-      border-radius: 10px;
-    }
-
-    .category option {
-      text-align: center;
-    }
-
-    .select_date_form {
-      width: 40%;
-      display: flex;
-      justify-content: space-evenly;
-      line-height: 75px;
-    }
-
-    .select_date {
-      width: 150px;
-      height: 30px;
-      border: 0;
-      border-radius: 10px;
-      text-align: center;
-      line-height: 75px;
-    }
-
     .select_btn_form {
-      width: 5%;
-      line-height: 75px;
-      text-align: l;
+      line-height: 125px;
+      padding-left: 10px;
+      text-align: center;
     }
 
     .select_btn {
       background-color: transparent;
       border: none;
-      border-radius: 10px;
-      font-size: 0.7rem;
-      width: 50px;
+      border-radius: 5px;
+      font-size: 0.8rem;
       height: 30px;
       cursor: pointer;
       color: white;
-      background-color: var(--main-color);
+      background-color: var(--sub-color1);
     }
 
-    .search {
-      width: 30%;
-      text-align: center;
-      line-height: 80px;
-    }
-
-    .search_wrap {
-      padding: 5px;
-      border-radius: 5px;
-      background-color: var(--main-color);
-      color: var(--text-color);
-    }
-
-    .search_text {
-      background-color: transparent;
-      color: var(--text-color);
-      border: 0;
-    }
-
-    .search_text::placeholder {
-      color: var(--text-color);
-    }
-
-    .search_text:focus {
-      outline: none;
-    }
     /* selection end */
 
     
@@ -221,42 +170,33 @@
 
     .dashboard_contents {
       width: 30%;
+      overflow-y:auto; 
+      overflow-x:hidden;
     }
 
     .dashboard_contents_item {
-      height: 25%;
       display: flex;
-      flex-direction: column;
-      align-items: center;
+      height: 7%;
       justify-content: center;
+      padding: 5px;
+      margin: 5px;
+      align-items: center;
+      text-align: center;
+
+      /* border: 1px solid black; */
     }
 
     .dashboard_contents_item_title {
-      font-size: 0.8rem;
+      font-size: 0.9rem;
       width: 80%;
-      height: 20%;
+      background-color: var(--sub-color3);
+      color: var(--text-color);
     }
 
     .dashboard_contents_item_data {
-      font-size: 1.8rem;
+      font-size: 0.9rem;
+      background-color: var(--sub-color2);
       width: 80%;
-      height: 50%;
-    }
-
-    #daily_icon {
-      color: firebrick;
-    }
-
-    #weekly_icon {
-      color: orange;
-    }
-
-    #monthly_icon {
-      color: purple;
-    }
-
-    #yearly_icon {
-      color: dodgerblue;
     }
 
     .dashboard_graph {
@@ -339,128 +279,91 @@
     }
     /* footer end */
   </style>
-  <script>
-    window.onload = function() {
-      let nav_items = document.querySelectorAll(".nav_items");
-      let nav_icon = document.querySelectorAll(".nav_icon");
-      let nav_title = document.querySelectorAll(".nav_title");
 
-      for(let i = 0; nav_items.length; i++){
-        nav_items[i].onmouseover = function(){
-          this.style.color = "#998ab4";
-          this.style.cursor = "pointer";
-        }
-
-        nav_items[i].onmouseleave = function(){
-          this.style.color = "#ffffff";
-        }
-      }
-    }
-
-  </script>
 </head>
 
 <body>
-  <div class="container">
+	<div class="container">
 
-    <div class="header">
-      <div class="admin_logo">
-        <i class="fab fa-artstation"> Artex Vision Admin Page</i>
-      </div>
-      <div class="userDetail">
-        <i class="fas fa-user-circle"> ADMIN 님 환영합니다.</i>
-        <a href="/logout.admin" id="logout_btn"><i class="fas fa-sign-out-alt"> LOGOUT</i></a>
-      </div>
-    </div>
+		<div class="header">
+			<div class="admin_logo">
+				<i class="fab fa-artstation"> Artex Vision Admin Page</i>
+			</div>
+			<div class="userDetail">
+				<i class="fas fa-user-circle"> ADMIN 님 환영합니다.</i> <a
+					href="/logout.admin" id="logout_btn"><i
+					class="fas fa-sign-out-alt"> LOGOUT</i></a>
+			</div>
+		</div>
 
-    <div class="nav">
-      <a href="/input_ex_dashboard.admin">
-      <div class="nav_items">
-        <div class="nav_icon"><i class="fas fa-chart-line"></i></div>
-        <div class="nav_title">DASHBOARD</div>
-      </div>
-      </a>
-      <a href="/member_list.admin">
-      <div class="nav_items">
-        <div class="nav_icon"><i class="fas fa-address-card"></i></div>
-        <div class="nav_title">MEMBERS</div>
-      </div>
-      </a>
-      <div class="nav_items">
-        <div class="nav_icon"><i class="far fa-clipboard"></i></div>
-        <div class="nav_title">BOARD</div>
-      </div>
-      <div class="nav_items">
-        <div class="nav_icon"><i class="fas fa-crown"></i></div>
-        <div class="nav_title">GRADE</div>
-      </div>
-      <a href="/input_ex_form.admin">
-      <div class="nav_items">
-        <div class="nav_icon"><i class="fas fa-pen-square"></i></div>
-        <div class="nav_title">EXHIBITION</div>
-      </div>
-      </a>
-    </div>
+		<div class="nav">
+			<a href="/input_ex_dashboard.admin">
+				<div class="nav_items">
+					<div class="nav_icon">
+						<i class="fas fa-chart-line"></i>
+					</div>
+					<div class="nav_title">DASHBOARD</div>
+				</div>
+			</a> <a href="/member_list.admin">
+				<div class="nav_items">
+					<div class="nav_icon">
+						<i class="fas fa-address-card"></i>
+					</div>
+					<div class="nav_title">MEMBERS</div>
+				</div>
+			</a>
+			<div class="nav_items">
+				<div class="nav_icon">
+					<i class="far fa-clipboard"></i>
+				</div>
+				<div class="nav_title">BOARD</div>
+			</div>
+			<div class="nav_items">
+				<div class="nav_icon">
+					<i class="fas fa-crown"></i>
+				</div>
+				<div class="nav_title">GRADE</div>
+			</div>
+			<a href="/input_ex_form.admin">
+				<div class="nav_items">
+					<div class="nav_icon">
+						<i class="fas fa-pen-square"></i>
+					</div>
+					<div class="nav_title">EXHIBITION</div>
+				</div>
+			</a>
+		</div>
 
-    <div class="selection">
-      <div class="dropdown_form">
-        <label for="category">CATEGORY</label>
-        <select name="category" id="category" name="category" class="category">
-          <option value="OPTION0"></option>
-          <option value="OPTION1">Daily</option>
-          <option value="OPTION2">Weekly</option>
-          <option value="OPTION3">Monthly</option>
-          <option value="OPTION4">Yearly</option>
-        </select>
-      </div>
-      <div class="select_date_form">
-        <div class="from">
-          FROM
-          <input type="date" class="select_date">
-        </div>
-        <div class="to">
-          TO
-          <input type="date" class="select_date">
-        </div>
-      </div>
-      <div class="select_btn_form">
-        <button type="button" class="select_btn" id="select_btn">GO</button>
-      </div>
-      <div class="search">
-        <span class="search_wrap">
-          <input type="text" id="search_text" name="search_text" class="search_text" placeholder="INPUT SEARCH ITEM" maxlength="25">
-          <i class="fas fa-search"></i>
-        </span>
-      </div>
-    </div>
+		<div class="selection">
+			<!-- <div class="select_date_form">
+				<div class="from">
+					FROM <input type="date" class="select_date">
+				</div>
+				<div class="to">
+					TO <input type="date" class="select_date">
+				</div>
+			</div> -->
+			<div class="select_btn_form">
+				<button type="button" class="select_btn" id="daily_btn">일간 가입자 통계 보기</button>
+				<button type="button" class="select_btn" id="monthly_btn">월간 가입자 통계 보기</button>
+			</div>
+		</div>
 
-    <div class="contents">
-      <div class="dashboard_wrap">
-        <div class="dashboard_contents">
-          <div class="dashboard_contents_item">
-            <div class="dashboard_contents_item_title"><i class="fas fa-circle" id="daily_icon"></i> 일간 방문자 수</div>
-            <div class="dashboard_contents_item_data">12,345</div>
-          </div>
-          <div class="dashboard_contents_item">
-            <div class="dashboard_contents_item_title"><i class="fas fa-circle" id="weekly_icon"></i> 주간 방문자 수</div>
-            <div class="dashboard_contents_item_data">12,345+</div>
-          </div>
-          <div class="dashboard_contents_item">
-            <div class="dashboard_contents_item_title"><i class="fas fa-circle" id="monthly_icon"></i> 월간 방문자 수</div>
-            <div class="dashboard_contents_item_data">12,345</div>
-          </div>
-          <div class="dashboard_contents_item">
-            <div class="dashboard_contents_item_title"><i class="fas fa-circle" id="yearly_icon"></i> 연간 방문자 수</div>
-            <div class="dashboard_contents_item_data">12,345+</div>
-          </div>
-        </div>
-        <div class="dashboard_graph">
-          <canvas id="myChart"></canvas>
-        </div>
-      </div>
-    </div>
+		<div class="contents">
+			<div class="dashboard_wrap">
+				<div class="dashboard_contents">
+					<!-- <div class="dashboard_contents_item">
+						<div class="dashboard_contents_item_title"></div>
+						<div class="dashboard_contents_item_data"></div>
+					</div> -->
+				</div>
+				<div class="dashboard_graph">
+					<%-- <canvas id="myChart"></canvas> --%>
+				</div>
+			</div>
+		</div>
 
-    <div class="summary">
+		<!-- <div class="summary">
       <div class="summary_title"><h3>STATISTICS</h3></div>
       <div class="summary_contents">
         <div class="summary_contents_item">
@@ -489,49 +392,132 @@
           <div class="summary_contents_item_desc2">DESCRIBE</div>
         </div>
       </div>
-    </div>
-    <div class="footer">
-      <div class="footer_logo"><i class="fab fa-artstation"> Artex Vision Admin Page</i></div>
-      <div class="footer_title">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odit, distinctio asperiores reiciendis quod corrupti praesentium nihil dolorum dignissimos saepe quasi veniam pariatur vel corporis necessitatibus ipsam itaque nostrum similique placeat?</div>
-      <div class="footer_desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi doloremque, fuga nihil neque</div>
-    </div>
-  </div>
+    </div> -->
+
+		<div class="footer">
+			<div class="footer_logo">
+				<i class="fab fa-artstation"> Artex Vision Admin Page</i>
+			</div>
+			<div class="footer_title">Lorem ipsum dolor sit, amet
+				consectetur adipisicing elit. Odit, distinctio asperiores reiciendis
+				quod corrupti praesentium nihil dolorum dignissimos saepe quasi
+				veniam pariatur vel corporis necessitatibus ipsam itaque nostrum
+				similique placeat?</div>
+			<div class="footer_desc">Lorem ipsum dolor sit amet consectetur
+				adipisicing elit. Animi doloremque, fuga nihil neque</div>
+		</div>
+	</div>
 </body>
 <script>
-	var ctx = document.getElementById('myChart');
-	var myChart = new Chart(ctx, {
-		type: 'bar',
-		data: {
-			labels: ['Red', 'Orange', 'Purple', 'Blue'  ],
-			datasets: [{
-				label: '# of Votes',
-				data: [12, 19, 3, 5, 2, 3],
-				backgroundColor: [
-					'rgba(255, 99, 132, 0.2)',
-					'rgba(255, 159, 64, 0.2)',
-					'rgba(153, 102, 255, 0.2)',
-					'rgba(54, 162, 235, 0.2)'
-				],
-				borderColor: [
-					'rgba(255, 99, 132, 1)',
-					'rgba(255, 159, 64, 1)',
-					'rgba(153, 102, 255, 1)',
-					'rgba(54, 162, 235, 1)'
-				],
-				borderWidth: 1
-			}]
-		},
-		options: {
-			responsive: true,
-			scales: {
-				yAxes: [{
-					ticks: {
-						beginAtZero: true
-					}
+	let weekly_btn = document.getElementById("weekly_btn");
+	let daily_btn = document.getElementById("daily_btn");
+	const dashboard_contents = document.querySelector(".dashboard_contents");
+	const dashboard_graph = document.querySelector(".dashboard_graph");
+	daily_btn.onclick = function(){
+		$(".dashboard_contents").empty();
+		$(".dashboard_graph").empty();
+		$.ajax({
+			url: "/dailyData.admin"
+		}).done(function(resp){
+			let result = JSON.parse(resp);
+			let dateArr = [];
+			let cntArr = [];
+			for(let i = 0; i < result.length; i++) {
+				dateArr.push(result[i].mem_signup_date);
+				cntArr.push(parseInt(result[i].cnt));
+				
+				let div1 = document.createElement("div");
+				div1.classList.add("dashboard_contents_item");
+				
+				let div2 = document.createElement("div");
+				div2.classList.add("dashboard_contents_item_title");
+				div2.innerText = result[i].mem_signup_date;
+				
+				let div3 = document.createElement("div");
+				div3.classList.add("dashboard_contents_item_data");
+				div3.innerText = result[i].cnt;
+				
+				div1.appendChild(div2);
+				div1.appendChild(div3);
+				dashboard_contents.append(div1);
+			}
+			
+			let canvas = document.createElement("canvas");
+			canvas.id = "myChart";
+			dashboard_graph.appendChild(canvas);
+			
+			drawChart(dateArr, cntArr);
+	  });
+	}
+	
+	monthly_btn.onclick = function(){
+		$(".dashboard_contents").empty();
+		$(".dashboard_graph").empty();
+		$.ajax({
+			url: "/monthlyData.admin"
+		}).done(function(resp){
+			let result = JSON.parse(resp);
+			let dateArr = [];
+			let cntArr = [];
+			for(let i = 0; i < result.length; i++) {
+				dateArr.push(result[i].mem_signup_date);
+				cntArr.push(parseInt(result[i].cnt));
+				
+				let div1 = document.createElement("div");
+				div1.classList.add("dashboard_contents_item");
+				
+				let div2 = document.createElement("div");
+				div2.classList.add("dashboard_contents_item_title");
+				div2.innerText = result[i].mem_signup_date;
+				
+				let div3 = document.createElement("div");
+				div3.classList.add("dashboard_contents_item_data");
+				div3.innerText = result[i].cnt;
+				
+				div1.appendChild(div2);
+				div1.appendChild(div3);
+				dashboard_contents.append(div1);
+			}
+			
+			let canvas = document.createElement("canvas");
+			canvas.id = "myChart";
+			dashboard_graph.appendChild(canvas);
+			
+			drawChart(dateArr, cntArr);
+	  });
+	}
+	
+	function drawChart(dateArr, cntArr){
+		let ctx = document.getElementById('myChart');
+		let title_arr = dateArr;
+		let contents_arr = cntArr;
+		
+		let myChart = new Chart(ctx, {
+			type: 'bar',
+			data: {
+				labels: title_arr,
+				datasets: [{
+					label: '2021년',
+					data: contents_arr,
+					backgroundColor: [
+						'rgba(255, 99, 132, 0.2)',
+						'rgba(255, 159, 64, 0.2)',
+						'rgba(153, 102, 255, 0.2)',
+						'rgba(54, 162, 235, 0.2)'
+					],
+					borderColor: [
+						'rgba(255, 99, 132, 1)',
+						'rgba(255, 159, 64, 1)',
+						'rgba(153, 102, 255, 1)',
+						'rgba(54, 162, 235, 1)'
+					],
+					borderWidth: 1
 				}]
-			},
-		}
-	});
+			}
+		});
+	}
+	
+	
 </script>
 
 </html>

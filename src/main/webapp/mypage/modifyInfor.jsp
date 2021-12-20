@@ -5,7 +5,7 @@
 
     <head>
       <meta charset="UTF-8">
-      <title>${dto }</title>
+      <title>마이페이지</title>
       <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
       <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
@@ -498,41 +498,64 @@
           width: 100%;
           height: 100%;
         }
+        
+        a {
+          text-align: center;
+          text-decoration: none;
+          /* 링크의 밑줄 제거 */
+          color: inherit;
+          /* 링크의 색상 제거 */
+        }
+
+        a:hover {
+          color: black;
+          /* 링크의 색상 제거 */
+        }
       </style>
     </head>
 
     <body>
       <div class="container">
-        <div class="header">
-          <ul class="header_list">
-            <li class="user_detail"><span id="user_grade"><i class="fas fa-crown"></i> ${dto.grade}</li></span>
-            <li> ${loginId } 님 환영합니다.</li>
-            <li><a href="/modifyForm.mem">마이페이지</a></li>
-            <li><a href="#">장바구니</a></li>
-            <!-- <li><a href="#">로그인</a></li> -->
-            <li><a href="/logout.mem">로그아웃</a></li>
-            <!-- <li><a href="#">회원가입</a></li> -->
-          </ul>
-        </div>
+        <c:choose>
+          <c:when test="${loginId!=null}">
+            <div class="header" id="topTarget">
+              <ul class="header_list">
+                <li class="user_detail"><span id="user_grade"><i class="fas fa-crown"></i> ${dto.mem_grade}</li></span>
+                <li id="welcome"> ${loginId } 님 환영합니다.</li>
+                <li id="mypage"><a href="/modifyForm.mem">마이페이지</a></li>
+                <li id="basket"><a href="/basket/basket.jsp" id="basket">장바구니</a></li>
+                <li id=logout><a href="/logout.mem"  id="logout">로그아웃</a></li>
+              </ul>
+            </div>
+          </c:when>
+          <c:otherwise>
+            <div class="header" id="topTarget">
+              <ul class="header_list">
+                <li id=login><a href="/home.mem">로그인</a></li>
+                <li id=signup><a href="/signup.mem">회원가입</a></li>
+              </ul>
+            </div>
+          </c:otherwise>
+        </c:choose>
         <div class="nav">
           <div class="nav_logo">
-            <i class="fab fa-artstation"> Artex Vision</i>
+            <a href="/artexMain/mainpage.jsp"><i class="fab fa-artstation"> Artex Vision</i></a>
           </div>
           <div class="nav_side">
             <div class="nav_menu">
               <ul class="nav_menu_list">
-                <li><a href="#">NOTICE</a></li>
-                <li><a href="#">Artex Vision</a></li>
-                <li><a href="#">전시</a></li>
-                <li><a href="#">이벤트</a></li>
+                <li><a href="/nb_list.board?cpage=1" id="notice">NOTICE</a></li>
+                <li><a href="../artexDesc/artex_desc.jsp">Artex Vision</a></li>
+                <li><a href="../exhibition/main_ex/now_main_ex.jsp">전시</a></li>
+                <li><a href="#" id="event">이벤트</a></li>
               </ul>
             </div>
           </div>
         </div>
         <div class="carousel_timeline">
-          <div class="carousel">
-            <img src="sample_carousel.png" class="carousel_img">
-          </div>
+          	<div class="carousel">
+        		<img src="/exhibition/img/artex_main_img.png" class="carousel_img">
+      		</div>
         </div>
         <div class="main">
           <div class="sidebar">
@@ -547,8 +570,8 @@
             </ul>
             <h3 class="list_title">예매 내역</h3>
             <ul class="sidebar_item_list">
-              <li class="sidebar_item"><a href="">예매내역 조회/취소</a></li>
-            </ul>          
+              <li class="sidebar_item"><a href="/bookRefund.book">예매내역 조회/취소</a></li>
+            </ul>         
             <!-- 마이페이지 end -->
 
           </div>
@@ -576,7 +599,7 @@
                       <div class="grade">
                         <span id="grade_score">
                           <i class="fas fa-crown"></i>
-                          ${dto.grade} (POINT : 0 점)
+                          ${dto.mem_grade} (POINT : 0 점)
                         </span>
                         <span id="gradeBenefit">
                           <a href="#none" target="_blank" onclick="openPop()"><input type="button" id="showGradeBenefit"
@@ -602,13 +625,13 @@
                         <label for="name">이름</label>
                       </div>
                       <div class="input_name" >
-                        ${dto.name}
+                        ${dto.mem_name}
                       </div>
                       <div class="label">
                         <label for="birth">생년월일</label>
                       </div>
                       <div class="input_birth">
-                        ${dto.birth }
+                        ${dto.mem_birth }
                       </div>
                       <div class="label">
                         <label for="email">이메일</label>
@@ -727,7 +750,6 @@
               oncomplete: function (data) {
                 document.getElementById("zipcode").value = data.zonecode;
                 document.getElementById("addr1").value = data.roadAddress;
-                document.getElementById("addr2").value = data.jibunAddress;
               }
             }).open();
           }
@@ -735,6 +757,22 @@
           reset_btn.on("click",function(){
             pw_check_result.text("");
           })
+          
+          	$("#logout").on("click",function(){
+				if(!confirm("로그아웃 하시겠습니까?")){
+					return false;
+				}
+			})
+			
+			$("#basket").on("click",function(){
+				alert("현재 기능은 구현중에 있습니다.");
+				return false;
+			})
+			
+			$("#event").on("click",function(){
+				alert("현재 기능은 구현중에 있습니다.");
+				return false;
+			})
         </script>
     </body>
 

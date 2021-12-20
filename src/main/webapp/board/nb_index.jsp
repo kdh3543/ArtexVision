@@ -62,6 +62,10 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p,
 	width: 1200px;
 	margin: auto;
 }
+
+.container>div{
+	width: 1200px;
+}
 /* container end */
 
 /* header start */
@@ -175,15 +179,10 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p,
 	display: flex;
 }
 
-.main {
-	height: 800px;
-}
-
 .sidebar {
 	width: 15%;
 	height: 100%;
 	background-color: var(--color3);
-	margin-top: 15px;
 }
 
 .list_title {
@@ -227,12 +226,12 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p,
 
 .container2 {
 	overflow: hidden;
+	height: 800px;
 }
 
 .sidebar {
 	float: left;
 	width: 15%;
-	height: 500px;
 }
 
 .board_nb_content {
@@ -396,6 +395,19 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p,
 .board_nb_page {
 	text-align: text;
 }
+
+a {
+  text-align: center;
+  text-decoration: none;
+  /* 링크의 밑줄 제거 */
+  color: inherit;
+  /* 링크의 색상 제거 */
+}
+
+a:hover {
+  color: black;
+  /* 링크의 색상 제거 */
+}
 </style>
 </head>
 
@@ -404,54 +416,63 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p,
 <div class="container">
 
         <!-- 헤더 -->
-        <div class="header">
-            <ul class="header_list">
-                <li class="user_detail"><span id="user_grade"><i class="fas fa-crown"></i> SILVER</li></span>
-                <li> USER001 님 환영합니다.</li>
-                <li><a href="#">마이페이지</a></li>
-                <li><a href="#">장바구니</a></li>
-                <li><a href="#">로그아웃</a></li>
-                <li>
-                    <span class="search_wrap">
-                        <input type="text" id="search_text" name="search_text" class="search_text"
-                            placeholder="INPUT SEARCH ITEM" maxlength="25">
-                        <a href=""><i class="fas fa-search"></i></a>
-                    </span>
-                </li>
-            </ul>
-        </div>
-
-        <!-- 네비바 -->
+        <c:choose>
+          <c:when test="${loginId!=null}">
+            <div class="header" id="topTarget">
+              <ul class="header_list">
+                <li class="user_detail"><span id="user_grade"><i class="fas fa-crown"></i> ${dto.mem_grade}</li></span>
+                <li id="welcome"> ${loginId } 님 환영합니다.</li>
+                <li id="mypage"><a href="/modifyForm.mem">마이페이지</a></li>
+                <li id="basket"><a href="/basket/basket.jsp" id="basket">장바구니</a></li>
+                <li id=logout><a href="/logout.mem" id="logout">로그아웃</a></li>
+              </ul>
+            </div>
+          </c:when>
+          <c:otherwise>
+            <div class="header" id="topTarget">
+              <ul class="header_list">
+                <li id=login><a href="/home.mem">로그인</a></li>
+                <li id=signup><a href="/signup.mem">회원가입</a></li>
+              </ul>
+            </div>
+          </c:otherwise>
+        </c:choose>
         <div class="nav">
-            <div class="nav_logo">
-                <i class="fab fa-artstation"> Artex Vision</i>
+          <div class="nav_logo">
+            <a href="/artexMain/mainpage.jsp"><i class="fab fa-artstation"> Artex Vision</i></a>
+          </div>
+          <div class="nav_side">
+            <div class="nav_menu">
+              <ul class="nav_menu_list">
+                <li><a href="/nb_list.board?cpage=1" id="notice">NOTICE</a></li>
+                <li><a href="../artexDesc/artex_desc.jsp">Artex Vision</a></li>
+                <li><a href="../exhibition/main_ex/now_main_ex.jsp">전시</a></li>
+                <li><a href="#" id="event">이벤트</a></li>
+              </ul>
             </div>
-            <div class="nav_side">
-                <div class="nav_menu">
-                    <ul class="nav_menu_list">
-                        <li><a href="#">NOTICE</a></li>
-                        <li><a href="#">Artex Vision</a></li>
-                        <li><a href="#">전시</a></li>
-                        <li><a href="#">이벤트</a></li>
-                        <li><a href="/nb_list.board?cpage=1">커뮤니티</a></li>
-                    </ul>
-                </div>
-            </div>
+          </div>
         </div>
-
+        <div class="carousel_timeline">
+          <div class="carousel">
+            <img src="/exhibition/img/artex_main_img.png" class="carousel_img">
+          </div>
+        </div>
 		<div class="container2">
 			<div class="sidebar">
-				<h2 class="list_title">커뮤니티</h2>
+				<h2 class="list_title">NOTICE</h2>
 				<ul class="sidebar_item_list">
-					<li class="sidebar_item"><a href="/nb_list.board?cpage=1">자유게시판</a></li>
+					<li class="sidebar_item"><a href="/nb_list.board?cpage=1">공지사항</a></li>					
+                    <li class="sidebar_item"><a href="">Q&A</a></li>
+                    <li class="sidebar_item"><a href="/board/faq_home.jsp">FAQ</a></li>
 				</ul>
 			</div>
 			<div class="board_nb_content">
 				<br>
 				<div class="board_nb_boardname">
-					<div class="board_nb_prevboard">게시판</div>
+					<div class="board_nb_prevboard">NOTICE</div>
 					<div>></div>
-					<div class="board_nb_presentboard">자유게시판</div>
+					<div class="board_nb_presentboard">공지사항</div>
+					
 				</div>
 				<hr>
 				<div class="board_nb_head">
@@ -461,20 +482,13 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p,
 					<div class="board_nb_write_date">작성일</div>
 					<div class="board_nb_view_count">조회수</div>
 				</div>
-				<div class="board_nb_notice">
-					<div class="board_nb_notice_num">-</div>
-					<div class="board_nb_notice_title">공지사항</div>
-					<div class="board_nb_notice_writer">관리자</div>
-					<div class="board_nb_notice_write_date">방금 전</div>
-					<div class="board_nb_notice_view_count">100</div>
-				</div>
 				<c:forEach var="noticeboard_dto" items="${nb_list}">
-				<div class="board_nb_user_write">
-						<div class="board_nb_user_num">${noticeboard_dto.nb_seq }</div>
-						<div class="board_nb_user_title"><a href="/nb_detail.board?nb_seq=${noticeboard_dto.nb_seq }" style="text-decoration:none; color:black;">${board_dto.nb_title }</a></div>
-						<div class="board_nb_user_writer">${noticeboard_dto.nb_mem_id }</div>
-						<div class="board_nb_user_write_date">${noticeboard_dto.detailDate }</div>
-						<div class="board_nb_user_view_count">${noticeboard_dto.nb_view_count }</div>
+				<div class="board_nb_notice">
+					<div class="board_nb_notice_num">${noticeboard_dto.nb_seq }</div>
+					<div class="board_nb_notice_title"><a href="/nb_detail.board?nb_seq=${noticeboard_dto.nb_seq }" style="text-decoration:none; color:black;">${noticeboard_dto.nb_title }</a></div>
+					<div class="board_nb_notice_writer">${noticeboard_dto.nb_mem_id }</div>
+					<div class="board_nb_notice_write_date">${noticeboard_dto.detailDate }</div>
+					<div class="board_nb_notice_view_count">${noticeboard_dto.nb_view_count }</div>
 				</div>
 				</c:forEach>
 				<br>
@@ -486,17 +500,49 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p,
 						<div>${nb_navi }</div>
 					</div>
 				</div>
+				<form action="/nb_search.board" id="frmSearch">
 				<div class="board_nb_search_area">
-					<select>
-						<option>제목</option>
-						<option>아이디</option>
+					<select id="searchOption" name="searchOption">
+						<option name="searchTitle">제목</option>
+						<option name="searchId">아이디</option>
 					</select> <input type=text placeholder="검색어를 입력하세요" class="board_nb_search">
-					<input type=button value="검색" class="board_nb_search_btn">
+					<input type=button value="검색" class="board_nb_search_btn" onclick="search();">
 				</div>
+				</form>
 			</div>
 		</div>
 		<!-- 커뮤니티 end -->
+		
+		<div class="footer"></div>
 	</div>
-	<div class="footer"></div>
+	
+	
+	<script>
+		function search(){
+			let searchOption = document.getElementById("searchOption");
+			let searchOptionIndex = document.getElementById("searchOption").options.selectedIndex;
+			
+			if(searchOption.options[searchOptionIndex].value != ""){
+
+				$("#frmSearch").submit();
+			}
+			console.log("선택된 옵션 : " + searchOption.options[searchOptionIndex].value);
+		}
+		$("#logout").on("click", function () {
+	          if (!confirm("로그아웃 하시겠습니까?")) {
+	            return false;
+	          }
+	        })
+
+	        $("#basket").on("click", function () {
+	          alert("현재 기능은 구현중에 있습니다.");
+	          return false;
+	        })
+	       
+	        $("#event").on("click", function () {
+	          alert("현재 기능은 구현중에 있습니다.");
+	          return false;
+	        })
+	</script>
 </body>
 </html>

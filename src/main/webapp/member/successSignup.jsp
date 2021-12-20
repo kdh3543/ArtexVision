@@ -5,7 +5,7 @@
 
     <head>
       <meta charset="UTF-8">
-      <title>confirmId</title>
+      <title>successSignup</title>
       <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
       <style>
         /* 전체 설정 css start */
@@ -126,7 +126,7 @@
           /* border: 1px solid black; */
         }
 
-        .find_id_box {
+        .successSignup {
           margin: auto;    
           width: 450px;
           margin-top: 100px;
@@ -153,33 +153,13 @@
     </head>
 
     <body>
-      <c:choose>
-        <c:when test="${id!=null}">
-          <div class="find_id_box">
-            회원님의 아이디는 ${id } 입니다.<br>
-            로그인 화면으로 돌아가시겠습니까?
+          <div class="successSignup">
+            회원가입이 완료되었습니다!!<br>
             <div class="btns">
-              <input type="button" value="로그인" id="backLogin">
+              <a href="/insert.mem"><input type="button" value="로그인하기"></a>
             </div>
-
           </div>
-        </c:when>
-        <c:otherwise>
-          <div class="find_id_box">
-            등록된 정보가 없습니다.<br>
-            <div class="btns">
-              <a href="/findId.mem"><input type="button" value="다시 찾기"> </a>
-              <a href="/signup.mem"><input type="button" value="회원 가입"> </a>
-              <a href="/home.mem"><input type="button" value="홈으로"></a>
-            </div>
-
-          </div>
-        </c:otherwise>
-      </c:choose>
     </body>
-	<script>
-		$("#backLogin").on("click",function(){
-      location.href="/login.jsp";
-    })
+	
 	</script>
     </html>

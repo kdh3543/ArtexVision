@@ -6,6 +6,7 @@
     <head>
       <meta charset="UTF-8">
       <title>마이페이지</title>
+     
       <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
       <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
@@ -311,213 +312,68 @@
         .contents {
           width: 85%;
           height: 100%;
-          overflow-y: auto;
           display: flex;
           justify-content: center;
         }
 
-
         .contents_title {
           width: 100%;
-          height: 10%;
+          height: 60px;
           font-size: 25px;
           padding: 3px;
           border-bottom: 2px solid black;
-          line-height: 70px;
           font-weight: bold;
         }
 
-        .user_write {
+        .booking {
+          margin-top: 50px;
           width: 100%;
-          height: 70%;
+          background-color: var(--color3);
+          color: var(--color2);
         }
 
-        .user_title {
-          margin-top: 20px;
-          width: 100%;
-          height: 4%;
-          text-align: center;
-          border-bottom: 1px solid black;
-          border-top: 1px solid black;
-          background-color: #80808040;
-          font-weight: bold;
-        }
-
-        .user_title>div {
-          float: left;
-          height: 100%;
-        }
-
-        .wnum {
-          width: 10%;
-        }
-
-        .wtitle {
-          width: 50%;
-        }
-
-        .wdate,
-        .wreadnum {
-          width: 20%;
-        }
-
-        .rank_contents {
-          width: 100%;
-          height: 5%;
-          text-align: center;
-          line-height: 34px;
-          border-bottom: 1px solid black;
-        }
-
-        .rank_contents>div {
-          float: left;
-          height: 100%;
-        }
-
-        .page {
-          width: 100%;
-          height: 5%;
-          text-align: center;
-          line-height: 40px;
-        }
-
-        .board_nb_content {
-          float: left;
-          width: 85%;
-          padding: 15px;
-        }
-
-        .board_nb_head {
+        .book_title {
           margin-top: 10px;
-          border-top: 1px solid black;
-          border-bottom: 1px solid black;
-          overflow: hidden;
-          text-align: center;
-          height: 30px;
-          line-height: 30px;
+          width: 100%;
+          height: 60px;
+          background-color: #80808040;
+          line-height: 60px;
+          border-bottom: 1px solid white;
+          border-top: 1px solid white;
         }
 
-        .board_nb_head>div {
+        .book_title>div {
+          text-align: center;
+          height: 100%;
+          width: 20%;
           float: left;
         }
 
-        .board_nb_num {
-          width: 10%;
+        .book_table{
+          width: 100%; 
+          table-layout:fixed;
+          border-collapse: collapse;
         }
-
-        .board_nb_title {
-          width: 55%;
-        }
-
-        .board_nb_writer {
-          width: 10%;
-        }
-
-        .board_nb_write_date {
-          width: 15%;
-        }
-
-        .board_nb_view_count {
-          width: 10%;
-        }
-
-        .board_nb_notice {
-          border-bottom: 1px solid black;
-          overflow: hidden;
+        
+        .book_contents {
+          height: 20%;
+          width: 100%;
+          height: 100px;
+          border-bottom: 1px solid white;
           text-align: center;
-          background-color: lightgray;
-          height: 30px;
-          line-height: 30px;
         }
 
-        .board_nb_notice>div {
+        .book_contents>div {
+          text-align: center;
           float: left;
+          width: 25%;
+          height: 100%;
         }
 
-        .board_nb_notice_num {
-          width: 10%;
-        }
-
-        .board_nb_notice_title {
-          width: 55%;
-        }
-
-        .board_nb_notice_title:hover {
-          cursor: pointer;
-        }
-
-        .board_nb_notice_writer {
-          width: 10%;
-        }
-
-        .board_nb_notice_write_date {
-          width: 15%;
-        }
-
-        .board_nb_notice_view_count {
-          width: 10%;
-        }
-
-        .board_nb_user_write {
-          border-bottom: 1px solid black;
-          overflow: hidden;
+        .cancel_btn {
           text-align: center;
-          height: 30px;
-          line-height: 30px;
-        }
-
-        .board_nb_user_write>div {
-          float: left;
-        }
-
-        .board_nb_user_num {
-          width: 10%;
-        }
-
-        .board_nb_user_title {
-          width: 55%;
-        }
-
-        .board_nb_user_title:hover {
-          cursor: pointer;
-        }
-
-        .board_nb_user_writer {
-          width: 10%;
-        }
-
-        .board_nb_user_write_date {
-          width: 15%;
-        }
-
-        .board_nb_user_view_count {
-          width: 10%;
-        }
-
-        .board_nb_search_area {
-          text-align: center;
-        }
-
-        .board_nb_search_area>select {
-          width: 10%;
-        }
-
-        .board_nb_search {
-          width: 40%;
-          height: 25px;
-        }
-
-        .board_nb_search_btn {
-          height: 25px;
-        }
-
-        .board_nb_pagination {
-          overflow: hidden;
-          text-align: center;
-        }
-
-        .board_nb_page {
-          text-align: text;
+          height: 20%;
+          line-height: 120px;
         }
 
         .footer {
@@ -530,21 +386,30 @@
           height: 100%;
         }
 
-        [type=button]:hover {
+        input[type="button"],
+        input[type="submit"],
+        input[type="reset"] {
+          background-color: var(--color7);
+          color: var(--color2);
+          border: none;
+          width: 25%;
+          height: 30px;
           cursor: pointer;
         }
-        
-        a {
-          text-align: center;
-          text-decoration: none;
-          /* 링크의 밑줄 제거 */
-          color: inherit;
-          /* 링크의 색상 제거 */
-        }
 
-        a:hover {
-          color: black;
-          /* 링크의 색상 제거 */
+        input[type="checkbox"] {
+          width: 15px;
+          height: 15px;
+          cursor: pointer;
+        }
+        a{
+         	text-align: center;
+  			text-decoration: none; /* 링크의 밑줄 제거 */
+ 		 	color: inherit; /* 링크의 색상 제거 */
+        }
+            
+        a:hover{
+            color: black; /* 링크의 색상 제거 */
         }
       </style>
     </head>
@@ -571,24 +436,24 @@
               </ul>
             </div>
           </c:otherwise>
-        </c:choose>
-        <div class="nav">
-          <div class="nav_logo">
-            <a href="/artexMain/mainpage.jsp"><i class="fab fa-artstation"> Artex Vision</i></a>
-          </div>
-          <div class="nav_side">
-            <div class="nav_menu">
-              <ul class="nav_menu_list">
-                <li><a href="/nb_list.board?cpage=1" id="notice">NOTICE</a></li>
-                <li><a href="../artexDesc/artex_desc.jsp">Artex Vision</a></li>
-                <li><a href="../exhibition/main_ex/now_main_ex.jsp">전시</a></li>
-                <li><a href="#" id="event">이벤트</a></li>
-              </ul>
-            </div>
-          </div>
+     </c:choose>
+    <div class="nav">
+      <div class="nav_logo">
+        <a href="/artexMain/mainpage.jsp"><i class="fab fa-artstation"> Artex Vision</i></a>
+      </div>
+      <div class="nav_side">
+        <div class="nav_menu">
+          <ul class="nav_menu_list">
+            <li><a href="/nb_list.board?cpage=1" id="notice">NOTICE</a></li>
+            <li><a href="/artexDesc/artex_desc.jsp">Artex Vision</a></li>
+            <li><a href="/exhibition/main_ex/now_main_ex.jsp">전시</a></li>
+            <li><a href="#" id="event">이벤트</a></li>
+          </ul>
         </div>
+      </div>
+    </div>
         <div class="carousel_timeline">
-          <div class="carousel">
+          	<div class="carousel">
         		<img src="/exhibition/img/artex_main_img.png" class="carousel_img">
       		</div>
         </div>
@@ -605,7 +470,7 @@
             </ul>
             <h3 class="list_title">예매 내역</h3>
             <ul class="sidebar_item_list">
-              <li class="sidebar_item"><a href="/bookRefund.book">예매내역 조회/취소</a></li>
+              <li class="sidebar_item"><a href="">예매내역 조회/취소</a></li>
             </ul>
             <!-- 마이페이지 end -->
 
@@ -613,62 +478,54 @@
           <div class="contents">
             <div class="contents_wrap">
               <div class="contents_title">
-                내가 쓴 글, 댓글 조회
+                장바구니
               </div>
-              <div class="board_nb_head">
-                <div class="board_nb_num">글번호</div>
-                <div class="board_nb_title">제목</div>
-                <div class="board_nb_writer">아이디</div>
-                <div class="board_nb_write_date">작성일</div>
-                <div class="board_nb_view_count">조회수</div>
-              </div>
-              <div class="board_nb_notice">
-                <div class="board_nb_notice_num">-</div>
-                <div class="board_nb_notice_title">올린글</div>
-                <div class="board_nb_notice_writer">올린사람 id</div>
-                <div class="board_nb_notice_write_date">방금 전</div>
-                <div class="board_nb_notice_view_count">100</div>
-              </div>
-              <c:forEach var="noticeboard_dto" items="${nb_list}">
-                <div class="board_nb_user_write">
-                  <div class="board_nb_user_num">${noticeboard_dto.nb_seq }</div>
-                  <div class="board_nb_user_title"><a href="/nb_detail.board?nb_seq=${noticeboard_dto.nb_seq }"
-                      style="text-decoration:none; color:black;">${board_dto.nb_title }</a></div>
-                  <div class="board_nb_user_writer">${noticeboard_dto.nb_mem_id }</div>
-                  <div class="board_nb_user_write_date">${noticeboard_dto.detailDate }</div>
-                  <div class="board_nb_user_view_count">${noticeboard_dto.nb_view_count }</div>
+              <div class="booking">
+                <div class="book_title">
+                	<div>선택</div>
+	                <div>전시회명</div>
+	                <div>전시회 지역</div>
+	                <div>전시회 날짜</div>
+	                <div>판매가</div>
                 </div>
-              </c:forEach>
-              <br>
-              <div class="board_nb_user_writebtn" style="text-align: right;">
-                <a href="/nb_write.board"><button type=button>글쓰기</button></a>
+                <table class="book_table" >
+                   <tr class="book_contents">
+                     <td><input type="checkbox" name="check" id="check"></td>
+                     <td>들어갈 전시회이름</td>
+                     <td>지역 이름</td>
+                     <td>날짜</td>
+                     <td>100만원</td>
+                   </tr>
+                </table>
               </div>
-              <div class="board_nb_pagination">
-                <div class="board_nb_page">
-                  <div>${nb_navi }</div>
-                </div>
+              <div class="cancel_btn">
+                <input type="button" value="예매하기" id="book">
               </div>
-              <div class="board_nb_search_area">
-                <select>
-                  <option>제목</option>
-                </select> <input type=text placeholder="검색어를 입력하세요" class="board_nb_search">
-                <input type=button value="검색" class="board_nb_search_btn">
-              </div>
-
             </div>
           </div>
-
         </div>
         <div class="footer">
 
         </div>
       </div>
-    </body>
-	<script>
-		$("#logout").on("click",function(){
-			if(!confirm("로그아웃 하시겠습니까?")){
-				return false;
-			}
+      <script>
+        let book = $("#book");
+        let check = $("input[type='checkbox']");
+        cancel.on("click", function(){
+          let trs=$("tr");
+          
+          for(let i =0;i<trs.length;i++){
+            if(check.eq(i).is(":checked")){
+            	confirm("정말 취소하시겠습니까?");
+              $(trs[i]).remove();
+            }
+          }
+        })
+        
+        $("#logout").on("click",function(){
+		if(!confirm("로그아웃 하시겠습니까?")){
+			return false;
+		}
 		})
 		
 		$("#basket").on("click",function(){
@@ -680,5 +537,7 @@
 			alert("현재 기능은 구현중에 있습니다.");
 			return false;
 		})
-	</script>
+      </script>
+    </body>
+
     </html>

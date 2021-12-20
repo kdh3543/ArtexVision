@@ -5,7 +5,7 @@
 
     <head>
       <meta charset="UTF-8">
-      <title>Insert title here</title>
+      <title>confirmInfor</title>
       <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
       <style>
         /* 전체 설정 css start */
@@ -129,7 +129,7 @@
         .reset_pw_box {
           margin: auto;
           width: 450px;
-          margin-top: 30px;
+          margin-top: 100px;
           margin-bottom: 30px;
           padding-top: 50px;
           background-color: var(--color3);
@@ -299,7 +299,7 @@
             </div>
             <div class="btns">
               <input type="submit" value="개인정보 확인" id="reset_pw_btn">
-              <a href="javascript:history.back()"><input type="button" value="뒤로가기" id="back_btn"></a>
+              <a href="/home.mem"><input type="button" value="홈으로" id="back_btn"></a>
             </div>
           </div>
         </div>
