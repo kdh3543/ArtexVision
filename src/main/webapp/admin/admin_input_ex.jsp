@@ -411,33 +411,48 @@
     </div>
 
     <div class="nav">
-      <a href="/input_ex_dashboard.admin">
-      <div class="nav_items">
-        <div class="nav_icon"><i class="fas fa-chart-line"></i></div>
-        <div class="nav_title">DASHBOARD</div>
-      </div>
-      </a>
-      <a href="/member_list.admin">
-      <div class="nav_items">
-        <div class="nav_icon"><i class="fas fa-address-card"></i></div>
-        <div class="nav_title">MEMBERS</div>
-      </div>
-      </a>
-      <div class="nav_items" id="working1">
-        <div class="nav_icon"><i class="far fa-clipboard"></i></div>
-        <div class="nav_title">BOARD</div>
-      </div>
-      <div class="nav_items" id="working2">
-        <div class="nav_icon"><i class="fas fa-crown"></i></div>
-        <div class="nav_title">GRADE</div>
-      </div>
-      <a href="/input_ex_form.admin">
-      <div class="nav_items">
-        <div class="nav_icon"><i class="fas fa-pen-square"></i></div>
-        <div class="nav_title">EXHIBITION</div>
-      </div>
-      </a>
-    </div>
+			<a href="/input_ex_dashboard.admin">
+				<div class="nav_items">
+					<div class="nav_icon">
+						<i class="fas fa-chart-line"></i>
+					</div>
+					<div class="nav_title">DASHBOARD</div>
+				</div>
+			</a> 
+			<a href="/member_list.admin">
+				<div class="nav_items">
+					<div class="nav_icon">
+						<i class="fas fa-address-card"></i>
+					</div>
+					<div class="nav_title">MEMBERS</div>
+				</div>
+			</a>
+			
+			<div class="nav_items" id="working1">
+				<div class="nav_icon">
+					<i class="far fa-clipboard"></i>
+				</div>
+				<div class="nav_title">BOARD</div>
+			</div>
+			
+			<a href="/input_ex_form.admin">
+				<div class="nav_items">
+					<div class="nav_icon">
+						<i class="fas fa-pen-square"></i>
+					</div>
+					<div class="nav_title">ADD EX</div>
+				</div>
+			</a>
+			
+			<a href="/show_ex_list.admin">
+				<div class="nav_items">
+					<div class="nav_icon">
+						<i class="far fa-list-alt"></i>
+					</div>
+					<div class="nav_title">SHOW EX LIST</div>
+				</div>
+			</a>
+		</div>
     
     <form action="/add_ex.admin" method="post" enctype="multipart/form-data">
     <div class="contents">

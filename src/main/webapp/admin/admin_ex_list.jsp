@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,6 +9,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
   <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
     integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
   <style>
@@ -119,7 +120,7 @@
     }
 
     div {
-      /* border: 1px solid black; */
+      border: 1px solid black;
     }
 
     a {
@@ -167,7 +168,6 @@
       text-decoration: none;
       color: var(--footer-color);
     }
-
     /* header end */
 
     /* nav start */
@@ -181,11 +181,6 @@
       color: var(--text-color);
     }
 
-    .nav_items:hover {
-      color: var(--sub-color1);
-      cursor: pointer;
-    }
-
     .nav_icon {
       font-size: 1.5rem;
     }
@@ -194,6 +189,10 @@
       font-size: 0.9rem;
     }
 
+    .nav_items:hover {
+      color: var(--sub-color1);
+      cursor: pointer;
+    }
     /* nav end */
 
     .contents {
@@ -204,47 +203,87 @@
       align-items: center;
     }
 
-    /* member_list start */
+    /* input_ex start */
 
-    .member_list_wrap {
+    .ex_list_wrap {
       margin: auto;
+      display: flex;
       background-color: var(--text-color);
-      width: 100%;
+      width: 90%;
       height: 80%;
+    }
+
+    .ex_list_contents_wrap {
+      width: 30%;
+      display: flex;
+      justify-content: center;
+    }
+
+    .ex_list_contents {
+      width: 90%;
+      overflow-x: hidden;
       overflow-y: auto;
     }
 
-    h3 {
-      padding-top: 20px;
-      padding-left: 30px;
-    }
-
-	.total_count {
-		text-align: left;
-		font-size: 0.8rem;
-		padding-left: 30px;
-	}
-
-    .member_list_title {
-      width: 95%;
-    }
-
-    .member_list_table {
-      margin: auto;
-      max-width: 1150px;
-      min-width: 1150px;
+    .ex_list_contents_item, .ex_list_detail_contents_item {
+      display: flex;
+      height: 7%;
+      justify-content: center;
+      padding: 5px;
+      margin: 5px;
+      align-items: center;
       text-align: center;
+      /* border: 1px solid black; */
+    }
+
+    .ex_list_contents_item_no {
+      width: 10%;
       font-size: 0.9rem;
+      border: 1px solid black;
+      background-color: var(--text-color);
+      color: var(--footer-color);
     }
 
-    tr,
-    th,
-    td {
-      border: 1px solid var(--footer-color);
+    .ex_list_contents_item_title, .ex_list_detail_contents_item_title {
+      font-size: 0.9rem;
+      width: 40%;
+      border: 1px solid black;
+      background-color: var(--sub-color3);
+      color: var(--text-color);
     }
 
-    /* member_list end */
+    .ex_list_contents_item_data, .ex_list_detail_contents_item_data {
+      font-size: 0.9rem;
+      width: 55%;
+      border: 1px solid black;
+    }
 
+    .ex_list_detail_wrap {
+      width: 70%;
+      display: flex;
+      justify-content: center;
+    }
+
+    .ex_list_detail_contents_wrap {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 60%;
+    }
+
+    .ex_list_show_img_wrap {
+      width: 40%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .ex_list_show_img_contents_wrap {
+      width: 90%;
+      height: 80%;
+    }
+
+    /* input_ex end */
 
     /* footer start */
     .footer {
@@ -280,17 +319,17 @@
 </head>
 
 <body>
-	<c:if test="${empty loginID}">
+  <c:if test="${empty loginID}">
     	<script>location.href="/admin/admin_login.jsp"</script>
-	</c:if>
+  </c:if>
   <div class="container">
     <div class="header">
       <div class="admin_logo">
         <i class="fab fa-artstation"> Artex Vision Admin Page</i>
       </div>
       <div class="userDetail">
-        <i class="fas fa-user-circle"> ${loginID } 님 환영합니다.</i>
-        <a href="/logout.admin" id="logout_btn"><i class="fas fa-sign-out-alt"> LOGOUT</i></a>
+        <i class="fas fa-user-circle"> ADMIN 님 환영합니다.</i>
+        <i class="fas fa-sign-out-alt"> LOGOUT</i>
       </div>
     </div>
 
@@ -337,40 +376,63 @@
 				</div>
 			</a>
 		</div>
+  
     <div class="contents">
-      <div class="member_list_wrap">
-        <h3>전체 회원 List</h3>
-        <hr class="member_list_title">
-        <span class="total_count"> 총 회원 수 : ${fn:length(list) } </span>
-        <table class="member_list_table">
-          <tr>
-            <th>No.</th>
-            <th class="id_title">아이디</th>
-            <th class="name_title">이름</th>
-            <th class="birth_title">생년월일</th>
-            <th class="email_title">이메일</th>
-            <th class="phone_title">전화번호</th>
-            <th class="addr_title">주소</th>
-            <th class="grade_title">등급</th>
-            <th class="signup_date_title">가입일</th>
-            
-          </tr>
-          <c:forEach items="${list }" var="list" varStatus="s">
-          	<tr>
-          		<td>${s.count }</td>
-          		<td>${list.mem_id }</td>
-          		<td>${list.mem_name }</td>
-          		<td>${list.mem_birth }</td>
-          		<td>${list.mem_email }</td>
-          		<td>${list.mem_phone }</td>
-          		<td>${list.mem_addr1 } ${mem_list.addr2 }</td>
-          		<td>${list.mem_grade }</td>
-          		<td>${list.mem_signup_date }</td>
-          	</tr>
-          </c:forEach>
-        </table>
+      <div class="ex_list_wrap">
+        <div class="ex_list_contents_wrap">
+          <div class="ex_list_contents">
+            <div class="ex_list_contents_item">
+              <div class="ex_list_contents_item_no">1</div>
+              <div class="ex_list_contents_item_title">전시회 ID</div>
+              <div class="ex_list_contents_item_data">전시회 제목</div>
+            </div>
+
+          </div>
+        </div>
+        <div class="ex_list_detail_wrap">
+          <div class="ex_list_show_img_wrap">
+            <div class="ex_list_show_img_contents_wrap">
+
+            </div>
+          </div>
+          <div class="ex_list_detail_contents_wrap">
+            <div class="ex_list_detail_contents_item">
+              <div class="ex_list_detail_contents_item_title">전시회 ID</div>
+              <div class="ex_list_detail_contents_item_data">아이디</div>
+            </div>
+            <div class="ex_list_detail_contents_item">
+              <div class="ex_list_detail_contents_item_title">전시회 TITLE</div>
+              <div class="ex_list_detail_contents_item_data">TITLE</div>
+            </div>
+            <div class="ex_list_detail_contents_item">
+              <div class="ex_list_detail_contents_item_title">전시회 DESC</div>
+              <div class="ex_list_detail_contents_item_data">DESC</div>
+            </div>
+            <div class="ex_list_detail_contents_item">
+              <div class="ex_list_detail_contents_item_title">전시회 가격</div>
+              <div class="ex_list_detail_contents_item_data">가격</div>
+            </div>
+            <div class="ex_list_detail_contents_item">
+              <div class="ex_list_detail_contents_item_title">전시회 장소</div>
+              <div class="ex_list_detail_contents_item_data">장소</div>
+            </div>
+            <div class="ex_list_detail_contents_item">
+              <div class="ex_list_detail_contents_item_title">전시회 평점</div>
+              <div class="ex_list_detail_contents_item_data">평점</div>
+            </div>
+            <div class="ex_list_detail_contents_item">
+              <div class="ex_list_detail_contents_item_title">전시회 시작일</div>
+              <div class="ex_list_detail_contents_item_data">시작일</div>
+            </div>
+            <div class="ex_list_detail_contents_item">
+              <div class="ex_list_detail_contents_item_title">전시회 종료일</div>
+              <div class="ex_list_detail_contents_item_data">종료일</div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
+    </form>
 
     <div class="footer">
       <div class="footer_logo"><i class="fab fa-artstation"> Artex Vision Admin Page</i></div>
@@ -381,18 +443,11 @@
         neque</div>
     </div>
   </div>
-   <script>
-      let working1 = document.getElementById("working1");
-	  let working2 = document.getElementById("working2");
-	
-	  working1.onclick = function() {
-		  alert("구현중입니다.");
-	  }
-	
-	  working2.onclick = function() {
-		  alert("구현중입니다.");
-	  }
-  </script>
 </body>
+<script>
 
+</script>
+
+</html>
+</body>
 </html>
