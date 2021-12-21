@@ -1,3 +1,4 @@
+<!-- 사이드바 잘보이게 하려고 500px 줬음 수정필요-->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -14,7 +15,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sEnbO0LRn5q+8nbTov4+1p"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sEqbO0LRn5q+8qbTov4+1p"
         crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
         
@@ -131,7 +132,6 @@
             width: 1200px;
             margin: auto;
         }
-        
         .container>div{
         	width: 1200px;
         }
@@ -254,15 +254,10 @@
             display: flex;
         }
 
-        .container2 {
-            height: 800px;
-        }
-
         .sidebar {
             width: 15%;
             height: 100%;
             background-color: var(--color3);
-            
         }
 
         .list_title {
@@ -307,21 +302,21 @@
 
         .container2 {
             overflow: hidden;
+            height: 800px;
         }
 
         .sidebar {
             float: left;
             width: 15%;
-            height: 100%;
         }
 
-        .board_nb_content {
+        .board_qb_content {
             float: left;
             width: 85%;
             padding: 15px;
         }
 
-        .board_nb_head {
+        .board_qb_head {
             border-top: 1px solid black;
             border-bottom: 1px solid black;
             overflow: hidden;
@@ -330,51 +325,51 @@
             line-height: 30px;
         }
 
-        .board_nb_boardname {
+        .board_qb_boardname {
             overflow: hidden;
         }
 
-        .board_nb_boardname>div {
+        .board_qb_boardname>div {
             float: left;
         }
 
-        .board_nb_prevboard {
+        .board_qb_prevboard {
             margin-right: 5px;
         }
 
-        .board_nb_prevboard:hover {
+        .board_qb_prevboard:hover {
             cursor: pointer;
         }
 
-        .board_nb_presentboard {
+        .board_qb_presentboard {
             margin-left: 5px;
         }
 
-        .board_nb_presentboard:hover {
+        .board_qb_presentboard:hover {
             cursor: pointer;
         }
 
-        .board_nb_head>div {
+        .board_qb_head>div {
             float: left;
         }
 
-        .board_nb_num {
+        .board_qb_num {
             width: 10%;
         }
 
-        .board_nb_writer {
+        .board_qb_writer {
             width: 10%;
         }
 
-        .board_nb_write_date {
+        .board_qb_write_date {
             width: 10%;
         }
 
-        .board_nb_view_count {
+        .board_qb_view_count {
             width: 10%;
         }
 
-        .board_nb_notice {
+        .board_qb_notice {
             border-bottom: 1px solid black;
             overflow: hidden;
             text-align: center;
@@ -383,35 +378,35 @@
             line-height: 30px;
         }
 
-        .board_nb_notice>div {
+        .board_qb_notice>div {
             float: left;
         }
 
-        .board_nb_notice_num {
+        .board_qb_notice_num {
             width: 10%;
         }
 
-        .board_nb_notice_title {
+        .board_qb_notice_title {
             width: 60%;
         }
 
-        .board_nb_notice_title:hover {
+        .board_qb_notice_title:hover {
             cursor: pointer;
         }
 
-        .board_nb_notice_writer {
+        .board_qb_notice_writer {
             width: 10%;
         }
 
-        .board_nb_notice_write_date {
+        .board_qb_notice_write_date {
             width: 10%;
         }
 
-        .board_nb_notice_view_count {
+        .board_qb_notice_view_count {
             width: 10%;
         }
 
-        .board_nb_user_write {
+        .board_qb_user_write {
             border-bottom: 1px solid black;
             overflow: hidden;
             text-align: center;
@@ -419,65 +414,60 @@
             line-height: 30px;
         }
 
-        .board_nb_user_write>div {
+        .board_qb_user_write>div {
             float: left;
         }
 
-        .board_nb_user_num {
+        .board_qb_user_num {
             width: 10%;
         }
 
-        .board_nb_user_title {
+        .board_qb_user_title {
             width: 60%;
         }
 
-        .board_nb_user_title:hover {
+        .board_qb_user_title:hover {
             cursor: pointer;
         }
 
-        .board_nb_user_writer {
+        .board_qb_user_writer {
             width: 10%;
         }
 
-        .board_nb_user_write_date {
+        .board_qb_user_write_date {
             width: 10%;
         }
 
-        .board_nb_user_view_count {
+        .board_qb_user_view_count {
             width: 10%;
         }
 
-        .board_nb_search_area {
+        .board_qb_search_area {
             text-align: center;
         }
 
-        .board_nb_search_area>select {
+        .board_qb_search_area>select {
             width: 10%;
         }
 
-        .board_nb_search {
+        .board_qb_search {
             width: 40%;
             height: 25px;
         }
 
-        .board_nb_search_btn {
+        .board_qb_search_btn {
             height: 25px;
         }
 
-        .board_nb_pagination {
+        .board_qb_pagination {
             overflow: hidden;
             text-align: center;
         }
 
-        .board_nb_page {
+        .board_qb_page {
             text-align: text;
         }
-
         
-        #nb_title, #nb_contents{
-        	border: 0px;
-        }
-
         a {
           text-align: center;
           text-decoration: none;
@@ -499,7 +489,7 @@
           <c:when test="${loginId!=null}">
             <div class="header" id="topTarget">
               <ul class="header_list">
-                <li class="user_detail"><span id="user_grade"><i class="fas fa-crown"></i> ${loginGrade }</li></span>
+                <li class="user_detail"><span id="user_grade"><i class="fas fa-crown"></i> ${dto.mem_grade}</li></span>
                 <li id="welcome"> ${loginId } 님 환영합니다.</li>
                 <li id="mypage"><a href="/modifyForm.mem">마이페이지</a></li>
                 <li id="basket"><a href="/basket/basket.jsp" id="basket">장바구니</a></li>
@@ -523,15 +513,15 @@
           <div class="nav_side">
             <div class="nav_menu">
               <ul class="nav_menu_list">
-                <li><a href="/nb_list.board?cpage=1" id="notice">NOTICE</a></li>
-                <li><a href="/exhibition/artexDesc/artex_desc.jsp">Artex Vision</a></li>
-                <li><a href="/exhibition/exhibition/main_ex/now_main_ex.jsp">전시</a></li>
+                <li><a href="/qb_list.board?cpage=1" id="notice">NOTICE</a></li>
+                <li><a href="../artexDesc/artex_desc.jsp">Artex Vision</a></li>
+                <li><a href="../exhibition/main_ex/now_main_ex.jsp">전시</a></li>
                 <li><a href="#" id="event">이벤트</a></li>
               </ul>
             </div>
           </div>
         </div>
-		<div class="carousel_timeline">
+        <div class="carousel_timeline">
           <div class="carousel">
             <img src="/exhibition/img/artex_main_img.png" class="carousel_img">
           </div>
@@ -540,96 +530,60 @@
             <div class="sidebar">
                 <h2 class="list_title">NOTICE </h2>
                 <ul class="sidebar_item_list">
-                    <li class="sidebar_item"><a href="/nb_list.board?cpage=1">공지사항</a></li>                    
+                    <li class="sidebar_item"><a href="/qnb_list.board?cpage=1">공지사항</a></li>
                     <li class="sidebar_item"><a href="">Q&A</a></li>
                     <li class="sidebar_item"><a href="/board/faq_home.jsp">FAQ</a></li>
                 </ul>
             </div>
             <br>
-            <div class="board_nb_content">
-                <div class="board_nb_boardname">
+            <div class="board_qb_content">
+                <div class="board_qb_boardname">
                     <div class="board_nb_prevboard">NOTICE</div>
                     <div>></div>
-                    <div class="board_nb_presentboard"><a href="/nb_list.board?cpage=1" style="text-decoration:none; color:black;">공지사항</a></div>
+                    <div class="board_qb_presentboard"><a href="/qb_list.board?cpage=1" style="text-decoration:none; color:black;">Q&A</a></div>
                 </div>
                 <hr>
-                <form action="/nb_modify.board" id = "frmDetail">
-                    <div class="board_nb_write" style="width:100%;">
-                    	<input type=hidden value="${noticeboard_dto.nb_seq }" name=nb_seq>
-                        <div class="board_nb_title"><input type=text placeholder="제목을 입력하세요"
-                                style="width:100%; font-weight: bold; font-size : large"  name="nb_title" id="nb_title" readonly value="${noticeboard_dto.nb_title }"></div>
-                                <div style="font-size:small">${noticeboard_dto.nb_mem_id }  조회수 ${noticeboard_dto.nb_view_count } ${noticeboard_dto.nb_write_date }</div>
-                                <hr>
-                        <div class="board_nb_contents"><textarea placeholder="내용을 입력하세요."
-                                style="width:100%; margin-top:10px; height: 330px;" readonly name="nb_contents" id="nb_contents">${noticeboard_dto.nb_contents }</textarea></div>
+                <form action="/qb_writeProc.board" id="frmWrite">
+                    <div class="board_qb_write" style="width:100%;">
+                        <div class="board_qb_title"><input type=text placeholder="제목을 입력하세요"
+                                style="width:100%;" name="qb_title" id="qb_title"></div>
+                        <div class="board_qb_contents" style="margin-top:10px;"><textarea placeholder="내용을 입력하세요."
+                                style="width:100%; height: 330px;" name="qb_contents" id="qb_contents"></textarea></div>
                     </div>
+
                     <br>
-                    <div class="board_nb_user_writebtn" style="text-align: right;">
- 				<a href="javascript:history.back()"><button type=button id=toList>목록으로</button></a>
-				<c:if test="${noticeboard_dto.nb_mem_id == 관리자}">
-					<button type=button id=mod>수정하기</button>
-					<button type=button id=del>삭제하기</button>
-					<button type=button id=modOk style="display:none;">수정완료</button>
-					<button type=button id=modCancel style="display:none;">취소</button>
-				</c:if>
+                    <div class="board_qb_user_writebtn" style="text-align: right;">
+                        <button type=button id="write">작성완료</button>
+                        <a href="javascript:history.back()"><button type=button>취소</button></a>
                     </div>
                 </form>
                 <br>
             </div>
         </div>
+         <div class="footer">
 
-        <!-- 커뮤니티 end -->        
-        <div class="footer"></div>        
-
+        </div>
     </div>
     
     <script>
-		$("#del").on("click",function(){
-			if(confirm("정말 삭제하시겠습니까?")){
-				location.href="/nb_delete.board?nb_seq=${noticeboard_dto.nb_seq}";
+    	$("#write").on("click", function(){
+    		
+    		let qb_title = $("#qb_title").val();
+            let qb_contents = $("#qb_contents").val();
+            
+    		if(qb_title==""){
+    			alert("제목을 입력해주세요")
+    			return false;
+    		}
+    		if(qb_contents==""){
+				alert("내용을 입력해주세요")
+				return false;
 			}
-		});
-		
-		$("#toList").on("click",function(){
-			location.href="/nb_list.board";			
-		});
-		
-		let bkTitle = "";
-		let bkContents = "";
-		
-		$("#mod").on("click",function(){
-			
-			bkTitle = $("#nb_title").val();
-			bkContents = $("#nb_contents").val();
-			
-			$("#nb_title").removeAttr("readonly");
-			$("#nb_contents").removeAttr("readonly");
-			$("#mod").css("display","none");
-			$("#del").css("display","none");
-			$("#modOk").css("display","inline");
-			$("#modCancel").css("display","inline");
-		});
-		
-		$("#modOk").on("click",function(){
-			if(confirm("이대로 수정하시겠습니까?")){
-				$("#frmDetail").submit();
-			}
-		});
-		
-		$("#modCancel").on("click",function(){
-			if(confirm("정말 취소하시겠습니까?")){
-				$("#nb_title").val(bkTitle);
-				$("#nb_contents").val(bkContents);
-				$("#nb_title").attr("readonly","");
-				$("#nb_contents").attr("readonly","");
-				$("#mod").css("display","inline");
-				$("#del").css("display","inline");
-				$("#modOk").css("display","none");
-				$("#modCancel").css("display","none");
-			}
-		})
-		
-		$("#logout").on("click", function () {
+
+    		$("#frmWrite").submit();
+    		
+    	})
+    	$("#logout").on("click", function () {
           if (!confirm("로그아웃 하시겠습니까?")) {
             return false;
           }
@@ -639,12 +593,13 @@
           alert("현재 기능은 구현중에 있습니다.");
           return false;
         })
-       
+        
         $("#event").on("click", function () {
           alert("현재 기능은 구현중에 있습니다.");
           return false;
         })
-	</script>
+    </script>
+    
 </body>
 
 </html>
