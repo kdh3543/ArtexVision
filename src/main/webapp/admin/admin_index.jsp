@@ -47,7 +47,7 @@
     }
 
     div {
-      /* border: 1px solid black; */
+      /* border: 1px solid black;  */
     }
 
 	a {
@@ -202,8 +202,9 @@
     .dashboard_graph {
       width: 80%;
       display: flex;
-      justify-content: center;
+      justify-content: flex-start;
       align-items: center;
+      padding-left: 90px;
     }
 
     /* dashboard end */
@@ -350,13 +351,18 @@
 				</div>
 			</div> -->
 			<div class="select_btn_form">
-				<button type="button" class="select_btn" id="daily_btn">일간 가입자 통계 보기</button>
-				<button type="button" class="select_btn" id="monthly_btn">월간 가입자 통계 보기</button>
+				<button type="button" class="select_btn" id="daily_btn"><i class="fas fa-users"></i> 일간 가입자 통계</button>
+				<button type="button" class="select_btn" id="monthly_btn"><i class="fas fa-users"></i> 월간 가입자 통계</button>
+				<button type="button" class="select_btn" id="daily_visit_btn"><i class="far fa-eye"></i> 일간 방문자 통계</button>
+				<button type="button" class="select_btn" id="monthly_visit_btn"><i class="far fa-eye"></i> 월간 방문자 통계</button>
+				<button type="button" class="select_btn" id="daily_revenue_btn"><i class="fas fa-money-bill-wave"></i> 일간 매출 통계</button>
+				<button type="button" class="select_btn" id="monthly_revenue_btn"><i class="fas fa-money-bill-wave"></i> 월간 매출 통계</button>
 			</div>
 		</div>
 
 		<div class="contents">
 			<div class="dashboard_wrap">
+				
 				<div class="dashboard_contents">
 					<!-- <div class="dashboard_contents_item">
 						<div class="dashboard_contents_item_title"></div>
@@ -364,6 +370,7 @@
 					</div> -->
 				</div>
 				<div class="dashboard_graph">
+					<div class="comment">상단 탭을 누르면 통계를 확인하실 수 있습니다.</div>
 					<%-- <canvas id="myChart"></canvas> --%>
 				</div>
 			</div>
@@ -426,10 +433,16 @@
 		alert("구현중입니다.");
 	}
 
-	let weekly_btn = document.getElementById("weekly_btn");
+	let monthly_btn = document.getElementById("monthly_btn");
 	let daily_btn = document.getElementById("daily_btn");
+	let daily_visit_btn = document.getElementById("daily_visit_btn");
+	let monthly_visit_btn = document.getElementById("monthly_visit_btn");
+	let daily_revenue_btn = document.getElementById("daily_revenue_btn");
+	let monthly_revenue_btn = document.getElementById("monthly_revenue_btn");
+	
 	const dashboard_contents = document.querySelector(".dashboard_contents");
 	const dashboard_graph = document.querySelector(".dashboard_graph");
+	
 	daily_btn.onclick = function(){
 		$(".dashboard_contents").empty();
 		$(".dashboard_graph").empty();
@@ -459,11 +472,12 @@
 				dashboard_contents.append(div1);
 			}
 			
+			let type = "bar";
 			let canvas = document.createElement("canvas");
 			canvas.id = "myChart";
 			dashboard_graph.appendChild(canvas);
 			
-			drawChart(dateArr, cntArr);
+			drawChart(dateArr, cntArr, type);
 	  });
 	}
 	
@@ -496,21 +510,175 @@
 				dashboard_contents.append(div1);
 			}
 			
+			let type = "bar";
 			let canvas = document.createElement("canvas");
 			canvas.id = "myChart";
 			dashboard_graph.appendChild(canvas);
 			
-			drawChart(dateArr, cntArr);
+			drawChart(dateArr, cntArr, type);
 	  });
 	}
 	
-	function drawChart(dateArr, cntArr){
+	daily_visit_btn.onclick = function(){
+		$(".dashboard_contents").empty();
+		$(".dashboard_graph").empty();
+		$.ajax({
+			url: "/dailyVisitData.admin"
+		}).done(function(resp){
+			let result = JSON.parse(resp);
+			let dateArr = [];
+			let cntArr = [];
+			for(let i = 0; i < result.length; i++) {
+				dateArr.push(result[i].mem_signup_date);
+				cntArr.push(parseInt(result[i].cnt));
+				
+				let div1 = document.createElement("div");
+				div1.classList.add("dashboard_contents_item");
+				
+				let div2 = document.createElement("div");
+				div2.classList.add("dashboard_contents_item_title");
+				div2.innerText = result[i].mem_signup_date;
+				
+				let div3 = document.createElement("div");
+				div3.classList.add("dashboard_contents_item_data");
+				div3.innerText = result[i].cnt;
+				
+				div1.appendChild(div2);
+				div1.appendChild(div3);
+				dashboard_contents.append(div1);
+			}
+			
+			let type = "bar";
+			let canvas = document.createElement("canvas");
+			canvas.id = "myChart";
+			dashboard_graph.appendChild(canvas);
+			
+			drawChart(dateArr, cntArr, type);
+	  });
+	}
+	
+	monthly_visit_btn.onclick = function(){
+		$(".dashboard_contents").empty();
+		$(".dashboard_graph").empty();
+		$.ajax({
+			url: "/monthlyVisitData.admin"
+		}).done(function(resp){
+			let result = JSON.parse(resp);
+			let dateArr = [];
+			let cntArr = [];
+			for(let i = 0; i < result.length; i++) {
+				dateArr.push(result[i].mem_signup_date);
+				cntArr.push(parseInt(result[i].cnt));
+				
+				let div1 = document.createElement("div");
+				div1.classList.add("dashboard_contents_item");
+				
+				let div2 = document.createElement("div");
+				div2.classList.add("dashboard_contents_item_title");
+				div2.innerText = result[i].mem_signup_date;
+				
+				let div3 = document.createElement("div");
+				div3.classList.add("dashboard_contents_item_data");
+				div3.innerText = result[i].cnt;
+				
+				div1.appendChild(div2);
+				div1.appendChild(div3);
+				dashboard_contents.append(div1);
+			}
+			
+			let type = "bar";
+			let canvas = document.createElement("canvas");
+			canvas.id = "myChart";
+			dashboard_graph.appendChild(canvas);
+			
+			drawChart(dateArr, cntArr, type);
+	  });
+	}
+	
+	daily_revenue_btn.onclick = function(){
+		$(".dashboard_contents").empty();
+		$(".dashboard_graph").empty();
+		$.ajax({
+			url: "/dailyRevenueData.admin"
+		}).done(function(resp){
+			let result = JSON.parse(resp);
+			let dateArr = [];
+			let cntArr = [];
+			for(let i = 0; i < result.length; i++) {
+				dateArr.push(result[i].mem_signup_date);
+				cntArr.push(parseInt(result[i].cnt));
+				
+				let div1 = document.createElement("div");
+				div1.classList.add("dashboard_contents_item");
+				
+				let div2 = document.createElement("div");
+				div2.classList.add("dashboard_contents_item_title");
+				div2.innerText = result[i].mem_signup_date;
+				
+				let div3 = document.createElement("div");
+				div3.classList.add("dashboard_contents_item_data");
+				div3.innerText = result[i].cnt;
+				
+				div1.appendChild(div2);
+				div1.appendChild(div3);
+				dashboard_contents.append(div1);
+			}
+			
+			let type = "line";
+			let canvas = document.createElement("canvas");
+			canvas.id = "myChart";
+			dashboard_graph.appendChild(canvas);
+			
+			drawChart(dateArr, cntArr, type);
+	  });
+	}
+	
+	monthly_revenue_btn.onclick = function(){
+		$(".dashboard_contents").empty();
+		$(".dashboard_graph").empty();
+		$.ajax({
+			url: "/monthlyRevenueData.admin"
+		}).done(function(resp){
+			let result = JSON.parse(resp);
+			let dateArr = [];
+			let cntArr = [];
+			for(let i = 0; i < result.length; i++) {
+				dateArr.push(result[i].mem_signup_date);
+				cntArr.push(parseInt(result[i].cnt));
+				
+				let div1 = document.createElement("div");
+				div1.classList.add("dashboard_contents_item");
+				
+				let div2 = document.createElement("div");
+				div2.classList.add("dashboard_contents_item_title");
+				div2.innerText = result[i].mem_signup_date;
+				
+				let div3 = document.createElement("div");
+				div3.classList.add("dashboard_contents_item_data");
+				div3.innerText = result[i].cnt;
+				
+				div1.appendChild(div2);
+				div1.appendChild(div3);
+				dashboard_contents.append(div1);
+			}
+			let type = "line";
+			let canvas = document.createElement("canvas");
+			canvas.id = "myChart";
+			dashboard_graph.appendChild(canvas);
+			
+			drawChart(dateArr, cntArr, type);
+	  });
+	}
+	
+	
+	
+	function drawChart(dateArr, cntArr, type){
 		let ctx = document.getElementById('myChart');
 		let title_arr = dateArr;
 		let contents_arr = cntArr;
 		
 		let myChart = new Chart(ctx, {
-			type: 'bar',
+			type: type,
 			data: {
 				labels: title_arr,
 				datasets: [{

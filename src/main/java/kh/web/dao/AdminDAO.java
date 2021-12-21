@@ -82,7 +82,7 @@ public class AdminDAO {
 	}
 	
 	public List<MemberDTO> selectAllMember() throws Exception {
-		String sql = "select * from member";
+		String sql = "select * from member order by mem_signup_date";
 		try(Connection conn = this.getConnection();
 			PreparedStatement pstmt = conn.prepareStatement(sql);)
 		{
@@ -143,6 +143,83 @@ public class AdminDAO {
 				String mem_signup_date = rs.getString("mem_signup_date");
 				int cnt = rs.getInt("cnt");
 				dDto = new DashboardDTO(mem_signup_date,  cnt);
+				list.add(dDto);
+			}
+			return list;
+		}
+	}
+	
+	public List<DashboardDTO> selectMonthlyVisitData() throws Exception {
+		String sql = "SELECT TO_CHAR(b.dt, 'YYYY-MM') AS bk_ex_visit_date, NVL(SUM(a.cnt), 0) cnt FROM ( SELECT TO_CHAR(bk_ex_visit_date, 'YYYY-MM-DD') AS bk_ex_visit_date, COUNT(*) cnt FROM book WHERE bk_ex_visit_date BETWEEN TO_DATE('2021-01-01', 'YYYY-MM-DD') AND TO_DATE('2021-12-31', 'YYYY-MM-DD') GROUP BY bk_ex_visit_date) a, ( SELECT TO_DATE('2021-01-01','YYYY-MM-DD') + LEVEL - 1 AS dt FROM dual CONNECT BY LEVEL <= (TO_DATE('2021-12-31','YYYY-MM-DD') - TO_DATE('2021-01-01','YYYY-MM-DD') + 1)) b WHERE b.dt = a.bk_ex_visit_date(+) GROUP BY TO_CHAR(b.dt, 'YYYY-MM') ORDER BY TO_CHAR(b.dt, 'YYYY-MM')";
+		try(Connection conn = this.getConnection();
+			PreparedStatement pstmt = conn.prepareStatement(sql);)
+		{
+			ResultSet rs = pstmt.executeQuery();
+			
+			List<DashboardDTO> list = new ArrayList<DashboardDTO>();
+			DashboardDTO dDto = null;
+			while(rs.next()) {
+				String bk_ex_visit_date = rs.getString("bk_ex_visit_date");
+				int cnt = rs.getInt("cnt");
+				dDto = new DashboardDTO(bk_ex_visit_date,  cnt);
+				list.add(dDto);
+			}
+			return list;
+		}
+	}
+	
+	public List<DashboardDTO> selectDailyVisitData() throws Exception {
+		String sql = "select TO_CHAR(bk_ex_visit_date, 'YYYY-MM-DD') as bk_ex_visit_date, count(*) as cnt from book where bk_ex_visit_date >='20210101' and bk_ex_visit_date <= to_char(sysdate+1,'YYYY-MM-DD') GROUP BY to_char(bk_ex_visit_date, 'YYYY-MM-DD') order by bk_ex_visit_date";
+		try(Connection conn = this.getConnection();
+			PreparedStatement pstmt = conn.prepareStatement(sql);)
+		{
+			ResultSet rs = pstmt.executeQuery();
+			
+			List<DashboardDTO> list = new ArrayList<DashboardDTO>();
+			DashboardDTO dDto = null;
+			while(rs.next()) {
+				String bk_ex_visit_date = rs.getString("bk_ex_visit_date");
+				int cnt = rs.getInt("cnt");
+				dDto = new DashboardDTO(bk_ex_visit_date,  cnt);
+				list.add(dDto);
+			}
+			return list;
+		}
+	}
+	
+	public List<DashboardDTO> selectMonthlyRevenueData() throws Exception {
+		String sql = "SELECT TO_CHAR(b.dt, 'YYYY-MM') AS bk_ex_visit_date, NVL(SUM(a.sum), 0) sum FROM ( SELECT TO_CHAR(bk_ex_visit_date, 'YYYY-MM-DD') AS bk_ex_visit_date, sum(bk_ex_price) as sum FROM book WHERE bk_ex_visit_date BETWEEN TO_DATE('2021-01-01', 'YYYY-MM-DD') AND TO_DATE('2021-12-31', 'YYYY-MM-DD') GROUP BY bk_ex_visit_date) a, ( SELECT TO_DATE('2021-01-01','YYYY-MM-DD') + LEVEL - 1 AS dt FROM dual CONNECT BY LEVEL <= (TO_DATE('2021-12-31','YYYY-MM-DD') - TO_DATE('2021-01-01','YYYY-MM-DD') + 1)) b WHERE b.dt = a.bk_ex_visit_date(+) GROUP BY TO_CHAR(b.dt, 'YYYY-MM') ORDER BY TO_CHAR(b.dt, 'YYYY-MM')";
+		try(Connection conn = this.getConnection();
+			PreparedStatement pstmt = conn.prepareStatement(sql);)
+		{
+			ResultSet rs = pstmt.executeQuery();
+			
+			List<DashboardDTO> list = new ArrayList<DashboardDTO>();
+			DashboardDTO dDto = null;
+			while(rs.next()) {
+				String bk_ex_visit_date = rs.getString("bk_ex_visit_date");
+				int cnt = rs.getInt("sum");
+				dDto = new DashboardDTO(bk_ex_visit_date,  cnt);
+				list.add(dDto);
+			}
+			return list;
+		}
+	}
+	
+	
+	public List<DashboardDTO> selectDailyRevenueData() throws Exception {
+		String sql = "select TO_CHAR(bk_ex_visit_date, 'YYYY-MM-DD') as bk_ex_visit_date, sum(bk_ex_price) as sum from book where bk_ex_visit_date >='20210101' and bk_ex_visit_date <= to_char(sysdate+1,'YYYY-MM-DD') GROUP BY to_char(bk_ex_visit_date, 'YYYY-MM-DD') order by bk_ex_visit_date";
+		try(Connection conn = this.getConnection();
+			PreparedStatement pstmt = conn.prepareStatement(sql);)
+		{
+			ResultSet rs = pstmt.executeQuery();
+			
+			List<DashboardDTO> list = new ArrayList<DashboardDTO>();
+			DashboardDTO dDto = null;
+			while(rs.next()) {
+				String bk_ex_visit_date = rs.getString("bk_ex_visit_date");
+				int cnt = rs.getInt("sum");
+				dDto = new DashboardDTO(bk_ex_visit_date,  cnt);
 				list.add(dDto);
 			}
 			return list;
