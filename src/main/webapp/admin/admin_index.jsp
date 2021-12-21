@@ -174,6 +174,10 @@
       overflow-x:hidden;
     }
 
+	.dashboard_contents::-webkit-scrollbar {
+    	display: none; 
+	}
+
     .dashboard_contents_item {
       display: flex;
       height: 7%;
@@ -325,18 +329,21 @@
 				<div class="nav_title">BOARD</div>
 			</div>
 			
-			<div class="nav_items" id="working2">
-				<div class="nav_icon">
-					<i class="fas fa-crown"></i>
-				</div>
-				<div class="nav_title">GRADE</div>
-			</div>
 			<a href="/input_ex_form.admin">
 				<div class="nav_items">
 					<div class="nav_icon">
 						<i class="fas fa-pen-square"></i>
 					</div>
-					<div class="nav_title">EXHIBITION</div>
+					<div class="nav_title">ADD EX</div>
+				</div>
+			</a>
+			
+			<a href="/show_ex_list.admin">
+				<div class="nav_items">
+					<div class="nav_icon">
+						<i class="far fa-list-alt"></i>
+					</div>
+					<div class="nav_title">SHOW EX LIST</div>
 				</div>
 			</a>
 		</div>
@@ -423,16 +430,11 @@
 </body>
 <script>
 	let working1 = document.getElementById("working1");
-	let working2 = document.getElementById("working2");
-	
+
 	working1.onclick = function() {
 		alert("구현중입니다.");
 	}
 	
-	working2.onclick = function() {
-		alert("구현중입니다.");
-	}
-
 	let monthly_btn = document.getElementById("monthly_btn");
 	let daily_btn = document.getElementById("daily_btn");
 	let daily_visit_btn = document.getElementById("daily_visit_btn");

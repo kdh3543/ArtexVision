@@ -89,5 +89,5 @@ public class ExhibitionDTO {
 	public void setEx_end_date(Date ex_end_date) {
 		this.ex_end_date = ex_end_date;
 	}
-	
+
 }

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,9 +8,10 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Input_Ex</title>
+  <title>Document</title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
     integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
   <style>
@@ -120,28 +121,18 @@
     }
 
     div {
-      /* border: 1px solid black;  */
+      /* border: 1px solid black; */
     }
 
-    input:-webkit-autofill,
-    input:-webkit-autofill:hover,
-    input:-webkit-autofill:focus,
-    input:-webkit-autofill:active {
-      /* transition: background-color 5000s ease-in-out 0s; */
-      transition: background-color 9999s ease-out;
-      box-shadow: 0 0 0px 1000px transparent inset !important;
-      -webkit-text-fill-color: var(--footer color) !important;
+    a {
+      text-decoration: none;
+      color: var(--text-color);
     }
 
-	a {
+    a:active {
       text-decoration: none;
       color: var(--text-color);
-	}
-	
-	a:active {
-      text-decoration: none;
-      color: var(--text-color);
-	}
+    }
 
     .container {
       width: 1200px;
@@ -174,7 +165,7 @@
       padding: 20px;
     }
 
-	#logout_btn {
+    #logout_btn {
       text-decoration: none;
       color: var(--footer-color);
     }
@@ -191,11 +182,6 @@
       color: var(--text-color);
     }
 
-	.nav_items:hover {
-      color: var(--sub-color1);
-      cursor: pointer;
-    }
-
     .nav_icon {
       font-size: 1.5rem;
     }
@@ -204,6 +190,10 @@
       font-size: 0.9rem;
     }
 
+    .nav_items:hover {
+      color: var(--sub-color1);
+      cursor: pointer;
+    }
     /* nav end */
 
     .contents {
@@ -216,7 +206,7 @@
 
     /* input_ex start */
 
-    .input_ex_wrap {
+    .ex_list_wrap {
       margin: auto;
       display: flex;
       background-color: var(--text-color);
@@ -224,99 +214,101 @@
       height: 80%;
     }
 
-    .ex_img_show_wrap {
+    .ex_list_contents_wrap {
+      width: 40%;
+      display: flex;
+      justify-content: center;
+      border: 1px solid black;
+    }
+
+    .ex_list_contents {
+      width: 90%;
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
+
+	.ex_list_contents::-webkit-scrollbar {
+    	display: none; 
+	}
+
+    .ex_list_contents_item {
+      display: flex;
+      height: 7%;
+      justify-content: center;
+      padding: 5px;
+      margin: 5px;
+      align-items: center;
+      text-align: center;
+    }
+	
+	.ex_list_detail_contents_item {
+	  display: flex;
+      height: 12%;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+	}
+
+    .ex_list_contents_item_title {
+      font-size: 0.9rem;
+      width: 10%;
+      border: 1px solid black;
+      background-color: var(--sub-color3);
+      color: var(--text-color);
+    }
+    
+    .ex_list_contents_item_data {
+      font-size: 0.9rem;
+      width: 80%;
+      border: 1px solid black;
+    }
+    
+
+    .ex_list_detail_wrap {
+      width: 60%;
+      display: flex;
+      justify-content: center;
+    }
+
+	.notice {
+	  text-align: center;
+	  
+	}
+	
+    .ex_list_detail_contents_wrap {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 60%;
+    }
+
+
+    .ex_list_detail_contents_item_title {
+      font-size: 0.9rem;
       width: 30%;
+      border: 1px solid black;
+      background-color: var(--sub-color3);
+      color: var(--text-color);
+    }
+    
+    .ex_list_detail_contents_item_data {
+      font-size: 0.9rem;
+      width: 65%;
+      border: 1px solid black;
+    }
+    
+    .ex_list_show_img_wrap {
+      width: 35%;
       display: flex;
       justify-content: center;
       align-items: center;
     }
 
-    .ex_img_show {
-      width: 80%;
-      height: 80%;
-      border: 1px solid var(--footer-color)
+    .ex_list_show_img_contents_wrap {
+      width: 90%;
+      height: 60%;
+      border: 1px solid black;
     }
-
-    .ex_img_show img {
-      width: 100%;
-      height: 100%;
-    }
-
-    .input_ex_contents_wrap {
-      width: 70%;
-      display: flex;
-      padding-top: 30px;
-    }
-
-    .input_ex_title_wrap {
-      width: 20%;
-      height: 100%;
-    }
-
-    .input_ex_title {
-      height: 10%;
-      text-align: right;
-      line-height: 45px;
-      padding-right: 5px;
-    }
-
-    .input_ex_form_wrap {
-      width: 80%;
-      height: 100%;
-    }
-
-    .input_ex_form {
-      height: 10%;
-      line-height: 45px;
-      padding-left: 5px;
-    }
-
-    .input_ex_btn {
-      height: 20%;
-      line-height: 90px;
-      text-align: center;
-    }
-
-    .input_wrap {
-      padding: 5px;
-      border-radius: 5px;
-      background-color: var(--footer-color);
-      color: var(--text-color);
-    }
-
-    input[type="text"] {
-      width: 80%;
-      background-color: transparent;
-      color: var(--footer-color);
-      border: 0;
-      border-bottom: 1px solid var(--footer-color);
-    }
-
-    input[type="text"]:focus {
-      outline: none;
-    }
-
-    input[type="text"]::placeholder {
-      color: var(--sub-color1);
-    }
-
-	input[type="submit"] {
-	  background-color: var(--sub-color1);
-      color: var(--text-color);
-      width: 80%;
-      height: 30px;
-      border: var(--color1);
-      cursor: pointer;
-	}
-
-	input[type="button"] {
-	  background-color: var(--sub-color1);
-      color: var(--text-color);
-      height: 30px;
-      border: var(--color1);
-      cursor: pointer;
-	}
-	
 
     /* input_ex end */
 
@@ -351,42 +343,6 @@
 
     /* footer end */
   </style>
-  <script>
-    window.onload = function () {
-      function readImage(input) {
-        if (input.files && input.files[0]) {
-          const reader = new FileReader()
-
-          reader.onload = e => {
-            const previewImage = document.getElementById("preview_img");
-            previewImage.src = e.target.result
-          }
-          reader.readAsDataURL(input.files[0])
-        }
-      }
-      const inputImage = document.getElementById("input_ex_img");
-      inputImage.addEventListener("change", e => {
-        readImage(e.target)
-      });
-
-      document.getElementById("find_addr").onclick = function () {
-        new daum.Postcode({
-          oncomplete: function (data) {
-            document.getElementById("ex_location").value = data.roadAddress;
-          }
-        }).open();
-      };
-
-      let working1 = document.getElementById("working1");
-	  
-	
-	  working1.onclick = function() {
-		  alert("구현중입니다.");
-	  }
-	
-    }
-
-  </script>
 </head>
 
 <body>
@@ -394,17 +350,14 @@
     	<script>location.href="/admin/admin_login.jsp"</script>
   </c:if>
   <div class="container">
-
     <div class="header">
       <div class="admin_logo">
         <i class="fab fa-artstation"> Artex Vision Admin Page</i>
       </div>
       <div class="userDetail">
-	    <i class="fas fa-user-circle"> ${loginID } 님 환영합니다.</i> 
-		  <a href="/logout.admin" id="logout_btn">
-		    <i class="fas fa-sign-out-alt"> LOGOUT</i>
-		  </a>
-	  </div>
+        <i class="fas fa-user-circle"> ${loginID } 님 환영합니다.</i>
+        <i class="fas fa-sign-out-alt"> LOGOUT</i>
+      </div>
     </div>
 
     <div class="nav">
@@ -450,51 +403,31 @@
 				</div>
 			</a>
 		</div>
-    
-    <form action="/add_ex.admin" method="post" enctype="multipart/form-data">
+  
     <div class="contents">
-      <div class="input_ex_wrap">
-        <div class="ex_img_show_wrap">
-          <div class="ex_img_show">
-            <img src="" alt="이미지를 선택해 주세요" id="preview_img">
+      <div class="ex_list_wrap">
+        <div class="ex_list_contents_wrap">
+          <div class="ex_list_contents">
+          	<c:forEach items="${list }" var="list" varStatus="s">
+            <div class="ex_list_contents_item" id="${list.ex_id }">
+              <div class="ex_list_contents_item_title">${list.ex_id }</div>
+              <div class="ex_list_contents_item_data">${list.ex_title }</div>
+            </div>
+			</c:forEach>
           </div>
         </div>
-        <div class="input_ex_contents_wrap">
-          <div class="input_ex_title_wrap">
-            <div class="input_ex_title">전시 제목</div>
-            <div class="input_ex_title">전시 설명</div>
-            <div class="input_ex_title">전시 입장료</div>
-            <div class="input_ex_title">전시 장소</div>
-            <div class="input_ex_title">시작일</div>
-            <div class="input_ex_title">종료일</div>
-            <div class="input_ex_title">전시회 이미지</div>
-          </div>
-          <div class="input_ex_form_wrap">
-            <div class="input_ex_form">
-              <input type="text" name="ex_title" placeholder="전시회 제목을 입력하세요">
+        <div class="ex_list_detail_wrap">
+          <div class="ex_list_show_img_wrap">
+            <div class="ex_list_show_img_contents_wrap">
+
             </div>
-            <div class="input_ex_form">
-              <input type="text" name="ex_desc" placeholder="전시회 설명을 입력하세요">
-            </div>
-            <div class="input_ex_form">
-              <input type="text" name="ex_price" placeholder="전시회 입장료를 입력하세요">
-            </div>
-            <div class="input_ex_form">
-              <input type="text" name="ex_location" placeholder="전시회 장소를 입력하세요" id="ex_location">
-              <input type="button" value="주소찾기" id="find_addr">
-            </div>
-            <div class="input_ex_form">
-              <input type="date" name="ex_start_date" id="ex_start_date">
-            </div>
-            <div class="input_ex_form">
-              <input type="date" name="ex_end_date" id="ex_end_date">
-            </div>
-            <div class="input_ex_form">
-              <input type="file" name="ex_img" id="input_ex_img">
-            </div>
-            <div class="input_ex_btn">
-              <input type="submit" value="전시회 생성">
-            </div>
+          </div> 
+          <div class="ex_list_detail_contents_wrap">
+          	<div class="notice"> 리스트를 클릭하시면 <br> 상세 정보를 보실 수 있습니다. </div>
+            <!-- <div class="ex_list_detail_contents_item">
+              <div class="ex_list_detail_contents_item_title">전시회 ID</div>
+              <div class="ex_list_detail_contents_item_data">ID</div>
+            </div>  -->
           </div>
         </div>
       </div>
@@ -510,5 +443,56 @@
         neque</div>
     </div>
   </div>
+</body>
+<script>
+	working1.onclick = function() {
+		  alert("현재 구현중입니다.");
+	}
+
+    const ex_list_detail_contents_wrap = document.querySelector(".ex_list_detail_contents_wrap");
+	let ex_list_contents_item = document.querySelectorAll(".ex_list_contents_item");
+	let data = '';
+	for(let i = 0; i < ex_list_contents_item.length; i++) {
+		ex_list_contents_item[i].onclick = function() {
+			$(".ex_list_show_img_contents_wrap").empty();
+			$(".ex_list_detail_contents_wrap").empty();
+			data = ex_list_contents_item[i].getAttribute("id");
+			$.ajax({
+				url: "/getExListDesc.admin",
+				type: "post",
+				data: {
+					ex_id: data
+				}
+			}).done(function(resp){
+				let result = JSON.parse(resp);
+				
+				const titleArr = ["전시회 ID", "전시회 제목", "전시회 가격", "전시회 장소", "전시회 평점", "전시 시작일", "전시 종료일"];
+				const resultArr = [result.ex_id, result.ex_title, result.ex_price, result.ex_location, result.ex_score, result.ex_start_date, result.ex_end_date];
+				
+				for(let i = 0; i < titleArr.length; i++) {
+				
+				let div1 = document.createElement("div");
+				div1.classList.add("ex_list_detail_contents_item");
+						
+				let div2 = document.createElement("div");
+				div2.classList.add("ex_list_detail_contents_item_title");
+				div2.innerText = titleArr[i];
+						
+				let div3 = document.createElement("div");
+				div3.classList.add("ex_list_detail_contents_item_data");
+				div3.innerText = resultArr[i];
+						
+				div1.appendChild(div2);
+				div1.appendChild(div3);
+				
+				ex_list_detail_contents_wrap.append(div1);
+				}
+			});
+		}
+	}
+	
+</script>
+
+</html>
 </body>
 </html>

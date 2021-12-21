@@ -27,7 +27,6 @@ public class AdminDAO {
 
 	private AdminDAO() {}
 
-
 	private Connection getConnection() throws Exception {
 		Context ctx = new InitialContext();
 		DataSource ds = (DataSource)ctx.lookup("java:comp/env/jdbc/oracle");
@@ -48,33 +47,32 @@ public class AdminDAO {
 	}
 	
 	public int insertEx(ExhibitionDTO dto) throws Exception {
-		String sql = "insert into exhibition values(?, ?, ?, ?, ?, ?, ?, ?)";
+		String sql = "insert into exhibition values(ex_seq.nextval, ?, ?, ?, ?, ?, ?, ?)";
 		try(Connection conn = this.getConnection();
 			PreparedStatement pstmt = conn.prepareStatement(sql);)
 		{
-			pstmt.setString(1, dto.getEx_id());
-			pstmt.setString(2, dto.getEx_title());
-			pstmt.setString(3, dto.getEx_desc());
-			pstmt.setInt(4, dto.getEx_price());
-			pstmt.setString(5, dto.getEx_location());
-			pstmt.setInt(6, dto.getEx_score());
-			pstmt.setDate(7, dto.getEx_start_date());
-			pstmt.setDate(8, dto.getEx_end_date());
+			pstmt.setString(1, dto.getEx_title());
+			pstmt.setString(2, dto.getEx_desc());
+			pstmt.setInt(3, dto.getEx_price());
+			pstmt.setString(4, dto.getEx_location());
+			pstmt.setInt(5, dto.getEx_score());
+			pstmt.setDate(6, dto.getEx_start_date());
+			pstmt.setDate(7, dto.getEx_end_date());
 			int result = pstmt.executeUpdate();
 			conn.commit();
 			return result;
 		}
 	}
 	
-	public int insertExImg(int exi_seq, String exi_oriName, String exi_sysName, String exi_ex_id) throws Exception {
-		String sql = "insert into exhibitionimg values(?, ?, ?, ?)";
+	public int insertExImg(int exi_seq, String exi_oriName, String exi_sysName) throws Exception {
+		String sql = "insert into exhibitionimg values(?, ?, ?, ex_seq.currval)";
 		try(Connection conn = this.getConnection();
 			PreparedStatement pstmt = conn.prepareStatement(sql);)
 		{
 			pstmt.setInt(1, exi_seq);
 			pstmt.setString(2, exi_oriName);
 			pstmt.setString(3, exi_sysName);
-			pstmt.setString(4, exi_ex_id);
+			
 			int result = pstmt.executeUpdate();
 			conn.commit();
 			return result;
@@ -108,6 +106,56 @@ public class AdminDAO {
 				list.add(mDto);
 			}
 			return list;
+		}
+	}
+	
+	public List<ExhibitionDTO> selectAllEx() throws Exception {
+		String sql = "select * from exhibition";
+		try(Connection conn = this.getConnection();
+			PreparedStatement pstmt = conn.prepareStatement(sql);)
+		{
+			ResultSet rs = pstmt.executeQuery();
+			
+			List<ExhibitionDTO> list = new ArrayList<ExhibitionDTO>();
+			ExhibitionDTO eDto = null;
+			while(rs.next()) {
+				String ex_id = rs.getString("ex_id");
+				String ex_title = rs.getString("ex_title");
+				String ex_desc = rs.getString("ex_desc");
+				int ex_price = rs.getInt("ex_price");
+				String ex_location = rs.getString("ex_location");
+				int ex_score = rs.getInt("ex_score");
+				Date ex_start_date = rs.getDate("ex_start_date");
+				Date ex_end_date = rs.getDate("ex_end_date");
+				eDto = new ExhibitionDTO(ex_id, ex_title, ex_desc, ex_price, ex_location, ex_score, ex_start_date, ex_end_date);
+				list.add(eDto);
+			}
+			return list;
+		}
+	}
+	
+	public ExhibitionDTO selectByExId(String input_ex_id) throws Exception {
+		String sql = "select ex_id, ex_title, ex_desc, ex_price, ex_location, ex_score, TO_CHAR(ex_start_date, 'YYYY-MM-DD') ex_start_date, TO_CHAR(ex_end_date, 'YYYY-MM-DD') ex_end_date from exhibition where ex_id = ? order by ex_id";
+		try(Connection conn = this.getConnection();
+			PreparedStatement pstmt = conn.prepareStatement(sql);)
+		{
+			pstmt.setString(1, input_ex_id);
+			
+			ResultSet rs = pstmt.executeQuery();
+			
+			ExhibitionDTO eDto = null;
+			if(rs.next()) {
+				String ex_id = rs.getString("ex_id");
+				String ex_title = rs.getString("ex_title");
+				String ex_desc = rs.getString("ex_desc");
+				int ex_price = rs.getInt("ex_price");
+				String ex_location = rs.getString("ex_location");
+				int ex_score = rs.getInt("ex_score");
+				Date ex_start_date = rs.getDate("ex_start_date");
+				Date ex_end_date = rs.getDate("ex_end_date");
+				eDto = new ExhibitionDTO(ex_id, ex_title, ex_desc, ex_price, ex_location, ex_score, ex_start_date, ex_end_date);
+			}
+			return eDto;
 		}
 	}
 	
