@@ -378,15 +378,12 @@
       };
 
       let working1 = document.getElementById("working1");
-	  let working2 = document.getElementById("working2");
+	  
 	
 	  working1.onclick = function() {
 		  alert("구현중입니다.");
 	  }
 	
-	  working2.onclick = function() {
-		  alert("구현중입니다.");
-	  }	
     }
 
   </script>
@@ -464,7 +461,6 @@
         </div>
         <div class="input_ex_contents_wrap">
           <div class="input_ex_title_wrap">
-            <div class="input_ex_title">전시회 아이디</div>
             <div class="input_ex_title">전시 제목</div>
             <div class="input_ex_title">전시 설명</div>
             <div class="input_ex_title">전시 입장료</div>
@@ -474,9 +470,6 @@
             <div class="input_ex_title">전시회 이미지</div>
           </div>
           <div class="input_ex_form_wrap">
-            <div class="input_ex_form">
-              <input type="text" name="ex_id" placeholder="전시회 아이디를 입력하세요">
-            </div>
             <div class="input_ex_form">
               <input type="text" name="ex_title" placeholder="전시회 제목을 입력하세요">
             </div>

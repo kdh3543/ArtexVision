@@ -174,6 +174,10 @@
       overflow-x:hidden;
     }
 
+	.dashboard_contents::-webkit-scrollbar {
+    	display: none; 
+	}
+
     .dashboard_contents_item {
       display: flex;
       height: 7%;
