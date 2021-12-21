@@ -486,7 +486,7 @@
                 </div>
                 <div class="exhibition_pay_reservation_price">
                   <div>결제가격</div>
-                  <div>${dto.bk_ex_price}</div>
+                  <div>${(dto.bk_ex_price)*(dto.bk_person)}</div>
                 </div>
                 <div class="exhibition_pay_reservation_headcount">
                   <div>인원수</div>

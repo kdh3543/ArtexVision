@@ -1,6 +1,7 @@
 package kh.web.controller;
 
 import java.io.IOException;
+import java.sql.Date;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -15,6 +16,7 @@ import kh.web.dao.MemberDAO;
 import kh.web.dto.BookDTO;
 import kh.web.dto.ExhibitionDTO;
 import kh.web.dto.MemberDTO;
+import kh.web.utils.DateUtils;
 
 @WebServlet("*.book")
 public class BookController extends HttpServlet {
@@ -51,7 +53,11 @@ public class BookController extends HttpServlet {
 				String exhibitionName = request.getParameter("exhibitionName");
 				int person = Integer.parseInt(request.getParameter("person"));
 				int payMoney = Integer.parseInt(request.getParameter("payMoney"));
-	
+				String bookDate = request.getParameter("bookDate");
+				bookDate = "2021-11-21";
+				
+				Date date= DateUtils.changeDate(bookDate);
+				
 				MemberDAO mdao = MemberDAO.getInstance();
 				MemberDTO mdto = mdao.selectById(id);
 				ExhibitionDAO edao = ExhibitionDAO.getInstance();
@@ -60,22 +66,21 @@ public class BookController extends HttpServlet {
 				BookDTO dto = new BookDTO(0,person,true,edto.getEx_id(),edto.getEx_title(),edto.getEx_price(),
 						mdto.getMem_id(),mdto.getMem_name(),mdto.getMem_email(),mdto.getMem_birth(),mdto.getMem_phone(),
 						mdto.getMem_zipcode(),mdto.getMem_addr1(),mdto.getMem_addr2(),mdto.getMem_grade(),mdto.getMem_account(),
-						edto.getEx_start_date(),edto.getEx_end_date());
+						null,date);
 						
 				dao.insert(dto);
 				request.setAttribute("dto", dto);
-				request.getRequestDispatcher(ctxPath).forward(request, response);
+				request.getRequestDispatcher("/book/ex_pay.jsp").forward(request, response);
 
 			}else if(cmd.equals("/priceToss.book")) {
-				System.out.println("도착");
 				
 				String exhibitionName = request.getParameter("ex_title");
 				String payMoney = request.getParameter("realprice");
 				String person = request.getParameter("person");
-				System.out.println(exhibitionName);
-				System.out.println(payMoney);
-				System.out.println(person);
 				
+				request.setAttribute("exhibitionName", exhibitionName);
+				request.setAttribute("payMoney", payMoney);
+				request.setAttribute("person", person);
 				request.getRequestDispatcher("/book/ex_pay2.jsp").forward(request, response);
 
 			}

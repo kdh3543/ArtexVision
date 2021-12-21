@@ -69,6 +69,7 @@ public class MemberController extends HttpServlet {
 					session.setAttribute("loginName", dto.getMem_name());
 					session.setAttribute("loginPhone", dto.getMem_phone());
 					session.setAttribute("loginEmail", dto.getMem_email());
+					
 					response.sendRedirect("/artexMain/mainpage.jsp");
 				}else {
 					response.sendRedirect("/loginFail.jsp");
@@ -121,17 +122,20 @@ public class MemberController extends HttpServlet {
 			
 			}else if(cmd.equals("/modifyInfor.mem")) { //회원정보 수정에서 수정하기 버튼을 눌렀을 시
 				String id = (String)request.getSession().getAttribute("loginId");
-				String pw = EncryptionUtils.pwdEncrypt(request.getParameter("pw1"));
+				String pw = request.getParameter("pw1");
 				String email = request.getParameter("email");
 				String phone = request.getParameter("phone")+request.getParameter("phone1")+request.getParameter("phone2");
 				String zipcode = request.getParameter("zipcode");
 				String addr1 = request.getParameter("addr1");
 				String addr2 = request.getParameter("addr2");
-				
+
 				MemberDTO dto = dao.selectById(id);
 				if(pw.equals("")) {
 					pw = dto.getMem_pw();
+				}else {
+					pw = EncryptionUtils.pwdEncrypt(request.getParameter("pw1"));
 				}
+				
 				if(email.equals("")) {
 					email = dto.getMem_email();
 				}
@@ -149,7 +153,8 @@ public class MemberController extends HttpServlet {
 				}
 				
 				dao.updateInfor(id,pw,email,phone,zipcode,addr1,addr2);
-				response.sendRedirect("/mypage/modifyInfor.jsp");
+				request.setAttribute("dto", dto);
+				request.getRequestDispatcher("/mypage/modifyInfor.jsp").forward(request, response);
 				
 			}else if(cmd.equals("/memberGrade.mem")) { //회원정보 수정에서 회원 등급 버튼 눌렀을 시
 				response.sendRedirect("mypage/memberRank.jsp");

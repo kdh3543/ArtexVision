@@ -79,7 +79,7 @@ public class BookDAO {
 	}
 	
 	public int insert(BookDTO dto) throws Exception{
-		String sql = "insert into book values(bk_id_seq.nextval,?,'N',?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		String sql = "insert into book values(bk_id_seq.nextval,?,'N',?,?,?,?,?,?,?,?,?,?,?,?,?,sysdate,?)";
 		try(Connection con = this.getConnection();
 				PreparedStatement pstat = con.prepareStatement(sql);){
 			pstat.setInt(1, dto.getBk_person());
@@ -96,8 +96,7 @@ public class BookDAO {
 			pstat.setString(12, dto.getBk_mem_addr2());
 			pstat.setString(13, dto.getBk_mem_grade());
 			pstat.setString(14, dto.getBk_mem_account());
-			pstat.setDate(15, dto.getBk_ex_book_date());
-			pstat.setDate(16, dto.getBk_ex_visit_date());
+			pstat.setDate(15, dto.getBk_ex_visit_date());
 			
 			int result = pstat.executeUpdate();
 			return result;

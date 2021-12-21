@@ -599,11 +599,10 @@
                       <div class="grade">
                         <span id="grade_score">
                           <i class="fas fa-crown"></i>
-                          ${dto.mem_grade} (POINT : 0 점)
+                          ${loginGrade} (POINT : 0 점)
                         </span>
                         <span id="gradeBenefit">
-                          <input type="button" id="showGradeBenefit"
-                              value="등급별 혜택">
+                          <input type="button" id="showGradeBenefit" value="등급별 혜택">
                         </span>
                       </div>
                       <div class="label">
@@ -699,7 +698,7 @@
 
         </div>
         <script>
-          $("#showGradeBenefit").on("click",function(){
+          $("#showGradeBenefit").on("click", function () {
             window.open("/memberGrade.mem", '회원 등급', 'width=800px,height=600px,scrollbars=yes top=200px, left=200px');
           })
 
@@ -734,17 +733,6 @@
               pw_check_result.text("");
             }
           })
-          frm.on("submit", function () {
-            if (pw2.val() != pw1.val()) {
-              alert("비밀번호가 일치하지 않습니다.\n다시 입력해주세요.");
-              pw1.val("");
-              pw2.val("");
-              pw_check_result.text("");
-              return false;
-            }else{
-              alert("수정이 완료되었습니다.");
-            }
-          })
 
           document.getElementById("find_zipcode").onclick = function () {
             new daum.Postcode({
@@ -773,6 +761,33 @@
           $("#event").on("click", function () {
             alert("현재 기능은 구현중에 있습니다.");
             return false;
+          })
+
+          frm.on("submit", function () {
+            if (pw2.val() != pw1.val()) {
+              alert("비밀번호가 일치하지 않습니다.\n다시 입력해주세요.");
+              pw1.val("");
+              pw2.val("");
+              pw_check_result.text("");
+              return false;
+            }else{
+              alert("수정이 완료되었습니다.");
+            }
+          })
+
+          document.getElementById("find_zipcode").onclick = function () {
+            new daum.Postcode({
+              oncomplete: function (data) {
+                document.getElementById("zipcode").value = data.zonecode;
+                document.getElementById("addr1").value = data.roadAddress;
+              }
+            }).open();
+          }
+
+          reset_btn.on("click", function () {
+            id_dup_check_result.text("");
+            pw_check_result.text("");
+            phone_dup_check_result.text("");
           })
         </script>
     </body>

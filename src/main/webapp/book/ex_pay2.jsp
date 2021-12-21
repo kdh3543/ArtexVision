@@ -293,12 +293,14 @@
           text-align: right;
         }
 
+        .bookDate,
         .person,
         .exhibitionName,
         .payMoney {
           height: 40px;
           line-height: 40px;
           padding-left: 20px;
+          font-size: ;
         }
 
         .exhibition_pay2_methodchoice,
@@ -531,7 +533,7 @@
               <div class="contents_title">
                 결제하기
               </div>
-              <form action="/bookExhibition.book" method="post" id="frm">
+              <form action="/bookExhibition.book" method="get" id="frm">
                 <div class="book_box">
 
                   <div class="book_contents">
@@ -540,27 +542,26 @@
                         <label for="id">전시회 이름</label>
                       </div>
                       <div class="exhibitionName" >
-                        전시회명(데이터 받아와야됨)<input type="hidden" value="테스트전시회" name="exhibitionName">
+                        ${exhibitionName}<input type="hidden" value="${exhibitionName}" name="exhibitionName">
+                      </div><br>
+                      <div class="label">
+                        <label for="id">관람날짜</label>
+                      </div>
+                      <div class="bookDate">
+                        ${bookDate} <input type="hidden" value="${bookDate}" name="bookDate">
                       </div><br>
                       <div class="label">
                         <label for="id">인원</label>
                       </div>
                       <div class="person">
-                        인원(데이터 받아와야됨)<input type="hidden" value="5" name="person">
+                        ${person} 명<input type="hidden" value="${person}" name="person">
                       </div><br>
                       <div class="label">
                         <label for="id">결제 금액</label>
                       </div>
                       <div class="payMoney" >
-                        결제 금액(데이터 받아와야됨) 원<input type="hidden" value="500" name="payMoney">
+                        ${payMoney} 원<input type="hidden" value="${payMoney}" name="payMoney">
                       </div><br>
-                      <!-- <div class="label">
-                        <label for="ticket">티켓 수령 방법</label>
-                      </div>
-                      <input type="radio" class="ticketChoice" name=pay_method>현장수령<br>
-                      <input type="radio" class="ticketChoice" name=pay_method>모바일티켓<br>
-                      <input type="radio" class="ticketChoice" name=pay_method>배송(2,500원)<br>
-                      <div class="grade">티켓 현장 수령은 예매 시 등록한 "전화번호"로 당일 티켓을 수령하여 입장합니다.</div><br> -->
                       <div class="label">
                         <label for="grade">예매자 확인</label>
                       </div>
