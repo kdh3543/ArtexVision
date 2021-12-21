@@ -436,8 +436,12 @@
             <div id="map"></div>
           </div>
         </div>
+        
+        <form action="/priceToss.book" method="post" id="frmPrice">
         <div class="contents_wrap2">
-          <div class="ex_title" style="font-weight: bolder; font-size: x-large; margin-bottom: 20px; padding-left: 90px;">러시아 아방가르드</div>
+          <div class="ex_title" style="margin-bottom: 20px; padding-left: 90px;">
+            <input type=text name ="ex_title" style="font-weight: bolder; font-size: x-large; text-align:center; border:0px;" value="러시아 아방가르드">
+          </div>
           <hr style="background-color: #9d2622; width: 400px; margin-top: 30px; margin-bottom: 30px; ">
           <div class="ex_name">
             <div>장소 </div>
@@ -470,12 +474,14 @@
           </div>
           <div class="ex_buy">
             <div>결제가격</div>
-            <div id="realprice"></div>
+            <div><input type=text id="realprice" name="realprice" style="border:0px;"></div>
           </div>
           <div class="buy" style="height: 30%; text-align: center;  padding-top: 30px; padding-left: 30px;">
             <button id="buy_btn">예매하기</button>
           </div>
         </div>
+        </form>
+        
         <div class="contents_wrap3">
           <div class="menu_top">
             <div id="desc">상세정보</div>
@@ -509,7 +515,7 @@
     	    return false;
     	}
       
-      if(!$("#realprice").text()) {
+      if(!$("#realprice").val()) {
     	    alert("인원을 선택하세요");
     	    return false;
     	}
@@ -520,10 +526,12 @@
   		}
      
           
-	  let price = $("#realprice").text(); 
+      let price = $("#realprice").val(); 
+      
 	  let result = confirm(price+"원 결제하시겠습니까?");
+	  
 	  if(result){
-		  location.href="/book/ex_pay2.jsp";
+		  $("#frmPrice").submit();
 	  }
   })
   </script>
@@ -536,10 +544,11 @@
 	  let person = parseInt($("#person option:selected").val()); 
   	  let realpriceInt = price*person; 
 	  let realprice = realpriceInt.toString();  
-	  $("#realprice").text(realprice);
+	  $("#realprice").val(realprice);
   });
   
   </script>
+  
   <!-- 상세설명, 리뷰, q&a 클릭에 따른 div 보여주기 코드  -->
   <script type="text/javascript">
   /*  상세 정보 클릭 시  */
