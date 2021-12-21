@@ -313,6 +313,7 @@
     .notice_faq_content {
       float: left;
       width: 85%;
+      padding: 15px;
 
     }
 
@@ -497,7 +498,7 @@
         <h2 class="list_title">NOTICE</h2>
         <ul class="sidebar_item_list">
           <li class="sidebar_item"><a href="/nb_list.board?cpage=1">공지사항</a></li>
-          <li class="sidebar_item"><a href="">Q&A</a></li>
+          <li class="sidebar_item"><a href="/qb_list.board?cpage=1">Q&A</a></li>
           <li class="sidebar_item"><a href="/board/faq_home.jsp">FAQ</a></li>
         </ul>
       </div>

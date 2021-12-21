@@ -473,13 +473,13 @@
 				div1.appendChild(div3);
 				dashboard_contents.append(div1);
 			}
-			
+			let label = "person";
 			let type = "bar";
 			let canvas = document.createElement("canvas");
 			canvas.id = "myChart";
 			dashboard_graph.appendChild(canvas);
 			
-			drawChart(dateArr, cntArr, type);
+			drawChart(dateArr, cntArr, type, label);
 	  });
 	}
 	
@@ -511,13 +511,13 @@
 				div1.appendChild(div3);
 				dashboard_contents.append(div1);
 			}
-			
+			let label = "person";
 			let type = "bar";
 			let canvas = document.createElement("canvas");
 			canvas.id = "myChart";
 			dashboard_graph.appendChild(canvas);
 			
-			drawChart(dateArr, cntArr, type);
+			drawChart(dateArr, cntArr, type, label);
 	  });
 	}
 	
@@ -549,13 +549,13 @@
 				div1.appendChild(div3);
 				dashboard_contents.append(div1);
 			}
-			
+			let label = "person";
 			let type = "bar";
 			let canvas = document.createElement("canvas");
 			canvas.id = "myChart";
 			dashboard_graph.appendChild(canvas);
 			
-			drawChart(dateArr, cntArr, type);
+			drawChart(dateArr, cntArr, type, label);
 	  });
 	}
 	
@@ -587,13 +587,13 @@
 				div1.appendChild(div3);
 				dashboard_contents.append(div1);
 			}
-			
+			let label = "person";
 			let type = "bar";
 			let canvas = document.createElement("canvas");
 			canvas.id = "myChart";
 			dashboard_graph.appendChild(canvas);
 			
-			drawChart(dateArr, cntArr, type);
+			drawChart(dateArr, cntArr, type, label);
 	  });
 	}
 	
@@ -625,13 +625,13 @@
 				div1.appendChild(div3);
 				dashboard_contents.append(div1);
 			}
-			
+			let label = "￦";
 			let type = "line";
 			let canvas = document.createElement("canvas");
 			canvas.id = "myChart";
 			dashboard_graph.appendChild(canvas);
 			
-			drawChart(dateArr, cntArr, type);
+			drawChart(dateArr, cntArr, type, label);
 	  });
 	}
 	
@@ -664,17 +664,18 @@
 				dashboard_contents.append(div1);
 			}
 			let type = "line";
+			let label = "￦";
 			let canvas = document.createElement("canvas");
 			canvas.id = "myChart";
 			dashboard_graph.appendChild(canvas);
 			
-			drawChart(dateArr, cntArr, type);
+			drawChart(dateArr, cntArr, type, label);
 	  });
 	}
 	
 	
 	
-	function drawChart(dateArr, cntArr, type){
+	function drawChart(dateArr, cntArr, type, label){
 		let ctx = document.getElementById('myChart');
 		let title_arr = dateArr;
 		let contents_arr = cntArr;
@@ -684,7 +685,7 @@
 			data: {
 				labels: title_arr,
 				datasets: [{
-					label: '2021년',
+					label: label,
 					data: contents_arr,
 					backgroundColor: [
 						'rgba(255, 99, 132, 0.2)',

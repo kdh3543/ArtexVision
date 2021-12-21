@@ -20,7 +20,7 @@
 	crossorigin="anonymous">
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+	integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sEqbO0LRn5q+8qbTov4+1p"
 	crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
@@ -234,13 +234,13 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p,
 	width: 15%;
 }
 
-.board_nb_content {
+.board_qb_content {
 	float: left;
 	width: 85%;
 	padding: 15px;
 }
 
-.board_nb_head {
+.board_qb_head {
 	border-top: 1px solid black;
 	border-bottom: 1px solid black;
 	overflow: hidden;
@@ -249,55 +249,55 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p,
 	line-height: 30px;
 }
 
-.board_nb_boardname {
+.board_qb_boardname {
 	overflow: hidden;
 }
 
-.board_nb_boardname>div {
+.board_qb_boardname>div {
 	float: left;
 }
 
-.board_nb_prevboard {
+.board_qb_prevboard {
 	margin-right: 5px;
 }
 
-.board_nb_prevboard:hover {
+.board_qb_prevboard:hover {
 	cursor: pointer;
 }
 
-.board_nb_presentboard {
+.board_qb_presentboard {
 	margin-left: 5px;
 }
 
-.board_nb_presentboard:hover {
+.board_qb_presentboard:hover {
 	cursor: pointer;
 }
 
-.board_nb_head>div {
+.board_qb_head>div {
 	float: left;
 }
 
-.board_nb_num {
+.board_qb_num {
 	width: 10%;
 }
 
-.board_nb_title {
+.board_qb_title {
 	width: 55%;
 }
 
-.board_nb_writer {
+.board_qb_writer {
 	width: 10%;
 }
 
-.board_nb_write_date {
+.board_qb_write_date {
 	width: 15%;
 }
 
-.board_nb_view_count {
+.board_qb_view_count {
 	width: 10%;
 }
 
-.board_nb_notice {
+.board_qb_notice {
 	border-bottom: 1px solid black;
 	overflow: hidden;
 	text-align: center;
@@ -306,35 +306,35 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p,
 	line-height: 30px;
 }
 
-.board_nb_notice>div {
+.board_qb_notice>div {
 	float: left;
 }
 
-.board_nb_notice_num {
+.board_qb_notice_num {
 	width: 10%;
 }
 
-.board_nb_notice_title {
+.board_qb_notice_title {
 	width: 55%;
 }
 
-.board_nb_notice_title:hover {
+.board_qb_notice_title:hover {
 	cursor: pointer;
 }
 
-.board_nb_notice_writer {
+.board_qb_notice_writer {
 	width: 10%;
 }
 
-.board_nb_notice_write_date {
+.board_qb_notice_write_date {
 	width: 15%;
 }
 
-.board_nb_notice_view_count {
+.board_qb_notice_view_count {
 	width: 10%;
 }
 
-.board_nb_user_write {
+.board_qb_user_write {
 	border-bottom: 1px solid black;
 	overflow: hidden;
 	text-align: center;
@@ -342,57 +342,57 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p,
 	line-height: 30px;
 }
 
-.board_nb_user_write>div {
+.board_qb_user_write>div {
 	float: left;
 }
 
-.board_nb_user_num {
+.board_qb_user_num {
 	width: 10%;
 }
 
-.board_nb_user_title {
+.board_qb_user_title {
 	width: 55%;
 }
 
-.board_nb_user_title:hover {
+.board_qb_user_title:hover {
 	cursor: pointer;
 }
 
-.board_nb_user_writer {
+.board_qb_user_writer {
 	width: 10%;
 }
 
-.board_nb_user_write_date {
+.board_qb_user_write_date {
 	width: 15%;
 }
 
-.board_nb_user_view_count {
+.board_qb_user_view_count {
 	width: 10%;
 }
 
-.board_nb_search_area {
+.board_qb_search_area {
 	text-align: center;
 }
 
-.board_nb_search_area>select {
+.board_qb_search_area>select {
 	width: 10%;
 }
 
-.board_nb_search {
+.board_qb_search {
 	width: 40%;
 	height: 25px;
 }
 
-.board_nb_search_btn {
+.board_qb_search_btn {
 	height: 25px;
 }
 
-.board_nb_pagination {
+.board_qb_pagination {
 	overflow: hidden;
 	text-align: center;
 }
 
-.board_nb_page {
+.board_qb_page {
 	text-align: text;
 }
 
@@ -420,7 +420,7 @@ a:hover {
           <c:when test="${loginId!=null}">
             <div class="header" id="topTarget">
               <ul class="header_list">
-                <li class="user_detail"><span id="user_grade"><i class="fas fa-crown"></i> ${loginGrade }</li></span>
+                <li class="user_detail"><span id="user_grade"><i class="fas fa-crown"></i> ${dto.mem_grade}</li></span>
                 <li id="welcome"> ${loginId } 님 환영합니다.</li>
                 <li id="mypage"><a href="/modifyForm.mem">마이페이지</a></li>
                 <li id="basket"><a href="/basket/basket.jsp" id="basket">장바구니</a></li>
@@ -466,49 +466,47 @@ a:hover {
                     <li class="sidebar_item"><a href="/board/faq_home.jsp">FAQ</a></li>
 				</ul>
 			</div>
-			<div class="board_nb_content">
+			<div class="board_qb_content">
 				<br>
-				<div class="board_nb_boardname">
-					<div class="board_nb_prevboard">NOTICE</div>
+				<div class="board_qb_boardname">
+					<div class="board_qb_prevboard">NOTICE</div>
 					<div>></div>
-					<div class="board_nb_presentboard">공지사항</div>
+					<div class="board_qb_presentboard">Q&A</div>
 					
 				</div>
 				<hr>
-				<div class="board_nb_head">
-					<div class="board_nb_num">글번호</div>
-					<div class="board_nb_title">제목</div>
-					<div class="board_nb_writer">아이디</div>
-					<div class="board_nb_write_date">작성일</div>
-					<div class="board_nb_view_count">조회수</div>
+				<div class="board_qb_head">
+					<div class="board_qb_num">글번호</div>
+					<div class="board_qb_title">제목</div>
+					<div class="board_qb_writer">아이디</div>
+					<div class="board_qb_write_date">작성일</div>
+					<div class="board_qb_view_count">조회수</div>
 				</div>
-				<c:forEach var="noticeboard_dto" items="${nb_list}">
-				<div class="board_nb_notice">
-					<div class="board_nb_notice_num">${noticeboard_dto.nb_seq }</div>
-					<div class="board_nb_notice_title"><a href="/nb_detail.board?nb_seq=${noticeboard_dto.nb_seq }" style="text-decoration:none; color:black;">${noticeboard_dto.nb_title }</a></div>
-					<div class="board_nb_notice_writer">${noticeboard_dto.nb_mem_id }</div>
-					<div class="board_nb_notice_write_date">${noticeboard_dto.detailDate }</div>
-					<div class="board_nb_notice_view_count">${noticeboard_dto.nb_view_count }</div>
+				<c:forEach var="questionboard_dto" items="${qb_list}">
+				<div class="board_qb_notice">
+					<div class="board_qb_notice_num">${questionboard_dto.qb_seq }</div>
+					<div class="board_qb_notice_title"><a href="/qb_detail.board?qb_seq=${questionboard_dto.qb_seq }" style="text-decoration:none; color:black;">${questionboard_dto.qb_title }</a></div>
+					<div class="board_qb_notice_writer">${questionboard_dto.qb_mem_id }</div>
+					<div class="board_qb_notice_write_date">${questionboard_dto.detailDate }</div>
+					<div class="board_qb_notice_view_count">${questionboard_dto.qb_view_count }</div>
 				</div>
 				</c:forEach>
 				<br>
-				<c:if test="${noticeboard_dto.nb_mem_id == 관리자}">
-				<div class="board_nb_user_writebtn" style="text-align: right;">
-					<a href="/nb_write.board"><button type=button>글쓰기</button></a>
+				<div class="board_qb_user_writebtn" style="text-align: right;">
+					<a href="/qb_write.board"><button type=button>글쓰기</button></a>
 				</div>
-				</c:if>
-				<div class="board_nb_pagination">
-					<div class="board_nb_page">
-						<div>${nb_navi }</div>
+				<div class="board_qb_pagination">
+					<div class="board_qb_page">
+						<div>${qb_navi }</div>
 					</div>
 				</div>
-				<form action="/nb_search.board" id="frmSearch">
-				<div class="board_nb_search_area">
+				<form action="/qb_search.board" id="frmSearch">
+				<div class="board_qb_search_area">
 					<select id="searchOption" name="searchOption">
 						<option name="searchTitle">제목</option>
 						<option name="searchId">아이디</option>
-					</select> <input type=text placeholder="검색어를 입력하세요" class="board_nb_search">
-					<input type=button value="검색" class="board_nb_search_btn" onclick="search();">
+					</select> <input type=text placeholder="검색어를 입력하세요" class="board_qb_search">
+					<input type=button value="검색" class="board_qb_search_btn" onclick="search();">
 				</div>
 				</form>
 			</div>
