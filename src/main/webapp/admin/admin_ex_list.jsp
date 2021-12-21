@@ -231,6 +231,10 @@
     	display: none; 
 	}
 
+	.ex_list_contents:hover {
+		cursor: pointer;
+	}
+
     .ex_list_contents_item {
       display: flex;
       height: 7%;
