@@ -476,7 +476,7 @@
             <h3 class="list_title">회원 정보</h3>
             <ul class="sidebar_item_list">
               <li class="sidebar_item"><a href="/modifyForm.mem">회원 정보 수정</a></li>
-              <li class="sidebar_item"><a href="/myCommentForm.mem">내가 쓴 글/댓글</a></li>
+              <li class="sidebar_item" id="myComment"><a href="#">내가 쓴 글/댓글</a></li>
               <li class="sidebar_item"><a href="/leaveForm.mem">회원 탈퇴</a></li>
             </ul>
             <h3 class="list_title">예매 내역</h3>
@@ -562,6 +562,11 @@
 			}
 		})
 		
+    $("#myComment").on("click",function(){
+			alert("현재 기능은 구현중에 있습니다.");
+			return false;
+		})
+    
 		$("#basket").on("click",function(){
 			alert("현재 기능은 구현중에 있습니다.");
 			return false;

@@ -314,6 +314,7 @@
           height: 100%;
           display: flex;
           justify-content: center;
+          overflow-y: auto;
         }
 
         .contents_title {
@@ -398,6 +399,7 @@
           cursor: pointer;
         }
 
+        input[type="radio"],
         input[type="checkbox"] {
           width: 15px;
           height: 15px;
@@ -470,7 +472,7 @@
             <h3 class="list_title">회원 정보</h3>
             <ul class="sidebar_item_list">
               <li class="sidebar_item"><a href="/modifyForm.mem">회원 정보 수정</a></li>
-              <li class="sidebar_item"><a href="/myCommentForm.mem">내가 쓴 글/댓글</a></li>
+              <li class="sidebar_item" id="myComment"><a href="#">내가 쓴 글/댓글</a></li>
               <li class="sidebar_item"><a href="/leaveForm.mem">회원 탈퇴</a></li>
             </ul>
             <h3 class="list_title">예매 내역</h3>
@@ -487,18 +489,19 @@
               </div>
               <div class="booking">
                 <div class="book_title">
-                  <div>예매 내역</div>
-                  <div>전시회 장소</div>
-                  <div>전시회 날짜</div>
+                  <div>예매 상품</div>
+                  <div>예매 번호</div>
+                  <div>전시회 관람 날짜</div>
                   <div>선택</div>
                 </div>
                 <table class="book_table">
                   <c:forEach var="book_dto" items="${list}">
                     <tr class="book_contents">
-                      <td id="bookName">${book_dto.bk_id}<input type="hidden" value="${book_dto.bk_id}" name="" id="hidden"></td>
-                      <td id="exLocation">${book_dto.bk_ex_id}</td>
-                      <td id="exDate">${book_dto.bk_ex_start_date} ~ ${book_dto.bk_ex_end_date}</td>
-                      <td><input type="checkbox" name="check" id="check"></td>
+                      <td id="bookName">${book_dto.bk_ex_title}</td>
+                      <td id="exLocation">${book_dto.bk_id}<input type="hidden" value="${book_dto.bk_id}" name="hidden"
+                          id="hidden"></td>
+                      <td id="exDate">${book_dto.bk_ex_visit_date}</td>
+                      <td><input type="radio" name="check" id="check"></td>
                     </tr>
                   </c:forEach>
                 </table>
@@ -515,7 +518,7 @@
       </div>
       <script>
         let cancel = $("#cancel");
-        let check = $("input[type='checkbox']");
+        let check = $("input[type='radio']");
         let bookName = $("#bookName");
         let exLocation = $("#exLocation");
         let exDate = $("#exDate");
@@ -524,21 +527,20 @@
           /* alert("현재 기능은 구현중에 있습니다."); */
           for (let i = 0; i < trs.length; i++) {
 
-            if(check.eq(i).is(":checked")){
-            	$("#hidden").attr("name","bookId");
+            if (check.eq(i).is(":checked")) {
               let hidden = $("#hidden");
+
               confirm("정말 취소하시겠습니까?");
               $.ajax({
-                url:"/cancelBook.book",
-            	  dataType:"json",
-                // data: {bookVal:hidden.eq(i).val()}
-              }).done(function(resp){
-            	  $(trs[i]).remove();
+                url: "/cancelBook.book",
+                dataType: "json",
+                data: { bookVal: ($("input[name=hidden]").eq(i)).val() }
+              }).done(function (resp) {
+                $(trs[i]).remove();
               })
             }
           }
         })
-        
 
         $("#logout").on("click", function () {
           if (!confirm("로그아웃 하시겠습니까?")) {
@@ -546,11 +548,16 @@
           }
         })
 
-         $("#basket").on("click", function () {
+        $("#myComment").on("click", function () {
           alert("현재 기능은 구현중에 있습니다.");
           return false;
-        }) 
-        
+        })
+
+        $("#basket").on("click", function () {
+          alert("현재 기능은 구현중에 있습니다.");
+          return false;
+        })
+
         $("#event").on("click", function () {
           alert("현재 기능은 구현중에 있습니다.");
           return false;

@@ -489,6 +489,7 @@
 	                <div>판매가</div>
                 </div>
                 <table class="book_table" >
+                <c:forEach var="book_dto" items="${list}">
                    <tr class="book_contents">
                      <td><input type="checkbox" name="check" id="check"></td>
                      <td>들어갈 전시회이름</td>
@@ -496,6 +497,7 @@
                      <td>날짜</td>
                      <td>100만원</td>
                    </tr>
+                  </c:forEach>
                 </table>
               </div>
               <div class="cancel_btn">
