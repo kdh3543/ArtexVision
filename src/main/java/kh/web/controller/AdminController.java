@@ -105,6 +105,14 @@ public class AdminController extends HttpServlet {
 				List<DashboardDTO> list = dao.selectMonthlyVisitData();
 				String result = g.toJson(list);
 				response.getWriter().append(result);
+			} else if(cmd.equals("/dailyRevenueData.admin")) {
+				List<DashboardDTO> list = dao.selectDailyRevenueData();
+				String result = g.toJson(list);
+				response.getWriter().append(result);
+			} else if(cmd.equals("/monthlyRevenueData.admin")) {
+				List<DashboardDTO> list = dao.selectMonthlyRevenueData();
+				String result = g.toJson(list);
+				response.getWriter().append(result);
 			}
 		} catch(Exception e) {
 			e.printStackTrace();
