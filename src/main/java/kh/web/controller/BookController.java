@@ -77,10 +77,12 @@ public class BookController extends HttpServlet {
 				String exhibitionName = request.getParameter("ex_title");
 				String payMoney = request.getParameter("realprice");
 				String person = request.getParameter("person");
-				
+				String bookDate = request.getParameter("bookDate");
 				request.setAttribute("exhibitionName", exhibitionName);
 				request.setAttribute("payMoney", payMoney);
 				request.setAttribute("person", person);
+				request.setAttribute("bookDate", bookDate);
+				System.out.println(bookDate);
 				request.getRequestDispatcher("/book/ex_pay2.jsp").forward(request, response);
 
 			}

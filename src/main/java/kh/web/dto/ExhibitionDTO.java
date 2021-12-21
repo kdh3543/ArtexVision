@@ -109,5 +109,4 @@ public class ExhibitionDTO {
 	public void setEx_sysname(String ex_sysname) {
 		this.ex_sysname = ex_sysname;
 	}
-
 }
