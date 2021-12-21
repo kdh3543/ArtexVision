@@ -44,6 +44,7 @@ public class BookController extends HttpServlet {
 				System.out.println(bookVal);
 //				int result = dao.deleteById(bookVal);
 //				response.getWriter().append(bookVal);
+
 			
 			}else if(cmd.equals("/bookExhibition.book")) {
 				String id = (String)request.getSession().getAttribute("loginId");
@@ -64,6 +65,19 @@ public class BookController extends HttpServlet {
 				dao.insert(dto);
 				request.setAttribute("dto", dto);
 				request.getRequestDispatcher(ctxPath).forward(request, response);
+
+			}else if(cmd.equals("/priceToss.book")) {
+				System.out.println("도착");
+				
+				String exhibitionName = request.getParameter("ex_title");
+				String payMoney = request.getParameter("realprice");
+				String person = request.getParameter("person");
+				System.out.println(exhibitionName);
+				System.out.println(payMoney);
+				System.out.println(person);
+				
+				request.getRequestDispatcher("/book/ex_pay2.jsp").forward(request, response);
+
 			}
 		}catch(Exception e) {
 			e.printStackTrace();

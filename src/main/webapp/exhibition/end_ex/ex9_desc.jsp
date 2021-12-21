@@ -410,6 +410,7 @@
           </ul>
         </div>
       </div>
+    </div>
     <div class="carousel_timeline">
       <div class="carousel">
         <img src="../img/artex_main_img.png" class="carousel_img">
@@ -424,7 +425,6 @@
           <li class="sidebar_item"><a href="/exhibition/main_ex/end_main_ex.jsp">마감된 전시</a></li>
         </ul>
       </div>
-
       <div class="contents">
         <div class="contents_wrap1">
           <div class="contents_sub1">
