@@ -342,9 +342,9 @@
         .input_addr1,
         .input_addr2,
         .input_account,
-        .btns,
         .back_btn,
-        .grade {
+        .grade,
+        .btns {
           height: 40px;
           line-height: 40px;
           padding-left: 20px;
@@ -498,7 +498,7 @@
           width: 100%;
           height: 100%;
         }
-        
+
         a {
           text-align: center;
           text-decoration: none;
@@ -520,11 +520,11 @@
           <c:when test="${loginId!=null}">
             <div class="header" id="topTarget">
               <ul class="header_list">
-                <li class="user_detail"><span id="user_grade"><i class="fas fa-crown"></i> ${dto.mem_grade}</li></span>
+                <li class="user_detail"><span id="user_grade"><i class="fas fa-crown"></i> ${loginGrade }</li></span>
                 <li id="welcome"> ${loginId } 님 환영합니다.</li>
                 <li id="mypage"><a href="/modifyForm.mem">마이페이지</a></li>
                 <li id="basket"><a href="/basket/basket.jsp" id="basket">장바구니</a></li>
-                <li id=logout><a href="/logout.mem"  id="logout">로그아웃</a></li>
+                <li id=logout><a href="/logout.mem" id="logout">로그아웃</a></li>
               </ul>
             </div>
           </c:when>
@@ -553,9 +553,9 @@
           </div>
         </div>
         <div class="carousel_timeline">
-          	<div class="carousel">
-        		<img src="/exhibition/img/artex_main_img.png" class="carousel_img">
-      		</div>
+          <div class="carousel">
+            <img src="/exhibition/img/artex_main_img.png" class="carousel_img">
+          </div>
         </div>
         <div class="main">
           <div class="sidebar">
@@ -571,7 +571,7 @@
             <h3 class="list_title">예매 내역</h3>
             <ul class="sidebar_item_list">
               <li class="sidebar_item"><a href="/bookRefund.book">예매내역 조회/취소</a></li>
-            </ul>         
+            </ul>
             <!-- 마이페이지 end -->
 
           </div>
@@ -599,11 +599,10 @@
                       <div class="grade">
                         <span id="grade_score">
                           <i class="fas fa-crown"></i>
-                          ${dto.mem_grade} (POINT : 0 점)
+                          ${loginGrade} (POINT : 0 점)
                         </span>
                         <span id="gradeBenefit">
-                          <a href="#none" target="_blank" onclick="openPop()"><input type="button" id="showGradeBenefit"
-                              value="등급별 혜택"></a>
+                          <input type="button" id="showGradeBenefit" value="등급별 혜택">
                         </span>
                       </div>
                       <div class="label">
@@ -624,7 +623,7 @@
                       <div class="label">
                         <label for="name">이름</label>
                       </div>
-                      <div class="input_name" >
+                      <div class="input_name">
                         ${dto.mem_name}
                       </div>
                       <div class="label">
@@ -686,7 +685,6 @@
                       <div class="btns">
                         <input type="submit" value="수정하기" id="modify_btn">
                         <input type="reset" value="다시입력" id="reset_btn">
-                        <input type="button" value="뒤로가기" id="back_btn">
                       </div>
                     </div>
                   </div>
@@ -700,9 +698,9 @@
 
         </div>
         <script>
-          function openPop() {
-            var popup = window.open("/memberGrade.mem", '회원 등급', 'width=800px,height=600px,scrollbars=yes top=200px, left=200px');
-          }
+          $("#showGradeBenefit").on("click", function () {
+            window.open("/memberGrade.mem", '회원 등급', 'width=800px,height=600px,scrollbars=yes top=200px, left=200px');
+          })
 
           let frm = $("#frm");
           let pw1 = $("#pw1");
@@ -735,6 +733,36 @@
               pw_check_result.text("");
             }
           })
+
+          document.getElementById("find_zipcode").onclick = function () {
+            new daum.Postcode({
+              oncomplete: function (data) {
+                document.getElementById("zipcode").value = data.zonecode;
+                document.getElementById("addr1").value = data.roadAddress;
+              }
+            }).open();
+          }
+
+          reset_btn.on("click", function () {
+            pw_check_result.text("");
+          })
+
+          $("#logout").on("click", function () {
+            if (!confirm("로그아웃 하시겠습니까?")) {
+              return false;
+            }
+          })
+
+          $("#basket").on("click", function () {
+            alert("현재 기능은 구현중에 있습니다.");
+            return false;
+          })
+
+          $("#event").on("click", function () {
+            alert("현재 기능은 구현중에 있습니다.");
+            return false;
+          })
+
           frm.on("submit", function () {
             if (pw2.val() != pw1.val()) {
               alert("비밀번호가 일치하지 않습니다.\n다시 입력해주세요.");
@@ -742,6 +770,8 @@
               pw2.val("");
               pw_check_result.text("");
               return false;
+            }else{
+              alert("수정이 완료되었습니다.");
             }
           })
 
@@ -754,25 +784,11 @@
             }).open();
           }
 
-          reset_btn.on("click",function(){
+          reset_btn.on("click", function () {
+            id_dup_check_result.text("");
             pw_check_result.text("");
+            phone_dup_check_result.text("");
           })
-          
-          	$("#logout").on("click",function(){
-				if(!confirm("로그아웃 하시겠습니까?")){
-					return false;
-				}
-			})
-			
-			$("#basket").on("click",function(){
-				alert("현재 기능은 구현중에 있습니다.");
-				return false;
-			})
-			
-			$("#event").on("click",function(){
-				alert("현재 기능은 구현중에 있습니다.");
-				return false;
-			})
         </script>
     </body>
 

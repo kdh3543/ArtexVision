@@ -498,7 +498,7 @@
           let idRegex = /[a-z][a-z0-9]{5,10}/g;
           let idResult = idRegex.test(id.val());
           if (!idResult) {
-            alert("아이디를 제대로 입력해주세요.");
+            alert("아이디를 제대로 입력해주세요.\n아이디는 6자리 이상 11자리 이하로 입력하셔야 하며\n첫자리는 숫자 입력을 하시거나 공백이 올 수 없습니다.");
 
             id.val("");
             id.focus();
@@ -508,7 +508,7 @@
           let pwRegex = /[a-z0-9]{4}/;
           let pwResult = pwRegex.test(pw2.val());
           if (!pwResult) {
-            alert("패스워드를 형식에 맞게 제대로 입력하세요.");
+            alert("패스워드는 4자리 이상 입력해주세요.");
             pw1.val("");
             pw2.val("");
             pw1.focus();
@@ -518,7 +518,7 @@
           let nameRegex = /[가-힣a-z]{2,5}/g;
           let nameResult = nameRegex.test(name.val());
           if (!nameResult) {
-            alert("이름을 입력해주세요.");
+            alert("이름을 제대로 입력해주세요.");
             name.val("");
             name.focus();
             return false;

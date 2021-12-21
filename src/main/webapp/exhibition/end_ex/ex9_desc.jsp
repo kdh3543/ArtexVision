@@ -379,7 +379,7 @@
           <c:when test="${loginId!=null}">
             <div class="header" id="topTarget">
               <ul class="header_list">
-                <li class="user_detail"><span id="user_grade"><i class="fas fa-crown"></i> ${dto.mem_grade}</li></span>
+                <li class="user_detail"><span id="user_grade"><i class="fas fa-crown"></i> ${loginGrade }</li></span>
                 <li id="welcome"> ${loginId } 님 환영합니다.</li>
                 <li id="mypage"><a href="/modifyForm.mem">마이페이지</a></li>
                 <li id="basket"><a href="/basket/basket.jsp" id="basket">장바구니</a></li>
@@ -410,6 +410,7 @@
           </ul>
         </div>
       </div>
+    </div>
     <div class="carousel_timeline">
       <div class="carousel">
         <img src="../img/artex_main_img.png" class="carousel_img">
@@ -424,7 +425,6 @@
           <li class="sidebar_item"><a href="/exhibition/main_ex/end_main_ex.jsp">마감된 전시</a></li>
         </ul>
       </div>
-
       <div class="contents">
         <div class="contents_wrap1">
           <div class="contents_sub1">

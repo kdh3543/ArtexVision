@@ -446,7 +446,7 @@
 </body>
 <script>
 	working1.onclick = function() {
-		  alert("구현중입니다.");
+		  alert("현재 구현중입니다.");
 	}
 
     const ex_list_detail_contents_wrap = document.querySelector(".ex_list_detail_contents_wrap");
