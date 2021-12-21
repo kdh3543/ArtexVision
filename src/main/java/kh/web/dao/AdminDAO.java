@@ -47,7 +47,7 @@ public class AdminDAO {
 	}
 	
 	public int insertEx(ExhibitionDTO dto) throws Exception {
-		String sql = "insert into exhibition values(ex_seq.nextval, ?, ?, ?, ?, ?, ?, ?)";
+		String sql = "insert into exhibition values(ex_seq.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		try(Connection conn = this.getConnection();
 			PreparedStatement pstmt = conn.prepareStatement(sql);)
 		{
@@ -58,21 +58,8 @@ public class AdminDAO {
 			pstmt.setInt(5, dto.getEx_score());
 			pstmt.setDate(6, dto.getEx_start_date());
 			pstmt.setDate(7, dto.getEx_end_date());
-			int result = pstmt.executeUpdate();
-			conn.commit();
-			return result;
-		}
-	}
-	
-	public int insertExImg(int exi_seq, String exi_oriName, String exi_sysName) throws Exception {
-		String sql = "insert into exhibitionimg values(?, ?, ?, ex_seq.currval)";
-		try(Connection conn = this.getConnection();
-			PreparedStatement pstmt = conn.prepareStatement(sql);)
-		{
-			pstmt.setInt(1, exi_seq);
-			pstmt.setString(2, exi_oriName);
-			pstmt.setString(3, exi_sysName);
-			
+			pstmt.setString(8, dto.getEx_oriname());
+			pstmt.setString(9, dto.getEx_sysname());
 			int result = pstmt.executeUpdate();
 			conn.commit();
 			return result;
@@ -137,7 +124,7 @@ public class AdminDAO {
 	}
 	
 	public ExhibitionDTO selectByExId(String input_ex_id) throws Exception {
-		String sql = "select ex_id, ex_title, ex_desc, ex_price, ex_location, ex_score, TO_CHAR(ex_start_date, 'YYYY-MM-DD') ex_start_date, TO_CHAR(ex_end_date, 'YYYY-MM-DD') ex_end_date from exhibition where ex_id = ? order by ex_id";
+		String sql = "select ex_id, ex_title, ex_desc, ex_price, ex_location, ex_score, TO_CHAR(ex_start_date, 'YYYY-MM-DD') ex_start_date, TO_CHAR(ex_end_date, 'YYYY-MM-DD') ex_end_date, ex_oriname, ex_sysname from exhibition where ex_id = ? order by ex_id";
 		try(Connection conn = this.getConnection();
 			PreparedStatement pstmt = conn.prepareStatement(sql);)
 		{
@@ -183,7 +170,7 @@ public class AdminDAO {
 	}
 	
 	public List<DashboardDTO> selectDailyData() throws Exception {
-		String sql = "select TO_CHAR(mem_signup_date, 'YYYY-MM-DD') as mem_signup_date, count(*) as cnt from member where mem_signup_date >='20210101' and mem_signup_date <= to_char(sysdate+1,'YYYY-MM-DD') GROUP BY to_char(mem_signup_date, 'YYYY-MM-DD') order by mem_signup_date";
+		String sql = "select TO_CHAR(mem_signup_date, 'YYYY-MM-DD') as mem_signup_date, count(*) as cnt from member where mem_signup_date >='20210101' and mem_signup_date <= '20221231' GROUP BY to_char(mem_signup_date, 'YYYY-MM-DD') order by mem_signup_date";
 		try(Connection conn = this.getConnection();
 			PreparedStatement pstmt = conn.prepareStatement(sql);)
 		{
@@ -221,7 +208,7 @@ public class AdminDAO {
 	}
 	
 	public List<DashboardDTO> selectDailyVisitData() throws Exception {
-		String sql = "select TO_CHAR(bk_ex_visit_date, 'YYYY-MM-DD') as bk_ex_visit_date, count(*) as cnt from book where bk_ex_visit_date >='20210101' and bk_ex_visit_date <= to_char(sysdate+1,'YYYY-MM-DD') GROUP BY to_char(bk_ex_visit_date, 'YYYY-MM-DD') order by bk_ex_visit_date";
+		String sql = "select TO_CHAR(bk_ex_visit_date, 'YYYY-MM-DD') as bk_ex_visit_date, count(*) as cnt from book where bk_ex_visit_date >='20210101' and bk_ex_visit_date <= '20221231' GROUP BY to_char(bk_ex_visit_date, 'YYYY-MM-DD') order by bk_ex_visit_date";
 		try(Connection conn = this.getConnection();
 			PreparedStatement pstmt = conn.prepareStatement(sql);)
 		{
@@ -260,7 +247,7 @@ public class AdminDAO {
 	
 	
 	public List<DashboardDTO> selectDailyRevenueData() throws Exception {
-		String sql = "select TO_CHAR(bk_ex_visit_date, 'YYYY-MM-DD') as bk_ex_visit_date, sum(bk_ex_price) as sum from book where bk_ex_visit_date >='20210101' and bk_ex_visit_date <= to_char(sysdate+1,'YYYY-MM-DD') GROUP BY to_char(bk_ex_visit_date, 'YYYY-MM-DD') order by bk_ex_visit_date";
+		String sql = "select TO_CHAR(bk_ex_visit_date, 'YYYY-MM-DD') as bk_ex_visit_date, sum(bk_ex_price) as sum from book where bk_ex_visit_date >='20210101' and bk_ex_visit_date <= '20221231' GROUP BY to_char(bk_ex_visit_date, 'YYYY-MM-DD') order by bk_ex_visit_date";
 		try(Connection conn = this.getConnection();
 			PreparedStatement pstmt = conn.prepareStatement(sql);)
 		{

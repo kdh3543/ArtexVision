@@ -309,6 +309,11 @@
       height: 60%;
       border: 1px solid black;
     }
+    
+    .ex_list_show_img_contents {
+      width: 100%;
+      height: 100%;
+    }
 
     /* input_ex end */
 
@@ -449,8 +454,10 @@
 		  alert("현재 구현중입니다.");
 	}
 
-    const ex_list_detail_contents_wrap = document.querySelector(".ex_list_detail_contents_wrap");
-	let ex_list_contents_item = document.querySelectorAll(".ex_list_contents_item");
+    let ex_list_detail_contents_wrap = document.querySelector(".ex_list_detail_contents_wrap");
+    let ex_list_show_img_contents_wrap = document.querySelector(".ex_list_show_img_contents_wrap");
+    let ex_list_contents_item = document.querySelectorAll(".ex_list_contents_item");
+	
 	let data = '';
 	for(let i = 0; i < ex_list_contents_item.length; i++) {
 		ex_list_contents_item[i].onclick = function() {
@@ -469,9 +476,13 @@
 				
 				const titleArr = ["전시회 ID", "전시회 제목", "전시회 가격", "전시회 장소", "전시회 평점", "전시 시작일", "전시 종료일"];
 				const resultArr = [result.ex_id, result.ex_title, result.ex_price, result.ex_location, result.ex_score, result.ex_start_date, result.ex_end_date];
-
-				for(let i = 0; i < titleArr.length; i++) {
 				
+				let img = document.createElement("img");
+				img.classList.add("ex_list_show_img_contents");
+				img.setAttribute('src', "admin/images/" + result.ex_sysname);
+				ex_list_show_img_contents_wrap.appendChild(img);
+				
+				for(let i = 0; i < titleArr.length; i++) {
 				let div1 = document.createElement("div");
 				div1.classList.add("ex_list_detail_contents_item");
 						
