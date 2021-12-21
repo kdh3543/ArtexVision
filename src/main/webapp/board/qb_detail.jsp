@@ -14,7 +14,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sEnbO0LRn5q+8nbTov4+1p"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sEqbO0LRn5q+8qbTov4+1p"
         crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
         
@@ -315,13 +315,13 @@
             height: 100%;
         }
 
-        .board_nb_content {
+        .board_qb_content {
             float: left;
             width: 85%;
             padding: 15px;
         }
 
-        .board_nb_head {
+        .board_qb_head {
             border-top: 1px solid black;
             border-bottom: 1px solid black;
             overflow: hidden;
@@ -330,51 +330,51 @@
             line-height: 30px;
         }
 
-        .board_nb_boardname {
+        .board_qb_boardname {
             overflow: hidden;
         }
 
-        .board_nb_boardname>div {
+        .board_qb_boardname>div {
             float: left;
         }
 
-        .board_nb_prevboard {
+        .board_qb_prevboard {
             margin-right: 5px;
         }
 
-        .board_nb_prevboard:hover {
+        .board_qb_prevboard:hover {
             cursor: pointer;
         }
 
-        .board_nb_presentboard {
+        .board_qb_presentboard {
             margin-left: 5px;
         }
 
-        .board_nb_presentboard:hover {
+        .board_qb_presentboard:hover {
             cursor: pointer;
         }
 
-        .board_nb_head>div {
+        .board_qb_head>div {
             float: left;
         }
 
-        .board_nb_num {
+        .board_qb_num {
             width: 10%;
         }
 
-        .board_nb_writer {
+        .board_qb_writer {
             width: 10%;
         }
 
-        .board_nb_write_date {
+        .board_qb_write_date {
             width: 10%;
         }
 
-        .board_nb_view_count {
+        .board_qb_view_count {
             width: 10%;
         }
 
-        .board_nb_notice {
+        .board_qb_notice {
             border-bottom: 1px solid black;
             overflow: hidden;
             text-align: center;
@@ -383,35 +383,35 @@
             line-height: 30px;
         }
 
-        .board_nb_notice>div {
+        .board_qb_notice>div {
             float: left;
         }
 
-        .board_nb_notice_num {
+        .board_qb_notice_num {
             width: 10%;
         }
 
-        .board_nb_notice_title {
+        .board_qb_notice_title {
             width: 60%;
         }
 
-        .board_nb_notice_title:hover {
+        .board_qb_notice_title:hover {
             cursor: pointer;
         }
 
-        .board_nb_notice_writer {
+        .board_qb_notice_writer {
             width: 10%;
         }
 
-        .board_nb_notice_write_date {
+        .board_qb_notice_write_date {
             width: 10%;
         }
 
-        .board_nb_notice_view_count {
+        .board_qb_notice_view_count {
             width: 10%;
         }
 
-        .board_nb_user_write {
+        .board_qb_user_write {
             border-bottom: 1px solid black;
             overflow: hidden;
             text-align: center;
@@ -419,62 +419,62 @@
             line-height: 30px;
         }
 
-        .board_nb_user_write>div {
+        .board_qb_user_write>div {
             float: left;
         }
 
-        .board_nb_user_num {
+        .board_qb_user_num {
             width: 10%;
         }
 
-        .board_nb_user_title {
+        .board_qb_user_title {
             width: 60%;
         }
 
-        .board_nb_user_title:hover {
+        .board_qb_user_title:hover {
             cursor: pointer;
         }
 
-        .board_nb_user_writer {
+        .board_qb_user_writer {
             width: 10%;
         }
 
-        .board_nb_user_write_date {
+        .board_qb_user_write_date {
             width: 10%;
         }
 
-        .board_nb_user_view_count {
+        .board_qb_user_view_count {
             width: 10%;
         }
 
-        .board_nb_search_area {
+        .board_qb_search_area {
             text-align: center;
         }
 
-        .board_nb_search_area>select {
+        .board_qb_search_area>select {
             width: 10%;
         }
 
-        .board_nb_search {
+        .board_qb_search {
             width: 40%;
             height: 25px;
         }
 
-        .board_nb_search_btn {
+        .board_qb_search_btn {
             height: 25px;
         }
 
-        .board_nb_pagination {
+        .board_qb_pagination {
             overflow: hidden;
             text-align: center;
         }
 
-        .board_nb_page {
+        .board_qb_page {
             text-align: text;
         }
 
         
-        #nb_title, #nb_contents{
+        #qb_title, #qb_contents{
         	border: 0px;
         }
 
@@ -541,32 +541,32 @@
                 <h2 class="list_title">NOTICE </h2>
                 <ul class="sidebar_item_list">
                     <li class="sidebar_item"><a href="/nb_list.board?cpage=1">공지사항</a></li>                    
-                    <li class="sidebar_item"><a href="">Q&A</a></li>
+                    <li class="sidebar_item"><a href="/qb_list.board?cpage=1">Q&A</a></li>
                     <li class="sidebar_item"><a href="/board/faq_home.jsp">FAQ</a></li>
                 </ul>
             </div>
             <br>
-            <div class="board_nb_content">
-                <div class="board_nb_boardname">
-                    <div class="board_nb_prevboard">NOTICE</div>
+            <div class="board_qb_content">
+                <div class="board_qb_boardname">
+                    <div class="board_qb_prevboard">NOTICE</div>
                     <div>></div>
-                    <div class="board_nb_presentboard"><a href="/nb_list.board?cpage=1" style="text-decoration:none; color:black;">공지사항</a></div>
+                    <div class="board_qb_presentboard"><a href="/qb_list.board?cpage=1" style="text-decoration:none; color:black;">Q&A</a></div>
                 </div>
                 <hr>
-                <form action="/nb_modify.board" id = "frmDetail">
-                    <div class="board_nb_write" style="width:100%;">
-                    	<input type=hidden value="${noticeboard_dto.nb_seq }" name=nb_seq>
-                        <div class="board_nb_title"><input type=text placeholder="제목을 입력하세요"
-                                style="width:100%; font-weight: bold; font-size : large"  name="nb_title" id="nb_title" readonly value="${noticeboard_dto.nb_title }"></div>
-                                <div style="font-size:small">${noticeboard_dto.nb_mem_id }  조회수 ${noticeboard_dto.nb_view_count } ${noticeboard_dto.nb_write_date }</div>
+                <form action="/qb_modify.board" id = "frmDetail">
+                    <div class="board_qb_write" style="width:100%;">
+                    	<input type=hidden value="${questionboard_dto.qb_seq }" name=qb_seq>
+                        <div class="board_qb_title"><input type=text placeholder="제목을 입력하세요"
+                                style="width:100%; font-weight: bold; font-size : large"  name="qb_title" id="qb_title" readonly value="${questionboard_dto.qb_title }"></div>
+                                <div style="font-size:small">${questionboard_dto.qb_mem_id }  조회수 ${questionboard_dto.qb_view_count } ${questionboard_dto.qb_write_date }</div>
                                 <hr>
-                        <div class="board_nb_contents"><textarea placeholder="내용을 입력하세요."
-                                style="width:100%; margin-top:10px; height: 330px;" readonly name="nb_contents" id="nb_contents">${noticeboard_dto.nb_contents }</textarea></div>
+                        <div class="board_qb_contents"><textarea placeholder="내용을 입력하세요."
+                                style="width:100%; margin-top:10px; height: 330px;" readonly name="qb_contents" id="qb_contents">${questionboard_dto.qb_contents }</textarea></div>
                     </div>
                     <br>
-                    <div class="board_nb_user_writebtn" style="text-align: right;">
+                    <div class="board_qb_user_writebtn" style="text-align: right;">
  				<a href="javascript:history.back()"><button type=button id=toList>목록으로</button></a>
-				<c:if test="${noticeboard_dto.nb_mem_id == 관리자}">
+				<c:if test="${questionboard_dto.qb_mem_id == loginID}">
 					<button type=button id=mod>수정하기</button>
 					<button type=button id=del>삭제하기</button>
 					<button type=button id=modOk style="display:none;">수정완료</button>
@@ -586,12 +586,12 @@
     <script>
 		$("#del").on("click",function(){
 			if(confirm("정말 삭제하시겠습니까?")){
-				location.href="/nb_delete.board?nb_seq=${noticeboard_dto.nb_seq}";
+				location.href="/qb_delete.board?qb_seq=${questionboard_dto.qb_seq}";
 			}
 		});
 		
 		$("#toList").on("click",function(){
-			location.href="/nb_list.board";			
+			location.href="/qb_list.board";			
 		});
 		
 		let bkTitle = "";
@@ -599,11 +599,11 @@
 		
 		$("#mod").on("click",function(){
 			
-			bkTitle = $("#nb_title").val();
-			bkContents = $("#nb_contents").val();
+			bkTitle = $("#qb_title").val();
+			bkContents = $("#qb_contents").val();
 			
-			$("#nb_title").removeAttr("readonly");
-			$("#nb_contents").removeAttr("readonly");
+			$("#qb_title").removeAttr("readonly");
+			$("#qb_contents").removeAttr("readonly");
 			$("#mod").css("display","none");
 			$("#del").css("display","none");
 			$("#modOk").css("display","inline");
@@ -618,10 +618,10 @@
 		
 		$("#modCancel").on("click",function(){
 			if(confirm("정말 취소하시겠습니까?")){
-				$("#nb_title").val(bkTitle);
-				$("#nb_contents").val(bkContents);
-				$("#nb_title").attr("readonly","");
-				$("#nb_contents").attr("readonly","");
+				$("#qb_title").val(bkTitle);
+				$("#qb_contents").val(bkContents);
+				$("#qb_title").attr("readonly","");
+				$("#qb_contents").attr("readonly","");
 				$("#mod").css("display","inline");
 				$("#del").css("display","inline");
 				$("#modOk").css("display","none");

@@ -74,7 +74,7 @@ public class Nb_BoardDTO {
 	}
 
 	public String getFormedDate() {
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd hh:mm:ss");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd hh:mm");
 		return sdf.format(this.nb_write_date.getTime());
 	}
 	
