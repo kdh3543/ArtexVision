@@ -464,11 +464,12 @@
 					ex_id: data
 				}
 			}).done(function(resp){
+				console.log(resp);
 				let result = JSON.parse(resp);
 				
 				const titleArr = ["전시회 ID", "전시회 제목", "전시회 가격", "전시회 장소", "전시회 평점", "전시 시작일", "전시 종료일"];
 				const resultArr = [result.ex_id, result.ex_title, result.ex_price, result.ex_location, result.ex_score, result.ex_start_date, result.ex_end_date];
-				
+
 				for(let i = 0; i < titleArr.length; i++) {
 				
 				let div1 = document.createElement("div");

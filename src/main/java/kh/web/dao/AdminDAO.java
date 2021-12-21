@@ -127,7 +127,9 @@ public class AdminDAO {
 				int ex_score = rs.getInt("ex_score");
 				Date ex_start_date = rs.getDate("ex_start_date");
 				Date ex_end_date = rs.getDate("ex_end_date");
-				eDto = new ExhibitionDTO(ex_id, ex_title, ex_desc, ex_price, ex_location, ex_score, ex_start_date, ex_end_date);
+				String ex_oriname = rs.getString("ex_oriname");
+				String ex_sysname = rs.getString("ex_sysname");
+				eDto = new ExhibitionDTO(ex_id, ex_title, ex_desc, ex_price, ex_location, ex_score, ex_start_date, ex_end_date, ex_oriname, ex_sysname);
 				list.add(eDto);
 			}
 			return list;
@@ -153,7 +155,9 @@ public class AdminDAO {
 				int ex_score = rs.getInt("ex_score");
 				Date ex_start_date = rs.getDate("ex_start_date");
 				Date ex_end_date = rs.getDate("ex_end_date");
-				eDto = new ExhibitionDTO(ex_id, ex_title, ex_desc, ex_price, ex_location, ex_score, ex_start_date, ex_end_date);
+				String ex_oriname = rs.getString("ex_oriname");
+				String ex_sysname = rs.getString("ex_sysname");
+				eDto = new ExhibitionDTO(ex_id, ex_title, ex_desc, ex_price, ex_location, ex_score, ex_start_date, ex_end_date, ex_oriname, ex_sysname);
 			}
 			return eDto;
 		}
