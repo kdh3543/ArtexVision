@@ -11,11 +11,13 @@ public class ExhibitionDTO {
 	private int ex_score;
 	private Date ex_start_date;
 	private Date ex_end_date;
+	private String ex_oriname;
+	private String ex_sysname;
 	
 	public ExhibitionDTO() {}
 
 	public ExhibitionDTO(String ex_id, String ex_title, String ex_desc, int ex_price, String ex_location, int ex_score,
-			Date ex_start_date, Date ex_end_date) {
+			Date ex_start_date, Date ex_end_date, String ex_oriname, String ex_sysname) {
 		this.ex_id = ex_id;
 		this.ex_title = ex_title;
 		this.ex_desc = ex_desc;
@@ -24,6 +26,8 @@ public class ExhibitionDTO {
 		this.ex_score = ex_score;
 		this.ex_start_date = ex_start_date;
 		this.ex_end_date = ex_end_date;
+		this.ex_oriname = ex_oriname;
+		this.ex_sysname = ex_sysname;
 	}
 
 	public String getEx_id() {
@@ -89,5 +93,20 @@ public class ExhibitionDTO {
 	public void setEx_end_date(Date ex_end_date) {
 		this.ex_end_date = ex_end_date;
 	}
-	
+
+	public String getEx_oriname() {
+		return ex_oriname;
+	}
+
+	public void setEx_oriname(String ex_oriname) {
+		this.ex_oriname = ex_oriname;
+	}
+
+	public String getEx_sysname() {
+		return ex_sysname;
+	}
+
+	public void setEx_sysname(String ex_sysname) {
+		this.ex_sysname = ex_sysname;
+	}
 }

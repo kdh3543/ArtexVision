@@ -426,7 +426,7 @@
           <c:when test="${loginId!=null}">
             <div class="header" id="topTarget">
               <ul class="header_list">
-                <li class="user_detail"><span id="user_grade"><i class="fas fa-crown"></i> ${dto.mem_grade}</li></span>
+                <li class="user_detail"><span id="user_grade"><i class="fas fa-crown"></i> ${loginGrade }</li></span>
                 <li id="welcome"> ${loginId } 님 환영합니다.</li>
                 <li id="mypage"><a href="/modifyForm.mem">마이페이지</a></li>
                 <li id="basket"><a href="/basket/basket.jsp" id="basket">장바구니</a></li>
@@ -468,9 +468,9 @@
         <div class="sidebar">
           <h2 class="list_title">전시</h2>
           <ul class="sidebar_item_list">
-            <li class="sidebar_item"><a href="now_main_ex.jsp">현재 전시</a></li>
-            <li class="sidebar_item"><a href="future_main_ex.jsp">예정된 전시</a></li>
-            <li class="sidebar_item"><a href="end_main_ex.jsp">마감된 전시</a></li>
+            <li class="sidebar_item"><a href="/exhibition/main_ex/now_main_ex.jsp">현재 전시</a></li>
+          	<li class="sidebar_item"><a href="/exhibition/main_ex/future_main_ex.jsp">예정된 전시</a></li>
+          	<li class="sidebar_item"><a href="/exhibition/main_ex/end_main_ex.jsp">마감된 전시</a></li>
           </ul>
         </div>
   

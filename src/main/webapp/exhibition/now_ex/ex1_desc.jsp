@@ -11,9 +11,9 @@
     integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
  
 <!-- 캘린더 -->    
-<link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />  
+<!-- <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />  
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>  
-<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
+<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script> -->
 
 <!-- 지도 -->
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7262ac3337a597a3bb0dd8dc4b881cd1"></script>
@@ -307,8 +307,14 @@
       padding-left: 80px;
       padding-right: 80px;
       padding-top: 40px;
-      float: left;
+      float: left; 
     }
+    
+    .contents_wrap3 > div{
+     float: left; 
+     width: 100%;
+     }
+    
 
     .menu_top{
       width: 100%;
@@ -371,6 +377,88 @@
             color: black; /* 링크의 색상 제거 */
         }
   </style>
+  
+  <!-- 리뷰 css  -->
+      <style>
+
+
+/* 레이아웃 외곽 너비 400px 제한*/
+.wrap{
+    max-width: 100%;
+    margin: 0 auto; /* 화면 가운데로 */
+    background-color: #fff;
+    height: 30%;
+   /*  padding: 20px; */
+    box-sizing: border-box;
+
+}
+.reviewform textarea{
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+.rating .rate_radio {
+    position: relative;
+    display: inline-block;
+    z-index: 20;
+    opacity: 0.001;
+    width: 30px;
+    height: 30px;
+    background-color: #fff;
+    cursor: pointer;
+    vertical-align: top;
+    display: none;
+}
+.rating .rate_radio + label {
+    position: relative;
+    display: inline-block;
+    margin-left: -4px;
+    z-index: 10;
+    width: 30px;
+    height: 30px;
+    background-image: url('../img/starrate.png');
+    background-repeat: no-repeat;
+    background-size: 30px 30px;
+    cursor: pointer;
+    background-color: #f0f0f0;
+}
+.rating .rate_radio:checked + label {
+    background-color: rgb(255, 60, 0);
+}
+
+.warning_msg {
+    display: none;
+    position: relative;
+    text-align: left;
+    background: #ffffff;
+    line-height: 20px;
+    width: 100%;
+    color: red;
+    padding: 5px;
+    box-sizing: border-box;
+    /* border: 1px solid #e0e0e0; */
+}
+.cmd{
+	text-align:right;
+	padding :5px;
+}
+    </style>
+    
+    <!-- 리뷰 테이블 스타일 -->
+    
+    <style>
+  table {
+    width: 100%;
+    border-top: 1px solid #444444;
+    border-collapse: collapse;
+  }
+  th, td {
+    border-bottom: 1px solid #444444;
+    padding: 10px;
+  }
+</style>
+
+
 </head>
 
 <body>
@@ -420,9 +508,9 @@
       <div class="sidebar">
         <h2 class="list_title">전시</h2>
         <ul class="sidebar_item_list">
-          <li class="sidebar_item"><a href="../main_ex/now_main_ex.jsp">현재 전시</a></li>
-          <li class="sidebar_item"><a href="../main_ex/future_main_ex.jsp">예정된 전시</a></li>
-          <li class="sidebar_item"><a href="../main_ex/end_main_ex.jsp">마감된 전시</a></li>
+          <li class="sidebar_item"><a href="/exhibition/main_ex/now_main_ex.jsp">현재 전시</a></li>
+          <li class="sidebar_item"><a href="/exhibition/main_ex/future_main_ex.jsp">예정된 전시</a></li>
+          <li class="sidebar_item"><a href="/exhibition/main_ex/end_main_ex.jsp">마감된 전시</a></li>
         </ul>
       </div>
 
@@ -436,8 +524,12 @@
             <div id="map"></div>
           </div>
         </div>
+        
+		<form action="/priceToss.book" method="post" id="frmPrice">
         <div class="contents_wrap2">
-          <div class="ex_title" style="font-weight: bolder; font-size: x-large; margin-bottom: 20px; padding-left: 90px;">프로젝트 해시태그 2021</div>
+          <div class="ex_title" style="margin-bottom: 20px; padding-left: 90px;">
+         	<input type=text name ="ex_title" style="font-weight: bolder; font-size: x-large; text-align:center; border:0px;" value="프로젝트 해시태그 2021">
+          </div>
           <hr style="background-color: #9d2622; width: 400px; margin-top: 30px; margin-bottom: 30px; ">
           <div class="ex_name">
             <div>장소 </div>
@@ -449,38 +541,41 @@
           </div>
           <div class="ex_price">
             <div>가격</div>
-            <div>4,000원</div>
+            <div id="price">4000</div>
           </div>
           <div class="ex_person" >
             <div>인원</div>
             <div>
-            <select name="person" style="width:120px; height:40px;">
+            <select name="person" style="width:120px; height:40px;" id="person" name="person">
               <option >인원 선택</option>
-              <option >1</option>
-              <option >2</option>
-              <option >3</option>
-              <option >4</option>
-              <option >5</option>
-              <option >6</option>
+              <option value=1 >1</option>
+              <option value=2 >2</option>
+              <option value=3 >3</option>
+
+              <option value=4 >4</option>
+              <option value=5 >5</option>
+              <option value=6 >6</option>
             </select></div>
           </div>
           <div class="ex_date">
 	          <div>날짜 선택</div>
-              <div><input type="text" id="choiceDate"></div>
-          </div>
+              <input id="datepicker" type="date" name="bookDate">
+          </div>          
           <div class="ex_buy">
             <div>결제가격</div>
-            <div>000,000원</div>
+            <div><input type=text id="realprice" name="realprice" style="border:0px;"></div>
           </div>
-          <div class="buy" style="height: 30%; text-align: center;  padding-top: 30px; padding-left: 30px;">
-            <button id="buy_btn">예매하기</button>
+          <div class="buy" style="height: 30%; text-align: center;  padding-top: 30px; padding-left: 30px;">          	
+            <button type="button" id="buy_btn">예매하기</button>            
           </div>
         </div>
+        </form>          
+  
         <div class="contents_wrap3">
           <div class="menu_top">
             <div id="desc">상세정보</div>
             <div id="review">이용후기</div>
-            <div id="qna">Q&A</div>
+            <div id="expect">리뷰 남기기</div>
           </div>
           <hr>
           <div class="menu_content1">
@@ -489,17 +584,194 @@
             서로 전혀 다른 글과 포스팅에서 공통 주제를 엮어낼 수 있는 혁신적인 글쓰기 방식에서 따온 것으로, 서로 관계없는 무작위의 글들 속에서 무한대수의 맥락을 만들어 낼 수 있는 가능성을 상징한다. 
           </div>
           <div class="menu_content2">
-            리뷰입니다.
+             <table >
+        		<tr align=center>
+            		<td width=70%>댓글</td>
+            		<td width=15%>작성자</td>
+           		 	<td width=15%>평점</td>
+        		</tr>
+        		<c:forEach var="dto" items="${list}">
+        		<tr>
+        			<td align=center>${dto.rv_content }
+        			<td align=center>${dto.rv_mem_id }
+        			<td align=center>${dto.rv_score }
+       		 	</tr>
+        		</c:forEach>
+   			 </table>
           </div>
           <div class="menu_content3">
-             qna입니다.
-          </div>
+             <div class="wrap">
+        		<form name="reviewform" class="reviewform" method="post" action="/writeRv.rvboard" id="frmRv">
+            		<input type="hidden" name="rate" id="rate" value="0"/>
+            		<!-- <p class="title_star">별점과 리뷰를 남겨주세요.</p> -->
+     
+            		<div class="review_rating">
+                		<div class="warning_msg">별점을 선택해 주세요.</div>
+                		<div class="rating">
+                    			<!-- 해당 별점을 클릭하면 해당 별과 그 왼쪽의 모든 별의 체크박스에 checked 적용 -->
+                    		<input type="checkbox" name="rating" id="rating1" value="1" class="rate_radio" title="1점">
+                    		<label for="rating1"></label>
+                   		 	<input type="checkbox" name="rating" id="rating2" value="2" class="rate_radio" title="2점">
+                  	  		<label for="rating2"></label>
+                    		<input type="checkbox" name="rating" id="rating3" value="3" class="rate_radio" title="3점" >
+                    		<label for="rating3"></label>
+                    		<input type="checkbox" name="rating" id="rating4" value="4" class="rate_radio" title="4점">
+                    		<label for="rating4"></label>
+                    		<input type="checkbox" name="rating" id="rating5" value="5" class="rate_radio" title="5점">
+                    		<label for="rating5"></label>
+                		</div>
+           		 	</div>
+            		<div class="review_contents">
+                		<div class="warning_msg">5자 이상으로 작성해 주세요.</div>
+                		<textarea rows="10" class="review_textarea" name="re_contents"></textarea>
+            		</div>   
+            		<div class="cmd">
+            			<button name="save" id="save" type="button">등록</button>
+                		<!-- <input type="button" name="save" id="save" value="등록"> -->
+            		</div>
+        		</form>
+    		</div>
+        </div>
         </div>
       </div>
     </div>
 
     <div class="footer"> </div>
   </div>
+  
+  <!-- 예매하기 버튼 클릭 시  -->
+  <script>
+  $("#buy_btn").on("click",function(){
+	  
+      if(!($('#person > option:selected').val())) {
+    	    alert("인원을 선택하세요.");
+    	    return false;
+    	}
+      
+      if(!$("#realprice").val()) {
+    	    alert("인원을 선택하세요");
+    	    return false;
+    	}
+      
+      if(!$("#datepicker").val()) {
+  	    alert("날짜를 선택하세요");
+  	    return false;
+  		}
+     
+          
+      let price = $("#realprice").val(); 
+      
+	  let result = confirm(price+"원 결제하시겠습니까?");
+	  
+	  if(result){
+		  $("#frmPrice").submit();
+	  }
+  })
+  </script>
+  
+  <!-- 리뷰남기기 -->
+  <script>
+  	/* 버튼 클릭시 */
+  	 $("#save").on("click",function(){
+  		 //별점 선택 안했으면 메시지 표시
+         if(rating.rate == 0){
+             rating.showMessage('rate');
+             return false;
+         }
+         //리뷰 5자 미만이면 메시지 표시
+         if(document.querySelector('.review_textarea').value.length < 5){
+             rating.showMessage('review');
+             return false;
+         }
+         //폼 서밋
+         if(rating.rate != 0 && document.querySelector('.review_textarea').value.length >= 5){
+        	 $("#frmRv").submit();
+         }
+  		
+
+  	 });
+  </script>
+  
+  
+  
+ <script>
+//별점 마킹 모듈 프로토타입으로 생성
+function Rating(){};
+Rating.prototype.rate = 0;
+Rating.prototype.setRate = function(newrate){
+    //별점 마킹 - 클릭한 별 이하 모든 별 체크 처리
+    this.rate = newrate;
+    let items = document.querySelectorAll('.rate_radio');
+    items.forEach(function(item, idx){
+        if(idx < newrate){
+            item.checked = true;
+        }else{
+            item.checked = false;
+        }
+    });
+}
+
+let rating = new Rating();//별점 인스턴스 생성
+
+document.addEventListener('DOMContentLoaded', function(){
+    //별점선택 이벤트 리스너
+    document.querySelector('.rating').addEventListener('click',function(e){
+        let elem = e.target;
+        if(elem.classList.contains('rate_radio')){
+            rating.setRate(parseInt(elem.value));
+        }
+    })
+});
+
+  //상품평 작성 글자수 초과 체크 이벤트 리스너
+  document.querySelector('.review_textarea').addEventListener('keydown',function(){
+        //리뷰 400자 초과 안되게 자동 자름
+        let review = document.querySelector('.review_textarea');
+        let lengthCheckEx = /^.{400,}$/;
+        if(lengthCheckEx.test(review.value)){
+            //400자 초과 컷
+            review.value = review.value.substr(0,400);
+        }
+    });
+
+
+    Rating.prototype.showMessage = function(type){//경고메시지 표시
+    switch(type){
+        case 'rate':
+            //안내메시지 표시
+            document.querySelector('.review_rating .warning_msg').style.display = 'block';
+            //지정된 시간 후 안내 메시지 감춤
+            setTimeout(function(){
+                document.querySelector('.review_rating .warning_msg').style.display = 'none';
+            },1000);            
+            break;
+        case 'review':
+            //안내메시지 표시
+            document.querySelector('.review_contents .warning_msg').style.display = 'block';
+            //지정된 시간 후 안내 메시지 감춤
+            setTimeout(function(){
+                document.querySelector('.review_contents .warning_msg').style.display = 'none';
+            },1000);    
+            break;
+    }
+}
+    </script>
+  
+  
+  
+  
+  <!-- 인원수 선택시 -->
+  <script>
+  $("#person").change(function(){
+	  /* location.href="/buy.exbuy"; */
+ 	  let price = parseInt($("#price").text()); 
+	  let person = parseInt($("#person option:selected").val()); 
+  	  let realpriceInt = price*person; 
+	  let realprice = realpriceInt.toString();  
+	  $("#realprice").val(realprice);
+  });
+  
+  </script>
   
   <!-- 상세설명, 리뷰, q&a 클릭에 따른 div 보여주기 코드  -->
   <script type="text/javascript">
@@ -522,7 +794,7 @@
 	})
 	
 	/*  qna 클릭 시  */
-  $("#qna").on("click", function(){
+  $("#expect").on("click", function(){
 
 		$(".menu_content2").css("display", "none");
 		$(".menu_content3").css("display", "inline");
@@ -548,30 +820,20 @@
   </script>
   
   
-  <!--  날짜 api  -->
-  <script type="text/javascript">
-    $(document).ready(function () {
-            $.datepicker.setDefaults($.datepicker.regional['ko']); 
-            $( "#choiceDate" ).datepicker({
-                 changeMonth: true, 
-                 changeYear: true,
-                 nextText: '다음 달',
-                 prevText: '이전 달', 
-                 dayNames: ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'],
-                 dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'], 
-                 monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
-                 monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
-                 dateFormat: "yy-mm-dd",
-                 maxDate: 0,                       // 선택할수있는 최소날짜, ( 0 : 오늘 이후 날짜 선택 불가)
-                 /*onClose: function( selectedDate ) {    
-                      //시작일(startDate) datepicker가 닫힐때
-                      //종료일(endDate)의 선택할수있는 최소 날짜(minDate)를 선택한 시작일로 지정
-                     $("#endDate").datepicker( "option", "minDate", selectedDate );
-                 }    */
-            });
-             
-    });
-	</script>
+  <!--  날짜  -->
+  <script>
+  var picker = new Pikaday({ 
+	  field: document.getElementById('datepicker'),
+	  format: 'yyyy-MM-dd',
+	  toString(date, format) {
+	    let day = ("0" + date.getDate()).slice(-2);
+	    let month = ("0" + (date.getMonth() + 1)).slice(-2);
+	    let year = date.getFullYear();
+	    return `${year}-${month}-${day}`;
+	  }
+	 });
+  </script>
+
 
 
 	<!--  지도 api -->

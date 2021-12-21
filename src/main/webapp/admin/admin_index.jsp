@@ -47,7 +47,7 @@
     }
 
     div {
-      /* border: 1px solid black; */
+      /* border: 1px solid black;  */
     }
 
 	a {
@@ -174,6 +174,10 @@
       overflow-x:hidden;
     }
 
+	.dashboard_contents::-webkit-scrollbar {
+    	display: none; 
+	}
+
     .dashboard_contents_item {
       display: flex;
       height: 7%;
@@ -202,8 +206,9 @@
     .dashboard_graph {
       width: 80%;
       display: flex;
-      justify-content: center;
+      justify-content: flex-start;
       align-items: center;
+      padding-left: 90px;
     }
 
     /* dashboard end */
@@ -283,16 +288,19 @@
 </head>
 
 <body>
+	<c:if test="${empty loginID}">
+    	<script>location.href="/admin/admin_login.jsp"</script>
+    </c:if>
 	<div class="container">
-
 		<div class="header">
 			<div class="admin_logo">
 				<i class="fab fa-artstation"> Artex Vision Admin Page</i>
 			</div>
 			<div class="userDetail">
-				<i class="fas fa-user-circle"> ADMIN 님 환영합니다.</i> <a
-					href="/logout.admin" id="logout_btn"><i
-					class="fas fa-sign-out-alt"> LOGOUT</i></a>
+				<i class="fas fa-user-circle"> ${loginID } 님 환영합니다.</i> 
+				<a href="/logout.admin" id="logout_btn">
+				   <i class="fas fa-sign-out-alt"> LOGOUT</i>
+				</a>
 			</div>
 		</div>
 
@@ -304,7 +312,8 @@
 					</div>
 					<div class="nav_title">DASHBOARD</div>
 				</div>
-			</a> <a href="/member_list.admin">
+			</a> 
+			<a href="/member_list.admin">
 				<div class="nav_items">
 					<div class="nav_icon">
 						<i class="fas fa-address-card"></i>
@@ -312,24 +321,29 @@
 					<div class="nav_title">MEMBERS</div>
 				</div>
 			</a>
-			<div class="nav_items">
+			
+			<div class="nav_items" id="working1">
 				<div class="nav_icon">
 					<i class="far fa-clipboard"></i>
 				</div>
 				<div class="nav_title">BOARD</div>
 			</div>
-			<div class="nav_items">
-				<div class="nav_icon">
-					<i class="fas fa-crown"></i>
-				</div>
-				<div class="nav_title">GRADE</div>
-			</div>
+			
 			<a href="/input_ex_form.admin">
 				<div class="nav_items">
 					<div class="nav_icon">
 						<i class="fas fa-pen-square"></i>
 					</div>
-					<div class="nav_title">EXHIBITION</div>
+					<div class="nav_title">ADD EX</div>
+				</div>
+			</a>
+			
+			<a href="/show_ex_list.admin">
+				<div class="nav_items">
+					<div class="nav_icon">
+						<i class="far fa-list-alt"></i>
+					</div>
+					<div class="nav_title">SHOW EX LIST</div>
 				</div>
 			</a>
 		</div>
@@ -344,13 +358,18 @@
 				</div>
 			</div> -->
 			<div class="select_btn_form">
-				<button type="button" class="select_btn" id="daily_btn">일간 가입자 통계 보기</button>
-				<button type="button" class="select_btn" id="monthly_btn">월간 가입자 통계 보기</button>
+				<button type="button" class="select_btn" id="daily_btn"><i class="fas fa-users"></i> 일간 가입자 통계</button>
+				<button type="button" class="select_btn" id="monthly_btn"><i class="fas fa-users"></i> 월간 가입자 통계</button>
+				<button type="button" class="select_btn" id="daily_visit_btn"><i class="far fa-eye"></i> 일간 방문자 통계</button>
+				<button type="button" class="select_btn" id="monthly_visit_btn"><i class="far fa-eye"></i> 월간 방문자 통계</button>
+				<button type="button" class="select_btn" id="daily_revenue_btn"><i class="fas fa-money-bill-wave"></i> 일간 매출 통계</button>
+				<button type="button" class="select_btn" id="monthly_revenue_btn"><i class="fas fa-money-bill-wave"></i> 월간 매출 통계</button>
 			</div>
 		</div>
 
 		<div class="contents">
 			<div class="dashboard_wrap">
+				
 				<div class="dashboard_contents">
 					<!-- <div class="dashboard_contents_item">
 						<div class="dashboard_contents_item_title"></div>
@@ -358,6 +377,7 @@
 					</div> -->
 				</div>
 				<div class="dashboard_graph">
+					<div class="comment">상단 탭을 누르면 통계를 확인하실 수 있습니다.</div>
 					<%-- <canvas id="myChart"></canvas> --%>
 				</div>
 			</div>
@@ -409,10 +429,22 @@
 	</div>
 </body>
 <script>
-	let weekly_btn = document.getElementById("weekly_btn");
+	let working1 = document.getElementById("working1");
+
+	working1.onclick = function() {
+		alert("구현중입니다.");
+	}
+	
+	let monthly_btn = document.getElementById("monthly_btn");
 	let daily_btn = document.getElementById("daily_btn");
+	let daily_visit_btn = document.getElementById("daily_visit_btn");
+	let monthly_visit_btn = document.getElementById("monthly_visit_btn");
+	let daily_revenue_btn = document.getElementById("daily_revenue_btn");
+	let monthly_revenue_btn = document.getElementById("monthly_revenue_btn");
+	
 	const dashboard_contents = document.querySelector(".dashboard_contents");
 	const dashboard_graph = document.querySelector(".dashboard_graph");
+	
 	daily_btn.onclick = function(){
 		$(".dashboard_contents").empty();
 		$(".dashboard_graph").empty();
@@ -441,12 +473,13 @@
 				div1.appendChild(div3);
 				dashboard_contents.append(div1);
 			}
-			
+			let label = "person";
+			let type = "bar";
 			let canvas = document.createElement("canvas");
 			canvas.id = "myChart";
 			dashboard_graph.appendChild(canvas);
 			
-			drawChart(dateArr, cntArr);
+			drawChart(dateArr, cntArr, type, label);
 	  });
 	}
 	
@@ -478,26 +511,181 @@
 				div1.appendChild(div3);
 				dashboard_contents.append(div1);
 			}
-			
+			let label = "person";
+			let type = "bar";
 			let canvas = document.createElement("canvas");
 			canvas.id = "myChart";
 			dashboard_graph.appendChild(canvas);
 			
-			drawChart(dateArr, cntArr);
+			drawChart(dateArr, cntArr, type, label);
 	  });
 	}
 	
-	function drawChart(dateArr, cntArr){
+	daily_visit_btn.onclick = function(){
+		$(".dashboard_contents").empty();
+		$(".dashboard_graph").empty();
+		$.ajax({
+			url: "/dailyVisitData.admin"
+		}).done(function(resp){
+			let result = JSON.parse(resp);
+			let dateArr = [];
+			let cntArr = [];
+			for(let i = 0; i < result.length; i++) {
+				dateArr.push(result[i].mem_signup_date);
+				cntArr.push(parseInt(result[i].cnt));
+				
+				let div1 = document.createElement("div");
+				div1.classList.add("dashboard_contents_item");
+				
+				let div2 = document.createElement("div");
+				div2.classList.add("dashboard_contents_item_title");
+				div2.innerText = result[i].mem_signup_date;
+				
+				let div3 = document.createElement("div");
+				div3.classList.add("dashboard_contents_item_data");
+				div3.innerText = result[i].cnt;
+				
+				div1.appendChild(div2);
+				div1.appendChild(div3);
+				dashboard_contents.append(div1);
+			}
+			let label = "person";
+			let type = "bar";
+			let canvas = document.createElement("canvas");
+			canvas.id = "myChart";
+			dashboard_graph.appendChild(canvas);
+			
+			drawChart(dateArr, cntArr, type, label);
+	  });
+	}
+	
+	monthly_visit_btn.onclick = function(){
+		$(".dashboard_contents").empty();
+		$(".dashboard_graph").empty();
+		$.ajax({
+			url: "/monthlyVisitData.admin"
+		}).done(function(resp){
+			let result = JSON.parse(resp);
+			let dateArr = [];
+			let cntArr = [];
+			for(let i = 0; i < result.length; i++) {
+				dateArr.push(result[i].mem_signup_date);
+				cntArr.push(parseInt(result[i].cnt));
+				
+				let div1 = document.createElement("div");
+				div1.classList.add("dashboard_contents_item");
+				
+				let div2 = document.createElement("div");
+				div2.classList.add("dashboard_contents_item_title");
+				div2.innerText = result[i].mem_signup_date;
+				
+				let div3 = document.createElement("div");
+				div3.classList.add("dashboard_contents_item_data");
+				div3.innerText = result[i].cnt;
+				
+				div1.appendChild(div2);
+				div1.appendChild(div3);
+				dashboard_contents.append(div1);
+			}
+			let label = "person";
+			let type = "bar";
+			let canvas = document.createElement("canvas");
+			canvas.id = "myChart";
+			dashboard_graph.appendChild(canvas);
+			
+			drawChart(dateArr, cntArr, type, label);
+	  });
+	}
+	
+	daily_revenue_btn.onclick = function(){
+		$(".dashboard_contents").empty();
+		$(".dashboard_graph").empty();
+		$.ajax({
+			url: "/dailyRevenueData.admin"
+		}).done(function(resp){
+			let result = JSON.parse(resp);
+			let dateArr = [];
+			let cntArr = [];
+			for(let i = 0; i < result.length; i++) {
+				dateArr.push(result[i].mem_signup_date);
+				cntArr.push(parseInt(result[i].cnt));
+				
+				let div1 = document.createElement("div");
+				div1.classList.add("dashboard_contents_item");
+				
+				let div2 = document.createElement("div");
+				div2.classList.add("dashboard_contents_item_title");
+				div2.innerText = result[i].mem_signup_date;
+				
+				let div3 = document.createElement("div");
+				div3.classList.add("dashboard_contents_item_data");
+				div3.innerText = result[i].cnt;
+				
+				div1.appendChild(div2);
+				div1.appendChild(div3);
+				dashboard_contents.append(div1);
+			}
+			let label = "￦";
+			let type = "line";
+			let canvas = document.createElement("canvas");
+			canvas.id = "myChart";
+			dashboard_graph.appendChild(canvas);
+			
+			drawChart(dateArr, cntArr, type, label);
+	  });
+	}
+	
+	monthly_revenue_btn.onclick = function(){
+		$(".dashboard_contents").empty();
+		$(".dashboard_graph").empty();
+		$.ajax({
+			url: "/monthlyRevenueData.admin"
+		}).done(function(resp){
+			let result = JSON.parse(resp);
+			let dateArr = [];
+			let cntArr = [];
+			for(let i = 0; i < result.length; i++) {
+				dateArr.push(result[i].mem_signup_date);
+				cntArr.push(parseInt(result[i].cnt));
+				
+				let div1 = document.createElement("div");
+				div1.classList.add("dashboard_contents_item");
+				
+				let div2 = document.createElement("div");
+				div2.classList.add("dashboard_contents_item_title");
+				div2.innerText = result[i].mem_signup_date;
+				
+				let div3 = document.createElement("div");
+				div3.classList.add("dashboard_contents_item_data");
+				div3.innerText = result[i].cnt;
+				
+				div1.appendChild(div2);
+				div1.appendChild(div3);
+				dashboard_contents.append(div1);
+			}
+			let type = "line";
+			let label = "￦";
+			let canvas = document.createElement("canvas");
+			canvas.id = "myChart";
+			dashboard_graph.appendChild(canvas);
+			
+			drawChart(dateArr, cntArr, type, label);
+	  });
+	}
+	
+	
+	
+	function drawChart(dateArr, cntArr, type, label){
 		let ctx = document.getElementById('myChart');
 		let title_arr = dateArr;
 		let contents_arr = cntArr;
 		
 		let myChart = new Chart(ctx, {
-			type: 'bar',
+			type: type,
 			data: {
 				labels: title_arr,
 				datasets: [{
-					label: '2021년',
+					label: label,
 					data: contents_arr,
 					backgroundColor: [
 						'rgba(255, 99, 132, 0.2)',
