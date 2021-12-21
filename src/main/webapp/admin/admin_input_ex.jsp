@@ -191,6 +191,11 @@
       color: var(--text-color);
     }
 
+	.nav_items:hover {
+      color: var(--sub-color1);
+      cursor: pointer;
+    }
+
     .nav_icon {
       font-size: 1.5rem;
     }
@@ -301,6 +306,7 @@
       width: 80%;
       height: 30px;
       border: var(--color1);
+      cursor: pointer;
 	}
 
 	input[type="button"] {
@@ -308,6 +314,7 @@
       color: var(--text-color);
       height: 30px;
       border: var(--color1);
+      cursor: pointer;
 	}
 	
 
@@ -370,23 +377,18 @@
         }).open();
       };
 
-      let nav_items = document.querySelectorAll(".nav_items");
-      let nav_icon = document.querySelectorAll(".nav_icon");
-      let nav_title = document.querySelectorAll(".nav_title");
-
-      for(let i = 0; nav_items.length; i++){
-        nav_items[i].onmouseover = function(){
-          this.style.color = "#998ab4";
-          this.style.cursor = "pointer";
-        }
-
-        nav_items[i].onmouseleave = function(){
-          this.style.color = "#ffffff";
-        }
-      }
+      let working1 = document.getElementById("working1");
+	  let working2 = document.getElementById("working2");
+	
+	  working1.onclick = function() {
+		  alert("구현중입니다.");
+	  }
+	
+	  working2.onclick = function() {
+		  alert("구현중입니다.");
+	  }	
     }
 
-    
   </script>
 </head>
 
@@ -500,17 +502,5 @@
         neque</div>
     </div>
   </div>
-  <script>
-  	  let working1 = document.getElementById("working1");
-	  let working2 = document.getElementById("working2");
-	
-	  working1.onclick = function() {
-		  alert("구현중입니다.");
-	  }
-	
-	  working2.onclick = function() {
-		  alert("구현중입니다.");
-	  }
-  </script>
 </body>
 </html>
