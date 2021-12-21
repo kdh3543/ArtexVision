@@ -244,66 +244,66 @@
           width: 25%;
           height: 30px;
           cursor: pointer;
+
         }
 
         #find_zipcode_wrap {
           padding-left: 30px;
         }
-
       </style>
     </head>
 
     <body>
-    <form action="/confirm.mem" method="post">
-      <div class="reset_pw_box">
-        <div class="reset_pw_logo">
-          <h2>비밀번호 재설정</h2>
-          <hr>
-        </div>
-        <div class="reset_pw_contents">
-          <div class="reset_pw_input">
-            <div class="label">
-              <label for="id">아이디</label>
-            </div>
-            <div class="input_id">
-              <input type="text" name="id" id="id" placeholder="아이디를 입력하세요">
-            </div>
-            <div class="label">
-              <label for="name">이름</label>
-            </div>
-            <div class="input_name">
-              <input type="text" name="name" id="name" placeholder="이름을 입력하세요">
-            </div>
-            <div class="label">
-              <label for="email">이메일</label>
-            </div>
-            <div class="input_email">
-              <input type="email" name="email" id="email" placeholder="이메일을 입력하세요">
-            </div>
-            <div class="label">
-              <label for="phone">전화번호</label>
-            </div>
-            <div class="input_phone">
-              <select id="phone" name="phone">
-                <option value="010">010</option>
-                <option value="011">011</option>
-                <option value="016">016</option>
-                <option value="017">017</option>
-                <option value="018">018</option>
-                <option value="019">019</option>
-              </select>
-              -
-              <input type="text" name="phone1" id="phone1">
-              -
-              <input type="text" name="phone2" id="phone2">
-            </div>
-            <div class="btns">
-              <input type="submit" value="개인정보 확인" id="reset_pw_btn">
-              <a href="/home.mem"><input type="button" value="홈으로" id="back_btn"></a>
+      <form action="/confirm.mem" method="post">
+        <div class="reset_pw_box">
+          <div class="reset_pw_logo">
+            <h2>비밀번호 재설정</h2>
+            <hr>
+          </div>
+          <div class="reset_pw_contents">
+            <div class="reset_pw_input">
+              <div class="label">
+                <label for="id">아이디</label>
+              </div>
+              <div class="input_id">
+                <input type="text" name="id" id="id" placeholder="아이디를 입력하세요">
+              </div>
+              <div class="label">
+                <label for="name">이름</label>
+              </div>
+              <div class="input_name">
+                <input type="text" name="name" id="name" placeholder="이름을 입력하세요">
+              </div>
+              <div class="label">
+                <label for="email">이메일</label>
+              </div>
+              <div class="input_email">
+                <input type="email" name="email" id="email" placeholder="이메일을 입력하세요">
+              </div>
+              <div class="label">
+                <label for="phone">전화번호</label>
+              </div>
+              <div class="input_phone">
+                <select id="phone" name="phone">
+                  <option value="010">010</option>
+                  <option value="011">011</option>
+                  <option value="016">016</option>
+                  <option value="017">017</option>
+                  <option value="018">018</option>
+                  <option value="019">019</option>
+                </select>
+                -
+                <input type="text" name="phone1" id="phone1">
+                -
+                <input type="text" name="phone2" id="phone2">
+              </div>
+              <div class="btns">
+                <input type="submit" value="개인정보 확인" id="reset_pw_btn">
+                <a href="/home.mem"><input type="button" value="홈으로" id="back_btn"></a>
+              </div>
             </div>
           </div>
         </div>
-      </div>
       </form>
     </body>
 

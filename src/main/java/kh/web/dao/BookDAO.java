@@ -40,9 +40,8 @@ public class BookDAO {
 				ResultSet rs = pstat.executeQuery();){
 			List<BookDTO> list = new ArrayList<>();
 			while(rs.next()) {
-				String bk_id = rs.getString("bk_id");
+				int bk_id = rs.getInt("bk_id");
 				int bk_person = rs.getInt("bk_person");
-				int generation = rs.getInt("bk_generation");
 				boolean bk_cancel = rs.getBoolean("bk_cancel");
 				String bk_ex_id = rs.getString("bk_ex_id");
 				String bk_ex_title = rs.getString("bk_ex_title");
@@ -60,7 +59,7 @@ public class BookDAO {
 				Date bk_ex_start_date = rs.getDate("bk_ex_start_date");
 				Date bk_ex_end_date = rs.getDate("bk_ex_start_date");
 				
-				BookDTO dto = new BookDTO(bk_id,bk_person,generation,bk_cancel,bk_ex_id,bk_ex_title,bk_ex_price,bk_mem_id,bk_mem_name,
+				BookDTO dto = new BookDTO(bk_id,bk_person,bk_cancel,bk_ex_id,bk_ex_title,bk_ex_price,bk_mem_id,bk_mem_name,
 						bk_mem_email,bk_mem_birth,bk_mem_phone,bk_mem_zipcode,bk_mem_addr1,bk_mem_addr2,bk_mem_grade,bk_mem_account
 						,bk_ex_start_date, bk_ex_end_date);
 				list.add(dto);
@@ -74,6 +73,32 @@ public class BookDAO {
 		try(Connection con = this.getConnection();
 				PreparedStatement pstat = con.prepareStatement(sql);){
 			pstat.setString(1, bk_Id);
+			int result = pstat.executeUpdate();
+			return result;
+		}
+	}
+	
+	public int insert(BookDTO dto) throws Exception{
+		String sql = "insert into book values(bk_id_seq.nextval,?,'N',?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		try(Connection con = this.getConnection();
+				PreparedStatement pstat = con.prepareStatement(sql);){
+			pstat.setInt(1, dto.getBk_person());
+			pstat.setString(2, dto.getBk_ex_id());
+			pstat.setString(3, dto.getBk_ex_title());
+			pstat.setInt(4, dto.getBk_ex_price());
+			pstat.setString(5, dto.getBk_mem_id());
+			pstat.setString(6, dto.getBk_mem_name());
+			pstat.setString(7, dto.getBk_mem_email());
+			pstat.setString(8, dto.getBk_mem_birth());
+			pstat.setString(9, dto.getBk_mem_phone());
+			pstat.setString(10, dto.getBk_mem_zipcode());
+			pstat.setString(11, dto.getBk_mem_addr1());
+			pstat.setString(12, dto.getBk_mem_addr2());
+			pstat.setString(13, dto.getBk_mem_grade());
+			pstat.setString(14, dto.getBk_mem_account());
+			pstat.setDate(15, dto.getBk_ex_book_date());
+			pstat.setDate(16, dto.getBk_ex_visit_date());
+			
 			int result = pstat.executeUpdate();
 			return result;
 		}

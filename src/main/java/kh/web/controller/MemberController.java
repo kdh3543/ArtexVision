@@ -58,10 +58,17 @@ public class MemberController extends HttpServlet {
 			}else if(cmd.equals("/login.mem")) { // 로그인 화면에서 로그인 버튼을 눌렀을 때
 				String id = request.getParameter("id");
 				String pw = EncryptionUtils.pwdEncrypt(request.getParameter("pw"));
+				
+				MemberDTO dto = dao.selectById(id); 
+				
 				boolean result = dao.login(id, pw);
 				if(result) { 
 					HttpSession session = request.getSession(); 
 					session.setAttribute("loginId", id);
+					session.setAttribute("loginGrade", dto.getMem_grade());
+					session.setAttribute("loginName", dto.getMem_name());
+					session.setAttribute("loginPhone", dto.getMem_phone());
+					session.setAttribute("loginEmail", dto.getMem_email());
 					response.sendRedirect("/artexMain/mainpage.jsp");
 				}else {
 					response.sendRedirect("/loginFail.jsp");
@@ -142,7 +149,8 @@ public class MemberController extends HttpServlet {
 				}
 				
 				dao.updateInfor(id,pw,email,phone,zipcode,addr1,addr2);
-			
+				response.sendRedirect("/mypage/modifyInfor.jsp");
+				
 			}else if(cmd.equals("/memberGrade.mem")) { //회원정보 수정에서 회원 등급 버튼 눌렀을 시
 				response.sendRedirect("mypage/memberRank.jsp");
 				
@@ -162,7 +170,7 @@ public class MemberController extends HttpServlet {
 				request.getRequestDispatcher("mypage/leaveMember.jsp").forward(request, response);
 				
 			}else if(cmd.equals("/logout.mem")) { // 로그아웃 버튼 눌렸을 시
-				request.getSession().removeAttribute("loginId");
+				request.getSession().invalidate();
 				response.sendRedirect("/artexMain/mainpage.jsp");
 				
 			}
