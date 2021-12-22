@@ -5,7 +5,7 @@ import java.sql.Date;
 public class BookDTO {
 	private int bk_id;
 	private int bk_person;
-	private boolean bk_cancel;
+	private String bk_cancel;
 	private String bk_ex_id;
 	private String bk_ex_title;
 	private int bk_ex_price;
@@ -24,7 +24,7 @@ public class BookDTO {
 	
 	public BookDTO() {}
 
-	public BookDTO(int bk_id, int bk_person, boolean bk_cancel, String bk_ex_id, String bk_ex_title, int bk_ex_price,
+	public BookDTO(int bk_id, int bk_person, String bk_cancel, String bk_ex_id, String bk_ex_title, int bk_ex_price,
 			String bk_mem_id, String bk_mem_name, String bk_mem_email, String bk_mem_birth, String bk_mem_phone,
 			String bk_mem_zipcode, String bk_mem_addr1, String bk_mem_addr2, String bk_mem_grade, String bk_mem_account,
 			Date bk_ex_book_date, Date bk_ex_visit_date) {
@@ -65,11 +65,11 @@ public class BookDTO {
 		this.bk_person = bk_person;
 	}
 
-	public boolean isBk_cancel() {
+	public String getBk_cancel() {
 		return bk_cancel;
 	}
 
-	public void setBk_cancel(boolean bk_cancel) {
+	public void setBk_cancel(String bk_cancel) {
 		this.bk_cancel = bk_cancel;
 	}
 
@@ -193,7 +193,4 @@ public class BookDTO {
 		this.bk_ex_visit_date = bk_ex_visit_date;
 	}
 
-	
-	
-	
 }
