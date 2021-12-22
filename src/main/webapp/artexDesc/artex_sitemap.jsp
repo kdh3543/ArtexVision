@@ -549,8 +549,8 @@
           <div class="sidebar">
             <h2 class="list_title">Artex Vision</h2>
             <ul class="sidebar_item_list">
-              <li class="sidebar_item"><a href="">Artex Vision 소개</a></li>
-              <li class="sidebar_item"><a href="">사이트맵</a></li>
+              <li class="sidebar_item"><a href="/artexDesc/artex_desc.jsp">Artex Vision 소개</a></li>
+              <li class="sidebar_item"><a href="/artexDesc/artex_sitemap.jsp">사이트맵</a></li>
             </ul>
           </div>
           <div class="artexvision_introduce_area">
