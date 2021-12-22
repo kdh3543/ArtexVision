@@ -646,13 +646,13 @@
               <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                   <div class="carousel-item active" data-bs-interval="5000">
-                    <img src="img/event_main1.png" class="d-block w-100" alt="이벤트1">
+                    <img src="img/main_slide3.png" class="d-block w-100" alt="이벤트1">
                   </div>
                   <div class="carousel-item" data-bs-interval="5000">
-                    <img src="img/event_main2.png" class="d-block w-100" alt="이벤트2">
+                    <img src="img/main_slide1.png" class="d-block w-100" alt="이벤트2">
                   </div>
                   <div class="carousel-item">
-                    <img src="img/event_main3.png" class="d-block w-100" alt="이벤트3">
+                    <img src="img/main_slide2.png" class="d-block w-100" alt="이벤트3">
                   </div>
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval"
@@ -824,9 +824,9 @@
             </div>
             <hr>
             <div class="event_img">
-              <div><a href=""><img src="img/event_main1.png" width="100%" height="100%"></a></div>
-              <div><a href=""><img src="img/event_main2.png" width="100%" height="100%"></a></div>
-              <div><a href=""><img src="img/event_main3.png" width="100%" height="100%"></a></div>
+              <div><a href="/event/now_event/now_event.jsp"><img src="img/event_main1.png" width="100%" height="100%"></a></div>
+              <div><a href="/event/now_event/now_event.jsp"><img src="img/event_main2.png" width="100%" height="100%"></a></div>
+              <div><a href="/event/now_event/now_event.jsp"><img src="img/event_main3.png" width="100%" height="100%"></a></div>
             </div>
           </div>
 

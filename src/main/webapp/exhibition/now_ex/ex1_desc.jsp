@@ -11,9 +11,10 @@
     integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
  
 <!-- 캘린더 -->    
-<!-- <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />  
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />  
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>  
-<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script> -->
+<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
+
 
 <!-- 지도 -->
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7262ac3337a597a3bb0dd8dc4b881cd1"></script>
@@ -443,20 +444,7 @@
 	padding :5px;
 }
     </style>
-    
-    <!-- 리뷰 테이블 스타일 -->
-    
-    <style>
-  table {
-    width: 100%;
-    border-top: 1px solid #444444;
-    border-collapse: collapse;
-  }
-  th, td {
-    border-bottom: 1px solid #444444;
-    padding: 10px;
-  }
-</style>
+
 
 
 </head>
@@ -559,7 +547,7 @@
           </div>
           <div class="ex_date">
 	          <div>날짜 선택</div>
-              <input id="datepicker" type="date" name="bookDate">
+              <input type="text" id="choiceDate" autocomplete="off" name="bookDate">
           </div>          
           <div class="ex_buy">
             <div>결제가격</div>
@@ -574,7 +562,7 @@
         <div class="contents_wrap3">
           <div class="menu_top">
             <div id="desc">상세정보</div>
-            <div id="review">이용후기</div>
+            <div id="review">리뷰 남기기</div>
             <div id="expect">부가 정보</div>
           </div>
           <hr>
@@ -584,20 +572,37 @@
             서로 전혀 다른 글과 포스팅에서 공통 주제를 엮어낼 수 있는 혁신적인 글쓰기 방식에서 따온 것으로, 서로 관계없는 무작위의 글들 속에서 무한대수의 맥락을 만들어 낼 수 있는 가능성을 상징한다. 
           </div>
           <div class="menu_content2">
-             <table >
-        		<tr align=center>
-            		<td width=70%>댓글</td>
-            		<td width=15%>작성자</td>
-           		 	<td width=15%>평점</td>
-        		</tr>
-        		<c:forEach var="dto" items="${list}">
-        		<tr>
-        			<td align=center>${dto.rv_content }
-        			<td align=center>${dto.rv_mem_id }
-        			<td align=center>${dto.rv_score }
-       		 	</tr>
-        		</c:forEach>
-   			 </table>
+            <div class="wrap">
+        		<form name="reviewform" class="reviewform" method="post" action="/writeRv.rvboard" id="frmRv">
+            		<input type="hidden" name="rate" id="rate" value="0"/>
+            		<!-- <p class="title_star">별점과 리뷰를 남겨주세요.</p> -->
+     
+            		<div class="review_rating">
+                		<div class="warning_msg">별점을 선택해 주세요.</div>
+                		<div class="rating">
+                    			<!-- 해당 별점을 클릭하면 해당 별과 그 왼쪽의 모든 별의 체크박스에 checked 적용 -->
+                    		<input type="checkbox" name="rating" id="rating1" value="1" class="rate_radio" title="1점">
+                    		<label for="rating1"></label>
+                   		 	<input type="checkbox" name="rating" id="rating2" value="2" class="rate_radio" title="2점">
+                  	  		<label for="rating2"></label>
+                    		<input type="checkbox" name="rating" id="rating3" value="3" class="rate_radio" title="3점" >
+                    		<label for="rating3"></label>
+                    		<input type="checkbox" name="rating" id="rating4" value="4" class="rate_radio" title="4점">
+                    		<label for="rating4"></label>
+                    		<input type="checkbox" name="rating" id="rating5" value="5" class="rate_radio" title="5점">
+                    		<label for="rating5"></label>
+                		</div>
+           		 	</div>
+            		<div class="review_contents">
+                		<div class="warning_msg">5자 이상으로 작성해 주세요.</div>
+                		<textarea rows="10" class="review_textarea" name="re_contents"></textarea>
+            		</div>   
+            		<div class="cmd">
+            			<button name="save" id="save" type="button">등록</button>
+                		<!-- <input type="button" name="save" id="save" value="등록"> -->
+            		</div>
+        		</form>
+    		</div>
           </div>
           <div class="menu_content3">
              <p><h3>주최 / 후원</h3>
@@ -613,6 +618,7 @@
 
     <div class="footer"> </div>
   </div>
+  
   
   <!-- 예매하기 버튼 클릭 시  -->
   <script>
@@ -630,7 +636,7 @@
       
      
       
-      if(!$("#datepicker").val()) {
+      if(!$("#choiceDate").val()) {
   	    alert("날짜를 선택하세요");
   	    return false;
   		}
@@ -658,15 +664,7 @@
   <script>
   	/* 버튼 클릭시 */
   	 $("#save").on("click",function(){
-  		/* 로그아웃 상태 일 때 */
-  	      let uid = '<%=(String)session.getAttribute("loginId")%>';
-  	       
-  	      if(uid=="null"){ 
-  	    	  alert("로그인 후 이용가능합니다.");
-  	    	  location.replace("/login.jsp");
-  	    	  return false;
-  	      }
-  	      
+  		 
   		 //별점 선택 안했으면 메시지 표시
          if(rating.rate == 0){
              rating.showMessage('rate');
@@ -677,10 +675,21 @@
              rating.showMessage('review');
              return false;
          }
-         //폼 서밋
-         if(rating.rate != 0 && document.querySelector('.review_textarea').value.length >= 5){
-        	 $("#frmRv").submit();
-         }
+         
+         
+  		/* 로그아웃 상태 일 때 */
+  	      let uid = '<%=(String)session.getAttribute("loginId")%>';
+  	       
+  	      if(uid=="null"){ 
+  	    	  alert("로그인 후 이용가능합니다.");
+  	    	  location.replace("/login.jsp");
+  	    	  return false;
+  	      }else{
+  	    	alert("현재 기능은 구현 중에 있습니다.");
+  	      }
+  	      
+  		
+         
   		
 
   	 });
@@ -810,19 +819,26 @@ document.addEventListener('DOMContentLoaded', function(){
   </script>
   
   
-  <!--  날짜  -->
-  <script>
-  var picker = new Pikaday({ 
-	  field: document.getElementById('datepicker'),
-	  format: 'yyyy-MM-dd',
-	  toString(date, format) {
-	    let day = ("0" + date.getDate()).slice(-2);
-	    let month = ("0" + (date.getMonth() + 1)).slice(-2);
-	    let year = date.getFullYear();
-	    return `${year}-${month}-${day}`;
-	  }
-	 });
-  </script>
+  <!-- 날짜  -->
+<script type="text/javascript">
+    $(document).ready(function () {
+            $.datepicker.setDefaults($.datepicker.regional['ko']); 
+            $( "#choiceDate" ).datepicker({
+                 changeMonth: true, 
+                 changeYear: true,
+                 nextText: '다음 달',
+                 prevText: '이전 달', 
+                 dayNames: ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'],
+                 dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'], 
+                 monthNamesShort: ['01','02','03','04','05','06','07','08','09','10','11','12'],
+                 monthNames: ['01','02','03','04','05','06','07','08','09','10','11','12'],
+                 dateFormat: "yy-MM-dd",
+                 minDate: 0,// 선택할수있는 최소날짜, ( 0 : 오늘 이후 날짜 선택 불가)
+                 maxDate: new Date('2022-02-06')  
+ 
+            });  
+    });
+</script>
 
 
 
