@@ -660,8 +660,33 @@
 
         </div>
         <div class="footer">
+            <div class="fContainer">
+              <div class="fLogo">
+                <i class="fab fa-artstation" id="fLogoImg"> Artex Vision</i>
+              </div>
+              <div></div>
 
+            </div>
         </div>
+        <style>
+          .fContainer{
+            width: 100%;
+            height: 100%;
+          }
+          .fContainer>div{
+            float: left;
+          }
+          .fLogo{
+            height: 100%;
+            width: 30%;
+            text-align: center;
+            line-height: 150px;
+          }
+          #fLogoImg{
+            font-size: 40px;
+            color: white;
+          }
+        </style>
       </div>
     </body>
 	<script>

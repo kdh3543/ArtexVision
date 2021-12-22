@@ -529,7 +529,15 @@
   	    return false;
   		}
      
-          
+      /* 로그아웃 상태 일 때 */
+      let uid = '<%=(String)session.getAttribute("loginId")%>';
+       
+      if(uid=="null"){ 
+    	  alert("로그인 후 이용가능합니다.");
+    	  location.replace("/login.jsp");
+    	  return false;
+      }
+      
       let price = $("#realprice").val(); 
       
 	  let result = confirm(price+"원 결제하시겠습니까?");

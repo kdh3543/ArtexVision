@@ -6,7 +6,7 @@
     <head>
       <meta charset="UTF-8">
       <title>마이페이지</title>
-     
+
       <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
       <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
@@ -314,6 +314,7 @@
           height: 100%;
           display: flex;
           justify-content: center;
+          overflow-y: auto;
         }
 
         .contents_title {
@@ -323,6 +324,7 @@
           padding: 3px;
           border-bottom: 2px solid black;
           font-weight: bold;
+          line-height: 70px;
         }
 
         .booking {
@@ -345,16 +347,16 @@
         .book_title>div {
           text-align: center;
           height: 100%;
-          width: 20%;
+          width: 25%;
           float: left;
         }
 
-        .book_table{
-          width: 100%; 
-          table-layout:fixed;
+        .book_table {
+          width: 100%;
+          table-layout: fixed;
           border-collapse: collapse;
         }
-        
+
         .book_contents {
           height: 20%;
           width: 100%;
@@ -397,19 +399,24 @@
           cursor: pointer;
         }
 
+        input[type="radio"],
         input[type="checkbox"] {
           width: 15px;
           height: 15px;
           cursor: pointer;
         }
-        a{
-         	text-align: center;
-  			text-decoration: none; /* 링크의 밑줄 제거 */
- 		 	color: inherit; /* 링크의 색상 제거 */
+
+        a {
+          text-align: center;
+          text-decoration: none;
+          /* 링크의 밑줄 제거 */
+          color: inherit;
+          /* 링크의 색상 제거 */
         }
-            
-        a:hover{
-            color: black; /* 링크의 색상 제거 */
+
+        a:hover {
+          color: black;
+          /* 링크의 색상 제거 */
         }
       </style>
     </head>
@@ -424,7 +431,7 @@
                 <li id="welcome"> ${loginId } 님 환영합니다.</li>
                 <li id="mypage"><a href="/modifyForm.mem">마이페이지</a></li>
                 <li id="basket"><a href="/basket/basket.jsp" id="basket">장바구니</a></li>
-                <li id=logout><a href="/logout.mem"  id="logout">로그아웃</a></li>
+                <li id=logout><a href="/logout.mem" id="logout">로그아웃</a></li>
               </ul>
             </div>
           </c:when>
@@ -436,26 +443,28 @@
               </ul>
             </div>
           </c:otherwise>
-     </c:choose>
-    <div class="nav">
-      <div class="nav_logo">
-        <a href="/artexMain/mainpage.jsp"><i class="fab fa-artstation"> Artex Vision</i></a>
-      </div>
-      <div class="nav_side">
-        <div class="nav_menu">
-          <ul class="nav_menu_list">
-            <li><a href="/nb_list.board?cpage=1" id="notice">NOTICE</a></li>
-            <li><a href="/artexDesc/artex_desc.jsp">Artex Vision</a></li>
-            <li><a href="/exhibition/main_ex/now_main_ex.jsp">전시</a></li>
-            <li><a href="/event/now_event/now_event.jsp" id="event">이벤트</a></li>
-          </ul>
+
+        </c:choose>
+        <div class="nav">
+          <div class="nav_logo">
+            <a href="/artexMain/mainpage.jsp"><i class="fab fa-artstation"> Artex Vision</i></a>
+          </div>
+          <div class="nav_side">
+            <div class="nav_menu">
+              <ul class="nav_menu_list">
+                <li><a href="/nb_list.board?cpage=1" id="notice">NOTICE</a></li>
+                <li><a href="../artexDesc/artex_desc.jsp">Artex Vision</a></li>
+                <li><a href="../exhibition/main_ex/now_main_ex.jsp">전시</a></li>
+                <li><a href="#" id="event">이벤트</a></li>
+              </ul>
+            </div>
+          </div>
+
         </div>
-      </div>
-    </div>
         <div class="carousel_timeline">
-          	<div class="carousel">
-        		<img src="/exhibition/img/artex_main_img.png" class="carousel_img">
-      		</div>
+          <div class="carousel">
+            <img src="/exhibition/img/artex_main_img.png" class="carousel_img">
+          </div>
         </div>
         <div class="main">
           <div class="sidebar">
@@ -465,12 +474,12 @@
             <h3 class="list_title">회원 정보</h3>
             <ul class="sidebar_item_list">
               <li class="sidebar_item"><a href="/modifyForm.mem">회원 정보 수정</a></li>
-              <li class="sidebar_item"><a href="/myCommentForm.mem">내가 쓴 글/댓글</a></li>
+              <li class="sidebar_item" id="myComment"><a href="#">내가 쓴 글/댓글</a></li>
               <li class="sidebar_item"><a href="/leaveForm.mem">회원 탈퇴</a></li>
             </ul>
             <h3 class="list_title">예매 내역</h3>
             <ul class="sidebar_item_list">
-              <li class="sidebar_item"><a href="">예매내역 조회/취소</a></li>
+              <li class="sidebar_item"><a href="/bookRefund.book">예매내역 조회/취소</a></li>
             </ul>
             <!-- 마이페이지 end -->
 
@@ -478,28 +487,28 @@
           <div class="contents">
             <div class="contents_wrap">
               <div class="contents_title">
-                장바구니
+                예매내역 조회/취소
               </div>
               <div class="booking">
                 <div class="book_title">
-                	<div>선택</div>
-	                <div>전시회명</div>
-	                <div>전시회 지역</div>
-	                <div>전시회 날짜</div>
-	                <div>판매가</div>
+                  <div>전시회 제목</div>
+                  <div>관람 날짜</div>
+                  <div>인원</div>
+                  <div>선택</div>
                 </div>
-                <table class="book_table" >
-                   <tr class="book_contents">
-                     <td><input type="checkbox" name="check" id="check"></td>
-                     <td>들어갈 전시회이름</td>
-                     <td>지역 이름</td>
-                     <td>날짜</td>
-                     <td>100만원</td>
-                   </tr>
+                <table class="book_table">
+                  <c:forEach var="book_dto" items="${list}">
+                    <tr class="book_contents">
+                      <td>들어갈 전시회이름</td>
+                      <td>지역 이름</td>
+                      <td>날짜</td>
+                      <td>100만원</td>
+                    </tr>
+                  </c:forEach>
                 </table>
               </div>
               <div class="cancel_btn">
-                <input type="button" value="예매하기" id="book">
+                <input type="button" value="예매취소" id="cancel">
               </div>
             </div>
           </div>
@@ -509,18 +518,53 @@
         </div>
       </div>
       <script>
-        let book = $("#book");
-        let check = $("input[type='checkbox']");
-        cancel.on("click", function(){
-          let trs=$("tr");
-          
-          for(let i =0;i<trs.length;i++){
-            if(check.eq(i).is(":checked")){
-            	confirm("정말 취소하시겠습니까?");
-              $(trs[i]).remove();
+        let cancel = $("#cancel");
+        let check = $("input[type='radio']");
+        let bookName = $("#bookName");
+        let exLocation = $("#exLocation");
+        let exDate = $("#exDate");
+        cancel.on("click", function () {
+          let trs = $("tr");
+          /* alert("현재 기능은 구현중에 있습니다."); */
+          for (let i = 0; i < trs.length; i++) {
+
+            if (check.eq(i).is(":checked")) {
+              let hidden = $("#hidden");
+
+              confirm("정말 취소하시겠습니까?");
+              $.ajax({
+                url: "/cancelBook.book",
+                dataType: "json",
+                data: { bookVal: ($("input[name=hidden]").eq(i)).val() }
+              }).done(function (resp) {
+                $(trs[i]).remove();
+              })
             }
           }
         })
+<<<<<<< HEAD
+
+        $("#logout").on("click", function () {
+          if (!confirm("로그아웃 하시겠습니까?")) {
+            return false;
+          }
+        })
+
+        $("#myComment").on("click", function () {
+          alert("현재 기능은 구현중에 있습니다.");
+          return false;
+        })
+
+        $("#basket").on("click", function () {
+          alert("현재 기능은 구현중에 있습니다.");
+          return false;
+        })
+
+        $("#event").on("click", function () {
+          alert("현재 기능은 구현중에 있습니다.");
+          return false;
+        })
+=======
         
         $("#logout").on("click",function(){
 		if(!confirm("로그아웃 하시겠습니까?")){
@@ -533,6 +577,7 @@
 			return false;
 		})
 		
+>>>>>>> c73b17f7c8da8a687471cbb0c5a7b573f6b76915
       </script>
     </body>
 

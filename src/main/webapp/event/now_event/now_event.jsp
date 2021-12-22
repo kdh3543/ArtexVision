@@ -58,6 +58,10 @@
             width: 1200px;
             margin: auto;
         }
+        .container>div{
+        	width: 1200px;
+        }
+        
 
         /* container end */
 
@@ -395,9 +399,9 @@
             </div>
             
         </div>
-        
+        <div class="footer"></div>
     </div>
-    <div class="footer"></div>
+    
 </body>
 
 </html>

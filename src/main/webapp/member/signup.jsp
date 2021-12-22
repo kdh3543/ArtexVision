@@ -350,7 +350,7 @@
                 <label for="birth">생년월일</label>
               </div>
               <div class="input_birth">
-                <input type="date" name="birth" id="birth">
+                <input type="date" name="birth" id="birth" min="1903-01-01" max="2021-12-23" required>
               </div>
               <div class="label">
                 <label for="email">이메일</label>
@@ -534,7 +534,7 @@
           let emailRegex = /.+?@.+?\.com/g;
           let emailResult = emailRegex.test(email.val());
           if (!emailResult) {
-            alert("이메일을 제대로 입력해주세요.");
+            alert("이메일을 제대로 입력해주세요.\n이메일형식 ex) kdh3543@naver.com");
             email.val("");
             email.focus();
             return false;
@@ -544,15 +544,15 @@
           let phone1Result = phoneRegex.test(phone1.val());
           let phone2Result = phoneRegex.test(phone2.val());
           if (!phone1Result || !phone2Result) {
-            alert("전화번호를 제대로 입력해주세요.");
+            alert("전화번호를 4자리씩 제대로 입력해주세요.");
             phone1.val("");
             phone2.val("");
             phone1.focus();
             return false;
           }
 
-          if(addr2.val()==""){
-            alert("상세주소를 입력해주세요.");
+          if(addr2.val()==""||addr1.val()==""||zipcode.val()==""){
+            alert("우편번호 찾기를 통해 주소를 선택하시고\n상세주소를 입력해주세요.");
             return false;
           }
         })
