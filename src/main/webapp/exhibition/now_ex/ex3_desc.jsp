@@ -661,7 +661,7 @@
           <c:when test="${loginId!=null}">
             <div class="header" id="topTarget">
               <ul class="header_list">
-                <li class="user_detail"><span id="user_grade"><i class="fas fa-crown"></i> ${dto.mem_grade}</li></span>
+                <li class="user_detail"><span id="user_grade"><i class="fas fa-crown"></i> ${loginGrade}</li></span>
                 <li id="welcome"> ${loginId } 님 환영합니다.</li>
                 <li id="mypage"><a href="/modifyForm.mem">마이페이지</a></li>
                 <li id="basket"><a href="/basket/basket.jsp" id="basket">장바구니</a></li>
@@ -897,6 +897,8 @@
             return false;
           }
 
+
+
           if (!$("#choiceDate").val()) {
             alert("날짜를 선택하세요");
             return false;
@@ -920,6 +922,7 @@
           }
         })
       </script>
+
       <!-- 리뷰남기기 -->
       <script>
         /* 버튼 클릭시 */
@@ -947,32 +950,6 @@
           } else {
             alert("현재 기능은 구현 중에 있습니다.");
           }
-
-
-
-
-
-        })
-      </script>
-      <!-- 리뷰남기기 -->
-      <script>
-        /* 버튼 클릭시 */
-        $("#save").on("click", function () {
-          //별점 선택 안했으면 메시지 표시
-          if (rating.rate == 0) {
-            rating.showMessage('rate');
-            return false;
-          }
-          //리뷰 5자 미만이면 메시지 표시
-          if (document.querySelector('.review_textarea').value.length < 5) {
-            rating.showMessage('review');
-            return false;
-          }
-          //폼 서밋
-          if (rating.rate != 0 && document.querySelector('.review_textarea').value.length >= 5) {
-            $("#frmRv").submit();
-          }
-
 
         });
       </script>

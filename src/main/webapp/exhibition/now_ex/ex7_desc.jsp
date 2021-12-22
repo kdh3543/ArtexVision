@@ -110,547 +110,547 @@
           padding: 5px;
         }
 
-    html,
-    body,
-    div,
-    span,
-    applet,
-    object,
-    iframe,
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6,
-    p,
-    blockquote,
-    pre,
-    a,
-    abbr,
-    acronym,
-    address,
-    big,
-    cite,
-    code,
-    del,
-    dfn,
-    em,
-    img,
-    ins,
-    kbd,
-    q,
-    s,
-    samp,
-    small,
-    strike,
-    strong,
-    sub,
-    sup,
-    tt,
-    var,
-    b,
-    u,
-    i,
-    center,
-    dl,
-    dt,
-    dd,
-    ol,
-    ul,
-    li,
-    fieldset,
-    form,
-    label,
-    legend,
-    table,
-    caption,
-    tbody,
-    tfoot,
-    thead,
-    tr,
-    th,
-    td,
-    article,
-    aside,
-    canvas,
-    details,
-    embed,
-    figure,
-    figcaption,
-    footer,
-    header,
-    hgroup,
-    menu,
-    nav,
-    output,
-    ruby,
-    section,
-    summary,
-    time,
-    mark,
-    audio,
-    video {
-    margin: 0;
-    padding: 0;
-    }
-
-    * {
-    box-sizing: border-box;
-    }
-
-    div {
-    /* border: 1px solid black; */
-    }
-
-    /* 전체 설정 css end */
-
-    /* container start */
-    .container {
-    width: 1200px;
-    margin: auto;
-    }
-
-    /* container end */
-
-
-    /* header start */
-    .header {
-    height: 40px;
-    background-color: var(--color3);
-    color: var(--color2);
-    }
-
-    .header_list {
-    display: flex;
-    justify-content: flex-end;
-    line-height: 40px;
-    }
-
-    .header_list li {
-    list-style-type: none;
-    padding-right: 20px;
-    font-size: 0.9rem;
-    }
-
-    .header_list li a {
-    text-decoration: none;
-    color: var(--color2);
-    }
-
-    .search_wrap {
-    padding: 5px;
-    border-radius: 10px;
-    background-color: var(--color4);
-    color: var(--text-color);
-    }
-
-    .search_text {
-    background-color: transparent;
-    color: var(--text-color);
-    border: 0;
-    border-bottom: 1px solid var(--color2);
-    }
-
-    .search_text::placeholder {
-    color: var(--text-color);
-    }
-
-    .search_text:focus {
-    outline: none;
-    }
-
-    .user_detail {
-    color: silver;
-    padding-right: 10px;
-    }
-
-    #user_grade {
-    background-color: var(--color2);
-    border-radius: 5px;
-    padding: 1px 3px 1px 3px;
-    }
-
-    /* header end */
-
-    /* nav start */
-    .nav {
-    display: flex;
-    height: 60px;
-    }
-
-    .nav_logo {
-    text-align: center;
-    line-height: 60px;
-    width: 25%;
-    height: 100%;
-    font-size: 2rem;
-    }
-
-    .nav_side {
-    align-items: right;
-    width: 75%;
-    height: 100%;
-    }
-
-    .nav_menu_list {
-    display: flex;
-    justify-content: space-around;
-    line-height: 55px;
-    padding-right: 20px;
-
-    }
-
-    .nav_menu_list li {
-    border: 0px;
-    list-style-type: none;
-    font-size: 1.2rem;
-    font-weight: bold;
-    }
-
-    .nav_menu_list li:hover {
-    border-bottom: solid var(--color11);
-    }
-
-    .nav_menu_list a {
-    text-decoration: none;
-    color: var(--color3);
-    }
-
-    .nav_menu_list a:hover {
-    text-decoration: none;
-    color: var(--color7);
-    }
-
-    /* nav end */
-
-
-    .carousel_timeline {
-    display: flex;
-    }
-
-    .main {
-    height: 1200px;
-    }
-
-    .sidebar {
-    width: 20%;
-    height: 100%;
-    background-color: var(--color3);
-    float: left;
-    }
-
-    .list_title {
-    color: var(--color2);
-    padding-top: 20px;
-    text-align: center;
-    }
-
-    .sidebar_item_list {
-    padding-top: 20px;
-    list-style-type: none;
-    display: flex;
-    flex-direction: column;
-    }
-
-    .sidebar_item {
-    width: 100%;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    text-align: center;
-    }
-
-    .sidebar_item:hover {
-    background-color: var(--color11);
-    }
-
-    .sidebar_item a {
-    font-size: 1rem;
-    text-decoration: none;
-    color: var(--color2);
-    }
-
-    /* 전시 내용 */
-    .contents {
-    width: 80%;
-    height: 100%;
-    float: left;
-    padding-top: 100px;
-    }
-
-    .contents_wrap1 {
-    width: 50%;
-    height: 60%;
-    float: left;
-    }
-
-    .contents_wrap2 {
-    width: 50%;
-    height: 60%;
-    float: left;
-    }
-
-    .contents_wrap2>div {
-    width: 100%;
-    height: 40px;
-    line-height: 40px;
-    /* text-align: center; */
-    font-size: large;
-    margin-bottom: 10px;
-    }
-
-    .contents_wrap2>div>div {
-    width: 50%;
-    height: 40px;
-    line-height: 40px;
-    /* text-align: center; */
-    float: left;
-    padding: 2px;
-    }
-
-    .contents_wrap2>div>div:nth-child(1) {
-    width: 50%;
-    height: 40px;
-    line-height: 40px;
-    /* text-align: center; */
-    float: left;
-    text-align: right;
-    padding-right: 50px;
-    font-weight: 550;
-    }
-
-    .contents_sub1 {
-    width: 100%;
-    height: 50%;
-    text-align: center;
-    padding-top: 40px;
-    padding-left: 50px;
-    }
-
-    .contents_sub2 {
-    width: 100%;
-    height: 50%;
-    padding-left: 70px;
-    }
-
-    #title {
-    width: 100%;
-    height: 15%;
-    text-align: center;
-    font-size: large;
-    font-weight: bolder;
-    padding-top: 5px;
-
-    }
-
-    #map {
-    width: 100%;
-    height: 85%;
-    text-align: center;
-
-    }
-
-    #buy_btn:hover {
-    cursor: pointer;
-    }
-
-    .contents_wrap3 {
-    width: 100%;
-    height: 40%;
-    padding-left: 80px;
-    padding-right: 80px;
-    padding-top: 40px;
-    float: left;
-    }
-
-    .menu_top {
-    width: 100%;
-    height: 13%;
-    }
-
-    .menu_top>div {
-    float: left;
-    font-size: larger;
-    width: 20%;
-    text-align: center;
-    height: 50px;
-    line-height: 50px;
-    }
-
-    .menu_top>div:hover {
-    cursor: pointer;
-    border-bottom: solid var(--color11);
-    }
-
-    .menu_content1 {
-    padding: 20px;
-    }
-
-    .menu_content2 {
-    padding: 20px;
-    display: none;
-    }
-
-    .menu_content3 {
-    padding: 20px;
-    display: none;
-    }
-
-    .footer {
-    height: 300px;
-    background-color: var(--color1);
-    }
-
-    .carousel img {
-    width: 100%;
-    height: 100%;
-    }
-
-    #buy_btn {
-    border: 0;
-    outline: 0;
-    width: 200px;
-    height: 40px;
-    font-size: large;
-    padding: 5px;
-    background-color: black;
-    color: white;
-    }
-
-    #buy_btn:hover {
-    background-color: #9d2622;
-    ;
-    }
-
-    a {
-    text-align: center;
-    text-decoration: none;
-    /* 링크의 밑줄 제거 */
-    color: inherit;
-    /* 링크의 색상 제거 */
-    }
-
-    a:hover {
-    color: black;
-    /* 링크의 색상 제거 */
-    }
-    </style>
-    <style>
-      .fContainer {
-        width: 100%;
-        height: 100%;
-      }
-
-      .fContainer>div {
-        float: left;
-      }
-
-      .fLogoContainer {
-        height: 100%;
-        width: 30%;
-
-      }
-
-      .fLogoContainer>div {
-        height: 50%;
-        width: 100%;
-      }
-
-      .fLogo {
-
-        padding-top: 30px;
-        padding-left: 30px;
-
-      }
-
-      .fSiteLogo {
-        padding-top: 80px;
-        padding-left: 120px;
-      }
-
-      #fLogoImg {
-        font-size: 40px;
-        color: #ffffff70;
-      }
-
-      .fContents {
-        height: 100%;
-        width: 70%;
-        padding: 10px;
-        font-weight: bold;
-        color: #ffffff70;
-      }
-
-      #insta,
-      #youtube,
-      #facebook,
-      #twitter {
-        font-size: 2rem;
-        color: white;
-        padding-left: 10px;
-      }
-
-      .fLine1 {
-        width: 100%;
-        height: 20%;
-        font-size: 15px;
-        padding-top: 5px;
-        padding-bottom: 5px;
-      }
-
-      .fLine3 {
-        width: 100%;
-        height: 11%;
-        font-size: 15px;
-      }
-
-      .fLine2 {
-        height: 20%;
-        width: 100%;
-        font-size: 15px;
-        padding-top: 5px;
-      }
-
-      .fLine1>div {
-        float: left;
-        height: 100%;
-        text-align: left;
-        line-height: 46px;
-      }
-
-      .fLine2>div,
-      .fLine3>div {
-        float: left;
-        height: 100%;
-      }
-
-      .exh {
-        width: 35%;
-      }
-
-      .exh2 {
-        width: 60%;
-      }
-
-      .ceo {
-        border-right: 1px solid #ffffff70;
-        width: 15%;
-      }
-
-      .ceoNum {
-        line-height: 46px;
-        width: 23%;
-        padding-left: 15px;
-        border-right: 1px solid #ffffff70;
-
-      }
-
-      .companyNum {
-        line-height: 46px;
-        width: 42%;
-        padding-left: 15px;
-      }
-    </style>
+        html,
+        body,
+        div,
+        span,
+        applet,
+        object,
+        iframe,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p,
+        blockquote,
+        pre,
+        a,
+        abbr,
+        acronym,
+        address,
+        big,
+        cite,
+        code,
+        del,
+        dfn,
+        em,
+        img,
+        ins,
+        kbd,
+        q,
+        s,
+        samp,
+        small,
+        strike,
+        strong,
+        sub,
+        sup,
+        tt,
+        var,
+        b,
+        u,
+        i,
+        center,
+        dl,
+        dt,
+        dd,
+        ol,
+        ul,
+        li,
+        fieldset,
+        form,
+        label,
+        legend,
+        table,
+        caption,
+        tbody,
+        tfoot,
+        thead,
+        tr,
+        th,
+        td,
+        article,
+        aside,
+        canvas,
+        details,
+        embed,
+        figure,
+        figcaption,
+        footer,
+        header,
+        hgroup,
+        menu,
+        nav,
+        output,
+        ruby,
+        section,
+        summary,
+        time,
+        mark,
+        audio,
+        video {
+          margin: 0;
+          padding: 0;
+        }
+
+        * {
+          box-sizing: border-box;
+        }
+
+        div {
+          /* border: 1px solid black; */
+        }
+
+        /* 전체 설정 css end */
+
+        /* container start */
+        .container {
+          width: 1200px;
+          margin: auto;
+        }
+
+        /* container end */
+
+
+        /* header start */
+        .header {
+          height: 40px;
+          background-color: var(--color3);
+          color: var(--color2);
+        }
+
+        .header_list {
+          display: flex;
+          justify-content: flex-end;
+          line-height: 40px;
+        }
+
+        .header_list li {
+          list-style-type: none;
+          padding-right: 20px;
+          font-size: 0.9rem;
+        }
+
+        .header_list li a {
+          text-decoration: none;
+          color: var(--color2);
+        }
+
+        .search_wrap {
+          padding: 5px;
+          border-radius: 10px;
+          background-color: var(--color4);
+          color: var(--text-color);
+        }
+
+        .search_text {
+          background-color: transparent;
+          color: var(--text-color);
+          border: 0;
+          border-bottom: 1px solid var(--color2);
+        }
+
+        .search_text::placeholder {
+          color: var(--text-color);
+        }
+
+        .search_text:focus {
+          outline: none;
+        }
+
+        .user_detail {
+          color: silver;
+          padding-right: 10px;
+        }
+
+        #user_grade {
+          background-color: var(--color2);
+          border-radius: 5px;
+          padding: 1px 3px 1px 3px;
+        }
+
+        /* header end */
+
+        /* nav start */
+        .nav {
+          display: flex;
+          height: 60px;
+        }
+
+        .nav_logo {
+          text-align: center;
+          line-height: 60px;
+          width: 25%;
+          height: 100%;
+          font-size: 2rem;
+        }
+
+        .nav_side {
+          align-items: right;
+          width: 75%;
+          height: 100%;
+        }
+
+        .nav_menu_list {
+          display: flex;
+          justify-content: space-around;
+          line-height: 55px;
+          padding-right: 20px;
+
+        }
+
+        .nav_menu_list li {
+          border: 0px;
+          list-style-type: none;
+          font-size: 1.2rem;
+          font-weight: bold;
+        }
+
+        .nav_menu_list li:hover {
+          border-bottom: solid var(--color11);
+        }
+
+        .nav_menu_list a {
+          text-decoration: none;
+          color: var(--color3);
+        }
+
+        .nav_menu_list a:hover {
+          text-decoration: none;
+          color: var(--color7);
+        }
+
+        /* nav end */
+
+
+        .carousel_timeline {
+          display: flex;
+        }
+
+        .main {
+          height: 1200px;
+        }
+
+        .sidebar {
+          width: 20%;
+          height: 100%;
+          background-color: var(--color3);
+          float: left;
+        }
+
+        .list_title {
+          color: var(--color2);
+          padding-top: 20px;
+          text-align: center;
+        }
+
+        .sidebar_item_list {
+          padding-top: 20px;
+          list-style-type: none;
+          display: flex;
+          flex-direction: column;
+        }
+
+        .sidebar_item {
+          width: 100%;
+          padding-top: 10px;
+          padding-bottom: 10px;
+          text-align: center;
+        }
+
+        .sidebar_item:hover {
+          background-color: var(--color11);
+        }
+
+        .sidebar_item a {
+          font-size: 1rem;
+          text-decoration: none;
+          color: var(--color2);
+        }
+
+        /* 전시 내용 */
+        .contents {
+          width: 80%;
+          height: 100%;
+          float: left;
+          padding-top: 100px;
+        }
+
+        .contents_wrap1 {
+          width: 50%;
+          height: 60%;
+          float: left;
+        }
+
+        .contents_wrap2 {
+          width: 50%;
+          height: 60%;
+          float: left;
+        }
+
+        .contents_wrap2>div {
+          width: 100%;
+          height: 40px;
+          line-height: 40px;
+          /* text-align: center; */
+          font-size: large;
+          margin-bottom: 10px;
+        }
+
+        .contents_wrap2>div>div {
+          width: 50%;
+          height: 40px;
+          line-height: 40px;
+          /* text-align: center; */
+          float: left;
+          padding: 2px;
+        }
+
+        .contents_wrap2>div>div:nth-child(1) {
+          width: 50%;
+          height: 40px;
+          line-height: 40px;
+          /* text-align: center; */
+          float: left;
+          text-align: right;
+          padding-right: 50px;
+          font-weight: 550;
+        }
+
+        .contents_sub1 {
+          width: 100%;
+          height: 50%;
+          text-align: center;
+          padding-top: 40px;
+          padding-left: 50px;
+        }
+
+        .contents_sub2 {
+          width: 100%;
+          height: 50%;
+          padding-left: 70px;
+        }
+
+        #title {
+          width: 100%;
+          height: 15%;
+          text-align: center;
+          font-size: large;
+          font-weight: bolder;
+          padding-top: 5px;
+
+        }
+
+        #map {
+          width: 100%;
+          height: 85%;
+          text-align: center;
+
+        }
+
+        #buy_btn:hover {
+          cursor: pointer;
+        }
+
+        .contents_wrap3 {
+          width: 100%;
+          height: 40%;
+          padding-left: 80px;
+          padding-right: 80px;
+          padding-top: 40px;
+          float: left;
+        }
+
+        .menu_top {
+          width: 100%;
+          height: 13%;
+        }
+
+        .menu_top>div {
+          float: left;
+          font-size: larger;
+          width: 20%;
+          text-align: center;
+          height: 50px;
+          line-height: 50px;
+        }
+
+        .menu_top>div:hover {
+          cursor: pointer;
+          border-bottom: solid var(--color11);
+        }
+
+        .menu_content1 {
+          padding: 20px;
+        }
+
+        .menu_content2 {
+          padding: 20px;
+          display: none;
+        }
+
+        .menu_content3 {
+          padding: 20px;
+          display: none;
+        }
+
+        .footer {
+          height: 300px;
+          background-color: var(--color1);
+        }
+
+        .carousel img {
+          width: 100%;
+          height: 100%;
+        }
+
+        #buy_btn {
+          border: 0;
+          outline: 0;
+          width: 200px;
+          height: 40px;
+          font-size: large;
+          padding: 5px;
+          background-color: black;
+          color: white;
+        }
+
+        #buy_btn:hover {
+          background-color: #9d2622;
+          ;
+        }
+
+        a {
+          text-align: center;
+          text-decoration: none;
+          /* 링크의 밑줄 제거 */
+          color: inherit;
+          /* 링크의 색상 제거 */
+        }
+
+        a:hover {
+          color: black;
+          /* 링크의 색상 제거 */
+        }
+      </style>
+      <style>
+        .fContainer {
+          width: 100%;
+          height: 100%;
+        }
+
+        .fContainer>div {
+          float: left;
+        }
+
+        .fLogoContainer {
+          height: 100%;
+          width: 30%;
+
+        }
+
+        .fLogoContainer>div {
+          height: 50%;
+          width: 100%;
+        }
+
+        .fLogo {
+
+          padding-top: 30px;
+          padding-left: 30px;
+
+        }
+
+        .fSiteLogo {
+          padding-top: 80px;
+          padding-left: 120px;
+        }
+
+        #fLogoImg {
+          font-size: 40px;
+          color: #ffffff70;
+        }
+
+        .fContents {
+          height: 100%;
+          width: 70%;
+          padding: 10px;
+          font-weight: bold;
+          color: #ffffff70;
+        }
+
+        #insta,
+        #youtube,
+        #facebook,
+        #twitter {
+          font-size: 2rem;
+          color: white;
+          padding-left: 10px;
+        }
+
+        .fLine1 {
+          width: 100%;
+          height: 20%;
+          font-size: 15px;
+          padding-top: 5px;
+          padding-bottom: 5px;
+        }
+
+        .fLine3 {
+          width: 100%;
+          height: 11%;
+          font-size: 15px;
+        }
+
+        .fLine2 {
+          height: 20%;
+          width: 100%;
+          font-size: 15px;
+          padding-top: 5px;
+        }
+
+        .fLine1>div {
+          float: left;
+          height: 100%;
+          text-align: left;
+          line-height: 46px;
+        }
+
+        .fLine2>div,
+        .fLine3>div {
+          float: left;
+          height: 100%;
+        }
+
+        .exh {
+          width: 35%;
+        }
+
+        .exh2 {
+          width: 60%;
+        }
+
+        .ceo {
+          border-right: 1px solid #ffffff70;
+          width: 15%;
+        }
+
+        .ceoNum {
+          line-height: 46px;
+          width: 23%;
+          padding-left: 15px;
+          border-right: 1px solid #ffffff70;
+
+        }
+
+        .companyNum {
+          line-height: 46px;
+          width: 42%;
+          padding-left: 15px;
+        }
+      </style>
     </head>
 
     <body>
@@ -659,7 +659,7 @@
           <c:when test="${loginId!=null}">
             <div class="header" id="topTarget">
               <ul class="header_list">
-                <li class="user_detail"><span id="user_grade"><i class="fas fa-crown"></i> ${dto.mem_grade}</li></span>
+                <li class="user_detail"><span id="user_grade"><i class="fas fa-crown"></i> ${loginGrade }</li></span>
                 <li id="welcome"> ${loginId } 님 환영합니다.</li>
                 <li id="mypage"><a href="/modifyForm.mem">마이페이지</a></li>
                 <li id="basket"><a href="/basket/basket.jsp" id="basket">장바구니</a></li>
@@ -882,11 +882,12 @@
             return false;
           }
 
-
           if (!$("#realprice").val()) {
             alert("인원을 선택하세요");
             return false;
           }
+
+
 
           if (!$("#choiceDate").val()) {
             alert("날짜를 선택하세요");
@@ -911,6 +912,7 @@
           }
         })
       </script>
+
       <!-- 리뷰남기기 -->
       <script>
         /* 버튼 클릭시 */
@@ -938,48 +940,6 @@
           } else {
             alert("현재 기능은 구현 중에 있습니다.");
           }
-
-
-
-          if (!$("#realprice").val()) {
-            alert("인원을 선택하세요");
-            return false;
-          }
-
-          if (!$("#datepicker").val()) {
-            alert("날짜를 선택하세요");
-            return false;
-          }
-
-
-          let price = $("#realprice").val();
-
-          let result = confirm(price + "원 결제하시겠습니까?");
-
-          if (result) {
-            $("#frmPrice").submit();
-          }
-        })
-      </script>
-      <!-- 리뷰남기기 -->
-      <script>
-        /* 버튼 클릭시 */
-        $("#save").on("click", function () {
-          //별점 선택 안했으면 메시지 표시
-          if (rating.rate == 0) {
-            rating.showMessage('rate');
-            return false;
-          }
-          //리뷰 5자 미만이면 메시지 표시
-          if (document.querySelector('.review_textarea').value.length < 5) {
-            rating.showMessage('review');
-            return false;
-          }
-          //폼 서밋
-          if (rating.rate != 0 && document.querySelector('.review_textarea').value.length >= 5) {
-            $("#frmRv").submit();
-          }
-
 
         });
       </script>

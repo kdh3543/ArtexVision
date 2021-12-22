@@ -661,7 +661,7 @@
           <c:when test="${loginId!=null}">
             <div class="header" id="topTarget">
               <ul class="header_list">
-                <li class="user_detail"><span id="user_grade"><i class="fas fa-crown"></i> ${dto.mem_grade}</li></span>
+                <li class="user_detail"><span id="user_grade"><i class="fas fa-crown"></i> ${loginGrade }</li></span>
                 <li id="welcome"> ${loginId } 님 환영합니다.</li>
                 <li id="mypage"><a href="/modifyForm.mem">마이페이지</a></li>
                 <li id="basket"><a href="/basket/basket.jsp" id="basket">장바구니</a></li>
@@ -883,17 +883,17 @@
       <script>
         $("#buy_btn").on("click", function () {
 
-
           if (!($('#person > option:selected').val())) {
             alert("인원을 선택하세요.");
             return false;
           }
 
-
           if (!$("#realprice").val()) {
             alert("인원을 선택하세요");
             return false;
           }
+
+
 
           if (!$("#choiceDate").val()) {
             alert("날짜를 선택하세요");
@@ -946,48 +946,6 @@
           } else {
             alert("현재 기능은 구현 중에 있습니다.");
           }
-
-
-          if (!$("#realprice").val()) {
-            alert("인원을 선택하세요");
-            return false;
-          }
-
-          if (!$("#datepicker").val()) {
-            alert("날짜를 선택하세요");
-            return false;
-          }
-
-
-          let price = $("#realprice").val();
-
-          let result = confirm(price + "원 결제하시겠습니까?");
-
-          if (result) {
-            $("#frmPrice").submit();
-          }
-        })
-      </script>
-
-      <!-- 리뷰남기기 -->
-      <script>
-        /* 버튼 클릭시 */
-        $("#save").on("click", function () {
-          //별점 선택 안했으면 메시지 표시
-          if (rating.rate == 0) {
-            rating.showMessage('rate');
-            return false;
-          }
-          //리뷰 5자 미만이면 메시지 표시
-          if (document.querySelector('.review_textarea').value.length < 5) {
-            rating.showMessage('review');
-            return false;
-          }
-          //폼 서밋
-          if (rating.rate != 0 && document.querySelector('.review_textarea').value.length >= 5) {
-            $("#frmRv").submit();
-          }
-
 
         });
       </script>
@@ -1056,6 +1014,7 @@
           }
         }
       </script>
+
       <!-- 인원수 선택시 -->
       <script>
         $("#person").change(function () {
@@ -1073,6 +1032,7 @@
       <script type="text/javascript">
         /*  상세 정보 클릭 시  */
         $("#desc").on("click", function () {
+
 
           $(".menu_content2").css("display", "none");
           $(".menu_content3").css("display", "none");
@@ -1098,6 +1058,11 @@
 
         })
 
+        $("#logout").on("click", function () {
+          if (!confirm("로그아웃 하시겠습니까?")) {
+            return false;
+          }
+        })
 
         $("#basket").on("click", function () {
           alert("현재 기능은 구현중에 있습니다.");
@@ -1105,6 +1070,7 @@
         })
 
       </script>
+
 
 
       <!-- 날짜  -->
@@ -1122,14 +1088,11 @@
             monthNames: ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'],
             dateFormat: "yy-MM-dd",
             minDate: 0,// 선택할수있는 최소날짜, ( 0 : 오늘 이후 날짜 선택 불가)
-            maxDate: new Date('2022-03-01')
+            maxDate: new Date('2022-04-17')
 
           });
         });
       </script>
-
-
-
 
       <!--  지도 api -->
       <script>
@@ -1143,14 +1106,14 @@
 
         var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
           mapOption = {
-            center: new kakao.maps.LatLng(37.57820203945342, 126.97311479833135), // 지도의 중심좌표
+            center: new kakao.maps.LatLng(37.572032050690076, 126.97607755414865), // 지도의 중심좌표
             level: 3 // 지도의 확대 레벨
           };
 
         var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
 
         // 마커가 표시될 위치입니다 
-        var markerPosition = new kakao.maps.LatLng(37.57820203945342, 126.97311479833135);
+        var markerPosition = new kakao.maps.LatLng(37.572032050690076, 126.97607755414865);
 
         // 마커를 생성합니다
         var marker = new kakao.maps.Marker({

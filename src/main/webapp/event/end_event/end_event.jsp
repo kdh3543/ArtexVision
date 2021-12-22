@@ -8,6 +8,7 @@
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>Artex Vision</title>
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
       <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
         integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -644,13 +645,13 @@
         </div>
       
       </div>
-
+      <script>
+        $("#basket").on("click", function () {
+          alert("현재 기능은 구현중에 있습니다.");
+          return false;
+        })
+      </script>
     </body>
-    <script>
-      $("#basket").on("click", function () {
-        alert("현재 기능은 구현중에 있습니다.");
-        return false;
-      })
-    </script>
+    
 
     </html>

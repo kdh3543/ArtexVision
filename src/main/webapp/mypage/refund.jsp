@@ -717,16 +717,18 @@
           for (let i = 0; i < trs.length; i++) {
 
             if (check.eq(i).is(":checked")) {
-              let hidden = $("#hidden");
-
-              confirm("정말 취소하시겠습니까?");
-              $.ajax({
+              
+              if(!confirm("정말 취소하시겠습니까?")){
+                return false;
+              }else{
+                $.ajax({
                 url: "/cancelBook.book",
                 dataType: "json",
                 data: { bookVal: ($("input[name=hidden]").eq(i)).val() }
               }).done(function (resp) {
                 $(trs[i]).remove();
               })
+              }
             }
           }
         })

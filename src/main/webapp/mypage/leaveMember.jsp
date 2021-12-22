@@ -632,7 +632,7 @@
                   </tr>
                 </table>
               </div>
-              <form action="/leave.mem" method="post">
+              <form action="/leave.mem" method="post" id="frm">
               <div class="contents_resign_mem">
                 <div>
                   회원탈퇴시 아래 정보는 모두 삭제됩니다.
@@ -715,6 +715,12 @@
       </div>
     </body>
 	<script>
+    $("#frm").on("submit",function(){
+      if(!confirm("만약 회원탈퇴를 하시면 가지고 계신 회원정보가 모두 사라집니다.\n정말 회원탈퇴를 원하십니까?")){
+        return false;
+      }
+    })
+
 		$("#logout").on("click",function(){
 			if(!confirm("로그아웃 하시겠습니까?")){
 				return false;
