@@ -466,7 +466,7 @@
           </div>
           <div class="ex_date">
 	          <div>날짜 선택</div>
-              <div><input type="text" id="choiceDate"></div>
+              <input id="datepicker" type="date" name="bookDate">
           </div>
           <div class="ex_buy">
             <div>결제가격</div>
@@ -504,6 +504,94 @@
 
     <div class="footer"> </div>
   </div>
+    <!-- 리뷰남기기 -->
+  <script>
+  	/* 버튼 클릭시 */
+  	 $("#save").on("click",function(){
+  		 //별점 선택 안했으면 메시지 표시
+         if(rating.rate == 0){
+             rating.showMessage('rate');
+             return false;
+         }
+         //리뷰 5자 미만이면 메시지 표시
+         if(document.querySelector('.review_textarea').value.length < 5){
+             rating.showMessage('review');
+             return false;
+         }
+         //폼 서밋
+         if(rating.rate != 0 && document.querySelector('.review_textarea').value.length >= 5){
+        	 $("#frmRv").submit();
+         }
+  		
+
+  	 });
+  </script>
+  
+  
+  
+ <script>
+//별점 마킹 모듈 프로토타입으로 생성
+function Rating(){};
+Rating.prototype.rate = 0;
+Rating.prototype.setRate = function(newrate){
+    //별점 마킹 - 클릭한 별 이하 모든 별 체크 처리
+    this.rate = newrate;
+    let items = document.querySelectorAll('.rate_radio');
+    items.forEach(function(item, idx){
+        if(idx < newrate){
+            item.checked = true;
+        }else{
+            item.checked = false;
+        }
+    });
+}
+
+let rating = new Rating();//별점 인스턴스 생성
+
+document.addEventListener('DOMContentLoaded', function(){
+    //별점선택 이벤트 리스너
+    document.querySelector('.rating').addEventListener('click',function(e){
+        let elem = e.target;
+        if(elem.classList.contains('rate_radio')){
+            rating.setRate(parseInt(elem.value));
+        }
+    })
+});
+
+  //상품평 작성 글자수 초과 체크 이벤트 리스너
+  document.querySelector('.review_textarea').addEventListener('keydown',function(){
+        //리뷰 400자 초과 안되게 자동 자름
+        let review = document.querySelector('.review_textarea');
+        let lengthCheckEx = /^.{400,}$/;
+        if(lengthCheckEx.test(review.value)){
+            //400자 초과 컷
+            review.value = review.value.substr(0,400);
+        }
+    });
+
+
+    Rating.prototype.showMessage = function(type){//경고메시지 표시
+    switch(type){
+        case 'rate':
+            //안내메시지 표시
+            document.querySelector('.review_rating .warning_msg').style.display = 'block';
+            //지정된 시간 후 안내 메시지 감춤
+            setTimeout(function(){
+                document.querySelector('.review_rating .warning_msg').style.display = 'none';
+            },1000);            
+            break;
+        case 'review':
+            //안내메시지 표시
+            document.querySelector('.review_contents .warning_msg').style.display = 'block';
+            //지정된 시간 후 안내 메시지 감춤
+            setTimeout(function(){
+                document.querySelector('.review_contents .warning_msg').style.display = 'none';
+            },1000);    
+            break;
+    }
+}
+    </script>
+    
   <!-- 인원수 선택시 -->
   <script>
   $("#person").change(function(){
@@ -568,31 +656,19 @@
 
   </script>
   
-  
-  <!--  날짜 api  -->
-  <script type="text/javascript">
-    $(document).ready(function () {
-            $.datepicker.setDefaults($.datepicker.regional['ko']); 
-            $( "#choiceDate" ).datepicker({
-                 changeMonth: true, 
-                 changeYear: true,
-                 nextText: '다음 달',
-                 prevText: '이전 달', 
-                 dayNames: ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'],
-                 dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'], 
-                 monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
-                 monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
-                 dateFormat: "yy-mm-dd",
-                 maxDate: 0,                       // 선택할수있는 최소날짜, ( 0 : 오늘 이후 날짜 선택 불가)
-                 /*onClose: function( selectedDate ) {    
-                      //시작일(startDate) datepicker가 닫힐때
-                      //종료일(endDate)의 선택할수있는 최소 날짜(minDate)를 선택한 시작일로 지정
-                     $("#endDate").datepicker( "option", "minDate", selectedDate );
-                 }    */
-            });
-             
-    });
-	</script>
+  <!--  날짜  -->
+  <script>
+  var picker = new Pikaday({ 
+	  field: document.getElementById('datepicker'),
+	  format: 'yyyy-MM-dd',
+	  toString(date, format) {
+	    let day = ("0" + date.getDate()).slice(-2);
+	    let month = ("0" + (date.getMonth() + 1)).slice(-2);
+	    let year = date.getFullYear();
+	    return `${year}-${month}-${day}`;
+	  }
+	 });
+  </script>
 
 
 	<!--  지도 api -->

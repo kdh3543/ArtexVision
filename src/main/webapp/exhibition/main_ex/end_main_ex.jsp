@@ -489,7 +489,7 @@
                       <br>
                       <p>[ 장소 ] <br> 국립 현대 미술관</p>
                     </div>
-                    <a href="../end_ex/ex9_desc.jsp"></a>
+                    <a href="/end_ex/ex9_desc.jsp"></a>
                   </div>
                 </div>
                 <div>
@@ -502,7 +502,7 @@
                       <br>
                       <p>[ 장소 ] <br> 국립 현대 미술관</p>
                     </div>
-                    <a href="../end_ex/ex10_desc.jsp"></a>
+                    <a href="/end_ex/ex10_desc.jsp"></a>
                   </div>
                 </div>
                 <div>
@@ -515,7 +515,7 @@
                       <br>
                       <p>[ 장소 ] <br> 마이아트뮤지엄</p>
                     </div>
-                    <a href="../end_ex/ex11_desc.jsp"></a>
+                    <a href="/end_ex/ex11_desc.jsp"></a>
                   </div>
                 </div>
                 <div>
@@ -528,7 +528,7 @@
                       <br>
                       <p>[ 장소 ] <br> 마이 아트 뮤지엄</p>
                     </div>
-                    <a href="../end_ex/ex12_desc.jsp"></a>
+                    <a href="/end_ex/ex12_desc.jsp"></a>
                   </div>
                 </div>
             </div>
