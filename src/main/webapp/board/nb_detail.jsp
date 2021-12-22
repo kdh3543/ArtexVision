@@ -524,9 +524,9 @@
             <div class="nav_menu">
               <ul class="nav_menu_list">
                 <li><a href="/nb_list.board?cpage=1" id="notice">NOTICE</a></li>
-                <li><a href="/exhibition/artexDesc/artex_desc.jsp">Artex Vision</a></li>
-                <li><a href="/exhibition/exhibition/main_ex/now_main_ex.jsp">전시</a></li>
-                <li><a href="#" id="event">이벤트</a></li>
+                <li><a href="/artexDesc/artex_desc.jsp">Artex Vision</a></li>
+                <li><a href="/exhibition/main_ex/now_main_ex.jsp">전시</a></li>
+                <li><a href="/event/now_event/now_event.jsp" id="event">이벤트</a></li>
               </ul>
             </div>
           </div>
@@ -566,12 +566,12 @@
                     <br>
                     <div class="board_nb_user_writebtn" style="text-align: right;">
  				<a href="javascript:history.back()"><button type=button id=toList>목록으로</button></a>
-				<c:if test="${noticeboard_dto.nb_mem_id == 관리자}">
+<%-- 				<c:if test="${noticeboard_dto.nb_mem_id == 관리자}"> --%>
 					<button type=button id=mod>수정하기</button>
 					<button type=button id=del>삭제하기</button>
 					<button type=button id=modOk style="display:none;">수정완료</button>
 					<button type=button id=modCancel style="display:none;">취소</button>
-				</c:if>
+<%-- 				</c:if> --%>
                     </div>
                 </form>
                 <br>
@@ -640,10 +640,6 @@
           return false;
         })
        
-        $("#event").on("click", function () {
-          alert("현재 기능은 구현중에 있습니다.");
-          return false;
-        })
 	</script>
 </body>
 

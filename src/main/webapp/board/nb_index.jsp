@@ -445,9 +445,9 @@ a:hover {
             <div class="nav_menu">
               <ul class="nav_menu_list">
                 <li><a href="/nb_list.board?cpage=1" id="notice">NOTICE</a></li>
-                <li><a href="../artexDesc/artex_desc.jsp">Artex Vision</a></li>
-                <li><a href="../exhibition/main_ex/now_main_ex.jsp">전시</a></li>
-                <li><a href="#" id="event">이벤트</a></li>
+                <li><a href="/artexDesc/artex_desc.jsp">Artex Vision</a></li>
+                <li><a href="/exhibition/main_ex/now_main_ex.jsp">전시</a></li>
+                <li><a href="/event/now_event/now_event.jsp" id="event">이벤트</a></li>
               </ul>
             </div>
           </div>
@@ -492,11 +492,11 @@ a:hover {
 				</div>
 				</c:forEach>
 				<br>
-				<c:if test="${noticeboard_dto.nb_mem_id == 관리자}">
+<%-- 				<c:if test="${noticeboard_dto.nb_mem_id == 관리자}"> --%>
 				<div class="board_nb_user_writebtn" style="text-align: right;">
 					<a href="/nb_write.board"><button type=button>글쓰기</button></a>
 				</div>
-				</c:if>
+<%-- 				</c:if> --%>
 				<div class="board_nb_pagination">
 					<div class="board_nb_page">
 						<div>${nb_navi }</div>
@@ -541,10 +541,6 @@ a:hover {
 	          return false;
 	        })
 	       
-	        $("#event").on("click", function () {
-	          alert("현재 기능은 구현중에 있습니다.");
-	          return false;
-	        })
 	</script>
 </body>
 </html>
