@@ -46,10 +46,6 @@
       box-sizing: border-box;
     }
 
-    div {
-      /* border: 1px solid black;  */
-    }
-
 	a {
       text-decoration: none;
       color: var(--text-color);
@@ -132,7 +128,7 @@
 
     .select_btn_form {
       line-height: 125px;
-      padding-left: 10px;
+      padding-left: 55px;
       text-align: center;
     }
 
@@ -213,53 +209,14 @@
 
     /* dashboard end */
 
-    /* summary start */
-    .summary {
-      background-color: var(--footer-color);
-      height: 250px;
-      color: var(--text-color);
-    }
-
-    .summary_title {
-      width: 100%;
-      padding-left: 50px;
-      height: 20%;
-      line-height: 50px;
-    }
-
-    .summary_contents {
-      width: 100%;
-      height: 80%;
-      display: flex;
-    }
-    .summary_contents_item {
-      width: 20%;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-evenly;
-      align-items: center;
-    }
-
-    .summary_contents_item_icon {
-      font-size: 3rem;
-    }
-
-    .summary_contents_item_desc1 {
-      font-size: 1.5rem;
-    }
-
-    .summary_contents_item_desc2 {
-      font-size: 0.9rem;
-    }
-    /* summary end */
-
     /* footer start */
     .footer {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       height: 200px;
+      background-color: var(--footer-color);
+      color: var(--text-color);
     }
 
     .footer_logo {
@@ -267,13 +224,14 @@
       font-size: 2rem;
       display: flex;
       align-items: flex-end;
+      padding-bottom: 10px;
       padding-left: 30px;
     }
 
     .footer_title {
       padding-left: 30px;
       height: 40%;
-      font-size: 1.2rem;
+      font-size: 0.9rem;
     }
 
     .footer_desc {
@@ -281,7 +239,10 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      font-size: 0.8rem;
     }
+
+    /* footer end */
     /* footer end */
   </style>
 
@@ -322,13 +283,6 @@
 				</div>
 			</a>
 			
-			<div class="nav_items" id="working1">
-				<div class="nav_icon">
-					<i class="far fa-clipboard"></i>
-				</div>
-				<div class="nav_title">BOARD</div>
-			</div>
-			
 			<a href="/input_ex_form.admin">
 				<div class="nav_items">
 					<div class="nav_icon">
@@ -349,21 +303,18 @@
 		</div>
 
 		<div class="selection">
-			<!-- <div class="select_date_form">
-				<div class="from">
-					FROM <input type="date" class="select_date">
-				</div>
-				<div class="to">
-					TO <input type="date" class="select_date">
-				</div>
-			</div> -->
 			<div class="select_btn_form">
-				<button type="button" class="select_btn" id="daily_btn"><i class="fas fa-users"></i> 일간 가입자 통계</button>
-				<button type="button" class="select_btn" id="monthly_btn"><i class="fas fa-users"></i> 월간 가입자 통계</button>
-				<button type="button" class="select_btn" id="daily_visit_btn"><i class="far fa-eye"></i> 일간 방문자 통계</button>
-				<button type="button" class="select_btn" id="monthly_visit_btn"><i class="far fa-eye"></i> 월간 방문자 통계</button>
-				<button type="button" class="select_btn" id="daily_revenue_btn"><i class="fas fa-money-bill-wave"></i> 일간 매출 통계</button>
-				<button type="button" class="select_btn" id="monthly_revenue_btn"><i class="fas fa-money-bill-wave"></i> 월간 매출 통계</button>
+				<button type="button" class="select_btn" id="daily_btn"><i class="fas fa-users"></i> 일간 가입자</button>
+				<button type="button" class="select_btn" id="monthly_btn"><i class="fas fa-users"></i> 월간 가입자</button>
+				<button type="button" class="select_btn" id="daily_visit_btn"><i class="far fa-eye"></i> 일간 방문자</button>
+				<button type="button" class="select_btn" id="monthly_visit_btn"><i class="far fa-eye"></i> 월간 방문자</button>
+				<button type="button" class="select_btn" id="daily_qna_btn"><i class="fas fa-question-circle"></i> 일간 Q&A</button>
+				<button type="button" class="select_btn" id="monthly_qna_btn"><i class="fas fa-question-circle"></i> 월간 Q&A</button>
+				<button type="button" class="select_btn" id="daily_revenue_btn"><i class="fas fa-money-bill-wave"></i> 일간 매출</button>
+				<button type="button" class="select_btn" id="monthly_revenue_btn"><i class="fas fa-money-bill-wave"></i> 월간 매출</button>
+				<button type="button" class="select_btn" id="member_grade_btn"><i class="fas fa-crown"></i> 등급별 멤버</button>
+				<button type="button" class="select_btn" id="member_gen_btn"><i class="fas fa-user-clock"></i> 연령별 멤버</button>
+				<button type="button" class="select_btn" id="member_loc_btn"><i class="fas fa-search-location"></i> 지역별 멤버</button>
 			</div>
 		</div>
 
@@ -371,76 +322,34 @@
 			<div class="dashboard_wrap">
 				
 				<div class="dashboard_contents">
-					<!-- <div class="dashboard_contents_item">
-						<div class="dashboard_contents_item_title"></div>
-						<div class="dashboard_contents_item_data"></div>
-					</div> -->
+					
 				</div>
 				<div class="dashboard_graph">
 					<div class="comment">상단 탭을 누르면 통계를 확인하실 수 있습니다.</div>
-					<%-- <canvas id="myChart"></canvas> --%>
+					
 				</div>
 			</div>
 		</div>
 
-		<!-- <div class="summary">
-      <div class="summary_title"><h3>STATISTICS</h3></div>
-      <div class="summary_contents">
-        <div class="summary_contents_item">
-          <div class="summary_contents_item_icon"><i class="fas fa-database"></i></div>
-          <div class="summary_contents_item_desc1">DATABASE</div>
-          <div class="summary_contents_item_desc2">DESCRIBE</div>
-        </div>
-        <div class="summary_contents_item">
-          <div class="summary_contents_item_icon"><i class="fas fa-table"></i></div>
-          <div class="summary_contents_item_desc1">TABLE</div>
-          <div class="summary_contents_item_desc2">DESCRIBE</div>
-        </div>
-        <div class="summary_contents_item">
-          <div class="summary_contents_item_icon"><i class="far fa-clock"></i></div>
-          <div class="summary_contents_item_desc1">CLOCK</div>
-          <div class="summary_contents_item_desc2">DESCRIBE</div>
-        </div>
-        <div class="summary_contents_item">
-          <div class="summary_contents_item_icon"><i class="fas fa-calendar-week"></i></div>
-          <div class="summary_contents_item_desc1">CALENDAR</div>
-          <div class="summary_contents_item_desc2">DESCRIBE</div>
-        </div>
-        <div class="summary_contents_item">
-          <div class="summary_contents_item_icon"><i class="far fa-bell"></i></div>
-          <div class="summary_contents_item_desc1">ALERT</div>
-          <div class="summary_contents_item_desc2">DESCRIBE</div>
-        </div>
-      </div>
-    </div> -->
-
-		<div class="footer">
-			<div class="footer_logo">
-				<i class="fab fa-artstation"> Artex Vision Admin Page</i>
-			</div>
-			<div class="footer_title">Lorem ipsum dolor sit, amet
-				consectetur adipisicing elit. Odit, distinctio asperiores reiciendis
-				quod corrupti praesentium nihil dolorum dignissimos saepe quasi
-				veniam pariatur vel corporis necessitatibus ipsam itaque nostrum
-				similique placeat?</div>
-			<div class="footer_desc">Lorem ipsum dolor sit amet consectetur
-				adipisicing elit. Animi doloremque, fuga nihil neque</div>
-		</div>
+	<div class="footer">
+      <div class="footer_logo"><i class="fab fa-artstation"> Artex Vision Admin Page</i></div>
+      <div class="footer_title">ArtexVision Admin페이지 입니다.</div>
+      <div class="footer_desc">Copyright 2021. 11hertz All rights reserved.</div>
+    </div>
 	</div>
 </body>
 <script>
-	let working1 = document.getElementById("working1");
-
-	working1.onclick = function() {
-		alert("구현중입니다.");
-	}
-	
 	let monthly_btn = document.getElementById("monthly_btn");
 	let daily_btn = document.getElementById("daily_btn");
 	let daily_visit_btn = document.getElementById("daily_visit_btn");
 	let monthly_visit_btn = document.getElementById("monthly_visit_btn");
 	let daily_revenue_btn = document.getElementById("daily_revenue_btn");
 	let monthly_revenue_btn = document.getElementById("monthly_revenue_btn");
+	let member_grade_btn = document.getElementById("member_grade_btn");
+	let member_gen_btn = document.getElementById("member_gen_btn");
+	let member_loc_btn = document.getElementById("member_loc_btn");
+	let daily_qna_btn = document.getElementById("daily_qna_btn");
+	let monthly_qna_btn = document.getElementById("monthly_qna_btn");
 	
 	const dashboard_contents = document.querySelector(".dashboard_contents");
 	const dashboard_graph = document.querySelector(".dashboard_graph");
@@ -452,34 +361,9 @@
 			url: "/dailyData.admin"
 		}).done(function(resp){
 			let result = JSON.parse(resp);
-			let dateArr = [];
-			let cntArr = [];
-			for(let i = 0; i < result.length; i++) {
-				dateArr.push(result[i].mem_signup_date);
-				cntArr.push(parseInt(result[i].cnt));
-				
-				let div1 = document.createElement("div");
-				div1.classList.add("dashboard_contents_item");
-				
-				let div2 = document.createElement("div");
-				div2.classList.add("dashboard_contents_item_title");
-				div2.innerText = result[i].mem_signup_date;
-				
-				let div3 = document.createElement("div");
-				div3.classList.add("dashboard_contents_item_data");
-				div3.innerText = result[i].cnt;
-				
-				div1.appendChild(div2);
-				div1.appendChild(div3);
-				dashboard_contents.append(div1);
-			}
 			let label = "person";
 			let type = "bar";
-			let canvas = document.createElement("canvas");
-			canvas.id = "myChart";
-			dashboard_graph.appendChild(canvas);
-			
-			drawChart(dateArr, cntArr, type, label);
+			createElement(result, type, label);
 	  });
 	}
 	
@@ -490,34 +374,9 @@
 			url: "/monthlyData.admin"
 		}).done(function(resp){
 			let result = JSON.parse(resp);
-			let dateArr = [];
-			let cntArr = [];
-			for(let i = 0; i < result.length; i++) {
-				dateArr.push(result[i].mem_signup_date);
-				cntArr.push(parseInt(result[i].cnt));
-				
-				let div1 = document.createElement("div");
-				div1.classList.add("dashboard_contents_item");
-				
-				let div2 = document.createElement("div");
-				div2.classList.add("dashboard_contents_item_title");
-				div2.innerText = result[i].mem_signup_date;
-				
-				let div3 = document.createElement("div");
-				div3.classList.add("dashboard_contents_item_data");
-				div3.innerText = result[i].cnt;
-				
-				div1.appendChild(div2);
-				div1.appendChild(div3);
-				dashboard_contents.append(div1);
-			}
 			let label = "person";
 			let type = "bar";
-			let canvas = document.createElement("canvas");
-			canvas.id = "myChart";
-			dashboard_graph.appendChild(canvas);
-			
-			drawChart(dateArr, cntArr, type, label);
+			createElement(result, type, label);
 	  });
 	}
 	
@@ -528,34 +387,9 @@
 			url: "/dailyVisitData.admin"
 		}).done(function(resp){
 			let result = JSON.parse(resp);
-			let dateArr = [];
-			let cntArr = [];
-			for(let i = 0; i < result.length; i++) {
-				dateArr.push(result[i].mem_signup_date);
-				cntArr.push(parseInt(result[i].cnt));
-				
-				let div1 = document.createElement("div");
-				div1.classList.add("dashboard_contents_item");
-				
-				let div2 = document.createElement("div");
-				div2.classList.add("dashboard_contents_item_title");
-				div2.innerText = result[i].mem_signup_date;
-				
-				let div3 = document.createElement("div");
-				div3.classList.add("dashboard_contents_item_data");
-				div3.innerText = result[i].cnt;
-				
-				div1.appendChild(div2);
-				div1.appendChild(div3);
-				dashboard_contents.append(div1);
-			}
 			let label = "person";
 			let type = "bar";
-			let canvas = document.createElement("canvas");
-			canvas.id = "myChart";
-			dashboard_graph.appendChild(canvas);
-			
-			drawChart(dateArr, cntArr, type, label);
+			createElement(result, type, label);
 	  });
 	}
 	
@@ -566,34 +400,9 @@
 			url: "/monthlyVisitData.admin"
 		}).done(function(resp){
 			let result = JSON.parse(resp);
-			let dateArr = [];
-			let cntArr = [];
-			for(let i = 0; i < result.length; i++) {
-				dateArr.push(result[i].mem_signup_date);
-				cntArr.push(parseInt(result[i].cnt));
-				
-				let div1 = document.createElement("div");
-				div1.classList.add("dashboard_contents_item");
-				
-				let div2 = document.createElement("div");
-				div2.classList.add("dashboard_contents_item_title");
-				div2.innerText = result[i].mem_signup_date;
-				
-				let div3 = document.createElement("div");
-				div3.classList.add("dashboard_contents_item_data");
-				div3.innerText = result[i].cnt;
-				
-				div1.appendChild(div2);
-				div1.appendChild(div3);
-				dashboard_contents.append(div1);
-			}
 			let label = "person";
 			let type = "bar";
-			let canvas = document.createElement("canvas");
-			canvas.id = "myChart";
-			dashboard_graph.appendChild(canvas);
-			
-			drawChart(dateArr, cntArr, type, label);
+			createElement(result, type, label);
 	  });
 	}
 	
@@ -604,34 +413,9 @@
 			url: "/dailyRevenueData.admin"
 		}).done(function(resp){
 			let result = JSON.parse(resp);
-			let dateArr = [];
-			let cntArr = [];
-			for(let i = 0; i < result.length; i++) {
-				dateArr.push(result[i].mem_signup_date);
-				cntArr.push(parseInt(result[i].cnt));
-				
-				let div1 = document.createElement("div");
-				div1.classList.add("dashboard_contents_item");
-				
-				let div2 = document.createElement("div");
-				div2.classList.add("dashboard_contents_item_title");
-				div2.innerText = result[i].mem_signup_date;
-				
-				let div3 = document.createElement("div");
-				div3.classList.add("dashboard_contents_item_data");
-				div3.innerText = result[i].cnt;
-				
-				div1.appendChild(div2);
-				div1.appendChild(div3);
-				dashboard_contents.append(div1);
-			}
 			let label = "￦";
 			let type = "line";
-			let canvas = document.createElement("canvas");
-			canvas.id = "myChart";
-			dashboard_graph.appendChild(canvas);
-			
-			drawChart(dateArr, cntArr, type, label);
+			createElement(result, type, label);
 	  });
 	}
 	
@@ -642,35 +426,109 @@
 			url: "/monthlyRevenueData.admin"
 		}).done(function(resp){
 			let result = JSON.parse(resp);
-			let dateArr = [];
-			let cntArr = [];
-			for(let i = 0; i < result.length; i++) {
-				dateArr.push(result[i].mem_signup_date);
-				cntArr.push(parseInt(result[i].cnt));
-				
-				let div1 = document.createElement("div");
-				div1.classList.add("dashboard_contents_item");
-				
-				let div2 = document.createElement("div");
-				div2.classList.add("dashboard_contents_item_title");
-				div2.innerText = result[i].mem_signup_date;
-				
-				let div3 = document.createElement("div");
-				div3.classList.add("dashboard_contents_item_data");
-				div3.innerText = result[i].cnt;
-				
-				div1.appendChild(div2);
-				div1.appendChild(div3);
-				dashboard_contents.append(div1);
-			}
 			let type = "line";
 			let label = "￦";
-			let canvas = document.createElement("canvas");
-			canvas.id = "myChart";
-			dashboard_graph.appendChild(canvas);
-			
-			drawChart(dateArr, cntArr, type, label);
+			createElement(result, type, label);
 	  });
+	}
+	
+	member_grade_btn.onclick = function(){
+		$(".dashboard_contents").empty();
+		$(".dashboard_graph").empty();
+		$.ajax({
+			url: "/memberGradeData.admin"
+		}).done(function(resp){
+			let result = JSON.parse(resp);
+			let label = "person";
+			let type = "bar";
+			createElement(result, type, label);
+	  });
+	}
+	
+	member_gen_btn.onclick = function(){
+		$(".dashboard_contents").empty();
+		$(".dashboard_graph").empty();
+		$.ajax({
+			url: "/memberGenData.admin"
+		}).done(function(resp){
+			let result = JSON.parse(resp);
+			let label = "person";
+			let type = "bar";
+			createElement(result, type, label);
+	  });
+	}
+	
+	member_loc_btn.onclick = function(){
+		$(".dashboard_contents").empty();
+		$(".dashboard_graph").empty();
+		$.ajax({
+			url: "/memberLocationData.admin"
+		}).done(function(resp){
+			let result = JSON.parse(resp);
+	
+			let label = "person";
+			let type = "bar";
+			createElement(result, type, label);
+	  });
+	}
+	
+	daily_qna_btn.onclick = function(){
+		$(".dashboard_contents").empty();
+		$(".dashboard_graph").empty();
+		$.ajax({
+			url: "/dailyQnAData.admin"
+		}).done(function(resp){
+			let result = JSON.parse(resp);
+			let type = "bar";
+			let label = "개";
+			createElement(result, type, label);
+	  });
+	}
+	
+	monthly_qna_btn.onclick = function(){
+		$(".dashboard_contents").empty();
+		$(".dashboard_graph").empty();
+		$.ajax({
+			url: "/monthlyQnAData.admin"
+		}).done(function(resp){
+			let result = JSON.parse(resp);
+			let type = "bar";
+			let label = "개";
+			createElement(result, type, label);
+			
+	  });
+	}
+	
+	function createElement(result, input_type, input_label) {
+		let dateArr = [];
+		let cntArr = [];
+		for(let i = 0; i < result.length; i++) {
+			dateArr.push(result[i].dashboardData);
+			cntArr.push(parseInt(result[i].cnt));
+			
+			let div1 = document.createElement("div");
+			div1.classList.add("dashboard_contents_item");
+			
+			let div2 = document.createElement("div");
+			div2.classList.add("dashboard_contents_item_title");
+			div2.innerText = result[i].dashboardData;
+			
+			let div3 = document.createElement("div");
+			div3.classList.add("dashboard_contents_item_data");
+			div3.innerText = result[i].cnt;
+			
+			div1.appendChild(div2);
+			div1.appendChild(div3);
+			dashboard_contents.append(div1);
+		}
+		
+		let label = input_label;
+		let type = input_type;
+		let canvas = document.createElement("canvas");
+		canvas.id = "myChart";
+		dashboard_graph.appendChild(canvas);
+		
+		drawChart(dateArr, cntArr, type, label);
 	}
 	
 	

@@ -14,7 +14,8 @@
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
-
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+        integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
 
       <style>
         /* 전체 설정 css start */
@@ -362,7 +363,7 @@
         }
 
         .footer {
-          height: 150px;
+          height: 300px;
           background-color: var(--color1);
         }
 
@@ -403,8 +404,6 @@
           font-weight: bold;
         }
 
-
-
         input[type="button"],
         input[type="submit"],
         input[type="reset"] {
@@ -431,6 +430,122 @@
         a:hover {
           color: black;
           /* 링크의 색상 제거 */
+        }
+      </style>
+      <style>
+        .fContainer {
+          width: 100%;
+          height: 100%;
+        }
+
+        .fContainer>div {
+          float: left;
+        }
+
+        .fLogoContainer {
+          height: 100%;
+          width: 30%;
+
+        }
+
+        .fLogoContainer>div {
+          height: 50%;
+          width: 100%;
+        }
+
+        .fLogo {
+
+          padding-top: 30px;
+          padding-left: 30px;
+
+        }
+
+        .fSiteLogo {
+          padding-top: 80px;
+          padding-left: 120px;
+        }
+
+        #fLogoImg {
+          font-size: 40px;
+          color: #ffffff70;
+        }
+
+        .fContents {
+          height: 100%;
+          width: 70%;
+          padding: 10px;
+          font-weight: bold;
+          color: #ffffff70;
+        }
+
+        #insta,
+        #youtube,
+        #facebook,
+        #twitter {
+          font-size: 2rem;
+          color: white;
+          padding-left: 10px;
+        }
+
+        .fLine1 {
+          width: 100%;
+          height: 20%;
+          font-size: 15px;
+          padding-top: 5px;
+          padding-bottom: 5px;
+        }
+
+        .fLine3 {
+          width: 100%;
+          height: 11%;
+          font-size: 15px;
+        }
+
+        .fLine2 {
+          height: 20%;
+          width: 100%;
+          font-size: 15px;
+          padding-top: 5px;
+        }
+
+        .fLine1>div {
+          float: left;
+          height: 100%;
+          text-align: left;
+          line-height: 46px;
+        }
+
+        .fLine2>div,
+        .fLine3>div {
+          float: left;
+          height: 100%;
+        }
+
+        .exh {
+          width: 35%;
+        }
+
+        .exh2 {
+          width: 60%;
+        }
+
+        .ceo {
+          border-right: 1px solid #ffffff70;
+          width: 15%;
+        }
+
+        .ceoNum {
+          line-height: 46px;
+          width: 23%;
+          padding-left: 15px;
+          border-right: 1px solid #ffffff70;
+
+        }
+
+        .companyNum {
+          line-height: 46px;
+          width: 42%;
+          padding-left: 15px;
         }
       </style>
     </head>
@@ -490,7 +605,8 @@
                   </div>
                   <div class="exhibition_pay_reservation_price">
                     <div>결제가격</div>
-                    <div>${(dto.bk_ex_price)*(dto.bk_person)}<input type="hidden" value="${dto.bk_ex_price}" name="exPrice"></div>
+                    <div>${(dto.bk_ex_price)*(dto.bk_person)}<input type="hidden" value="${dto.bk_ex_price}"
+                        name="exPrice"></div>
                   </div>
                   <div class="exhibition_pay_reservation_headcount">
                     <div>인원수</div>
@@ -508,7 +624,54 @@
             </div>
           </form>
         </div>
-        <div class="footer"></div>
+        <div class="footer">
+          <div class="fContainer">
+            <div class="fLogoContainer">
+              <div class="fLogo">
+                <i class="fab fa-artstation" id="fLogoImg"> Artex Vision</i>
+
+              </div>
+              <div class="fSiteLogo">
+                <a href="https://www.instagram.com/?hl=ko"><i class="fab fa-instagram" id="insta"></i></a>
+                <a href="https://www.youtube.com/"><i class="fab fa-youtube" id="youtube"></i></a>
+                <a href="https://www.facebook.com/"><i class="fab fa-facebook" id="facebook"></i></a>
+                <a href="https://twitter.com/"><i class="fab fa-twitter" id="twitter"></i></a>
+              </div>
+            </div>
+            <div class="fContents">
+              <div class="fLine1">
+                <div class="ceo">대표자 이진호</div>
+                <div class="ceoNum">전화번호 010-****-****</div>
+                <div class="companyNum">사업자등록번호 13-72005511</div>
+              </div>
+              <div class="fLine2">
+                <div class="exh">국립현대미술관 대표전화</div>
+                <div class="exhNum">(서울) 02-3701-9500, (과천) 02-2188-6000,<br>(덕수궁) 02-2022-0600, (청주) 043-261-1400</div>
+              </div>
+              <div class="fLine3">
+                <div class="exh">세종문화회관 대표전화</div>
+                <div class="exhNum">02-399-1114</div>
+              </div>
+              <div class="fLine3">
+                <div class="exh">국립중앙박물관 대표전화</div>
+                <div class="exhNum">02-2077-9000</div>
+              </div>
+              <div class="fLine3">
+                <div class="exh">마이 아트 뮤지엄 대표전화</div>
+                <div class="exhNum">02-567-8878</div>
+              </div>
+              <div class="fLine3">
+                <div class="exh">그라운드시소 서촌 대표전화</div>
+                <div class="exhNum">02-501-9544</div>
+              </div>
+              <div class="fLine3">
+                <div class="exh">석파정 서울미술관 대표전화</div>
+                <div class="exhNum">02-395-0010</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
       </div>
       <script>
         $("#logout").on("click", function () {
@@ -518,8 +681,8 @@
         })
 
         let frm = $("#frm");
-        frm.on("submit",function(){
-          if(!confirm("예매를 정말 취소하시겠습니까?")){
+        frm.on("submit", function () {
+          if (!confirm("예매를 정말 취소하시겠습니까?")) {
             return false;
           }
         })

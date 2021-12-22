@@ -25,7 +25,6 @@
       --footer-color: #181818;
       --bg-color: #212121;
       --img-color: #373749;
-      font-size: 100%;
     }
 
     html,
@@ -121,10 +120,6 @@
       box-sizing: border-box;
     }
 
-    div {
-      /* border: 1px solid black;  */
-    }
-
     input:-webkit-autofill,
     input:-webkit-autofill:hover,
     input:-webkit-autofill:focus,
@@ -217,7 +212,6 @@
     }
 
     /* input_ex start */
-
     .input_ex_wrap {
       margin: auto;
       display: flex;
@@ -332,6 +326,8 @@
       flex-direction: column;
       justify-content: space-between;
       height: 200px;
+      background-color: var(--footer-color);
+      color: var(--text-color);
     }
 
     .footer_logo {
@@ -339,13 +335,14 @@
       font-size: 2rem;
       display: flex;
       align-items: flex-end;
+      padding-bottom: 10px;
       padding-left: 30px;
     }
 
     .footer_title {
       padding-left: 30px;
       height: 40%;
-      font-size: 1.2rem;
+      font-size: 0.9rem;
     }
 
     .footer_desc {
@@ -353,6 +350,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      font-size: 0.8rem;
     }
 
     /* footer end */
@@ -383,12 +381,6 @@
         }).open();
       };
 
-      let working1 = document.getElementById("working1");
-	 
-	  working1.onclick = function() {
-		  alert("구현중입니다.");
-	  }
-	
 	  let ex_frm = document.getElementById("ex_frm");
 	  
 	  let ex_title = document.getElementById("ex_title");
@@ -494,13 +486,6 @@
 				</div>
 			</a>
 			
-			<div class="nav_items" id="working1">
-				<div class="nav_icon">
-					<i class="far fa-clipboard"></i>
-				</div>
-				<div class="nav_title">BOARD</div>
-			</div>
-			
 			<a href="/input_ex_form.admin">
 				<div class="nav_items">
 					<div class="nav_icon">
@@ -572,11 +557,8 @@
 
     <div class="footer">
       <div class="footer_logo"><i class="fab fa-artstation"> Artex Vision Admin Page</i></div>
-      <div class="footer_title">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odit, distinctio asperiores
-        reiciendis quod corrupti praesentium nihil dolorum dignissimos saepe quasi veniam pariatur vel corporis
-        necessitatibus ipsam itaque nostrum similique placeat?</div>
-      <div class="footer_desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi doloremque, fuga nihil
-        neque</div>
+      <div class="footer_title">ArtexVision Admin페이지 입니다.</div>
+      <div class="footer_desc">Copyright 2021. 11hertz All rights reserved.</div>
     </div>
   </div>
 </body>
