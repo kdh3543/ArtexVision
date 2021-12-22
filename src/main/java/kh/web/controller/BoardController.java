@@ -80,7 +80,7 @@ public class BoardController extends HttpServlet {
 				response.sendRedirect("/board/nb_write.jsp");
 			
 			}else if(cmd.equals("/nb_writeProc.board")) {
-				String writer = (String) request.getSession().getAttribute("loginID");
+				String writer = (String) request.getSession().getAttribute("loginId");
 				String title = request.getParameter("nb_title");
 				String contents = request.getParameter("nb_contents");
 				nb_dao.insert(new Nb_BoardDTO(0, title, contents, writer, null, 0));
@@ -170,10 +170,10 @@ public class BoardController extends HttpServlet {
 				response.sendRedirect("/board/qb_write.jsp");
 			
 			}else if(cmd.equals("/qb_writeProc.board")) {
-//				String writer = (String) request.getSession().getAttribute("loginID");
+				String writer = (String) request.getSession().getAttribute("loginId");
 				String title = request.getParameter("qb_title");
 				String contents = request.getParameter("qb_contents");
-				qb_dao.insert(new Qb_BoardDTO(0, title, contents, "hosboy93", null, 0));
+				qb_dao.insert(new Qb_BoardDTO(0, title, contents, writer, null, 0));
 				response.sendRedirect("/qb_list.board?cpage=1");
 			
 			}else if(cmd.equals("/qb_detail.board")) {				

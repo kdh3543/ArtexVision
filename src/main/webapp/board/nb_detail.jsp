@@ -541,7 +541,7 @@
                 <h2 class="list_title">NOTICE </h2>
                 <ul class="sidebar_item_list">
                     <li class="sidebar_item"><a href="/nb_list.board?cpage=1">공지사항</a></li>                    
-                    <li class="sidebar_item"><a href="">Q&A</a></li>
+                    <li class="sidebar_item"><a href="/qb_list.board?cpage=1">Q&A</a></li>
                     <li class="sidebar_item"><a href="/board/faq_home.jsp">FAQ</a></li>
                 </ul>
             </div>
@@ -566,12 +566,12 @@
                     <br>
                     <div class="board_nb_user_writebtn" style="text-align: right;">
  				<a href="javascript:history.back()"><button type=button id=toList>목록으로</button></a>
-<%-- 				<c:if test="${noticeboard_dto.nb_mem_id == 관리자}"> --%>
+				<c:if test="${noticeboard_dto.nb_mem_id == loginId}">
 					<button type=button id=mod>수정하기</button>
 					<button type=button id=del>삭제하기</button>
 					<button type=button id=modOk style="display:none;">수정완료</button>
 					<button type=button id=modCancel style="display:none;">취소</button>
-<%-- 				</c:if> --%>
+				</c:if>
                     </div>
                 </form>
                 <br>

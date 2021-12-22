@@ -493,7 +493,9 @@ a:hover {
 				</c:forEach>
 				<br>
 				<div class="board_qb_user_writebtn" style="text-align: right;">
+				<c:if test="${!empty loginId}">
 					<a href="/qb_write.board"><button type=button>글쓰기</button></a>
+				</c:if>
 				</div>
 				<div class="board_qb_pagination">
 					<div class="board_qb_page">

@@ -566,7 +566,7 @@
                     <br>
                     <div class="board_qb_user_writebtn" style="text-align: right;">
  				<a href="javascript:history.back()"><button type=button id=toList>목록으로</button></a>
-				<c:if test="${questionboard_dto.qb_mem_id == loginID}">
+				<c:if test="${questionboard_dto.qb_mem_id == loginId}">
 					<button type=button id=mod>수정하기</button>
 					<button type=button id=del>삭제하기</button>
 					<button type=button id=modOk style="display:none;">수정완료</button>
