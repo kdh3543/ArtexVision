@@ -443,6 +443,7 @@
               </ul>
             </div>
           </c:otherwise>
+
         </c:choose>
         <div class="nav">
           <div class="nav_logo">
@@ -458,6 +459,7 @@
               </ul>
             </div>
           </div>
+
         </div>
         <div class="carousel_timeline">
           <div class="carousel">
@@ -540,6 +542,7 @@
             }
           }
         })
+<<<<<<< HEAD
 
         $("#logout").on("click", function () {
           if (!confirm("로그아웃 하시겠습니까?")) {
@@ -561,6 +564,20 @@
           alert("현재 기능은 구현중에 있습니다.");
           return false;
         })
+=======
+        
+        $("#logout").on("click",function(){
+		if(!confirm("로그아웃 하시겠습니까?")){
+			return false;
+		}
+		})
+		
+		$("#basket").on("click",function(){
+			alert("현재 기능은 구현중에 있습니다.");
+			return false;
+		})
+		
+>>>>>>> c73b17f7c8da8a687471cbb0c5a7b573f6b76915
       </script>
     </body>
 
