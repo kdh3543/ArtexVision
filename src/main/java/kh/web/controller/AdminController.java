@@ -72,8 +72,11 @@ public class AdminController extends HttpServlet {
 
 				MultipartRequest multi = new MultipartRequest(request, savePath, maxSize, "UTF8", new DefaultFileRenamePolicy());
 				
-				String oriName = multi.getOriginalFileName("ex_img");
-				String sysName = multi.getFilesystemName("ex_img");
+//				String oriName = multi.getOriginalFileName("ex_img");
+//				String sysName = multi.getFilesystemName("ex_img");
+				
+				String oriName = "noimage.png";
+				String sysName = "noimage.png";
 				
 				String ex_title = multi.getParameter("ex_title");
 				String ex_desc = multi.getParameter("ex_desc");

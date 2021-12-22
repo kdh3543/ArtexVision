@@ -9,7 +9,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>전시회 등록</title>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" integrity="sha512-uto9mlQzrs59VwILcLiRYeLKPPbS/bT71da/OEBYEwcdNUk8jYIy+D176RYoop1Da+f9mvkYrmj5MCLZWEtQuA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" integrity="sha512-aOG0c6nPNzGk+5zjwyJaoRUgCdOrfSDhmMID2u4+OIslr0GjpLKo7Xm0Ao3xmpM4T8AmIouRkqwj1nrdVsLKEQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
   <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
     integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
@@ -300,6 +302,10 @@
       color: var(--sub-color1);
     }
 
+	#ex_start_date, #ex_end_date {
+		width: 30%;
+	}
+
 	input[type="submit"] {
 	  background-color: var(--sub-color1);
       color: var(--text-color);
@@ -383,6 +389,70 @@
 		  alert("구현중입니다.");
 	  }
 	
+	  let ex_frm = document.getElementById("ex_frm");
+	  
+	  let ex_title = document.getElementById("ex_title");
+	  let ex_desc = document.getElementById("ex_desc");
+	  let ex_price = document.getElementById("ex_price");
+	  let ex_location = document.getElementById("ex_location");
+	  let ex_start_date = document.getElementById("ex_start_date");
+	  let ex_end_date = document.getElementById("ex_end_date");
+	  
+	  ex_frm.onsubmit = function() {
+			if(ex_title.value == "") {
+				alert("전시회 제목을 입력해 주세요");
+				return false;
+			}
+			
+			if(ex_desc.value == "") {
+				alert("전시회 세부 내용을 입력해 주세요");
+				return false;
+			}
+			 
+			if(ex_price.value == "") {
+				alert("전시회 가격을 입력해 주세요");
+				return false;
+			}
+			
+			if(ex_location.value == "") {
+				alert("전시회 장소를 입력해 주세요");
+				return false;
+			}
+			
+			if(ex_start_date.value == "") {
+				alert("전시회 시작일을 입력해 주세요");
+				return false;
+			}
+			
+			if(ex_end_date.value == "") {
+				alert("전시회 종료일을 입력해 주세요");
+				return false;
+			}
+			
+			if(input_ex_img.value == "") {
+				alert("전시회 이미지를 등록해 주세요");
+				return false;
+			}
+		  }
+	  
+      $('#ex_start_date').datepicker({                
+          dateFormat: "yy-mm-dd",             
+          changeMonth: true,                  
+          minDate: 0,                       
+          onClose: function(selectedDate) {    
+              $("#ex_end_date").datepicker( "option", "minDate", selectedDate );
+          }                
+      });
+
+      $('#ex_end_date').datepicker({
+          dateFormat: "yy-mm-dd",
+          changeMonth: true,
+          minDate: 0,
+          onClose: function(selectedDate) {
+              $("#ex_start_date").datepicker( "option", "maxDate", selectedDate );
+          }                
+      });
+
     }
 
   </script>
@@ -450,7 +520,7 @@
 			</a>
 		</div>
     
-    <form action="/add_ex.admin" method="post" enctype="multipart/form-data">
+    <form action="/add_ex.admin" method="post" enctype="multipart/form-data" id = "ex_frm">
     <div class="contents">
       <div class="input_ex_wrap">
         <div class="ex_img_show_wrap">
@@ -483,10 +553,10 @@
               <input type="button" value="주소찾기" id="find_addr">
             </div>
             <div class="input_ex_form">
-              <input type="date" name="ex_start_date" id="ex_start_date">
+              <input type="text" name="ex_start_date" id="ex_start_date">
             </div>
             <div class="input_ex_form">
-              <input type="date" name="ex_end_date" id="ex_end_date">
+              <input type="text" name="ex_end_date" id="ex_end_date">
             </div>
             <div class="input_ex_form">
               <input type="file" name="ex_img" id="input_ex_img">
