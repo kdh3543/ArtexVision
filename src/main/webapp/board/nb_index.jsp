@@ -605,11 +605,11 @@ a:hover {
 				</div>
 				</c:forEach>
 				<br>
-<%-- 				<c:if test="${noticeboard_dto.nb_mem_id == 관리자}"> --%>
+				<c:if test="${loginId eq 'admin'}">
 				<div class="board_nb_user_writebtn" style="text-align: right;">
 					<a href="/nb_write.board"><button type=button>글쓰기</button></a>
 				</div>
-<%-- 				</c:if> --%>
+				</c:if>
 				<div class="board_nb_pagination">
 					<div class="board_nb_page">
 						<div>${nb_navi }</div>

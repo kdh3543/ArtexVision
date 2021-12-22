@@ -616,7 +616,7 @@
           <c:when test="${loginId!=null}">
             <div class="header" id="topTarget">
               <ul class="header_list">
-                <li class="user_detail"><span id="user_grade"><i class="fas fa-crown"></i> ${dto.mem_grade}</li></span>
+                <li class="user_detail"><span id="user_grade"><i class="fas fa-crown"></i> ${loginGrade}</li></span>
                 <li id="welcome"> ${loginId } 님 환영합니다.</li>
                 <li id="mypage"><a href="/modifyForm.mem">마이페이지</a></li>
                 <li id="basket"><a href="/basket/basket.jsp" id="basket">장바구니</a></li>
@@ -671,32 +671,31 @@
                   style="text-decoration:none; color:black;">Q&A</a></div>
             </div>
             <hr>
-            <form action="/qb_modify.board" id="frmDetail">
-              <div class="board_qb_write" style="width:100%;">
-                <input type=hidden value="${questionboard_dto.qb_seq }" name=qb_seq>
-                <div class="board_qb_title"><input type=text placeholder="제목을 입력하세요"
-                    style="width:100%; font-weight: bold; font-size : large" name="qb_title" id="qb_title" readonly
-                    value="${questionboard_dto.qb_title }"></div>
-                <div style="font-size:small">${questionboard_dto.qb_mem_id } 조회수 ${questionboard_dto.qb_view_count }
-                  ${questionboard_dto.qb_write_date }</div>
-                <hr>
-                <div class="board_qb_contents"><textarea placeholder="내용을 입력하세요."
-                    style="width:100%; margin-top:10px; height: 330px;" readonly name="qb_contents"
-                    id="qb_contents">${questionboard_dto.qb_contents }</textarea></div>
-              </div>
-              <br>
-              <div class="board_qb_user_writebtn" style="text-align: right;">
-                <a href="javascript:history.back()"><button type=button id=toList>목록으로</button></a>
-                <c:if test="${questionboard_dto.qb_mem_id == loginID}">
-                  <button type=button id=mod>수정하기</button>
-                  <button type=button id=del>삭제하기</button>
-                  <button type=button id=modOk style="display:none;">수정완료</button>
-                  <button type=button id=modCancel style="display:none;">취소</button>
-                </c:if>
-              </div>
-            </form>
-            <br>
-          </div>
+ 
+                <form action="/qb_modify.board" id = "frmDetail">
+                    <div class="board_qb_write" style="width:100%;">
+                    	<input type=hidden value="${questionboard_dto.qb_seq }" name=qb_seq>
+                        <div class="board_qb_title"><input type=text placeholder="제목을 입력하세요"
+                                style="width:100%; font-weight: bold; font-size : large"  name="qb_title" id="qb_title" readonly value="${questionboard_dto.qb_title }"></div>
+                                <div style="font-size:small">${questionboard_dto.qb_mem_id }  조회수 ${questionboard_dto.qb_view_count } ${questionboard_dto.qb_write_date }</div>
+                                <hr>
+                        <div class="board_qb_contents"><textarea placeholder="내용을 입력하세요."
+                                style="width:100%; margin-top:10px; height: 330px;" readonly name="qb_contents" id="qb_contents">${questionboard_dto.qb_contents }</textarea></div>
+                    </div>
+                    <br>
+                    <div class="board_qb_user_writebtn" style="text-align: right;">
+ 				<a href="javascript:history.back()"><button type=button id=toList>목록으로</button></a>
+				<c:if test="${questionboard_dto.qb_mem_id == loginId}">
+					<button type=button id=mod>수정하기</button>
+					<button type=button id=del>삭제하기</button>
+					<button type=button id=modOk style="display:none;">수정완료</button>
+					<button type=button id=modCancel style="display:none;">취소</button>
+				</c:if>
+                    </div>
+                </form>
+                <br>
+            </div>
+
         </div>
 
         <!-- 커뮤니티 end -->

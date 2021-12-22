@@ -655,13 +655,14 @@
           </div>
         </div>
         <div class="container2">
-          <div class="sidebar">
-            <h2 class="list_title">NOTICE </h2>
-            <ul class="sidebar_item_list">
-              <li class="sidebar_item"><a href="/nb_list.board?cpage=1">공지사항</a></li>
-              <li class="sidebar_item"><a href="">Q&A</a></li>
-              <li class="sidebar_item"><a href="/board/faq_home.jsp">FAQ</a></li>
-            </ul>
+
+<div class="sidebar">
+  <h2 class="list_title">NOTICE </h2>
+  <ul class="sidebar_item_list">
+      <li class="sidebar_item"><a href="/nb_list.board?cpage=1">공지사항</a></li>                    
+      <li class="sidebar_item"><a href="/qb_list.board?cpage=1">Q&A</a></li>
+      <li class="sidebar_item"><a href="/board/faq_home.jsp">FAQ</a></li>
+  </ul>
           </div>
           <br>
           <div class="board_nb_content">
@@ -670,34 +671,34 @@
               <div>></div>
               <div class="board_nb_presentboard"><a href="/nb_list.board?cpage=1"
                   style="text-decoration:none; color:black;">공지사항</a></div>
+
             </div>
             <hr>
-            <form action="/nb_modify.board" id="frmDetail">
-              <div class="board_nb_write" style="width:100%;">
-                <input type=hidden value="${noticeboard_dto.nb_seq }" name=nb_seq>
-                <div class="board_nb_title"><input type=text placeholder="제목을 입력하세요"
-                    style="width:100%; font-weight: bold; font-size : large" name="nb_title" id="nb_title" readonly
-                    value="${noticeboard_dto.nb_title }"></div>
-                <div style="font-size:small">${noticeboard_dto.nb_mem_id } 조회수
-                  ${noticeboard_dto.nb_view_count } ${noticeboard_dto.nb_write_date }</div>
-                <hr>
-                <div class="board_nb_contents"><textarea placeholder="내용을 입력하세요."
-                    style="width:100%; margin-top:10px; height: 330px;" readonly name="nb_contents"
-                    id="nb_contents">${noticeboard_dto.nb_contents }</textarea></div>
-              </div>
-              <br>
-              <div class="board_nb_user_writebtn" style="text-align: right;">
-                <a href="javascript:history.back()"><button type=button id=toList>목록으로</button></a>
-                <%-- <c:if test="${noticeboard_dto.nb_mem_id == 관리자}"> --%>
-                  <button type=button id=mod>수정하기</button>
-                  <button type=button id=del>삭제하기</button>
-                  <button type=button id=modOk style="display:none;">수정완료</button>
-                  <button type=button id=modCancel style="display:none;">취소</button>
-                  <%-- </c:if> --%>
-              </div>
-            </form>
-            <br>
-          </div>
+                <form action="/nb_modify.board" id = "frmDetail">
+                    <div class="board_nb_write" style="width:100%;">
+                    	<input type=hidden value="${noticeboard_dto.nb_seq }" name=nb_seq>
+                        <div class="board_nb_title"><input type=text placeholder="제목을 입력하세요"
+                                style="width:100%; font-weight: bold; font-size : large"  name="nb_title" id="nb_title" readonly value="${noticeboard_dto.nb_title }"></div>
+                                <div style="font-size:small">${noticeboard_dto.nb_mem_id }  조회수 ${noticeboard_dto.nb_view_count } ${noticeboard_dto.nb_write_date }</div>
+                                <hr>
+                        <div class="board_nb_contents"><textarea placeholder="내용을 입력하세요."
+                                style="width:100%; margin-top:10px; height: 330px;" readonly name="nb_contents" id="nb_contents">${noticeboard_dto.nb_contents }</textarea></div>
+                    </div>
+                    <br>
+                    <div class="board_nb_user_writebtn" style="text-align: right;">
+ 				<a href="javascript:history.back()"><button type=button id=toList>목록으로</button></a>
+				<c:if test="${noticeboard_dto.nb_mem_id == loginId}">
+					<button type=button id=mod>수정하기</button>
+					<button type=button id=del>삭제하기</button>
+					<button type=button id=modOk style="display:none;">수정완료</button>
+					<button type=button id=modCancel style="display:none;">취소</button>
+				</c:if>
+                    </div>
+                </form>
+                <br>
+            </div>
+
+                
         </div>
 
         <!-- 커뮤니티 end -->

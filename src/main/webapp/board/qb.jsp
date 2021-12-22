@@ -644,62 +644,64 @@
           </div>
         </div>
 
-        <div class="container2">
-          <div class="sidebar">
-            <h2 class="list_title">NOTICE</h2>
-            <ul class="sidebar_item_list">
-              <li class="sidebar_item"><a href="/nb_list.board?cpage=1">공지사항</a></li>
-              <li class="sidebar_item"><a href="/qb_list.board?cpage=1">Q&A</a></li>
-              <li class="sidebar_item"><a href="/board/faq_home.jsp">FAQ</a></li>
-            </ul>
-          </div>
-          <div class="board_qb_content">
-            <br>
-            <div class="board_qb_boardname">
-              <div class="board_qb_prevboard">NOTICE</div>
-              <div>></div>
-              <div class="board_qb_presentboard">Q&A</div>
-
-            </div>
-            <hr>
-            <div class="board_qb_head">
-              <div class="board_qb_num">글번호</div>
-              <div class="board_qb_title">제목</div>
-              <div class="board_qb_writer">아이디</div>
-              <div class="board_qb_write_date">작성일</div>
-              <div class="board_qb_view_count">조회수</div>
-            </div>
-            <c:forEach var="questionboard_dto" items="${qb_list}">
-              <div class="board_qb_notice">
-                <div class="board_qb_notice_num">${questionboard_dto.qb_seq }</div>
-                <div class="board_qb_notice_title"><a href="/qb_detail.board?qb_seq=${questionboard_dto.qb_seq }"
-                    style="text-decoration:none; color:black;">${questionboard_dto.qb_title }</a></div>
-                <div class="board_qb_notice_writer">${questionboard_dto.qb_mem_id }</div>
-                <div class="board_qb_notice_write_date">${questionboard_dto.detailDate }</div>
-                <div class="board_qb_notice_view_count">${questionboard_dto.qb_view_count }</div>
-              </div>
-            </c:forEach>
-            <br>
-            <div class="board_qb_user_writebtn" style="text-align: right;">
-              <a href="/qb_write.board"><button type=button>글쓰기</button></a>
-            </div>
-            <div class="board_qb_pagination">
-              <div class="board_qb_page">
-                <div>${qb_navi }</div>
-              </div>
-            </div>
-            <form action="/qb_search.board" id="frmSearch">
-              <div class="board_qb_search_area">
-                <select id="searchOption" name="searchOption">
-                  <option name="searchTitle">제목</option>
-                  <option name="searchId">아이디</option>
-                </select> <input type=text placeholder="검색어를 입력하세요" class="board_qb_search">
-                <input type=button value="검색" class="board_qb_search_btn" onclick="search();">
-              </div>
-            </form>
-          </div>
-        </div>
-        <!-- 커뮤니티 end -->
+		<div class="container2">
+			<div class="sidebar">
+				<h2 class="list_title">NOTICE</h2>
+				<ul class="sidebar_item_list">
+					<li class="sidebar_item"><a href="/nb_list.board?cpage=1">공지사항</a></li>					
+                    <li class="sidebar_item"><a href="/qb_list.board?cpage=1">Q&A</a></li>
+                    <li class="sidebar_item"><a href="/board/faq_home.jsp">FAQ</a></li>
+				</ul>
+			</div>
+			<div class="board_qb_content">
+				<br>
+				<div class="board_qb_boardname">
+					<div class="board_qb_prevboard">NOTICE</div>
+					<div>></div>
+					<div class="board_qb_presentboard">Q&A</div>
+					
+				</div>
+				<hr>
+				<div class="board_qb_head">
+					<div class="board_qb_num">글번호</div>
+					<div class="board_qb_title">제목</div>
+					<div class="board_qb_writer">아이디</div>
+					<div class="board_qb_write_date">작성일</div>
+					<div class="board_qb_view_count">조회수</div>
+				</div>
+				<c:forEach var="questionboard_dto" items="${qb_list}">
+				<div class="board_qb_notice">
+					<div class="board_qb_notice_num">${questionboard_dto.qb_seq }</div>
+					<div class="board_qb_notice_title"><a href="/qb_detail.board?qb_seq=${questionboard_dto.qb_seq }" style="text-decoration:none; color:black;">${questionboard_dto.qb_title }</a></div>
+					<div class="board_qb_notice_writer">${questionboard_dto.qb_mem_id }</div>
+					<div class="board_qb_notice_write_date">${questionboard_dto.detailDate }</div>
+					<div class="board_qb_notice_view_count">${questionboard_dto.qb_view_count }</div>
+				</div>
+				</c:forEach>
+				<br>
+				<div class="board_qb_user_writebtn" style="text-align: right;">
+				<c:if test="${!empty loginId}">
+					<a href="/qb_write.board"><button type=button>글쓰기</button></a>
+				</c:if>
+				</div>
+				<div class="board_qb_pagination">
+					<div class="board_qb_page">
+						<div>${qb_navi }</div>
+					</div>
+				</div>
+				<form action="/qb_list.board" id="frmSearch">
+				<input type=hidden name="cpage" value=1>
+				<div class="board_qb_search_area">
+					<select id="searchOption" name="searchOption">
+						<option name="searchTitle" value="qb_title">제목</option>
+						<option name="searchId" value="qb_mem_id">아이디</option>
+					</select> <input type=text placeholder="검색어를 입력하세요" name="searchText" class="board_qb_search">
+					<button type=submit class="board_qb_search_btn">검색
+				</div>
+				</form>
+			</div>
+		</div>
+	
 
 
         <div class="footer">
