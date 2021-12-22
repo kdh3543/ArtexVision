@@ -120,10 +120,6 @@
       box-sizing: border-box;
     }
 
-    div {
-      /* border: 1px solid black;  */
-    }
-
     input:-webkit-autofill,
     input:-webkit-autofill:hover,
     input:-webkit-autofill:focus,
@@ -216,7 +212,6 @@
     }
 
     /* input_ex start */
-
     .input_ex_wrap {
       margin: auto;
       display: flex;
@@ -386,12 +381,6 @@
         }).open();
       };
 
-      let working1 = document.getElementById("working1");
-	 
-	  working1.onclick = function() {
-		  alert("구현중입니다.");
-	  }
-	
 	  let ex_frm = document.getElementById("ex_frm");
 	  
 	  let ex_title = document.getElementById("ex_title");
@@ -496,13 +485,6 @@
 					<div class="nav_title">MEMBERS</div>
 				</div>
 			</a>
-			
-			<div class="nav_items" id="working1">
-				<div class="nav_icon">
-					<i class="far fa-clipboard"></i>
-				</div>
-				<div class="nav_title">BOARD</div>
-			</div>
 			
 			<a href="/input_ex_form.admin">
 				<div class="nav_items">

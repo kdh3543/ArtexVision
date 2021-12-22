@@ -1,22 +1,22 @@
 package kh.web.dto;
 
 public class DashboardDTO {
-	private String mem_signup_date;
+	private String dashboardData;
 	private int cnt;
 	
 	public DashboardDTO() {}
 
-	public DashboardDTO(String mem_signup_date, int cnt) {
-		this.mem_signup_date = mem_signup_date;
+	public DashboardDTO(String dashboardData, int cnt) {
+		this.dashboardData = dashboardData;
 		this.cnt = cnt;
 	}
 
-	public String getMem_signup_date() {
-		return mem_signup_date;
+	public String getDashboardData() {
+		return dashboardData;
 	}
 
-	public void setMem_signup_date(String mem_signup_date) {
-		this.mem_signup_date = mem_signup_date;
+	public void setDashboardData(String dashboardData) {
+		this.dashboardData = dashboardData;
 	}
 
 	public int getCnt() {
