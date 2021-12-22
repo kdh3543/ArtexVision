@@ -453,7 +453,7 @@
             <li><a href="/nb_list.board?cpage=1" id="notice">NOTICE</a></li>
             <li><a href="/artexDesc/artex_desc.jsp">Artex Vision</a></li>
             <li><a href="/exhibition/main_ex/now_main_ex.jsp">전시</a></li>
-            <li><a href="#" id="event">이벤트</a></li>
+            <li><a href="/event/now_event/now_event.jsp" id="event">이벤트</a></li>
           </ul>
         </div>
       </div>
@@ -557,11 +557,7 @@
   		alert("현재 기능은 구현중에 있습니다.");
   		return false;
   	})
-  	
-  	$("#event").on("click",function(){
-  		alert("현재 기능은 구현중에 있습니다.");
-  		return false;
-  	})
+
     </script>
 
 

@@ -524,9 +524,9 @@
             <div class="nav_menu">
               <ul class="nav_menu_list">
                 <li><a href="/nb_list.board?cpage=1" id="notice">NOTICE</a></li>
-                <li><a href="/exhibition/artexDesc/artex_desc.jsp">Artex Vision</a></li>
-                <li><a href="/exhibition/exhibition/main_ex/now_main_ex.jsp">전시</a></li>
-                <li><a href="#" id="event">이벤트</a></li>
+                <li><a href="/artexDesc/artex_desc.jsp">Artex Vision</a></li>
+                <li><a href="/exhibition/main_ex/now_main_ex.jsp">전시</a></li>
+                <li><a href="/event/now_event/now_event.jsp" id="event">이벤트</a></li>
               </ul>
             </div>
           </div>
@@ -557,7 +557,8 @@
                     <div class="board_nb_write" style="width:100%;">
                     	<input type=hidden value="${noticeboard_dto.nb_seq }" name=nb_seq>
                         <div class="board_nb_title"><input type=text placeholder="제목을 입력하세요"
-                                style="width:100%;" name="nb_title" id="nb_title" readonly value="${noticeboard_dto.nb_title }"></div>
+                                style="width:100%; font-weight: bold; font-size : large"  name="nb_title" id="nb_title" readonly value="${noticeboard_dto.nb_title }"></div>
+                                <div style="font-size:small">${noticeboard_dto.nb_mem_id }  조회수 ${noticeboard_dto.nb_view_count } ${noticeboard_dto.nb_write_date }</div>
                                 <hr>
                         <div class="board_nb_contents"><textarea placeholder="내용을 입력하세요."
                                 style="width:100%; margin-top:10px; height: 330px;" readonly name="nb_contents" id="nb_contents">${noticeboard_dto.nb_contents }</textarea></div>
@@ -565,12 +566,12 @@
                     <br>
                     <div class="board_nb_user_writebtn" style="text-align: right;">
  				<a href="javascript:history.back()"><button type=button id=toList>목록으로</button></a>
-				<c:if test="${noticedto.writer == loginID}">
+<%-- 				<c:if test="${noticeboard_dto.nb_mem_id == 관리자}"> --%>
 					<button type=button id=mod>수정하기</button>
 					<button type=button id=del>삭제하기</button>
 					<button type=button id=modOk style="display:none;">수정완료</button>
 					<button type=button id=modCancel style="display:none;">취소</button>
-				</c:if>
+<%-- 				</c:if> --%>
                     </div>
                 </form>
                 <br>
@@ -579,11 +580,6 @@
 
         <!-- 커뮤니티 end -->        
         <div class="footer"></div>        
-
-        <!-- 커뮤니티 end -->
-        <div class="footer">
-
-        </div>
 
     </div>
     
@@ -644,10 +640,6 @@
           return false;
         })
        
-        $("#event").on("click", function () {
-          alert("현재 기능은 구현중에 있습니다.");
-          return false;
-        })
 	</script>
 </body>
 
