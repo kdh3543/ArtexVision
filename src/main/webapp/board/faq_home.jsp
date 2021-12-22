@@ -814,7 +814,6 @@
           alert("현재 기능은 구현중에 있습니다.");
           return false;
         })
-
       </script>
       <!-- 커뮤니티 end -->
     </body>

@@ -12,9 +12,11 @@
       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
         integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
       <!-- 캘린더 -->
-      <!-- <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />  
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>  
-<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script> -->
+
+      <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+      <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
+
 
       <!-- 지도 -->
       <script type="text/javascript"
@@ -250,222 +252,239 @@
 
         /* nav end */
 
-
-        .carousel_timeline {
-          display: flex;
-        }
-
-        .main {
-          height: 1200px;
-        }
-
-        .sidebar {
-          width: 20%;
-          height: 100%;
-          background-color: var(--color3);
-          float: left;
-        }
-
-        .list_title {
-          color: var(--color2);
-          padding-top: 20px;
-          text-align: center;
-        }
-
-        .sidebar_item_list {
-          padding-top: 20px;
-          list-style-type: none;
-          display: flex;
-          flex-direction: column;
-        }
-
-        .sidebar_item {
-          width: 100%;
-          padding-top: 10px;
-          padding-bottom: 10px;
-          text-align: center;
-        }
-
-        .sidebar_item:hover {
-          background-color: var(--color11);
-        }
-
-        .sidebar_item a {
-          font-size: 1rem;
-          text-decoration: none;
-          color: var(--color2);
-        }
-
-        /* 전시 내용 */
-        .contents {
-          width: 80%;
-          height: 100%;
-          float: left;
-          padding-top: 100px;
-        }
-
-        .contents_wrap1 {
-          width: 50%;
-          height: 60%;
-          float: left;
-        }
-
-        .contents_wrap2 {
-          width: 50%;
-          height: 60%;
-          float: left;
-        }
-
-        .contents_wrap2>div {
-          width: 100%;
-          height: 40px;
-          line-height: 40px;
-          /* text-align: center; */
-          font-size: large;
-          margin-bottom: 10px;
-        }
-
-        .contents_wrap2>div>div {
-          width: 50%;
-          height: 40px;
-          line-height: 40px;
-          /* text-align: center; */
-          float: left;
-          padding: 2px;
-        }
-
-        .contents_wrap2>div>div:nth-child(1) {
-          width: 50%;
-          height: 40px;
-          line-height: 40px;
-          /* text-align: center; */
-          float: left;
-          text-align: right;
-          padding-right: 50px;
-          font-weight: 550;
-        }
-
-        .contents_sub1 {
-          width: 100%;
-          height: 50%;
-          text-align: center;
-          padding-top: 40px;
-          padding-left: 50px;
-        }
-
-        .contents_sub2 {
-          width: 100%;
-          height: 50%;
-          padding-left: 70px;
-        }
-
-        #title {
-          width: 100%;
-          height: 15%;
-          text-align: center;
-          font-size: large;
-          font-weight: bolder;
-          padding-top: 5px;
-
-        }
-
-        #map {
-          width: 100%;
-          height: 85%;
-          text-align: center;
-
-        }
-
-        #buy_btn:hover {
-          cursor: pointer;
-        }
-
-        .contents_wrap3 {
-          width: 100%;
-          height: 40%;
-          padding-left: 80px;
-          padding-right: 80px;
-          padding-top: 40px;
-          float: left;
-        }
-
-        .contents_wrap3>div {
-          float: left;
-          width: 100%;
-        }
-
-
-        .menu_top {
-          width: 100%;
-          height: 13%;
-        }
-
-        .menu_top>div {
-          float: left;
-          font-size: larger;
-          width: 20%;
-          text-align: center;
-          height: 50px;
-          line-height: 50px;
-        }
-
-        .menu_top>div:hover {
-          cursor: pointer;
-          border-bottom: solid var(--color11);
-        }
-
-        .menu_content1 {
-          padding: 20px;
-        }
-
-        .menu_content2 {
-          padding: 20px;
+        .warning_msg {
           display: none;
-        }
-
-        .menu_content3 {
-          padding: 20px;
-          display: none;
-        }
-
-        .footer {
-          height: 300px;
-          background-color: var(--color1);
-        }
-
-        .carousel img {
+          position: relative;
+          text-align: left;
+          background: #ffffff;
+          line-height: 20px;
           width: 100%;
-          height: 100%;
-        }
-
-        #buy_btn {
-          border: 0;
-          outline: 0;
-          width: 200px;
-          height: 40px;
-          font-size: large;
+          color: red;
           padding: 5px;
-          background-color: black;
-          color: white;
+          box-sizing: border-box;
+          /* border: 1px solid #e0e0e0; */
         }
 
-        #buy_btn:hover {
-          background-color: #9d2622;
-          ;
+        .cmd {
+          text-align: right;
+          padding: 5px;
         }
+ 
+      .carousel_timeline {
+      display: flex;
+      }
 
-        a {
-          text-align: center;
-          text-decoration: none;
-          /* 링크의 밑줄 제거 */
-          color: inherit;
-          /* 링크의 색상 제거 */
-        }
+      .main {
+      height: 1200px;
+      }
 
-        a:hover {
-          color: black;
-          /* 링크의 색상 제거 */
-        }
+      .sidebar {
+      width: 20%;
+      height: 100%;
+      background-color: var(--color3);
+      float: left;
+      }
+
+      .list_title {
+      color: var(--color2);
+      padding-top: 20px;
+      text-align: center;
+      }
+
+      .sidebar_item_list {
+      padding-top: 20px;
+      list-style-type: none;
+      display: flex;
+      flex-direction: column;
+      }
+
+      .sidebar_item {
+      width: 100%;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      text-align: center;
+      }
+
+      .sidebar_item:hover {
+      background-color: var(--color11);
+      }
+
+      .sidebar_item a {
+      font-size: 1rem;
+      text-decoration: none;
+      color: var(--color2);
+      }
+
+      /* 전시 내용 */
+      .contents {
+      width: 80%;
+      height: 100%;
+      float: left;
+      padding-top: 100px;
+      }
+
+      .contents_wrap1 {
+      width: 50%;
+      height: 60%;
+      float: left;
+      }
+
+      .contents_wrap2 {
+      width: 50%;
+      height: 60%;
+      float: left;
+      }
+
+      .contents_wrap2>div {
+      width: 100%;
+      height: 40px;
+      line-height: 40px;
+      /* text-align: center; */
+      font-size: large;
+      margin-bottom: 10px;
+      }
+
+      .contents_wrap2>div>div {
+      width: 50%;
+      height: 40px;
+      line-height: 40px;
+      /* text-align: center; */
+      float: left;
+      padding: 2px;
+      }
+
+      .contents_wrap2>div>div:nth-child(1) {
+      width: 50%;
+      height: 40px;
+      line-height: 40px;
+      /* text-align: center; */
+      float: left;
+      text-align: right;
+      padding-right: 50px;
+      font-weight: 550;
+      }
+
+      .contents_sub1 {
+      width: 100%;
+      height: 50%;
+      text-align: center;
+      padding-top: 40px;
+      padding-left: 50px;
+      }
+
+      .contents_sub2 {
+      width: 100%;
+      height: 50%;
+      padding-left: 70px;
+      }
+
+      #title {
+      width: 100%;
+      height: 15%;
+      text-align: center;
+      font-size: large;
+      font-weight: bolder;
+      padding-top: 5px;
+
+      }
+
+      #map {
+      width: 100%;
+      height: 85%;
+      text-align: center;
+
+      }
+
+      #buy_btn:hover {
+      cursor: pointer;
+      }
+
+      .contents_wrap3 {
+      width: 100%;
+      height: 40%;
+      padding-left: 80px;
+      padding-right: 80px;
+      padding-top: 40px;
+      float: left;
+      }
+
+      .contents_wrap3>div {
+      float: left;
+      width: 100%;
+      }
+
+
+      .menu_top {
+      width: 100%;
+      height: 13%;
+      }
+
+      .menu_top>div {
+      float: left;
+      font-size: larger;
+      width: 20%;
+      text-align: center;
+      height: 50px;
+      line-height: 50px;
+      }
+
+      .menu_top>div:hover {
+      cursor: pointer;
+      border-bottom: solid var(--color11);
+      }
+
+      .menu_content1 {
+      padding: 20px;
+      }
+
+      .menu_content2 {
+      padding: 20px;
+      display: none;
+      }
+
+      .menu_content3 {
+      padding: 20px;
+      display: none;
+      }
+
+      .footer {
+      height: 300px;
+      background-color: var(--color1);
+      }
+
+      .carousel img {
+      width: 100%;
+      height: 100%;
+      }
+
+      #buy_btn {
+      border: 0;
+      outline: 0;
+      width: 200px;
+      height: 40px;
+      font-size: large;
+      padding: 5px;
+      background-color: black;
+      color: white;
+      }
+
+      #buy_btn:hover {
+      background-color: #9d2622;
+      ;
+      }
+
+      a {
+      text-align: center;
+      text-decoration: none;
+      /* 링크의 밑줄 제거 */
+      color: inherit;
+      /* 링크의 색상 제거 */
+      }
+
+      a:hover {
+      color: black;
+      /* 링크의 색상 제거 */
+      }
       </style>
       <style>
         .fContainer {
@@ -480,22 +499,26 @@
         .fLogoContainer {
           height: 100%;
           width: 30%;
-          
+
         }
-        .fLogoContainer>div{
+
+        .fLogoContainer>div {
           height: 50%;
           width: 100%;
         }
-        .fLogo{
+
+        .fLogo {
 
           padding-top: 30px;
           padding-left: 30px;
-          
+
         }
-        .fSiteLogo{
+
+        .fSiteLogo {
           padding-top: 80px;
           padding-left: 120px;
         }
+
         #fLogoImg {
           font-size: 40px;
           color: #ffffff70;
@@ -570,7 +593,7 @@
           width: 23%;
           padding-left: 15px;
           border-right: 1px solid #ffffff70;
-          
+
         }
 
         .companyNum {
@@ -770,7 +793,7 @@
                 </div>
                 <div class="ex_date">
                   <div>날짜 선택</div>
-                  <input id="datepicker" type="date" name="bookDate">
+                  <input type="text" id="choiceDate" autocomplete="off" name="bookDate">
                 </div>
                 <div class="ex_buy">
                   <div>결제가격</div>
@@ -785,8 +808,8 @@
             <div class="contents_wrap3">
               <div class="menu_top">
                 <div id="desc">상세정보</div>
-                <div id="review">이용후기</div>
-                <div id="expect">리뷰 남기기</div>
+                <div id="review">리뷰 남기기</div>
+                <div id="expect">부가 정보</div>
               </div>
               <hr>
               <div class="menu_content1">
@@ -796,22 +819,6 @@
                 상징한다.
               </div>
               <div class="menu_content2">
-                <table>
-                  <tr align=center>
-                    <td width=70%>댓글</td>
-                    <td width=15%>작성자</td>
-                    <td width=15%>평점</td>
-                  </tr>
-                  <c:forEach var="dto" items="${list}">
-                    <tr>
-                      <td align=center>${dto.rv_content }
-                      <td align=center>${dto.rv_mem_id }
-                      <td align=center>${dto.rv_score }
-                    </tr>
-                  </c:forEach>
-                </table>
-              </div>
-              <div class="menu_content3">
                 <div class="wrap">
                   <form name="reviewform" class="reviewform" method="post" action="/writeRv.rvboard" id="frmRv">
                     <input type="hidden" name="rate" id="rate" value="0" />
@@ -843,6 +850,16 @@
                     </div>
                   </form>
                 </div>
+              </div>
+              <div class="menu_content3">
+                <p>
+                <h3>주최 / 후원</h3>
+                국립 현대 미술관/(주)현대 자동차</p>
+                <br>
+                <p>
+                <h3>작가</h3>
+                새로운 질서 그 후...(윤충근, 기예림, 남선미, 이소현, 이지수)<br>
+                더 덕 어몽 어스(신희정, 이가영, 정만근, 손정아)</p>
               </div>
             </div>
           </div>
@@ -898,6 +915,10 @@
         </div>
       </div>
 
+
+      </div>
+
+
       <!-- 예매하기 버튼 클릭 시  -->
       <script>
         $("#buy_btn").on("click", function () {
@@ -911,6 +932,63 @@
             alert("인원을 선택하세요");
             return false;
           }
+
+
+
+          if (!$("#choiceDate").val()) {
+            alert("날짜를 선택하세요");
+            return false;
+          }
+
+          /* 로그아웃 상태 일 때 */
+          let uid = '<%=(String)session.getAttribute("loginId")%>';
+
+          if (uid == "null") {
+            alert("로그인 후 이용가능합니다.");
+            location.replace("/login.jsp");
+            return false;
+          }
+
+          let price = $("#realprice").val();
+
+          let result = confirm(price + "원 결제하시겠습니까?");
+
+          if (result) {
+            $("#frmPrice").submit();
+          }
+        })
+      </script>
+
+      <!-- 리뷰남기기 -->
+      <script>
+        /* 버튼 클릭시 */
+        $("#save").on("click", function () {
+
+          //별점 선택 안했으면 메시지 표시
+          if (rating.rate == 0) {
+            rating.showMessage('rate');
+            return false;
+          }
+          //리뷰 5자 미만이면 메시지 표시
+          if (document.querySelector('.review_textarea').value.length < 5) {
+            rating.showMessage('review');
+            return false;
+          }
+
+
+          /* 로그아웃 상태 일 때 */
+          let uid = '<%=(String)session.getAttribute("loginId")%>';
+
+          if (uid == "null") {
+            alert("로그인 후 이용가능합니다.");
+            location.replace("/login.jsp");
+            return false;
+          } else {
+            alert("현재 기능은 구현 중에 있습니다.");
+          }
+
+
+
 
           if (!$("#datepicker").val()) {
             alert("날짜를 선택하세요");
@@ -1010,11 +1088,95 @@
               //지정된 시간 후 안내 메시지 감춤
               setTimeout(function () {
                 document.querySelector('.review_contents .warning_msg').style.display = 'none';
+
               }, 1000);
               break;
           }
         }
+
+
       </script>
+
+
+
+
+      <!-- 인원수 선택시 -->
+      <script>
+        $("#person").change(function () {
+          /* location.href="/buy.exbuy"; */
+          let price = parseInt($("#price").text());
+          let person = parseInt($("#person option:selected").val());
+          let realpriceInt = price * person;
+          let realprice = realpriceInt.toString();
+          $("#realprice").val(realprice);
+        });
+
+      </script>
+
+      <!-- 상세설명, 리뷰, q&a 클릭에 따른 div 보여주기 코드  -->
+      <script type="text/javascript">
+        /*  상세 정보 클릭 시  */
+        $("#desc").on("click", function () {
+
+          $(".menu_content2").css("display", "none");
+          $(".menu_content3").css("display", "none");
+          $(".menu_content1").css("display", "inline");
+
+        })
+
+        /*  리뷰 클릭 시  */
+        $("#review").on("click", function () {
+
+          $(".menu_content2").css("display", "inline");
+          $(".menu_content3").css("display", "none");
+          $(".menu_content1").css("display", "none");
+
+        })
+
+        /*  qna 클릭 시  */
+        $("#expect").on("click", function () {
+
+          $(".menu_content2").css("display", "none");
+          $(".menu_content3").css("display", "inline");
+          $(".menu_content1").css("display", "none");
+
+        })
+
+        $("#logout").on("click", function () {
+          if (!confirm("로그아웃 하시겠습니까?")) {
+            return false;
+          }
+        })
+
+        $("#basket").on("click", function () {
+          alert("현재 기능은 구현중에 있습니다.");
+          return false;
+        })
+
+      </script>
+
+
+      <!-- 날짜  -->
+      <script type="text/javascript">
+        $(document).ready(function () {
+          $.datepicker.setDefaults($.datepicker.regional['ko']);
+          $("#choiceDate").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            nextText: '다음 달',
+            prevText: '이전 달',
+            dayNames: ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'],
+            dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
+            monthNamesShort: ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'],
+            monthNames: ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'],
+            dateFormat: "yy-MM-dd",
+            minDate: 0,// 선택할수있는 최소날짜, ( 0 : 오늘 이후 날짜 선택 불가)
+            maxDate: new Date('2022-02-06')
+
+          });
+        });
+      </script>
+
 
 
 

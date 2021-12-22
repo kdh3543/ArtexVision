@@ -7,143 +7,17 @@
       <meta charset="UTF-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>전시</title>
+      <title>Artex Vision</title>
       <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
         integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:300,700">
-      <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
       <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
         integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
-      <!-- 이미지 hover기능  -->
-      <style>
-        div.ex_main {
-          font-family: 'Raleway', Arial, sans-serif;
-          position: relative;
-          overflow: hidden;
-          margin: 10px;
-          min-width: 230px;
-          max-width: 315px;
-          width: 100%;
-          color: #ffffff;
-          text-align: left;
-          font-size: 16px;
-          /* background-color: #000000; */
-        }
-
-        div.ex_main * {
-          -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-          -webkit-transition: all 0.35s ease;
-          transition: all 0.35s ease;
-        }
-
-        div.ex_main img {
-          max-width: 100%;
-          backface-visibility: hidden;
-          vertical-align: top;
-        }
-
-        div.ex_main:after,
-        div.ex_main div {
-          position: absolute;
-          top: 40px;
-          bottom: 40px;
-          left: 20px;
-          right: 20px;
-        }
-
-        div.ex_main:after {
-          content: '';
-          background-color: rgba(0, 0, 0, 0.65);
-          -webkit-transition: all 0.35s ease;
-          transition: all 0.35s ease;
-          opacity: 0;
-        }
-
-        div.ex_main div {
-          z-index: 1;
-          padding: 20px;
-        }
-
-        div.ex_main h4,
-        div.ex_main .links {
-          width: 100%;
-          margin: 5px 0;
-          padding: 0;
-        }
-
-        div.ex_main h4 {
-          line-height: 1.1em;
-          font-weight: 700;
-          font-size: 1em;
-          text-transform: uppercase;
-          opacity: 0;
-        }
-
-        div.ex_main p {
-          font-size: 0.8em;
-          font-weight: 300;
-          letter-spacing: 1px;
-          opacity: 0;
-          top: 50%;
-          -webkit-transform: translateY(40px);
-          transform: translateY(40px);
-        }
-
-        div.ex_main i {
-          position: absolute;
-          bottom: 10px;
-          right: 10px;
-          padding: 20px 25px;
-          font-size: 34px;
-          opacity: 0;
-          -webkit-transform: translateX(-10px);
-          transform: translateX(-10px);
-        }
-
-        div.ex_main a {
-          position: absolute;
-          top: 0;
-          bottom: 0;
-          left: 0;
-          right: 0;
-          z-index: 1;
-        }
-
-        div.ex_main:hover img,
-        div.ex_main.hover img {
-          zoom: 1;
-          filter: alpha(opacity=50);
-          -webkit-opacity: 0.5;
-          opacity: 0.5;
-
-
-        }
-
-        div.ex_main:hover:after,
-        div.ex_main.hover:after {
-          opacity: 1;
-          position: absolute;
-          top: 40px;
-          bottom: 40px;
-          left: 20px;
-          right: 20px;
-        }
-
-        div.ex_main:hover h4,
-        div.ex_main.hover h4,
-        div.ex_main:hover p,
-        div.ex_main.hover p,
-        div.ex_main:hover i,
-        div.ex_main.hover i {
-          -webkit-transform: translate(0px, 0px);
-          transform: translate(0px, 0px);
-          opacity: 1;
-        }
-      </style>
-
 
       <style>
         /* 전체 설정 css start */
@@ -170,7 +44,7 @@
         iframe,
         h1,
         h2,
-        h4,
+        h3,
         h4,
         h5,
         h6,
@@ -227,8 +101,8 @@
         canvas,
         details,
         embed,
-        div,
-        div,
+        figure,
+        figcaption,
         footer,
         header,
         hgroup,
@@ -250,9 +124,11 @@
           box-sizing: border-box;
         }
 
-        div {
-          /* border: 1px solid black; */
-        }
+        /*
+    div {
+       border: 1px solid black; 
+    }
+    */
 
         /* 전체 설정 css end */
 
@@ -379,13 +255,8 @@
 
         /* nav end */
 
-
-        .carousel_timeline {
-          display: flex;
-        }
-
         .main {
-          height: 800px;
+          height: 1000px;
         }
 
         .sidebar {
@@ -393,6 +264,64 @@
           height: 100%;
           background-color: var(--color3);
           float: left;
+        }
+
+        .artexvision_introduce_area {
+          width: 85%;
+          height: 100%;
+          float: left;
+          margin-top: 15px;
+        }
+
+        .artexvision_introduce_title {
+          margin-left: 30px;
+
+        }
+
+        .artexvision_introduce_title>div {
+          float: left;
+          margin-right: 5px;
+        }
+
+
+
+        .artexvision_introduce_message {
+          margin-left: 30px;
+          font-size: small;
+        }
+
+        .artexvision_introduce_area>.hr {
+          margin-top: 10px;
+          margin-left: 15px;
+        }
+
+        .artexvision_introduce_message {
+          margin-left: 30px;
+          font-size: small;
+        }
+
+        .artexvision_sitemap>div {
+          float: left;
+          width: 20%;
+          text-align: center;
+        }
+
+        .artexvision_sitemap>div>div:first-child {
+          font-weight: bold;
+        }
+
+        .artexvision_sitemap>div>div:not(first-child) {
+          margin-top: 10px;
+          font-size: small;
+        }
+
+        .artexvision_sitemap>div>div {
+          margin-top: 10px;
+        }
+
+        .artexvision_sitemap {
+          margin-left: 15px;
+          margin-top: 30px;
         }
 
         .list_title {
@@ -416,7 +345,7 @@
         }
 
         .sidebar_item:hover {
-          background-color: var(--color11);
+          background-color: var(--color5);
         }
 
         .sidebar_item a {
@@ -426,11 +355,7 @@
         }
 
         .contents {
-          width: 85%;
-          height: 800px;
-          float: left;
-          padding-left: 50px;
-          padding-right: 50px;
+          width: 80%;
         }
 
         .footer {
@@ -438,50 +363,9 @@
           background-color: var(--color1);
         }
 
-        .carousel img {
-          width: 100%;
-          height: 100%;
+        .card {
+          margin-left: 15px;
         }
-
-        /* 내용부분 */
-
-        .contents_wrap {
-          padding-top: 50px;
-          padding-bottom: 50px;
-          height: 100%;
-        }
-
-        .contents_item1 {
-          width: 100%;
-          height: 350px;
-          /* margin-bottom: 20px; */
-        }
-
-        .contents_item1>div {
-          width: 25%;
-          height: 100%;
-          float: left;
-        }
-
-        .contents_item2 {
-          width: 100%;
-          height: 350px;
-        }
-
-        .contents_item2>div {
-          width: 25%;
-          height: 100%;
-          float: left;
-        }
-
-        .ex_main {
-          width: 100%;
-          height: 348px;
-          text-align: center;
-          padding: 40px 20px;
-          float: left;
-        }
-
 
         a {
           text-align: center;
@@ -494,6 +378,10 @@
         a:hover {
           color: black;
           /* 링크의 색상 제거 */
+        }
+
+        .carousel_timeline {
+          display: flex;
         }
       </style>
       <style>
@@ -509,22 +397,26 @@
         .fLogoContainer {
           height: 100%;
           width: 30%;
-          
+
         }
-        .fLogoContainer>div{
+
+        .fLogoContainer>div {
           height: 50%;
           width: 100%;
         }
-        .fLogo{
+
+        .fLogo {
 
           padding-top: 30px;
           padding-left: 30px;
-          
+
         }
-        .fSiteLogo{
+
+        .fSiteLogo {
           padding-top: 80px;
           padding-left: 120px;
         }
+
         #fLogoImg {
           font-size: 40px;
           color: #ffffff70;
@@ -599,7 +491,7 @@
           width: 23%;
           padding-left: 15px;
           border-right: 1px solid #ffffff70;
-          
+
         }
 
         .companyNum {
@@ -607,7 +499,7 @@
           width: 42%;
           padding-left: 15px;
         }
-      </style>
+        </style>
     </head>
 
     <body>
@@ -650,137 +542,63 @@
         </div>
         <div class="carousel_timeline">
           <div class="carousel">
-            <img src="../img/artex_main_img.png" class="carousel_img">
+            <img src="/exhibition/img/artex_main_img.png" class="carousel_img">
           </div>
         </div>
-
         <div class="main">
           <div class="sidebar">
-            <h2 class="list_title">전시</h2>
+            <h2 class="list_title">Artex Vision</h2>
             <ul class="sidebar_item_list">
-              <li class="sidebar_item"><a href="/exhibition/main_ex/now_main_ex.jsp">현재 전시</a></li>
-              <li class="sidebar_item"><a href="/exhibition/main_ex/future_main_ex.jsp">예정된 전시</a></li>
-              <li class="sidebar_item"><a href="/exhibition/main_ex/end_main_ex.jsp">마감된 전시</a></li>
+              <li class="sidebar_item"><a href="">Artex Vision 소개</a></li>
+              <li class="sidebar_item"><a href="">사이트맵</a></li>
             </ul>
           </div>
+          <div class="artexvision_introduce_area">
+            <div class="artexvision_introduce_title">
+              <div>ArtexVision</div>
+              <div>></div>
+              <div>사이트맵</div>
+            </div><br>
+            <hr class="hr">
+            <div class="artexvision_introduce_message">ArtexVision을 한눈에 확인하세요.</div>
+            <hr class="hr">
 
-          <div class="contents">
-            <div class="contents_wrap">
-              <div style="text-align: center; font-weight:bold; font-size: larger; color: rgb(104, 104, 104);">현재 전시
+            <div class="artexvision_sitemap">
+              <div class="artexvision_sitemap_notice">
+                <div class="artexvision_notice"><a href="/nb_list.board?cpage=1">NOTICE</a></div>
+                <hr class="sitemap_hr">
+                <div class="artexvision_notice_notice"><a href="/nb_list.board?cpage=1">공지사항</a></div>
+                <div class="artexvision_notice_qna"><a href="/qb_list.board?cpage=1">Q&A</a></div>
+                <div class="artexvision_notice_faq"><a href="/board/faq_home.jsp">FAQ</a></div>
               </div>
-              <hr style="width: 200px;">
-              <div class="contents_item1">
-                <div>
-                  <div class="ex_main"><img src="img/hashtag.png" width="100%" height="100%">
-                    <div>
-                      <br>
-                      <h4>프로젝트 해시테그</h4>
-                      <br>
-                      <p>[ 전시 기간 ] <br> 21-11-03 ~ 22-02-06</p>
-                      <br>
-                      <p>[ 장소 ] <br> 국립 현대 미술관</p>
-                    </div>
-                    <a href="/exhibition/now_ex/ex1_desc.jsp"></a>
-                  </div>
+              <div class="artexvision_sitemap_artexvision">
+                <div class="artexvision_artexvision"><a href="/artexDesc/artex_desc.jsp">ArtexVision</a></div>
+                <hr class="sitemap_hr">
+                <div class="artexvision_artexvision_introduce"><a href="/artexDesc/artex_desc.jsp">사이트소개</a></div>
+                <div class="artexvision_artexvision_sitemap"><a href="/artexDesc/artex_sitemap.jsp">사이트맵</a></div>
+              </div>
+              <div class="artexvision_sitemap_exhibition">
+                <div class="artexvision_exhibition"><a href="/exhibition/main_ex/now_main_ex.jsp">전시</a></div>
+                <hr class="sitemap_hr">
+                <div class="artexvision_exhibition_present"><a href="/exhibition/main_ex/now_main_ex.jsp">현재 전시</a>
                 </div>
-                <div>
-                  <div class="ex_main"><img src="img/russian.png" width="100%" height="100%">
-                    <div>
-                      <br>
-                      <h4>러시아 아방가르드</h4>
-                      <br>
-                      <p>[ 전시 기간 ] <br> 21-12-31 ~ 22-04-17</p>
-                      <br>
-                      <p>[ 장소 ] <br> 세종 문화 회관</p>
-                    </div>
-                    <a href="/exhibition/now_ex/ex7_desc.jsp"></a>
-                  </div>
+                <div class="artexvision_exhibition_intended"><a href="/exhibition/main_ex/future_main_ex.jsp">예정된 전시</a>
                 </div>
-                <div>
-                  <div class="ex_main"><img src="img/josun.png" width="100%" height="100%">
-                    <div>
-                      <br>
-                      <h4>조선의 승려 장인</h4>
-                      <br>
-                      <p>[ 전시 기간 ] <br> 21-12-07 ~ 22-03-06</p>
-                      <br>
-                      <p>[ 장소 ] <br> 국립 중앙 박물관</p>
-                    </div>
-                    <a href="/exhibition/now_ex/ex4_desc.jsp"></a>
-                  </div>
-                </div>
-                <div>
-                  <div class="ex_main"><img src="img/chagall.png" width="100%" height="100%">
-                    <div>
-                      <br>
-                      <h4>샤갈 특별전</h4>
-                      <br>
-                      <p>[ 전시 기간 ] <br> 21-11-25 ~ 22-04-10</p>
-                      <br>
-                      <p>[ 장소 ] <br> 마이 아트 뮤지엄</p>
-                    </div>
-                    <a href="/exhibition/now_ex/ex3_desc.jsp"></a>
-                  </div>
+                <div class="artexvision_exhibition_previous"><a href="/exhibition/main_ex/end_main_ex.jsp">마감된 전시</a>
                 </div>
               </div>
-              <div class="contents_item2">
-                <div>
-                  <div class="ex_main"><img src="img/countdown.png" width="100%" height="100%">
-                    <div>
-                      <br>
-                      <h4>중견작가전 COUNTDOWN</h4>
-                      <br>
-                      <p>[ 전시 기간 ] <br> 21-12-03 ~ 21-12-26</p>
-                      <br>
-                      <p>[ 장소 ] <br> 세종 문화 회관</p>
-                    </div>
-                    <a href="/exhibition/now_ex/ex8_desc.jsp"></a>
-                  </div>
-                </div>
-                <div>
-                  <div class="ex_main"><img src="img/love.png" width="100%" height="100%">
-                    <div>
-                      <br>
-                      <h4>연애의 온도 : <br>두 번째 이야기</h4>
-                      <br>
-                      <p>[ 전시 기간 ] <br> 21-09-15 ~ 22-02</p>
-                      <br>
-                      <p>[ 장소 ] <br> 석파정 서울미술관</p>
-                    </div>
-                    <a href="../now_ex/ex5_desc.jsp"></a>
-                  </div>
-                </div>
-                <div>
-                  <div class="ex_main"><img src="img/yosigo.png" width="100%" height="100%">
-                    <div>
-                      <br>
-                      <h4>요시고 사진전</h4>
-                      <br>
-                      <p>[ 전시 기간 ] <br> 21-06-23 ~ 22-03-01</p>
-                      <br>
-                      <p>[ 장소 ] <br> 그라운드 시소</p>
-                    </div>
-                    <a href="../now_ex/ex6_desc.jsp"></a>
-                  </div>
-                </div>
-                <div>
-                  <div class="ex_main"><img src="img/weiwei.png" width="100%" height="100%">
-                    <div>
-                      <br>
-                      <h4>아이 웨이웨이</h4>
-                      <br>
-                      <p>[ 전시 기간 ] <br> 21-12-11 ~ 22-04-17</p>
-                      <br>
-                      <p>[ 장소 ] <br> 국립 현대 미술관</p>
-                    </div>
-                    <a href="../now_ex/ex2_desc.jsp"></a>
-                  </div>
-
-                </div>
+              <div class="artexvision_sitemap_event">
+                <div class="artexvision_event"><a href="/event/now_event/now_event.jsp">Event</a></div>
+                <hr class="sitemap_hr">
+                <div class="artexvision_event_present"><a href="/event/now_event/now_event.jsp">현재 진행중인 이벤트</a></div>
+                <div class="artexvision_event_previous"><a href="/event/end_event/end_event.jsp">종료된 이벤트</a></div>
               </div>
             </div>
+
           </div>
+
         </div>
+
         <div class="footer">
           <div class="fContainer">
             <div class="fLogoContainer">
@@ -828,37 +646,22 @@
             </div>
 
           </div>
-
         </div>
       </div>
 
 
-
-      <!-- hover시 발생하는거 -->
-      <script>
-        $(".hover").mouseleave(
-          function () {
-            $(this).removeClass("hover");
-          }
-        );
-
-        $("#logout").on("click", function () {
-          if (!confirm("로그아웃 하시겠습니까?")) {
-            return false;
-          }
-        })
-
-        $("#basket").on("click", function () {
-          alert("현재 기능은 구현중에 있습니다.");
-          return false;
-        })
-
-      </script>
-
-
     </body>
+    <script>
+      $("#logout").on("click", function () {
+        if (!confirm("로그아웃 하시겠습니까?")) {
+          return false;
+        }
+      })
 
-
-
+      $("#basket").on("click", function () {
+        alert("현재 기능은 구현중에 있습니다.");
+        return false;
+      })
+    </script>
 
     </html>

@@ -16,6 +16,16 @@
       <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
         integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+      <!-- slick cdn 추가 -->
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+      <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+      <!-- 폰트 추가 -->
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap" rel="stylesheet">
+
       <style>
         /* 전체 설정 css start */
         :root {
@@ -134,6 +144,9 @@
         }
 
         /* container end */
+        .container>div {
+          width: 1200px;
+        }
 
 
         /* header start */
@@ -329,7 +342,7 @@
         /* 랭킹 */
         .rank_con {
           width: 100%;
-          height: 500px;
+          height: 630px;
           /*background-color: rgb(243, 243, 243);*/
           padding-top: 40px;
           margin-bottom: 40px;
@@ -363,71 +376,6 @@
           padding: 40px 40px 20px;
         }
 
-        .rank_star {
-          width: 100%;
-        }
-
-        .rank_star>div {
-          width: 20%;
-          height: 100%;
-          float: left;
-          padding: 20px;
-        }
-
-        #star_icon {
-          float: left;
-          width: 50%;
-          text-align: center;
-        }
-
-        #score {
-          float: left;
-          width: 50%;
-          font-weight: bolder;
-          font-size: x-large;
-          text-align: center;
-          padding-right: 50px;
-        }
-
-        /* 리뷰 */
-        .review_con {
-          width: 100%;
-          height: 500px;
-          background-color: white;
-          margin-bottom: 40px;
-        }
-
-        .review_title {
-          width: 100%;
-          height: 50px;
-          line-height: 50px;
-          font-size: x-large;
-          padding-left: 40px;
-          margin-bottom: 10px;
-          font-weight: bolder;
-          text-align: center;
-        }
-
-        .review_txt {
-          width: 100%;
-          height: 350px;
-        }
-
-        .review_txt>div {
-          float: left;
-          width: 25%;
-          height: 100%;
-          /* border: 1px solid red; */
-          padding: 50px;
-        }
-
-        .review_foot {
-          width: 100%;
-          height: 50px;
-          text-align: right;
-          padding-right: 30px;
-          padding-top: 10px;
-        }
 
         /* 이벤트 */
         .event_con {
@@ -490,7 +438,79 @@
           color: black;
           /* 링크의 색상 제거 */
         }
+
+        /* 랭킹 프론트 */
+        /*post slider*/
+        .post-slider {
+          width: 100%;
+          margin: 0px auto;
+          position: relative;
+          height: 100%;
+        }
+
+        .post-slider .silder-title {
+          text-align: center;
+          margin: 30px auto;
+        }
+
+        .post-slider .next {
+          position: absolute;
+          top: 50%;
+          right: 30px;
+          font-size: 2em;
+          color: gray;
+          cursor: pointer;
+        }
+
+        .post-slider .prev {
+          position: absolute;
+          top: 50%;
+          left: 30px;
+          font-size: 2em;
+          color: gray;
+          cursor: pointer;
+        }
+
+        .post-slider .post-wrapper {
+
+          width: 84%;
+          height: 100%;
+          margin: 0px auto;
+          overflow: hidden;
+          padding: 30px 0px 10px 0px;
+        }
+
+        .post-slider .post-wrapper .post {
+          width: 300px;
+          height: 100%;
+          margin: 0px 10px;
+          display: inline-block;
+          background: white;
+          border-radius: 5px;
+        }
+
+        .post-slider .post-wrapper .post .post-info {
+          font-size: 15px;
+          height: 350%;
+          padding-left: 10px;
+          margin-top: 10px;
+          text-align: center;
+          font-family: 'Noto Sans KR', sans-serif;
+        }
+
+        .post-slider .post-wrapper .post .slider-image {
+          width: 100%;
+          height: 350px;
+          border-top-left-radius: 5px;
+          border-top-right-radius: 5px;
+        }
+
+        h4 {
+          font-family: 'Noto Sans KR', sans-serif;
+          font-size: 20px;
+        }
       </style>
+
       <style>
         .fContainer {
           width: 100%;
@@ -607,6 +627,108 @@
           padding-left: 15px;
         }
       </style>
+
+      <!-- 이미지 hover 효과 -->
+      <style>
+        div.snip1283 {
+          font-family: 'Raleway', Arial, sans-serif;
+          color: #fff;
+          position: relative;
+          overflow: hidden;
+          margin: 10px;
+          min-width: 225px;
+          max-width: 225px;
+          max-height: 200px;
+          width: 100%;
+          color: #ffffff;
+          text-align: left;
+          background-color: #07090c;
+          font-size: 16px;
+          -webkit-perspective: 50em;
+          perspective: 50em;
+        }
+
+        div.snip1283 * {
+          -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+          -webkit-transition: all 0.6s ease;
+          transition: all 0.6s ease;
+        }
+
+        div.snip1283 img {
+          opacity: 1;
+          width: 100%;
+          -webkit-transform-origin: 50% 0%;
+          -ms-transform-origin: 50% 0%;
+          transform-origin: 50% 0%;
+        }
+
+        div.snip1283 div {
+          position: absolute;
+          top: 0;
+          left: 0;
+          bottom: 0;
+          width: 100%;
+          -webkit-transform: rotateX(90deg);
+          transform: rotateX(90deg);
+          -webkit-transform-origin: 50% 100%;
+          -ms-transform-origin: 50% 100%;
+          transform-origin: 50% 100%;
+          z-index: 1;
+          opacity: 0;
+          padding: 20px 30px;
+        }
+
+        div.snip1283 h3,
+        div.snip1283 p {
+          line-height: 1.5em;
+        }
+
+        div.snip1283 h3 {
+          margin: 0;
+          font-weight: 800;
+          text-transform: uppercase;
+          font-size: 15px;
+        }
+
+        div.snip1283 p {
+          font-size: 0.8em;
+          font-weight: 500;
+          margin: 0 0 15px;
+        }
+
+        div.snip1283 .read-more {
+          border: 2px solid #ffffff;
+          padding: 0.5em 1em;
+          font-size: 0.8em;
+          text-decoration: none;
+          color: #ffffff;
+          display: inline-block;
+        }
+
+        div.snip1283 .read-more:hover {
+          background-color: #ffffff;
+          color: #000000;
+        }
+
+        div.snip1283:hover img,
+        div.snip1283.hover img {
+          -webkit-transform: rotateX(-90deg);
+          transform: rotateX(-90deg);
+          opacity: 0;
+          cursor: pointer;
+        }
+
+        div.snip1283:hover div,
+        div.snip1283.hover div {
+          -webkit-transform: rotateX(0deg);
+          transform: rotateX(0deg);
+          opacity: 1;
+          -webkit-transition-delay: 0.2s;
+          transition-delay: 0.2s;
+        }
+      </style>
+
     </head>
 
     <body>
@@ -661,13 +783,13 @@
               <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                   <div class="carousel-item active" data-bs-interval="5000">
-                    <img src="img/event_main1.png" class="d-block w-100" alt="이벤트1">
+                    <img src="img/main_slide3.png" class="d-block w-100" alt="이벤트1">
                   </div>
                   <div class="carousel-item" data-bs-interval="5000">
-                    <img src="img/event_main2.png" class="d-block w-100" alt="이벤트2">
+                    <img src="img/main_slide1.png" class="d-block w-100" alt="이벤트2">
                   </div>
                   <div class="carousel-item">
-                    <img src="img/event_main3.png" class="d-block w-100" alt="이벤트3">
+                    <img src="img/main_slide2.png" class="d-block w-100" alt="이벤트3">
                   </div>
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval"
@@ -687,29 +809,94 @@
           <div class="exhibition_con">
             <div class="ex_title">전시회 안내&nbsp <span>Exhibition</span></div>
             <hr>
+            <br>
             <div class="ex_intro">
               <div class="ex_intro_top">
-                <div><a href="../exhibition/now_ex/ex2_desc.jsp"><img src="img/main_weiwei.png" width="90%"
-                      height="100%"></a></div>
-                <div><a href="../exhibition/now_ex/ex8_desc.jsp"><img src="img/main_countdown.png" width="90%"
-                      height="100%"></a></div>
-                <div><a href="../exhibition/now_ex/ex5_desc.jsp"><img src="img/main_love.png" width="90%"
-                      height="100%"></a></div>
-                <div><a href="../exhibition/now_ex/ex3_desc.jsp"><img src="img/main_shagall.png" width="90%"
-                      height="100%"></a></div>
+                <div>
+                  <div class="snip1283">
+                    <img src="img/main_weiwei.png" width="90%" height="100%">
+                    <div>
+                      <h3>아이 웨이웨이</h3>
+                      <p>[ 전시 기간 ] <br> 21-12-11 ~ 22-04-17<br>[ 장소 ] <br> 국립 현대 미술관</p><a
+                        href="/exhibition/now_ex/ex2_desc.jsp" class="read-more">More</a>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <div class="snip1283">
+                    <img src="img/main_cd.png" width="100%" height="100%">
+                    <div>
+                      <h3>중견작가전</h3>
+                      <p>[ 전시 기간 ] <br> 21-12-03 ~ 21-12-26<br>[ 장소 ] <br> 세종 문화 회관</p><a
+                        href="/exhibition/now_ex/ex8_desc.jsp" class="read-more">More</a>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <div class="snip1283">
+                    <img src="img/main_lo.png" width="90%" height="100%">
+                    <div>
+                      <h3>연애의 온도 </h3>
+                      <p>[ 전시 기간 ] <br> 21-09-15 ~ 22-02<br>[ 장소 ] <br> 석파정 서울미술관</p><a
+                        href="/exhibition/now_ex/ex5_desc.jsp" class="read-more">More</a>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <div class="snip1283">
+                    <img src="img/main_cha.png" width="90%" height="100%">
+                    <div>
+                      <h3>샤갈 특별전</h3>
+                      <p>[ 전시 기간 ] <br> 21-11-25 ~ 22-04-10<br>[ 장소 ] <br> 마이 아트 뮤지엄</p><a
+                        href="/exhibition/now_ex/ex3_desc.jsp" class="read-more">More</a>
+                    </div>
+                  </div>
+                </div>
               </div>
               <div class="ex_intro_bottom">
-                <div><a href="../exhibition/now_ex/ex6_desc.jsp"><img src="img/main_yosigo.png" width="90%"
-                      height="100%"></a></div>
-                <div><a href="../exhibition/now_ex/ex4_desc.jsp"><img src="img/main_josun.png" width="90%"
-                      height="100%"></a></div>
-                <div><a href="../exhibition/now_ex/ex7_desc.jsp"><img src="img/main_russian.png" width="90%"
-                      height="100%"></a></div>
-                <div><a href="../exhibition/now_ex/ex1_desc.jsp"><img src="img/main_hashtag.png" width="90%"
-                      height="100%"></a></div>
+                <div>
+                  <div class="snip1283">
+                    <img src="img/main_yo.png" width="90%" height="100%">
+                    <div>
+                      <h3>요시고 사진전</h3>
+                      <p>[ 전시 기간 ] <br> 21-06-23 ~ 22-03-01<br>[ 장소 ] <br> 그라운드 시소</p><a
+                        href="/exhibition/now_ex/ex6_desc.jsp" class="read-more">More</a>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <div class="snip1283">
+                    <img src="img/main_jo.png" width="90%" height="100%">
+                    <div>
+                      <h3>조선의 승려 장인</h3>
+                      <p>[ 전시 기간 ] <br> 21-12-07 ~ 22-03-06<br>[ 장소 ] <br> 국립 중앙 박물관</p><a
+                        href="/exhibition/now_ex/ex4_desc.jsp" class="read-more">More</a>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <div class="snip1283">
+                    <img src="img/main_ru.png" width="90%" height="100%">
+                    <div>
+                      <h3>러시아 아방가르드</h3>
+                      <p>[ 전시 기간 ] <br> 21-12-31 ~ 22-04-17<br>[ 장소 ] <br> 세종 문화 회관</p><a
+                        href="/exhibition/now_ex/ex7_desc.jsp" class="read-more">More</a>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <div class="snip1283">
+                    <img src="img/main_ha.png" width="90%" height="100%">
+                    <div>
+                      <h3>프로젝트 해시태그</h3>
+                      <p>[ 전시 기간 ] <br> 21-11-03 ~ 22-02-06<br>[ 장소 ] <br> 국립 현대 미술관</p><a
+                        href="/exhibition/now_ex/ex1_desc.jsp" class="read-more">More</a>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-            <a href="../exhibition/main_ex/now_main_ex.jsp">
+            <a href="/exhibition/main_ex/now_main_ex.jsp">
               <div class="more">더 보기 <span style="color:gray"><i class="fas fa-angle-double-right"></i></span></div>
             </a>
           </div>
@@ -717,84 +904,101 @@
 
           <!-- 별점, 순위 파트 -->
           <div class="rank_con">
-            <div class="rank_title">랭킹&nbsp <span>Ranking</span></div>
-            <hr>
-            <div class="rank_img">
-              <div><a href=""><img src="img/rank_img.png" width="100%" height="100%"></a></div>
-              <div><a href=""><img src="img/rank_img.png" width="100%" height="100%"></a></div>
-              <div><a href=""><img src="img/rank_img.png" width="100%" height="100%"></a></div>
-              <div><a href=""><img src="img/rank_img.png" width="100%" height="100%"></a></div>
-              <div><a href=""><img src="img/rank_img.png" width="100%" height="100%"></a></div>
+            <div class="page-wrapper" style="position:relative;">
+              <!--page slider -->
+              <div class="post-slider">
+                <!-- <h1 class="silder-title">Trending Posts</h1> -->
+                <div class="rank_title">랭킹&nbsp <span>Ranking</span></div>
+                <hr><br>
+                <i class="fas fa-chevron-left prev"></i>
+                <i class="fas fa-chevron-right next"></i>
+                <div class="post-wrapper">
+                  <div class="post">
+                    <img src="img/rk_chagall.png" class="slider-image">
+                    <div class="post-info">
+                      <h4><a href="/exhibition/now_ex/ex3_desc.jsp" class="post-subject"> 샤갈 특별전 </a></h4>
+                      <br>
+                      <i class="far fa-star fa-lg" style="height:10%;">&nbsp 4.6</i>
+                    </div>
+                  </div>
+                  <div class="post">
+                    <img src="img/rk_love.png" class="slider-image">
+                    <div class="post-info">
+                      <h4><a href="/exhibition/now_ex/ex5_desc.jsp"> 연애의 온도 : 두번째 이야기 </a></h4>
+                      <br>
+                      <i class="far fa-star fa-lg" style="height:10%;">&nbsp 4.43</i>
+                    </div>
+                  </div>
+                  <div class="post">
+                    <img src="img/rk_josun.png" class="slider-image">
+                    <div class="post-info">
+                      <h4><a href="/exhibition/now_ex/ex4_desc.jsp"> 조선의 승려 장인 </a></h4>
+                      <br>
+                      <i class="far fa-star fa-lg" style="height:10%;">&nbsp 4.12</i>
+                    </div>
+                  </div>
+                  <div class="post">
+                    <img src="img/rk_wei.png" class="slider-image">
+                    <div class="post-info">
+                      <h4><a href="/exhibition/now_ex/ex2_desc.jsp">아이 웨이웨이</a></h4>
+                      <br>
+                      <i class="far fa-star fa-lg" style="height:10%;">&nbsp 3.89</i>
+                    </div>
+                  </div>
+                  <div class="post">
+                    <img src="img/rk_russian.png" class="slider-image">
+                    <div class="post-info">
+                      <h4><a href="/exhibition/now_ex/ex7_desc.jsp">러시아 아방가르드</a></h4>
+                      <br>
+                      <i class="far fa-star fa-lg" style="height:10%;">&nbsp 3.7</i>
+                    </div>
+                  </div>
+                  <div class="post">
+                    <img src="img/rk_hash.png" class="slider-image">
+                    <div class="post-info">
+                      <h4><a href="/exhibition/now_ex/ex1_desc.jsp">프로젝트 해시테그</a></h4>
+                      <br>
+                      <i class="far fa-star fa-lg" style="height:10%;">&nbsp 3.58</i>
+                    </div>
+                  </div>
+                  <div class="post">
+                    <img src="img/rk_yosigo.png" class="slider-image">
+                    <div class="post-info">
+                      <h4><a href="/exhibition/now_ex/ex6_desc.jsp">요시고 사진전</a></h4>
+                      <br>
+                      <i class="far fa-star fa-lg" style="height:10%;">&nbsp 3.43</i>
+                    </div>
+                  </div>
+                  <div class="post">
+                    <img src="img/rk_countdown.png" class="slider-image">
+                    <div class="post-info">
+                      <h4><a href="/exhibition/now_ex/ex8_desc.jsp">중견작가전 COUNTDOWN</a></h4>
+                      <br>
+                      <i class="far fa-star fa-lg" style="height:10%;">&nbsp 3.18</i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--post slider-->
             </div>
-            <div class="rank_star">
-              <div>
-                <div id="star_icon">
-                  <i class="fas fa-star fa-2x"></i>
-                </div>
-                <div id="score"> 4.5 </div>
-              </div>
-              <div>
-                <div id="star_icon">
-                  <i class="fas fa-star  fa-2x"></i>
-                </div>
-                <div id="score"> 4.5 </div>
-              </div>
-              <div>
-                <div id="star_icon">
-                  <i class="fas fa-star fa-2x"></i>
-                </div>
-                <div id="score"> 4.5 </div>
-              </div>
-              <div>
-                <div id="star_icon">
-                  <i class="fas fa-star fa-2x"></i>
-                </div>
-                <div id="score"> 4.5 </div>
-              </div>
-              <div>
-                <div id="star_icon">
-                  <i class="fas fa-star fa-2x"></i>
-                </div>
-                <div id="score"> 4.5 </div>
-              </div>
-            </div>
-
           </div>
 
 
-          <!--             리뷰 파트는 이미 상세 페이지에 있어서  필요없다 판단!!!!
-            <div class="review_con">
-                <div class="review_title">리뷰 Review </div>
-                <div class="review_txt">
-                    <div>리뷰1
-                        <div>작성자 아이디</div>
-                    </div>
-                    <div>리뷰2
-                        <div>작성자 아이디</div>
-                    </div>
-                    <div>리뷰3
-                        <div>작성자 아이디</div>
-                    </div>
-                    <div>리뷰4
-                        <div>작성자 아이디</div>
-                    </div>
-                </div>
-                <div class="review_foot">
-                    <button type="button" class="btn btn-danger">리뷰 남기러 가기</button>
-                </div>
-            </div>
- -->
 
           <!-- 이벤트 파트 -->
           <div class="evnet_con">
             <div class="event_title">이벤트&nbsp <span>Event</span>
+              <br>
               <!-- <a href=""><span style="color:black"><i class="fas fa-angle-double-right"></i></span></a> -->
             </div>
             <hr>
             <div class="event_img">
-              <div><a href=""><img src="img/event_main1.png" width="100%" height="100%"></a></div>
-              <div><a href=""><img src="img/event_main2.png" width="100%" height="100%"></a></div>
-              <div><a href=""><img src="img/event_main3.png" width="100%" height="100%"></a></div>
+              <div><a href="/event/now_event/now_event.jsp"><img src="img/event_main1.png" width="100%"
+                    height="100%"></a></div>
+              <div><a href="/event/now_event/now_event.jsp"><img src="img/event_main2.png" width="100%"
+                    height="100%"></a></div>
+              <div><a href="/event/now_event/now_event.jsp"><img src="img/event_main3.png" width="100%"
+                    height="100%"></a></div>
             </div>
           </div>
 
@@ -868,6 +1072,29 @@
         return false;
       })
 
+    </script>
+
+
+
+    <!-- 랭킹 슬라이더 slick -->
+    <script>
+      $('.post-wrapper').slick({
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 2000,
+        nextArrow: $('.next'),
+        prevArrow: $('.prev'),
+      });
+    </script>
+
+    <!-- 이미지 호버 효과 -->
+    <script>
+      $(".hover").mouseleave(
+        function () {
+          $(this).removeClass("hover");
+        }
+      );
     </script>
 
     </html>

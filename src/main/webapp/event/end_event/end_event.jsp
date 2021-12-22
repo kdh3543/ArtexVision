@@ -261,7 +261,6 @@
 
         .main {
           height: 800px;
-          margin-top: 15px;
         }
 
         .sidebar {
@@ -377,6 +376,10 @@
           /* 링크의 색상 제거 */
         }
 
+        #carousel_img{
+          width: 100%;
+          height: 100%;
+        }
         .carousel_timeline {
           display: flex;
         }
@@ -539,7 +542,7 @@
         </div>
         <div class="carousel_timeline">
           <div class="carousel">
-            <img src="/exhibition/img/artex_main_img.png" class="carousel_img">
+            <img src="/exhibition/img/artex_main_img.png" class="carousel_img" id="carousel_img">
           </div>
         </div>
 
@@ -564,38 +567,39 @@
               <div class="event_expired">
                 <div class="event">
                   <div class="event_photo">
-                    <img src="/event/img/event_main1.png">
+                    <img src="/event/img/end_event1.png">
                   </div><br>
-                  <div class="event_desc_title"><b>크리스마스 이벤트</b></div>
-                  <div class="event_desc_content" style="font-size: small;">2021.12.13~2021.12.25</div>
+                  <div class="event_desc_title"><b>SUMMER 이벤트</b></div>
+                  <div class="event_desc_content" style="font-size: small;">2021.7.18~2021.8.31</div>
                 </div>
                 <div class="event">
                   <div class="event_photo">
-                    <img src="/event/img/event_main2.png">
+                    <img src="/event/img/end_event2.png">
                   </div><br>
-                  <div class="event_desc_title"><b>신규회원가입 이벤트</b></div>
-                  <div class="event_desc_content" style="font-size: small;">2021.12.13~</div>
+                  <div class="event_desc_title"><b>할로윈 이벤트</b></div>
+                  <div class="event_desc_content" style="font-size: small;">2021.10.01~2021.10.31</div>
                 </div>
               </div>
               <div class="event_expired">
                 <div class="event">
                   <div class="event_photo">
-                    <img src="/event/img/event_main3.png">
+                    <img src="/event/img/end_event3.png">
                   </div><br>
-                  <div class="event_desc_title"><b>추가 마일리지 적립 이벤트</b></div>
-                  <div class="event_desc_content" style="font-size: small;">2021.12.13~2021.12.31</div>
+                  <div class="event_desc_title"><b>스타벅스 할인쿠폰 이벤트</b></div>
+                  <div class="event_desc_content" style="font-size: small;">2021.11.1~2021.11.30</div>
                 </div>
               </div>
-            </div>
 
+            </div>
           </div>
+          
         </div>
         <div class="footer">
           <div class="fContainer">
             <div class="fLogoContainer">
               <div class="fLogo">
                 <i class="fab fa-artstation" id="fLogoImg"> Artex Vision</i>
-
+  
               </div>
               <div class="fSiteLogo">
                 <a href="https://www.instagram.com/?hl=ko"><i class="fab fa-instagram" id="insta"></i></a>
@@ -635,16 +639,18 @@
                 <div class="exhNum">02-395-0010</div>
               </div>
             </div>
-
+  
           </div>
         </div>
+      
       </div>
 
     </body>
     <script>
       $("#basket").on("click", function () {
-          alert("현재 기능은 구현중에 있습니다.");
-          return false;
-        })
+        alert("현재 기능은 구현중에 있습니다.");
+        return false;
+      })
     </script>
+
     </html>

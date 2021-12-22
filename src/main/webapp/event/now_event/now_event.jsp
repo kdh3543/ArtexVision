@@ -261,7 +261,7 @@
 
         .main {
           height: 800px;
-          margin-top: 15px;
+
         }
 
         .sidebar {
@@ -339,9 +339,6 @@
           margin-left: 30px;
         }
 
-        .carousel_timeline {
-          margin: 30px;
-        }
 
         .event_present_list {
           margin-left: 30px;
@@ -362,6 +359,10 @@
         img {
           width: 95%;
           height: 95%;
+        }
+        #carousel_img{
+          width: 100%;
+          height: 100%;
         }
 
         img:hover {
@@ -551,7 +552,7 @@
         </div>
         <div class="carousel_timeline">
           <div class="carousel">
-            <img src="/exhibition/img/artex_main_img.png" class="carousel_img">
+            <img src="/exhibition/img/artex_main_img.png" class="carousel_img" id="carousel_img">
           </div>
         </div>
 
@@ -655,4 +656,10 @@
 
     </body>
 
+    <script>
+      $("#basket").on("click", function () {
+          alert("현재 기능은 구현중에 있습니다.");
+          return false;
+        })
+    </script>
     </html>

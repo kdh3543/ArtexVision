@@ -683,7 +683,7 @@
                       <br>
                       <p>[ 장소 ] <br> 국립 중앙 미술관</p>
                     </div>
-                    <a href="../future_ex/ex13_desc.jsp"></a>
+                    <a href="/exhibition/future_ex/ex13_desc.jsp"></a>
                   </div>
                 </div>
                 <div>
@@ -696,7 +696,7 @@
                       <br>
                       <p>[ 장소 ] <br> 예술의 전당</p>
                     </div>
-                    <a href="../future_ex/ex14_desc.jsp"></a>
+                    <a href="/exhibition/future_ex/ex14_desc.jsp"></a>
                   </div>
                 </div>
 

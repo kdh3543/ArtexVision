@@ -615,13 +615,15 @@ a:hover {
 						<div>${nb_navi }</div>
 					</div>
 				</div>
-				<form action="/nb_search.board" id="frmSearch">
+				<form action="/nb_list.board" id="frmSearch">
+				<input type=hidden name="cpage" value=1>
 				<div class="board_nb_search_area">
 					<select id="searchOption" name="searchOption">
-						<option name="searchTitle">제목</option>
-						<option name="searchId">아이디</option>
-					</select> <input type=text placeholder="검색어를 입력하세요" class="board_nb_search">
-					<input type=button value="검색" class="board_nb_search_btn" onclick="search();">
+						<option name="searchTitle" value="nb_title">제목</option>
+						<option name="searchId" value="nb_mem_id">아이디</option>
+					</select>
+					<input type=text placeholder="검색어를 입력하세요" name="searchText" class="board_nb_search">
+					<button type=submit class="board_nb_search_btn">검색
 				</div>
 				</form>
 			</div>
@@ -680,16 +682,6 @@ a:hover {
 	
 	
 	<script>
-		function search(){
-			let searchOption = document.getElementById("searchOption");
-			let searchOptionIndex = document.getElementById("searchOption").options.selectedIndex;
-			
-			if(searchOption.options[searchOptionIndex].value != ""){
-
-				$("#frmSearch").submit();
-			}
-			console.log("선택된 옵션 : " + searchOption.options[searchOptionIndex].value);
-		}
 		$("#logout").on("click", function () {
 	          if (!confirm("로그아웃 하시겠습니까?")) {
 	            return false;

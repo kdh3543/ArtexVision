@@ -36,6 +36,81 @@
           --color11: #9d2622;
         }
 
+        a:hover {
+          color: black;
+          /* 링크의 색상 제거 */
+        }
+      </style>
+
+      <!-- 리뷰 css  -->
+      <style>
+        /* 레이아웃 외곽 너비 400px 제한*/
+        .wrap {
+          max-width: 100%;
+          margin: 0 auto;
+          /* 화면 가운데로 */
+          background-color: #fff;
+          height: 30%;
+          /*  padding: 20px; */
+          box-sizing: border-box;
+
+        }
+
+        .reviewform textarea {
+          width: 100%;
+          padding: 10px;
+          box-sizing: border-box;
+        }
+
+        .rating .rate_radio {
+          position: relative;
+          display: inline-block;
+          z-index: 20;
+          opacity: 0.001;
+          width: 30px;
+          height: 30px;
+          background-color: #fff;
+          cursor: pointer;
+          vertical-align: top;
+          display: none;
+        }
+
+        .rating .rate_radio+label {
+          position: relative;
+          display: inline-block;
+          margin-left: -4px;
+          z-index: 10;
+          width: 30px;
+          height: 30px;
+          background-image: url('../img/starrate.png');
+          background-repeat: no-repeat;
+          background-size: 30px 30px;
+          cursor: pointer;
+          background-color: #f0f0f0;
+        }
+
+        .rating .rate_radio:checked+label {
+          background-color: rgb(255, 60, 0);
+        }
+
+        .warning_msg {
+          display: none;
+          position: relative;
+          text-align: left;
+          background: #ffffff;
+          line-height: 20px;
+          width: 100%;
+          color: red;
+          padding: 5px;
+          box-sizing: border-box;
+          /* border: 1px solid #e0e0e0; */
+        }
+
+        .cmd {
+          text-align: right;
+          padding: 5px;
+        }
+
         html,
         body,
         div,
@@ -474,22 +549,26 @@
         .fLogoContainer {
           height: 100%;
           width: 30%;
-          
+
         }
-        .fLogoContainer>div{
+
+        .fLogoContainer>div {
           height: 50%;
           width: 100%;
         }
-        .fLogo{
+
+        .fLogo {
 
           padding-top: 30px;
           padding-left: 30px;
-          
+
         }
-        .fSiteLogo{
+
+        .fSiteLogo {
           padding-top: 80px;
           padding-left: 120px;
         }
+
         #fLogoImg {
           font-size: 40px;
           color: #ffffff70;
@@ -564,7 +643,7 @@
           width: 23%;
           padding-left: 15px;
           border-right: 1px solid #ffffff70;
-          
+
         }
 
         .companyNum {
@@ -674,7 +753,7 @@
                 </div>
                 <div class="ex_date">
                   <div>날짜 선택</div>
-                  <input id="datepicker" type="date" name="bookDate">
+                  <input type="text" id="choiceDate" autocomplete="off" name="bookDate">
                 </div>
                 <div class="ex_buy">
                   <div>결제가격</div>
@@ -689,8 +768,8 @@
             <div class="contents_wrap3">
               <div class="menu_top">
                 <div id="desc">상세정보</div>
-                <div id="review">이용후기</div>
-                <div id="expect">기대평</div>
+                <div id="review">리뷰 남기기</div>
+                <div id="expect">부가 정보</div>
               </div>
               <hr>
               <div class="menu_content1">
@@ -703,15 +782,54 @@
                 낯선 곳에서 밀려오는 해 질 녘 쓸쓸함을 떨쳐내고 늘 떠나던 발자국을 따라가 봅니다. 그들이 남긴 상과 그림 앞에서 따뜻함과 평온함을 느껴 보시기 바랍니다.
               </div>
               <div class="menu_content2">
-                리뷰입니다.
+                <div class="wrap">
+                  <form name="reviewform" class="reviewform" method="post" action="/writeRv.rvboard" id="frmRv">
+                    <input type="hidden" name="rate" id="rate" value="0" />
+                    <!-- <p class="title_star">별점과 리뷰를 남겨주세요.</p> -->
+
+                    <div class="review_rating">
+                      <div class="warning_msg">별점을 선택해 주세요.</div>
+                      <div class="rating">
+                        <!-- 해당 별점을 클릭하면 해당 별과 그 왼쪽의 모든 별의 체크박스에 checked 적용 -->
+                        <input type="checkbox" name="rating" id="rating1" value="1" class="rate_radio" title="1점">
+                        <label for="rating1"></label>
+                        <input type="checkbox" name="rating" id="rating2" value="2" class="rate_radio" title="2점">
+                        <label for="rating2"></label>
+                        <input type="checkbox" name="rating" id="rating3" value="3" class="rate_radio" title="3점">
+                        <label for="rating3"></label>
+                        <input type="checkbox" name="rating" id="rating4" value="4" class="rate_radio" title="4점">
+                        <label for="rating4"></label>
+                        <input type="checkbox" name="rating" id="rating5" value="5" class="rate_radio" title="5점">
+                        <label for="rating5"></label>
+                      </div>
+                    </div>
+                    <div class="review_contents">
+                      <div class="warning_msg">5자 이상으로 작성해 주세요.</div>
+                      <textarea rows="10" class="review_textarea" name="re_contents"></textarea>
+                    </div>
+                    <div class="cmd">
+                      <button name="save" id="save" type="button">등록</button>
+                      <!-- <input type="button" name="save" id="save" value="등록"> -->
+                    </div>
+                  </form>
+                </div>
               </div>
               <div class="menu_content3">
-                기대평입니다.
+                <p>
+                <h3>기획사 정보</h3>
+                주최: 국립중앙박물관<br>
+                주관: 국립박물관문화재단<br>
+                문의: 1688-0361</p>
+                <br>
+                <p>
+                <h3>공연시간 정보</h3>
+                예매가능시간: 관람 10분 전까지<br>
+                월,화,목,금,일 10:00~18:00 (마지막 회차 17:00, 발권 및 입장 마감 17:30)<br>
+                수,토 10:00~21:00 (마지막 회차 20:00, 발권 및 입장 마감 20:30)</p>
               </div>
             </div>
           </div>
         </div>
-
         <div class="footer">
           <div class="fContainer">
             <div class="fLogoContainer">
@@ -762,6 +880,7 @@
         </div>
       </div>
       <!-- 예매하기 버튼 클릭 시  -->
+
       <script>
         $("#buy_btn").on("click", function () {
 
@@ -775,11 +894,19 @@
             return false;
           }
 
-          if (!$("#datepicker").val()) {
+          if (!$("#choiceDate").val()) {
             alert("날짜를 선택하세요");
             return false;
           }
 
+          /* 로그아웃 상태 일 때 */
+          let uid = '<%=(String)session.getAttribute("loginId")%>';
+
+          if (uid == "null") {
+            alert("로그인 후 이용가능합니다.");
+            location.replace("/login.jsp");
+            return false;
+          }
 
           let price = $("#realprice").val();
 
@@ -788,6 +915,40 @@
           if (result) {
             $("#frmPrice").submit();
           }
+        })
+      </script>
+
+      <!-- 리뷰남기기 -->
+      <script>
+        /* 버튼 클릭시 */
+        $("#save").on("click", function () {
+
+          //별점 선택 안했으면 메시지 표시
+          if (rating.rate == 0) {
+            rating.showMessage('rate');
+            return false;
+          }
+          //리뷰 5자 미만이면 메시지 표시
+          if (document.querySelector('.review_textarea').value.length < 5) {
+            rating.showMessage('review');
+            return false;
+          }
+
+
+          /* 로그아웃 상태 일 때 */
+          let uid = '<%=(String)session.getAttribute("loginId")%>';
+
+          if (uid == "null") {
+            alert("로그인 후 이용가능합니다.");
+            location.replace("/login.jsp");
+            return false;
+          } else {
+            alert("현재 기능은 구현 중에 있습니다.");
+          }
+
+
+
+
         })
       </script>
 
@@ -897,6 +1058,7 @@
         /*  상세 정보 클릭 시  */
         $("#desc").on("click", function () {
 
+
           $(".menu_content2").css("display", "none");
           $(".menu_content3").css("display", "none");
           $(".menu_content1").css("display", "inline");
@@ -936,20 +1098,26 @@
 
 
 
-      <!--  날짜  -->
-      <script>
-        var picker = new Pikaday({
-          field: document.getElementById('datepicker'),
-          format: 'yyyy-MM-dd',
-          toString(date, format) {
-            let day = ("0" + date.getDate()).slice(-2);
-            let month = ("0" + (date.getMonth() + 1)).slice(-2);
-            let year = date.getFullYear();
-            return `${year}-${month}-${day}`;
-          }
+      <!-- 날짜  -->
+      <script type="text/javascript">
+        $(document).ready(function () {
+          $.datepicker.setDefaults($.datepicker.regional['ko']);
+          $("#choiceDate").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            nextText: '다음 달',
+            prevText: '이전 달',
+            dayNames: ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'],
+            dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
+            monthNamesShort: ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'],
+            monthNames: ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'],
+            dateFormat: "yy-MM-dd",
+            minDate: 0,// 선택할수있는 최소날짜, ( 0 : 오늘 이후 날짜 선택 불가)
+            maxDate: new Date('2022-03-06')
+
+          });
         });
       </script>
-
 
       <!--  지도 api -->
       <script>

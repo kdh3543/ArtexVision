@@ -520,11 +520,12 @@
           </div>
         </div>
         <div class="main">
+
           <div class="sidebar">
             <h2 class="list_title">Artex Vision</h2>
             <ul class="sidebar_item_list">
-              <li class="sidebar_item"><a href="artex_desc.jsp">Artex Vision 소개</a></li>
-              <li class="sidebar_item"><a href="" id="siteMap">사이트맵</a></li>
+              <li class="sidebar_item"><a href="/artexDesc/artex_desc.jsp">Artex Vision 소개</a></li>
+              <li class="sidebar_item"><a href="/artexDesc/artex_sitemap.jsp" id="siteMap">사이트맵</a></li>
             </ul>
           </div>
           <div class="artexvision_introduce_area">
@@ -534,11 +535,10 @@
               <div>사이트 소개</div>
             </div><br>
             <hr class="hr">
-            <div class="artexvision_introduce_message">관리자</div>
-            <hr class="hr">
             <div class="card mb-3" style="border: none;">
               <img src="img/artexVision_intro.png" class="card-img-top" alt="...">
               <img src="img/artex_desc.png" style="margin-top : 50px;" class="card-img-top" alt="...">
+
             </div>
           </div>
 
@@ -608,10 +608,6 @@
         return false;
       })
 
-      $("#siteMap").on("click", function () {
-        alert("현재 기능은 구현중에 있습니다.");
-        return false;
-      })
     </script>
 
     </html>

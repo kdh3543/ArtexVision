@@ -643,6 +643,7 @@
             <img src="/exhibition/img/artex_main_img.png" class="carousel_img">
           </div>
         </div>
+
         <div class="container2">
           <div class="sidebar">
             <h2 class="list_title">NOTICE</h2>
@@ -699,6 +700,7 @@
           </div>
         </div>
         <!-- 커뮤니티 end -->
+
 
         <div class="footer">
           <div class="fContainer">

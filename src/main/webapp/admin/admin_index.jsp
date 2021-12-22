@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Admin Page</title>
+<title>관리자 대시보드</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <link rel="stylesheet"
@@ -260,6 +260,8 @@
       flex-direction: column;
       justify-content: space-between;
       height: 200px;
+      background-color: var(--footer-color);
+      color: var(--text-color);
     }
 
     .footer_logo {
@@ -267,13 +269,14 @@
       font-size: 2rem;
       display: flex;
       align-items: flex-end;
+      padding-bottom: 10px;
       padding-left: 30px;
     }
 
     .footer_title {
       padding-left: 30px;
       height: 40%;
-      font-size: 1.2rem;
+      font-size: 0.9rem;
     }
 
     .footer_desc {
@@ -281,7 +284,10 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      font-size: 0.8rem;
     }
+
+    /* footer end */
     /* footer end */
   </style>
 
@@ -414,18 +420,11 @@
       </div>
     </div> -->
 
-		<div class="footer">
-			<div class="footer_logo">
-				<i class="fab fa-artstation"> Artex Vision Admin Page</i>
-			</div>
-			<div class="footer_title">Lorem ipsum dolor sit, amet
-				consectetur adipisicing elit. Odit, distinctio asperiores reiciendis
-				quod corrupti praesentium nihil dolorum dignissimos saepe quasi
-				veniam pariatur vel corporis necessitatibus ipsam itaque nostrum
-				similique placeat?</div>
-			<div class="footer_desc">Lorem ipsum dolor sit amet consectetur
-				adipisicing elit. Animi doloremque, fuga nihil neque</div>
-		</div>
+	<div class="footer">
+      <div class="footer_logo"><i class="fab fa-artstation"> Artex Vision Admin Page</i></div>
+      <div class="footer_title">ArtexVision Admin페이지 입니다.</div>
+      <div class="footer_desc">Copyright 2021. 11hertz All rights reserved.</div>
+    </div>
 	</div>
 </body>
 <script>

@@ -765,9 +765,9 @@
                           <option value="019">019</option>
                         </select>
                         -
-                        <input type="text" name="phone1" id="phone1">
+                        <input type="text" name="phone1" id="phone1" maxlength="4">
                         -
-                        <input type="text" name="phone2" id="phone2">
+                        <input type="text" name="phone2" id="phone2" maxlength="4">
                       </div>
                       <div class="label">
                         <label for="zipcode">우편번호</label>
