@@ -489,7 +489,7 @@
                       <br>
                       <p>[ 장소 ] <br> 국립 현대 미술관</p>
                     </div>
-                    <a href="../now_ex/ex1_desc.jsp"></a>
+                    <a href="/exhibition/now_ex/ex1_desc.jsp"></a>
                   </div>
                 </div>
                 <div>
@@ -502,7 +502,7 @@
                       <br>
                       <p>[ 장소 ] <br> 세종 문화 회관</p>
                     </div>
-                    <a href="../now_ex/ex7_desc.jsp"></a>
+                    <a href="/exhibition/now_ex/ex7_desc.jsp"></a>
                   </div>
                 </div>
                 <div>
@@ -515,7 +515,7 @@
                       <br>
                       <p>[ 장소 ] <br> 국립 중앙 박물관</p>
                     </div>
-                    <a href="../now_ex/ex4_desc.jsp"></a>
+                    <a href="/exhibition/now_ex/ex4_desc.jsp"></a>
                   </div>
                 </div>
                 <div>
@@ -528,7 +528,7 @@
                       <br>
                       <p>[ 장소 ] <br> 마이 아트 뮤지엄</p>
                     </div>
-                    <a href="../now_ex/ex3_desc.jsp"></a>
+                    <a href="/exhibition/now_ex/ex3_desc.jsp"></a>
                   </div>
                 </div>
             </div>
@@ -543,7 +543,7 @@
                       <br>
                       <p>[ 장소 ] <br> 세종 문화 회관</p>
                     </div>
-                    <a href="../now_ex/ex8_desc.jsp"></a>
+                    <a href="/exhibition/now_ex/ex8_desc.jsp"></a>
                   </div>
               </div>
               <div>
@@ -556,7 +556,7 @@
                     <br>
                     <p>[ 장소 ] <br> 석파정 서울미술관</p>
                   </div>
-                  <a href="../now_ex/ex5_desc.jsp"></a>
+                  <a href="/exhibition/now_ex/ex5_desc.jsp"></a>
                 </div>
               </div>
               <div>
@@ -569,7 +569,7 @@
                     <br>
                     <p>[ 장소 ] <br> 그라운드 시소</p>
                   </div>
-                  <a href="../now_ex/ex6_desc.jsp"></a>
+                  <a href="/exhibition/now_ex/ex6_desc.jsp"></a>
                 </div>
               </div>
               <div>
@@ -582,7 +582,7 @@
                     <br>
                     <p>[ 장소 ] <br> 국립 현대 미술관</p>
                   </div>
-                  <a href="../now_ex/ex2_desc.jsp"></a>
+                  <a href="/exhibition/now_ex/ex2_desc.jsp"></a>
                 </div>
                 </div>
               </div> 
