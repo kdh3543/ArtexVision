@@ -456,9 +456,9 @@
             <div class="nav_menu">
               <ul class="nav_menu_list">
                 <li><a href="/nb_list.board?cpage=1" id="notice">NOTICE</a></li>
-                <li><a href="../artexDesc/artex_desc.jsp">Artex Vision</a></li>
-                <li><a href="../exhibition/main_ex/now_main_ex.jsp">전시</a></li>
-                <li><a href="#" id="event">이벤트</a></li>
+                <li><a href="/artexDesc/artex_desc.jsp">Artex Vision</a></li>
+                <li><a href="/exhibition/main_ex/now_main_ex.jsp">전시</a></li>
+                <li><a href="/event/now_event/now_event.jsp" id="event">이벤트</a></li>
               </ul>
             </div>
           </div>
@@ -476,7 +476,7 @@
             <h3 class="list_title">회원 정보</h3>
             <ul class="sidebar_item_list">
               <li class="sidebar_item"><a href="/modifyForm.mem">회원 정보 수정</a></li>
-              <li class="sidebar_item"><a href="/myCommentForm.mem">내가 쓴 글/댓글</a></li>
+              <li class="sidebar_item" id="myComment"><a href="#">내가 쓴 글/댓글</a></li>
               <li class="sidebar_item"><a href="/leaveForm.mem">회원 탈퇴</a></li>
             </ul>
             <h3 class="list_title">예매 내역</h3>
@@ -513,7 +513,7 @@
                     <td>
                       문의사항 및 불편한 사항 발생시 고객센터로 문의해주시기 바랍니다.<br>
                       <br>
-                      고객센터 ****-****
+                      고객센터 1500-0051
                     </td>
                   </tr>
                 </table>
@@ -531,8 +531,8 @@
                       <td>회원등급</td>
                     </tr>
                     <tr>
-                      <td>1개</td>
-                      <td>2,700원</td>
+                      <td>0개</td>
+                      <td>0원</td>
                       <td>${dto.mem_grade}</td>
                     </tr>
                   </table>
@@ -562,14 +562,15 @@
 			}
 		})
 		
+    $("#myComment").on("click",function(){
+			alert("현재 기능은 구현중에 있습니다.");
+			return false;
+		})
+    
 		$("#basket").on("click",function(){
 			alert("현재 기능은 구현중에 있습니다.");
 			return false;
 		})
-		
-		$("#event").on("click",function(){
-			alert("현재 기능은 구현중에 있습니다.");
-			return false;
-		})
+
 	</script>
     </html>

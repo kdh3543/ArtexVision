@@ -27,6 +27,7 @@
           box-shadow: 0 0 0px 1000px transparent inset !important;
           -webkit-text-fill-color: var(--color2) !important;
         }
+
         :root {
           --color1: #3d3d3d;
           --color2: white;
@@ -143,8 +144,9 @@
           width: 1200px;
           margin: auto;
         }
-        .container>div{
-        	width: 1200px;
+
+        .container>div {
+          width: 1200px;
         }
 
         /* container end */
@@ -302,7 +304,7 @@
           text-align: center;
           margin-top: 20px;
 
-          
+
         }
 
         .exhibition_pay_reservation_information {
@@ -315,7 +317,7 @@
           margin-top: 5px;
         }
 
-        .exhibition_pay_reservation_num{
+        .exhibition_pay_reservation_num {
           width: 100%;
         }
 
@@ -373,6 +375,7 @@
           width: 200px;
           height: 200px;
         }
+
         .exhibition_pay_area {
           width: 100%;
           height: fit-content;
@@ -400,7 +403,7 @@
           font-weight: bold;
         }
 
-        
+
 
         input[type="button"],
         input[type="submit"],
@@ -416,6 +419,7 @@
         .btns {
           text-align: center;
         }
+
         a {
           text-align: center;
           text-decoration: none;
@@ -461,47 +465,48 @@
           <div class="nav_side">
             <div class="nav_menu">
               <ul class="nav_menu_list">
-                <li><a href="#" id="notice">NOTICE</a></li>
+                <li><a href="/nb_list.board?cpage=1" id="notice">NOTICE</a></li>
                 <li><a href="/artexDesc/artex_desc.jsp">Artex Vision</a></li>
                 <li><a href="/exhibition/main_ex/now_main_ex.jsp">전시</a></li>
-                <li><a href="#" id="event">이벤트</a></li>
+                <li><a href="/event/now_event/now_event.jsp" id="event">이벤트</a></li>
               </ul>
             </div>
           </div>
         </div>
         <div class="main">
-          
-          <div class="exhibition_pay_area">
-            <div class="exhibition_pay_title">결제완료</div>
-            <div class="exhibition_pay_reservation">
-              <div class="exhibition_pay_reservation_information">
-                <div class="exhibition_pay_reservation_title">전시이름</div>
-                <div class="exhibition_pay_reservation_num">
-                  <div>예매번호</div>
-                  <div>${dto.bk_id}</div>
-                </div>
-                <div class="exhibition_pay_reservation_date">
-                  <div>예매날짜</div>
-                  <div>${dto.bk_ex_visit_date}</div>
-                </div>
-                <div class="exhibition_pay_reservation_price">
-                  <div>결제가격</div>
-                  <div>${(dto.bk_ex_price)*(dto.bk_person)}</div>
-                </div>
-                <div class="exhibition_pay_reservation_headcount">
-                  <div>인원수</div>
-                  <div>${dto.bk_person}</div>
-                </div>
-                <div class="exhibition_pay_reservation_message">
-                  예매취소는 당일 30분 전까지 가능합니다.
+          <form action="/cancelBookFromExhPage.book" method="get" id="frm">
+            <div class="exhibition_pay_area">
+              <div class="exhibition_pay_title">결제완료</div>
+              <div class="exhibition_pay_reservation">
+                <div class="exhibition_pay_reservation_information">
+                  <div class="exhibition_pay_reservation_title">전시이름</div>
+                  <div class="exhibition_pay_reservation_num">
+                    <div>전시회 이름</div>
+                    <div>${dto.bk_ex_title}<input type="hidden" value="${dto.bk_ex_title}" name="exTitle"></div>
+                  </div>
+                  <div class="exhibition_pay_reservation_date">
+                    <div>예매날짜</div>
+                    <div>${dto.bk_ex_visit_date}</div>
+                  </div>
+                  <div class="exhibition_pay_reservation_price">
+                    <div>결제가격</div>
+                    <div>${(dto.bk_ex_price)*(dto.bk_person)}<input type="hidden" value="${dto.bk_ex_price}" name="exPrice"></div>
+                  </div>
+                  <div class="exhibition_pay_reservation_headcount">
+                    <div>인원수</div>
+                    <div>${dto.bk_person}<input type="hidden" value="${dto.bk_person}" name="exPerson"></div>
+                  </div>
+                  <div class="exhibition_pay_reservation_message">
+                    예매취소는 당일 30분 전까지 가능합니다.
+                  </div>
                 </div>
               </div>
+              <div class="exhibition_pay_reservation_btn_area">
+                <input type=submit value="예매취소">
+                <a href="/artexMain/mainpage.jsp"><input type=button value="홈으로"></a>
+              </div>
             </div>
-            <div class="exhibition_pay_reservation_btn_area">
-              <input type=button value="예매취소">
-              <a href="/artexMain/mainpage.jsp"><input type=button value="홈으로"></a>
-            </div>
-          </div>
+          </form>
         </div>
         <div class="footer"></div>
       </div>
@@ -512,18 +517,18 @@
           }
         })
 
+        let frm = $("#frm");
+        frm.on("submit",function(){
+          if(!confirm("예매를 정말 취소하시겠습니까?")){
+            return false;
+          }
+        })
+
         $("#basket").on("click", function () {
           alert("현재 기능은 구현중에 있습니다.");
           return false;
         })
-        $("#notice").on("click", function () {
-          alert("현재 기능은 구현중에 있습니다.");
-          return false;
-        })
-        $("#event").on("click", function () {
-          alert("현재 기능은 구현중에 있습니다.");
-          return false;
-        })
+
       </script>
     </body>
 

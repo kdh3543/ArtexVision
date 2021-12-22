@@ -580,9 +580,9 @@
             <div class="nav_menu">
               <ul class="nav_menu_list">
                 <li><a href="/nb_list.board?cpage=1" id="notice">NOTICE</a></li>
-                <li><a href="../artexDesc/artex_desc.jsp">Artex Vision</a></li>
-                <li><a href="../exhibition/main_ex/now_main_ex.jsp">전시</a></li>
-                <li><a href="#" id="event">이벤트</a></li>
+                <li><a href="/artexDesc/artex_desc.jsp">Artex Vision</a></li>
+                <li><a href="/exhibition/main_ex/now_main_ex.jsp">전시</a></li>
+                <li><a href="/event/now_event/now_event.jsp" id="event">이벤트</a></li>
               </ul>
             </div>
           </div>
@@ -660,8 +660,33 @@
 
         </div>
         <div class="footer">
+            <div class="fContainer">
+              <div class="fLogo">
+                <i class="fab fa-artstation" id="fLogoImg"> Artex Vision</i>
+              </div>
+              <div></div>
 
+            </div>
         </div>
+        <style>
+          .fContainer{
+            width: 100%;
+            height: 100%;
+          }
+          .fContainer>div{
+            float: left;
+          }
+          .fLogo{
+            height: 100%;
+            width: 30%;
+            text-align: center;
+            line-height: 150px;
+          }
+          #fLogoImg{
+            font-size: 40px;
+            color: white;
+          }
+        </style>
       </div>
     </body>
 	<script>
@@ -675,10 +700,6 @@
 			alert("현재 기능은 구현중에 있습니다.");
 			return false;
 		})
-		
-		$("#event").on("click",function(){
-			alert("현재 기능은 구현중에 있습니다.");
-			return false;
-		})
+
 	</script>
     </html>
