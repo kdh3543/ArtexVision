@@ -97,7 +97,7 @@ public class AdminDAO {
 	}
 	
 	public List<ExhibitionDTO> selectAllEx() throws Exception {
-		String sql = "select * from exhibition";
+		String sql = "select * from exhibition order by to_number(ex_id)";
 		try(Connection conn = this.getConnection();
 			PreparedStatement pstmt = conn.prepareStatement(sql);)
 		{

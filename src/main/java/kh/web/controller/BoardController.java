@@ -27,30 +27,65 @@ public class BoardController extends HttpServlet {
 		String cmd = uri.substring(ctxPath.length());
 		try {
 			if(cmd.equals("/nb_list.board")) {
-				int currentPage = Integer.parseInt(request.getParameter("cpage"));
-				int pageTotalCount = nb_dao.getPageTotalCount();
-				if(currentPage < 1) {currentPage = 1;}
-				if(currentPage > pageTotalCount) {currentPage = pageTotalCount;}
+				String searchText = request.getParameter("searchText");
+				String searchOption = request.getParameter("searchOption");
+				System.out.println("컨트롤러에 들어오는 서치텍스트 : 서치옵션 = " + searchText + " : " + searchOption);
 				
-				int start = currentPage * paging_Statics.RECORD_COUNT_PER_PAGE - (paging_Statics.RECORD_COUNT_PER_PAGE-1);
-				int end = currentPage * paging_Statics.RECORD_COUNT_PER_PAGE;
-				
-				List<Nb_BoardDTO> list = nb_dao.selectByBound(start, end);
-				String navi = nb_dao.getPageNavi(currentPage);
-				request.setAttribute("nb_list", list);
-				request.setAttribute("nb_navi", navi);
-				request.getRequestDispatcher("/board/nb_index.jsp").forward(request, response); // forward
+				nb_dao.getRecordCount(searchOption, searchText);
+
+				if (searchText == null) {
+					int currentPage = Integer.parseInt(request.getParameter("cpage"));
+					System.out.println("들어온 c페이지 : " + currentPage);
+
+					int pageTotalCount = nb_dao.getPageTotalCount(searchOption, searchText);
+					if (currentPage < 1) {
+						currentPage = 1;
+					}
+					if (currentPage > pageTotalCount) {
+						currentPage = pageTotalCount;
+					}
+					int start = currentPage * paging_Statics.RECORD_COUNT_PER_PAGE - (paging_Statics.RECORD_COUNT_PER_PAGE - 1);
+					int end = currentPage * paging_Statics.RECORD_COUNT_PER_PAGE;
+
+					List<Nb_BoardDTO> list = nb_dao.nbSelectByBound(start, end, null, null);
+					String navi = nb_dao.getPageNavi(currentPage, searchOption, searchText);
+
+					request.setAttribute("nb_list", list);
+					request.setAttribute("nb_navi", navi);
+					request.getRequestDispatcher("/board/nb_index.jsp").forward(request, response); // forward
+
+				} else {
+					int currentPage = Integer.parseInt(request.getParameter("cpage"));
+					System.out.println("들어온 c페이지 : " + currentPage);
+
+					int pageTotalCount = nb_dao.getPageTotalCount(searchOption, searchText);
+					if (currentPage < 1) {
+						currentPage = 1;
+					}
+					if (currentPage > pageTotalCount) {
+						currentPage = pageTotalCount;
+					}
+					int start = currentPage * paging_Statics.RECORD_COUNT_PER_PAGE - (paging_Statics.RECORD_COUNT_PER_PAGE - 1);
+					int end = currentPage * paging_Statics.RECORD_COUNT_PER_PAGE;
+
+					List<Nb_BoardDTO> list = nb_dao.nbSelectByBound(start, end, searchOption, searchText);
+					String navi = nb_dao.getPageNavi(currentPage, searchOption, searchText);
+
+					request.setAttribute("nb_list", list);
+					request.setAttribute("nb_navi", navi);
+					request.getRequestDispatcher("/board/nb_index.jsp").forward(request, response); // forward
+				}
 			
 			}else if(cmd.equals("/nb_write.board")) {
 				response.sendRedirect("/board/nb_write.jsp");
 			
 			}else if(cmd.equals("/nb_writeProc.board")) {
-//				String writer = (String) request.getSession().getAttribute("loginID");
+				String writer = (String) request.getSession().getAttribute("loginID");
 				String title = request.getParameter("nb_title");
 				String contents = request.getParameter("nb_contents");
-				nb_dao.insert(new Nb_BoardDTO(0, title, contents, "hosboy93", null, 0));
+				nb_dao.insert(new Nb_BoardDTO(0, title, contents, writer, null, 0));
 				response.sendRedirect("/nb_list.board?cpage=1");
-			
+
 			}else if(cmd.equals("/nb_detail.board")) {				
 				int nb_seq = Integer.parseInt(request.getParameter("nb_seq"));
 				Nb_BoardDTO noticeboard_dto = nb_dao.selectBySeq(nb_seq);
@@ -81,19 +116,55 @@ public class BoardController extends HttpServlet {
 			}
 			
 			else if(cmd.equals("/qb_list.board")) {
-				int currentPage = Integer.parseInt(request.getParameter("cpage"));
-				int pageTotalCount = qb_dao.getPageTotalCount();
-				if(currentPage < 1) {currentPage = 1;}
-				if(currentPage > pageTotalCount) {currentPage = pageTotalCount;}
+				String searchText = request.getParameter("searchText");
+				String searchOption = request.getParameter("searchOption");
+				System.out.println("컨트롤러에 들어오는 서치텍스트 : 서치옵션 = " + searchText + " : " + searchOption);
 				
-				int start = currentPage * paging_Statics.RECORD_COUNT_PER_PAGE - (paging_Statics.RECORD_COUNT_PER_PAGE-1);
-				int end = currentPage * paging_Statics.RECORD_COUNT_PER_PAGE;
-				
-				List<Qb_BoardDTO> list = qb_dao.selectByBound(start, end);
-				String navi = qb_dao.getPageNavi(currentPage);
-				request.setAttribute("qb_list", list);
-				request.setAttribute("qb_navi", navi);
-				request.getRequestDispatcher("/board/qb.jsp").forward(request, response); // forward
+				qb_dao.getRecordCount(searchOption, searchText);
+
+				if (searchText == null) {
+					int currentPage = Integer.parseInt(request.getParameter("cpage"));
+					System.out.println("들어온 c페이지 : " + currentPage);
+
+					int pageTotalCount = qb_dao.getPageTotalCount(searchOption, searchText);
+					if (currentPage < 1) {
+						currentPage = 1;
+					}
+					if (currentPage > pageTotalCount) {
+						currentPage = pageTotalCount;
+					}
+					int start = currentPage * paging_Statics.RECORD_COUNT_PER_PAGE - (paging_Statics.RECORD_COUNT_PER_PAGE - 1);
+					int end = currentPage * paging_Statics.RECORD_COUNT_PER_PAGE;
+
+					
+					List<Qb_BoardDTO> list = qb_dao.qbSelectByBound(start, end, null, null);
+					String navi = qb_dao.getPageNavi(currentPage, searchOption, searchText);
+
+					request.setAttribute("qb_list", list);
+					request.setAttribute("qb_navi", navi);
+					request.getRequestDispatcher("/board/qb.jsp").forward(request, response); // forward
+
+				} else {
+					int currentPage = Integer.parseInt(request.getParameter("cpage"));
+					System.out.println("들어온 c페이지 : " + currentPage);
+
+					int pageTotalCount = qb_dao.getPageTotalCount(searchOption, searchText);
+					if (currentPage < 1) {
+						currentPage = 1;
+					}
+					if (currentPage > pageTotalCount) {
+						currentPage = pageTotalCount;
+					}
+					int start = currentPage * paging_Statics.RECORD_COUNT_PER_PAGE - (paging_Statics.RECORD_COUNT_PER_PAGE - 1);
+					int end = currentPage * paging_Statics.RECORD_COUNT_PER_PAGE;
+
+					List<Qb_BoardDTO> list = qb_dao.qbSelectByBound(start, end, searchOption, searchText);
+					String navi = qb_dao.getPageNavi(currentPage, searchOption, searchText);
+
+					request.setAttribute("qb_list", list);
+					request.setAttribute("qb_navi", navi);
+					request.getRequestDispatcher("/board/qb.jsp").forward(request, response); // forward
+				}
 			
 			}else if(cmd.equals("/qb_write.board")) {
 				response.sendRedirect("/board/qb_write.jsp");
@@ -123,16 +194,8 @@ public class BoardController extends HttpServlet {
 				int qb_seq = Integer.parseInt(request.getParameter("qb_seq"));
 				int result = qb_dao.delete(qb_seq);
 				response.sendRedirect("/qb_list.board?cpage=1");
-
-			}else if(cmd.equals("/qb_search.board")) {
-				String searchMethod = request.getParameter("searchOption");
-
-				if(searchMethod.equals("제목")) {
-					System.out.println("제목으로 찾는 중");
-				}else if(searchMethod.equals("아이디")) {
-					System.out.println("아이디로 찾는 중");
-				}
 			}
+			
 		}catch(Exception e) {
 			e.printStackTrace();
 			response.sendRedirect("/error.jsp");

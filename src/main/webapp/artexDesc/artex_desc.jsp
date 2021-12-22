@@ -325,8 +325,8 @@
             <div class="sidebar">
                 <h2 class="list_title">Artex Vision</h2>
                 <ul class="sidebar_item_list">
-                    <li class="sidebar_item"><a href="artex_desc.jsp">Artex Vision 소개</a></li>
-                    <li class="sidebar_item"><a href="" id="siteMap">사이트맵</a></li>
+                    <li class="sidebar_item"><a href="/artexDesc/artex_desc.jsp">Artex Vision 소개</a></li>
+                    <li class="sidebar_item"><a href="/artexDesc/artex_sitemap.jsp" id="siteMap">사이트맵</a></li>
                 </ul>
             </div>
             <div class="artexvision_introduce_area">	
@@ -363,9 +363,5 @@
 		return false;
 	})
 
-	$("#siteMap").on("click",function(){
-		alert("현재 기능은 구현중에 있습니다.");
-		return false;
-	})
 </script>
 </html>
