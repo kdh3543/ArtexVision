@@ -8,7 +8,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Input_Ex</title>
+  <title>전시회 등록</title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
   <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
@@ -378,8 +378,7 @@
       };
 
       let working1 = document.getElementById("working1");
-	  
-	
+	 
 	  working1.onclick = function() {
 		  alert("구현중입니다.");
 	  }
@@ -471,13 +470,13 @@
           </div>
           <div class="input_ex_form_wrap">
             <div class="input_ex_form">
-              <input type="text" name="ex_title" placeholder="전시회 제목을 입력하세요">
+              <input type="text" name="ex_title" id="ex_title" placeholder="전시회 제목을 입력하세요">
             </div>
             <div class="input_ex_form">
-              <input type="text" name="ex_desc" placeholder="전시회 설명을 입력하세요">
+              <input type="text" name="ex_desc" id="ex_desc" placeholder="전시회 설명을 입력하세요">
             </div>
             <div class="input_ex_form">
-              <input type="text" name="ex_price" placeholder="전시회 입장료를 입력하세요">
+              <input type="text" name="ex_price" id="ex_price" placeholder="전시회 입장료를 입력하세요">
             </div>
             <div class="input_ex_form">
               <input type="text" name="ex_location" placeholder="전시회 장소를 입력하세요" id="ex_location">
