@@ -679,25 +679,25 @@
                       <img src="img/main_weiwei.png" width="90%" height="100%">
                       <div>
                         <h3>아이 웨이웨이</h3>
-                        <p>[ 전시 기간 ] <br> 21-12-11 ~ 22-04-17<br>[ 장소 ] <br> 국립 현대 미술관</p><a href="../exhibition/now_ex/ex2_desc.jsp" class="read-more">More</a>
+                        <p>[ 전시 기간 ] <br> 21-12-11 ~ 22-04-17<br>[ 장소 ] <br> 국립 현대 미술관</p><a href="/exhibition/now_ex/ex2_desc.jsp" class="read-more">More</a>
                       </div></div></div>
                       <div> <div class="snip1283">
                         <img src="img/main_cd.png" width="100%" height="100%">
                         <div>
                           <h3>중견작가전</h3>
-                          <p>[ 전시 기간 ] <br> 21-12-03 ~ 21-12-26<br>[ 장소 ] <br> 세종 문화 회관</p><a href="../exhibition/now_ex/ex8_desc.jsp" class="read-more">More</a>
+                          <p>[ 전시 기간 ] <br> 21-12-03 ~ 21-12-26<br>[ 장소 ] <br> 세종 문화 회관</p><a href="/exhibition/now_ex/ex8_desc.jsp" class="read-more">More</a>
                       </div></div></div>
                       <div> <div class="snip1283">
                         <img src="img/main_lo.png" width="90%" height="100%">
                         <div>
                           <h3>연애의 온도 </h3>
-                          <p>[ 전시 기간 ] <br> 21-09-15 ~ 22-02<br>[ 장소 ] <br> 석파정 서울미술관</p><a href="../exhibition/now_ex/ex5_desc.jsp" class="read-more">More</a>
+                          <p>[ 전시 기간 ] <br> 21-09-15 ~ 22-02<br>[ 장소 ] <br> 석파정 서울미술관</p><a href="/exhibition/now_ex/ex5_desc.jsp" class="read-more">More</a>
                         </div></div></div>
                       <div> <div class="snip1283">
                         <img src="img/main_cha.png" width="90%" height="100%">
                         <div>
                           <h3>샤갈 특별전</h3>
-                          <p>[ 전시 기간 ] <br> 21-11-25 ~ 22-04-10<br>[ 장소 ] <br> 마이 아트 뮤지엄</p><a href="../exhibition/now_ex/ex3_desc.jsp" class="read-more">More</a>
+                          <p>[ 전시 기간 ] <br> 21-11-25 ~ 22-04-10<br>[ 장소 ] <br> 마이 아트 뮤지엄</p><a href="/exhibition/now_ex/ex3_desc.jsp" class="read-more">More</a>
                         </div></div></div>  
                 </div>
                 <div class="ex_intro_bottom">
@@ -705,29 +705,29 @@
                     <img src="img/main_yo.png" width="90%" height="100%">
                     <div>
                       <h3>요시고 사진전</h3>
-                      <p>[ 전시 기간 ] <br> 21-06-23 ~ 22-03-01<br>[ 장소 ] <br> 그라운드 시소</p><a href="../exhibition/now_ex/ex6_desc.jsp" class="read-more">More</a>
+                      <p>[ 전시 기간 ] <br> 21-06-23 ~ 22-03-01<br>[ 장소 ] <br> 그라운드 시소</p><a href="/exhibition/now_ex/ex6_desc.jsp" class="read-more">More</a>
                     </div></div></div>
                     <div> <div class="snip1283">
                       <img src="img/main_jo.png" width="90%" height="100%">
                       <div>
                         <h3>조선의 승려 장인</h3>
-                        <p>[ 전시 기간 ] <br> 21-12-07 ~ 22-03-06<br>[ 장소 ] <br> 국립 중앙 박물관</p><a href="../exhibition/now_ex/ex4_desc.jsp" class="read-more">More</a>
+                        <p>[ 전시 기간 ] <br> 21-12-07 ~ 22-03-06<br>[ 장소 ] <br> 국립 중앙 박물관</p><a href="/exhibition/now_ex/ex4_desc.jsp" class="read-more">More</a>
                     </div></div></div>
                     <div> <div class="snip1283">
                       <img src="img/main_ru.png" width="90%" height="100%">
                       <div>
                         <h3>러시아 아방가르드</h3>
-                        <p>[ 전시 기간 ] <br> 21-12-31 ~ 22-04-17<br>[ 장소 ] <br> 세종 문화 회관</p><a href="../exhibition/now_ex/ex7_desc.jsp" class="read-more">More</a>
+                        <p>[ 전시 기간 ] <br> 21-12-31 ~ 22-04-17<br>[ 장소 ] <br> 세종 문화 회관</p><a href="/exhibition/now_ex/ex7_desc.jsp" class="read-more">More</a>
                       </div></div></div>
                     <div> <div class="snip1283">
                       <img src="img/main_ha.png" width="90%" height="100%">
                       <div>
                         <h3>프로젝트 해시태그</h3>
-                        <p>[ 전시 기간 ] <br> 21-11-03 ~ 22-02-06<br>[ 장소 ] <br> 국립 현대 미술관</p><a href="../exhibition/now_ex/ex1_desc.jsp" class="read-more">More</a>
+                        <p>[ 전시 기간 ] <br> 21-11-03 ~ 22-02-06<br>[ 장소 ] <br> 국립 현대 미술관</p><a href="/exhibition/now_ex/ex1_desc.jsp" class="read-more">More</a>
                       </div></div></div>
                 </div>
               </div>
-              <a href="../exhibition/main_ex/now_main_ex.jsp">
+              <a href="/exhibition/main_ex/now_main_ex.jsp">
                 <div class="more">더 보기 <span style="color:gray"><i class="fas fa-angle-double-right"></i></span></div>
               </a>
             </div>
@@ -747,7 +747,7 @@
                     <div class="post">
                       <img src="img/rk_chagall.png" class="slider-image">
                       <div class="post-info">
-                        <h4><a href="#" class="post-subject"> 샤갈 특별전 </a></h4>
+                        <h4><a href="/exhibition/now_ex/ex3_desc.jsp" class="post-subject"> 샤갈 특별전 </a></h4>
                         <br>
                         <i class="far fa-star fa-lg" style="height:10%;">&nbsp 4.6</i>
                       </div>
@@ -755,7 +755,7 @@
                     <div class="post">
                       <img src="img/rk_love.png" class="slider-image">
                       <div class="post-info">
-                        <h4><a href="#"> 연애의 온도 : 두번째 이야기 </a></h4>
+                        <h4><a href="/exhibition/now_ex/ex5_desc.jsp"> 연애의 온도 : 두번째 이야기 </a></h4>
                         <br>
                         <i class="far fa-star fa-lg" style="height:10%;">&nbsp 4.43</i>
                       </div>
@@ -763,7 +763,7 @@
                     <div class="post">
                       <img src="img/rk_josun.png" class="slider-image">
                       <div class="post-info">
-                        <h4><a href="#"> 조선의 승려 장인 </a></h4>
+                        <h4><a href="/exhibition/now_ex/ex4_desc.jsp"> 조선의 승려 장인 </a></h4>
                         <br>
                         <i class="far fa-star fa-lg" style="height:10%;">&nbsp 4.12</i>
                       </div>
@@ -771,7 +771,7 @@
                     <div class="post">
                       <img src="img/rk_wei.png" class="slider-image">
                       <div class="post-info">
-                        <h4><a href="#">아이 웨이웨이</a></h4>
+                        <h4><a href="/exhibition/now_ex/ex2_desc.jsp">아이 웨이웨이</a></h4>
                         <br>
                         <i class="far fa-star fa-lg" style="height:10%;">&nbsp 3.89</i>
                       </div>
@@ -779,7 +779,7 @@
                     <div class="post">
                       <img src="img/rk_russian.png" class="slider-image">
                       <div class="post-info">
-                        <h4><a href="#">러시아 아방가르드</a></h4>
+                        <h4><a href="/exhibition/now_ex/ex7_desc.jsp">러시아 아방가르드</a></h4>
                         <br>
                         <i class="far fa-star fa-lg" style="height:10%;">&nbsp 3.7</i>
                       </div>
@@ -787,7 +787,7 @@
                     <div class="post">
                       <img src="img/rk_hash.png" class="slider-image">
                       <div class="post-info">
-                        <h4><a href="#">프로젝트 해시테그</a></h4>
+                        <h4><a href="/exhibition/now_ex/ex1_desc.jsp">프로젝트 해시테그</a></h4>
                         <br>
                         <i class="far fa-star fa-lg" style="height:10%;">&nbsp 3.58</i>
                       </div>
@@ -795,7 +795,7 @@
                     <div class="post">
                       <img src="img/rk_yosigo.png" class="slider-image">
                       <div class="post-info">
-                        <h4><a href="#">요시고 사진전</a></h4>
+                        <h4><a href="/exhibition/now_ex/ex6_desc.jsp">요시고 사진전</a></h4>
                         <br>
                         <i class="far fa-star fa-lg" style="height:10%;">&nbsp 3.43</i>
                       </div>
@@ -803,7 +803,7 @@
                     <div class="post">
                       <img src="img/rk_countdown.png" class="slider-image">
                       <div class="post-info">
-                        <h4><a href="#">중견작가전 COUNTDOWN</a></h4>
+                        <h4><a href="/exhibition/now_ex/ex8_desc.jsp">중견작가전 COUNTDOWN</a></h4>
                         <br>
                         <i class="far fa-star fa-lg" style="height:10%;">&nbsp 3.18</i>
                       </div>
