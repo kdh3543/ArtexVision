@@ -80,12 +80,12 @@ public class BoardController extends HttpServlet {
 				response.sendRedirect("/board/nb_write.jsp");
 			
 			}else if(cmd.equals("/nb_writeProc.board")) {
-//				String writer = (String) request.getSession().getAttribute("loginID");
+				String writer = (String) request.getSession().getAttribute("loginID");
 				String title = request.getParameter("nb_title");
 				String contents = request.getParameter("nb_contents");
-				nb_dao.insert(new Nb_BoardDTO(0, title, contents, "hosboy93", null, 0));
+				nb_dao.insert(new Nb_BoardDTO(0, title, contents, writer, null, 0));
 				response.sendRedirect("/nb_list.board?cpage=1");
-			
+
 			}else if(cmd.equals("/nb_detail.board")) {				
 				int nb_seq = Integer.parseInt(request.getParameter("nb_seq"));
 				Nb_BoardDTO noticeboard_dto = nb_dao.selectBySeq(nb_seq);
