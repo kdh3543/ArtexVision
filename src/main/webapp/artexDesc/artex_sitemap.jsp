@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,13 +15,11 @@
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-        crossorigin="anonymous"></script>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-
+        crossorigin="anonymous"></script> 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>       
 
     <style>
-        /* 전체 설정 css start */
+    /* 전체 설정 css start */
     :root {
       --color1: #3d3d3d;
       --color2: white;
@@ -51,12 +49,21 @@
             box-sizing: border-box;
         }
 
+        /*
+    div {
+       border: 1px solid black; 
+    }
+    */
+
         /* 전체 설정 css end */
 
         /* container start */
         .container {
             width: 1200px;
             margin: auto;
+        }
+        .container>div{
+        	width: 1200px;
         }
 
         /* container end */
@@ -172,21 +179,73 @@
 
         /* nav end */
 
-
-        .carousel_timeline {
-            display: flex;
-        }
-
         .main {
-            height: 800px;
-            margin-top:15px;
+            height: 1000px;
         }
 
         .sidebar {
             width: 15%;
             height: 100%;
             background-color: var(--color3);
-            float:left;
+            float: left;
+        }
+
+        .artexvision_introduce_area {
+            width: 85%;
+            height: 100%;
+            float: left;
+            margin-top: 15px;
+        }
+
+        .artexvision_introduce_title {
+            margin-left: 30px;
+
+        }
+
+        .artexvision_introduce_title>div {
+            float: left;
+            margin-right: 5px;
+        }
+
+
+
+        .artexvision_introduce_message {
+            margin-left: 30px;
+            font-size: small;
+        }
+
+        .artexvision_introduce_area>.hr {
+            margin-top: 10px;
+            margin-left: 15px;
+        }
+
+        .artexvision_introduce_message {
+            margin-left: 30px;
+            font-size: small;
+        }
+
+        .artexvision_sitemap>div {
+            float: left;
+            width: 20%;
+            text-align: center;
+        }
+
+        .artexvision_sitemap>div>div:first-child {
+            font-weight: bold;
+        }
+
+        .artexvision_sitemap>div>div:not(first-child) {
+            margin-top: 10px;
+            font-size: small;
+        }
+
+        .artexvision_sitemap>div>div {
+            margin-top: 10px;
+        }
+
+        .artexvision_sitemap {
+            margin-left: 15px;
+            margin-top: 30px;
         }
 
         .list_title {
@@ -222,59 +281,14 @@
         .contents {
             width: 80%;
         }
-
-        .event_expired_area{
-            width:85%;
-            height:100%;
-            float:left;
-            
-        }
-        .event_expired_title{
-            overflow: hidden;
-            margin-left:30px;
-            margin-top:15px;
-        }
-        .event_expired_title>div{
-            float:left;
-            margin-right: 10px;
-        }
-        .event_expired_admin{
-            margin-left:30px;
-            font-size: small;
-        }
+        
         .footer {
             height: 150px;
             background-color: var(--color1);
         }
 
-        .event_expired_area>.hr{
-            margin-top: 5px;
-            margin-bottom: 5px;
-            margin-left:30px;
-        }
-
-        .event_expired_list{
-            margin-left:30px;
-            margin-top: 15px;
-        }
-
-        .event_expired{
-           overflow: auto;
-           width:100%;
-        }
-
-        .event{
-            float:left;
-            width:50%;
-            margin-bottom: 10px;
-        }
-
-        img{
-            width:95%;
-            height:95%;            
-        }
-        img:hover{
-            cursor: pointer;
+        .card{
+            margin-left: 15px;
         }
         
         a{
@@ -294,15 +308,15 @@
 
 <body>
     <div class="container">
-         <c:choose>
+        <c:choose>
           <c:when test="${loginId!=null}">
             <div class="header" id="topTarget">
               <ul class="header_list">
-                <li class="user_detail"><span id="user_grade"><i class="fas fa-crown"></i> ${dto.mem_grade}</li></span>
+                <li class="user_detail"><span id="user_grade"><i class="fas fa-crown"></i> ${loginGrade }</li></span>
                 <li id="welcome"> ${loginId } 님 환영합니다.</li>
                 <li id="mypage"><a href="/modifyForm.mem">마이페이지</a></li>
                 <li id="basket"><a href="/basket/basket.jsp" id="basket">장바구니</a></li>
-                <li id=logout><a href="/logout.mem" id="logout">로그아웃</a></li>
+                <li id=logout><a href="/logout.mem"  id="logout">로그아웃</a></li>
               </ul>
             </div>
           </c:when>
@@ -330,61 +344,77 @@
             </div>
           </div>
         </div>
-        <div class="carousel_timeline">
+		<div class="carousel_timeline">
           <div class="carousel">
             <img src="/exhibition/img/artex_main_img.png" class="carousel_img">
           </div>
         </div>
-        
         <div class="main">
-            <div class="sidebar">
-                <h2 class="list_title">Event</h2>
-                <ul class="sidebar_item_list">
-                    <li class="sidebar_item"><a href="/event/now_event/now_event.jsp">진행중 이벤트</a></li>
-                    <li class="sidebar_item"><a href="/event/end_event/end_event.jsp">종료 이벤트</a></li>
-                </ul>
-            </div>
-            <div class="event_expired_area">
-                <div class="event_expired_title">
-                    <div>Event</div>
-                    <div>></div>
-                    <div>만료된 이벤트</div>
-                </div>
-                <hr class="hr">
-                <div class="event_expired_admin">관리자</div>
-                <hr class="hr">
-                <div class="event_expired_list">
-                    <div class="event_expired">
-                        <div class="event">
-                            <div class="event_photo">
-                              <img src="/event/img/end_event1.png">
-                            </div><br>
-                            <div class="event_desc_title"><b>SUMMER 이벤트</b></div>
-                            <div class="event_desc_content" style="font-size: small;">2021.7.18~2021.8.31</div>
-                        </div>
-                        <div class="event">
-                          <div class="event_photo">
-                              <img src="/event/img/end_event2.png">
-                            </div><br>
-                            <div class="event_desc_title"><b>할로윈 이벤트</b></div>
-                            <div class="event_desc_content" style="font-size: small;">2021.10.01~2021.10.31</div>
-                        </div>
-                    </div>
-                    <div class="event_expired">
-                      <div class="event">
-                          <div class="event_photo">
-                              <img src="/event/img/end_event3.png">
-                            </div><br>
-                            <div class="event_desc_title"><b>스타벅스 할인쿠폰 이벤트</b></div>
-                            <div class="event_desc_content" style="font-size: small;">2021.11.1~2021.11.30</div>
-                      </div>
-                    </div>
-                </div>
-
-            </div>
+        <div class="sidebar">
+            <h2 class="list_title">Artex Vision</h2>
+            <ul class="sidebar_item_list">
+                <li class="sidebar_item"><a href="">Artex Vision 소개</a></li>
+                <li class="sidebar_item"><a href="">사이트맵</a></li>
+            </ul>
         </div>
-    </div>
-    <div class="footer"></div>
-</body>
+        <div class="artexvision_introduce_area">
+            <div class="artexvision_introduce_title">
+                <div>ArtexVision</div>
+                <div>></div>
+                <div>사이트맵</div>
+            </div><br>
+            <hr class="hr">
+            <div class="artexvision_introduce_message">ArtexVision을 한눈에 확인하세요.</div>
+            <hr class="hr">
 
+            <div class="artexvision_sitemap">
+                <div class="artexvision_sitemap_notice">
+                    <div class="artexvision_notice"><a href="/nb_list.board?cpage=1">NOTICE</a></div>
+                    <hr class="sitemap_hr">
+                    <div class="artexvision_notice_notice"><a href="/nb_list.board?cpage=1">공지사항</a></div>
+                    <div class="artexvision_notice_qna"><a href="/qb_list.board?cpage=1">Q&A</a></div>
+                    <div class="artexvision_notice_faq"><a href="/board/faq_home.jsp">FAQ</a></div>
+                </div>
+                <div class="artexvision_sitemap_artexvision">
+                    <div class="artexvision_artexvision"><a href="/artexDesc/artex_desc.jsp">ArtexVision</a></div>
+                    <hr class="sitemap_hr">
+                    <div class="artexvision_artexvision_introduce"><a href="/artexDesc/artex_desc.jsp">사이트소개</a></div>
+                    <div class="artexvision_artexvision_sitemap"><a href="/artexDesc/artex_sitemap.jsp">사이트맵</a></div>
+                </div>
+                <div class="artexvision_sitemap_exhibition">
+                    <div class="artexvision_exhibition"><a href="/exhibition/main_ex/now_main_ex.jsp">전시</a></div>
+                    <hr class="sitemap_hr">
+                    <div class="artexvision_exhibition_present"><a href="/exhibition/main_ex/now_main_ex.jsp">현재 전시</a></div>
+                    <div class="artexvision_exhibition_intended"><a href="/exhibition/main_ex/future_main_ex.jsp">예정된 전시</a></div>
+                    <div class="artexvision_exhibition_previous"><a href="/exhibition/main_ex/end_main_ex.jsp">마감된 전시</a></div>
+                </div>
+                <div class="artexvision_sitemap_event">
+                    <div class="artexvision_event"><a href="/event/now_event/now_event.jsp">Event</a></div>
+                    <hr class="sitemap_hr">
+                    <div class="artexvision_event_present"><a href="/event/now_event/now_event.jsp">현재 진행중인 이벤트</a></div>
+                    <div class="artexvision_event_previous"><a href="/event/end_event/end_event.jsp">종료된 이벤트</a></div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+        
+        <div class="footer"> </div>
+    </div> 
+    
+    
+</body>
+<script>
+	$("#logout").on("click",function(){
+		if(!confirm("로그아웃 하시겠습니까?")){
+			return false;
+		}
+	})
+	
+	$("#basket").on("click",function(){
+		alert("현재 기능은 구현중에 있습니다.");
+		return false;
+	})
+</script>
 </html>
