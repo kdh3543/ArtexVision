@@ -637,6 +637,7 @@
     $(".question4_2").on("click", function () {
       $(".answer4_2").slideToggle("1000");
     })
+    
     $("#logout").on("click", function () {
       if (!confirm("로그아웃 하시겠습니까?")) {
         return false;
