@@ -418,6 +418,13 @@
           color: black;
           /* 링크의 색상 제거 */
         }
+        .empty_table{
+        width:100%;
+        height:120px;
+        }
+        .empty_contents{
+        	width:100%;
+        }
       </style>
     </head>
 
@@ -485,7 +492,7 @@
           <div class="contents">
             <div class="contents_wrap">
               <div class="contents_title">
-                예매내역 취소/환불
+                예매내역 조회/취소
               </div>
               <div class="booking">
                 <div class="book_title">
@@ -494,8 +501,11 @@
                   <div>전시회 관람 날짜</div>
                   <div>선택</div>
                 </div>
-                <table class="book_table">
+                
+                <c:choose>
+                <c:when test="${list!=null }">
                   <c:forEach var="book_dto" items="${list}">
+                  <table class="book_table">
                     <tr class="book_contents">
                       <td id="bookName">${book_dto.bk_ex_title}</td>
                       <td id="exLocation">${book_dto.bk_id}<input type="hidden" value="${book_dto.bk_id}" name="hidden"
@@ -503,8 +513,18 @@
                       <td id="exDate">${book_dto.bk_ex_visit_date}</td>
                       <td><input type="radio" name="check" id="check"></td>
                     </tr>
+                    </table>
                   </c:forEach>
-                </table>
+                  </c:when>
+                  <c:otherwise>
+                  <table class="empty_table">
+                  	<tr class="empty_contents">
+                      <td colspan=4>현재 예매 내역이 없습니다.</td>
+                    </tr>
+                    </table>
+                  </c:otherwise>
+                </c:choose>
+                
               </div>
               <div class="cancel_btn">
                 <input type="button" value="예매취소" id="cancel">

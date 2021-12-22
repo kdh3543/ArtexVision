@@ -518,7 +518,7 @@
         })
 
         let frm = $("#frm");
-        frm.on("click",function(){
+        frm.on("submit",function(){
           if(!confirm("예매를 정말 취소하시겠습니까?")){
             return false;
           }
