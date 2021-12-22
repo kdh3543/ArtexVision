@@ -16,6 +16,8 @@
       <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
       <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
         integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+        integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
       <style>
         /* 전체 설정 css start */
         input:-webkit-autofill,
@@ -142,8 +144,9 @@
           width: 1200px;
           margin: auto;
         }
-        .container>div{
-        	width: 1200px;
+
+        .container>div {
+          width: 1200px;
         }
 
         /* container end */
@@ -382,7 +385,7 @@
         }
 
         .footer {
-          height: 150px;
+          height: 300px;
           background-color: var(--color1);
         }
 
@@ -421,12 +424,130 @@
           color: black;
           /* 링크의 색상 제거 */
         }
-        .empty_table{
-        width:100%;
-        height:120px;
+
+        .empty_table {
+          width: 100%;
+          height: 120px;
         }
-        .empty_contents{
-        	width:100%;
+
+        .empty_contents {
+          width: 100%;
+        }
+      </style>
+      <style>
+        .fContainer {
+          width: 100%;
+          height: 100%;
+        }
+
+        .fContainer>div {
+          float: left;
+        }
+
+        .fLogoContainer {
+          height: 100%;
+          width: 30%;
+
+        }
+
+        .fLogoContainer>div {
+          height: 50%;
+          width: 100%;
+        }
+
+        .fLogo {
+
+          padding-top: 30px;
+          padding-left: 30px;
+
+        }
+
+        .fSiteLogo {
+          padding-top: 80px;
+          padding-left: 120px;
+        }
+
+        #fLogoImg {
+          font-size: 40px;
+          color: #ffffff70;
+        }
+
+        .fContents {
+          height: 100%;
+          width: 70%;
+          padding: 10px;
+          font-weight: bold;
+          color: #ffffff70;
+        }
+
+        #insta,
+        #youtube,
+        #facebook,
+        #twitter {
+          font-size: 2rem;
+          color: white;
+          padding-left: 10px;
+        }
+
+        .fLine1 {
+          width: 100%;
+          height: 20%;
+          font-size: 15px;
+          padding-top: 5px;
+          padding-bottom: 5px;
+        }
+
+        .fLine3 {
+          width: 100%;
+          height: 11%;
+          font-size: 15px;
+        }
+
+        .fLine2 {
+          height: 20%;
+          width: 100%;
+          font-size: 15px;
+          padding-top: 5px;
+        }
+
+        .fLine1>div {
+          float: left;
+          height: 100%;
+          text-align: left;
+          line-height: 46px;
+        }
+
+        .fLine2>div,
+        .fLine3>div {
+          float: left;
+          height: 100%;
+        }
+
+        .exh {
+          width: 35%;
+        }
+
+        .exh2 {
+          width: 60%;
+        }
+
+        .ceo {
+          border-right: 1px solid #ffffff70;
+          width: 15%;
+        }
+
+        .ceoNum {
+          line-height: 46px;
+          width: 23%;
+          padding-left: 15px;
+          border-right: 1px solid #ffffff70;
+
+        }
+
+        .companyNum {
+          line-height: 46px;
+          width: 42%;
+          padding-left: 15px;
         }
       </style>
     </head>
@@ -504,30 +625,30 @@
                   <div>전시회 관람 날짜</div>
                   <div>선택</div>
                 </div>
-                
+
                 <c:choose>
-                <c:when test="${list!=null }">
-                  <c:forEach var="book_dto" items="${list}">
-                  <table class="book_table">
-                    <tr class="book_contents">
-                      <td id="bookName">${book_dto.bk_ex_title}</td>
-                      <td id="exLocation">${book_dto.bk_id}<input type="hidden" value="${book_dto.bk_id}" name="hidden"
-                          id="hidden"></td>
-                      <td id="exDate">${book_dto.bk_ex_visit_date}</td>
-                      <td><input type="radio" name="check" id="check"></td>
-                    </tr>
-                    </table>
-                  </c:forEach>
+                  <c:when test="${list!=null }">
+                    <c:forEach var="book_dto" items="${list}">
+                      <table class="book_table">
+                        <tr class="book_contents">
+                          <td id="bookName">${book_dto.bk_ex_title}</td>
+                          <td id="exLocation">${book_dto.bk_id}<input type="hidden" value="${book_dto.bk_id}"
+                              name="hidden" id="hidden"></td>
+                          <td id="exDate">${book_dto.bk_ex_visit_date}</td>
+                          <td><input type="radio" name="check" id="check"></td>
+                        </tr>
+                      </table>
+                    </c:forEach>
                   </c:when>
                   <c:otherwise>
-                  <table class="empty_table">
-                  	<tr class="empty_contents">
-                      <td colspan=4>현재 예매 내역이 없습니다.</td>
-                    </tr>
+                    <table class="empty_table">
+                      <tr class="empty_contents">
+                        <td colspan=4>현재 예매 내역이 없습니다.</td>
+                      </tr>
                     </table>
                   </c:otherwise>
                 </c:choose>
-                
+
               </div>
               <div class="cancel_btn">
                 <input type="button" value="예매취소" id="cancel">
@@ -536,7 +657,52 @@
           </div>
         </div>
         <div class="footer">
+          <div class="fContainer">
+            <div class="fLogoContainer">
+              <div class="fLogo">
+                <i class="fab fa-artstation" id="fLogoImg"> Artex Vision</i>
 
+              </div>
+              <div class="fSiteLogo">
+                <a href="https://www.instagram.com/?hl=ko"><i class="fab fa-instagram" id="insta"></i></a>
+                <a href="https://www.youtube.com/"><i class="fab fa-youtube" id="youtube"></i></a>
+                <a href="https://www.facebook.com/"><i class="fab fa-facebook" id="facebook"></i></a>
+                <a href="https://twitter.com/"><i class="fab fa-twitter" id="twitter"></i></a>
+              </div>
+            </div>
+            <div class="fContents">
+              <div class="fLine1">
+                <div class="ceo">대표자 이진호</div>
+                <div class="ceoNum">전화번호 010-****-****</div>
+                <div class="companyNum">사업자등록번호 13-72005511</div>
+              </div>
+              <div class="fLine2">
+                <div class="exh">국립현대미술관 대표전화</div>
+                <div class="exhNum">(서울) 02-3701-9500, (과천) 02-2188-6000,<br>(덕수궁) 02-2022-0600, (청주) 043-261-1400</div>
+              </div>
+              <div class="fLine3">
+                <div class="exh">세종문화회관 대표전화</div>
+                <div class="exhNum">02-399-1114</div>
+              </div>
+              <div class="fLine3">
+                <div class="exh">국립중앙박물관 대표전화</div>
+                <div class="exhNum">02-2077-9000</div>
+              </div>
+              <div class="fLine3">
+                <div class="exh">마이 아트 뮤지엄 대표전화</div>
+                <div class="exhNum">02-567-8878</div>
+              </div>
+              <div class="fLine3">
+                <div class="exh">그라운드시소 서촌 대표전화</div>
+                <div class="exhNum">02-501-9544</div>
+              </div>
+              <div class="fLine3">
+                <div class="exh">석파정 서울미술관 대표전화</div>
+                <div class="exhNum">02-395-0010</div>
+              </div>
+            </div>
+
+          </div>
         </div>
       </div>
       <script>
@@ -576,10 +742,10 @@
           return false;
 
         })
-		$("#basket").on("click",function(){
-			alert("현재 기능은 구현중에 있습니다.");
-			return false;
-		})
+        $("#basket").on("click", function () {
+          alert("현재 기능은 구현중에 있습니다.");
+          return false;
+        })
 
 
       </script>
