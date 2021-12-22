@@ -40,25 +40,26 @@ public class AdminController extends HttpServlet {
 		g = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
 
 		try {
+			// 관리자 로그인
 			if(cmd.equals("/admin_login.admin")) {
 				String id = request.getParameter("id");
 				String pw = EncryptionUtils.pwdEncrypt(request.getParameter("pw"));
 				boolean result = dao.login(id, pw);
-				System.out.println(result);
+				
 				if(result) {
 					request.getSession().setAttribute("loginID", id);
 					request.getRequestDispatcher("/admin/admin_index.jsp").forward(request, response);
 				} else {
 					response.sendRedirect("/loginFail.jsp");
 				}
-			} else if(cmd.equals("/logout.admin")) {
+			} else if(cmd.equals("/logout.admin")) { // 로그아웃
 				request.getSession().removeAttribute("loginID");
 				response.sendRedirect("/admin/admin_login.jsp");
-			} else if(cmd.equals("/input_ex_form.admin")) {
+			} else if(cmd.equals("/input_ex_form.admin")) { // 전시회 등록창
 				request.getRequestDispatcher("/admin/admin_input_ex.jsp").forward(request, response);
-			} else if(cmd.equals("/input_ex_dashboard.admin")) {
+			} else if(cmd.equals("/input_ex_dashboard.admin")) { // 대시보드
 				request.getRequestDispatcher("/admin/admin_index.jsp").forward(request, response);
-			} else if(cmd.equals("/add_ex.admin")) {
+			} else if(cmd.equals("/add_ex.admin")) { // 전시회 등록
 				
 				int maxSize = 1024*1024*10; 
 
@@ -89,49 +90,71 @@ public class AdminController extends HttpServlet {
 				ExhibitionDTO eDto = new ExhibitionDTO(null, ex_title, ex_desc, ex_price, ex_location, ex_score, ex_start_date, ex_end_date, oriName, sysName);
 				int result = dao.insertEx(eDto);
 				if(result > 0) {
-					System.out.println("OK");
+//					System.out.println("OK");
 				}
 				request.getRequestDispatcher("/admin/admin_input_ex.jsp").forward(request, response);
-			} else if(cmd.equals("/member_list.admin")) {
+			} else if(cmd.equals("/member_list.admin")) { // 회원 리스트
 				List<MemberDTO> list = dao.selectAllMember();
 				request.setAttribute("list", list);
 				request.getRequestDispatcher("/admin/admin_member_list.jsp").forward(request, response);
-			} else if(cmd.equals("/show_ex_list.admin")) {
+			} else if(cmd.equals("/show_ex_list.admin")) { // 전시회 리스트
 				List<ExhibitionDTO> list = dao.selectAllEx();
 				request.setAttribute("list", list);
 				request.getRequestDispatcher("/admin/admin_ex_list.jsp").forward(request, response);
 				
-			} else if(cmd.equals("/monthlyData.admin")) {
+			} else if(cmd.equals("/monthlyData.admin")) { // 월간 가입자
 				List<DashboardDTO> list = dao.selectMonthlyData();
 				String result = g.toJson(list);
 				response.getWriter().append(result);
 				
-			} else if(cmd.equals("/dailyData.admin")) {
+			} else if(cmd.equals("/dailyData.admin")) { // 일간 가입자
 				List<DashboardDTO> list = dao.selectDailyData();
 				String result = g.toJson(list);
 				response.getWriter().append(result);
 				
-			} else if(cmd.equals("/dailyVisitData.admin")) {
+			} else if(cmd.equals("/dailyVisitData.admin")) { // 일간 방문자
 				List<DashboardDTO> list = dao.selectDailyVisitData();
 				String result = g.toJson(list);
 				response.getWriter().append(result);
 				
-			} else if(cmd.equals("/monthlyVisitData.admin")) {
+			} else if(cmd.equals("/monthlyVisitData.admin")) { // 월간 방문자
 				List<DashboardDTO> list = dao.selectMonthlyVisitData();
 				String result = g.toJson(list);
 				response.getWriter().append(result);
 				
-			} else if(cmd.equals("/dailyRevenueData.admin")) {
+			} else if(cmd.equals("/dailyQnAData.admin")) { // 일간 Q&A 게시물 수
+				List<DashboardDTO> list = dao.selectDailyQnAData();
+				String result = g.toJson(list);
+				response.getWriter().append(result);
+				
+			} else if(cmd.equals("/monthlyQnAData.admin")) { // 월간 Q&A 게시물 수
+				List<DashboardDTO> list = dao.selectMonthlyQnAData();
+				String result = g.toJson(list);
+				response.getWriter().append(result);
+				
+			} else if(cmd.equals("/dailyRevenueData.admin")) { // 일간 수익
 				List<DashboardDTO> list = dao.selectDailyRevenueData();
 				String result = g.toJson(list);
 				response.getWriter().append(result);
 				
-			} else if(cmd.equals("/monthlyRevenueData.admin")) {
+			} else if(cmd.equals("/monthlyRevenueData.admin")) { // 월간 수익
 				List<DashboardDTO> list = dao.selectMonthlyRevenueData();
 				String result = g.toJson(list);
 				response.getWriter().append(result);
-				
-			} else if(cmd.equals("/getExListDesc.admin")) {
+			} else if(cmd.equals("/memberGradeData.admin")) {	 // 회원 등급별
+				List<DashboardDTO> list = dao.selectMemberGradeData();
+				String result = g.toJson(list);
+				response.getWriter().append(result);
+			} else if(cmd.equals("/memberGenData.admin")) {	 // 회원 연령별
+				List<DashboardDTO> list = dao.selectMemberGenerationData();
+				String result = g.toJson(list);
+				response.getWriter().append(result);
+			} else if(cmd.equals("/memberLocationData.admin")) { // 회원 지역별
+				List<DashboardDTO> list = dao.selectMemberLocationData();
+				String result = g.toJson(list);
+				response.setCharacterEncoding("UTF-8");
+				response.getWriter().append(result);
+			} else if(cmd.equals("/getExListDesc.admin")) { // 전시 상세페이지
 				String ex_id = request.getParameter("ex_id");
 				ExhibitionDTO eDto = dao.selectByExId(ex_id);
 				

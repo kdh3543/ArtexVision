@@ -120,10 +120,6 @@
       box-sizing: border-box;
     }
 
-    div {
-      /* border: 1px solid black; */
-    }
-
     a {
       text-decoration: none;
       color: var(--text-color);
@@ -393,13 +389,6 @@
 				</div>
 			</a>
 			
-			<div class="nav_items" id="working1">
-				<div class="nav_icon">
-					<i class="far fa-clipboard"></i>
-				</div>
-				<div class="nav_title">BOARD</div>
-			</div>
-			
 			<a href="/input_ex_form.admin">
 				<div class="nav_items">
 					<div class="nav_icon">
@@ -439,10 +428,6 @@
           </div> 
           <div class="ex_list_detail_contents_wrap">
           	<div class="notice"> 리스트를 클릭하시면 <br> 상세 정보를 보실 수 있습니다. </div>
-            <!-- <div class="ex_list_detail_contents_item">
-              <div class="ex_list_detail_contents_item_title">전시회 ID</div>
-              <div class="ex_list_detail_contents_item_data">ID</div>
-            </div>  -->
           </div>
         </div>
       </div>
@@ -457,10 +442,6 @@
   </div>
 </body>
 <script>
-	working1.onclick = function() {
-		  alert("현재 구현중입니다.");
-	}
-
     let ex_list_detail_contents_wrap = document.querySelector(".ex_list_detail_contents_wrap");
     let ex_list_show_img_contents_wrap = document.querySelector(".ex_list_show_img_contents_wrap");
     let ex_list_contents_item = document.querySelectorAll(".ex_list_contents_item");

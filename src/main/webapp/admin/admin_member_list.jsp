@@ -118,10 +118,6 @@
       box-sizing: border-box;
     }
 
-    div {
-      /* border: 1px solid black; */
-    }
-
     a {
       text-decoration: none;
       color: var(--text-color);
@@ -308,6 +304,7 @@
 					<div class="nav_title">DASHBOARD</div>
 				</div>
 			</a> 
+			
 			<a href="/member_list.admin">
 				<div class="nav_items">
 					<div class="nav_icon">
@@ -316,14 +313,7 @@
 					<div class="nav_title">MEMBERS</div>
 				</div>
 			</a>
-			
-			<div class="nav_items" id="working1">
-				<div class="nav_icon">
-					<i class="far fa-clipboard"></i>
-				</div>
-				<div class="nav_title">BOARD</div>
-			</div>
-			
+
 			<a href="/input_ex_form.admin">
 				<div class="nav_items">
 					<div class="nav_icon">
@@ -383,18 +373,6 @@
       <div class="footer_desc">Copyright 2021. 11hertz All rights reserved.</div>
     </div>
   </div>
-   <script>
-      let working1 = document.getElementById("working1");
-	  let working2 = document.getElementById("working2");
-	
-	  working1.onclick = function() {
-		  alert("구현중입니다.");
-	  }
-	
-	  working2.onclick = function() {
-		  alert("구현중입니다.");
-	  }
-  </script>
 </body>
 
 </html>
