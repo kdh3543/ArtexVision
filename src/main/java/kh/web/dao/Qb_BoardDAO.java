@@ -34,19 +34,34 @@ public class Qb_BoardDAO {
 		return ds.getConnection();
 	}
 
-	private int getRecordCount() throws Exception {
-		String sql = "select count(*) from questionboard";
+	public int getRecordCount(String searchOption, String searchText) throws Exception {
+
+		String sql = null;
+
+		if (searchText != null && !searchText.equals("")) {
+			if (searchOption.equals("qb_mem_id")) {
+				sql = "select count(*) from (select q.*, row_number() over(order by q.qb_seq desc) rn from questionboard q join member m on(q.qb_mem_id=m.mem_id)) where (qb_mem_id like '%"+ searchText.trim() + "%') order by qb_seq desc ";
+			} else {
+				sql = "select count(*) from (select q.*, row_number() over(order by q.qb_seq desc) rn from questionboard q join member m on(q.qb_mem_id=m.mem_id)) where (qb_title like '%"	+ searchText.trim() + "%') order by qb_seq desc ";
+			}
+		} else {
+			sql = "select count(*) from questionboard";
+		}
+
 		try (Connection con = this.getConnection();
 				PreparedStatement pstat = con.prepareStatement(sql);
 				ResultSet rs = pstat.executeQuery();) {
 			rs.next();
+			System.out.println("총 게시물의 수 : " + rs.getInt(1));
 			return rs.getInt(1);
 		}
 	}
 
-	public int getPageTotalCount() throws Exception {
+	public int getPageTotalCount(String searchOption, String searchText) throws Exception {
+
 		// 총 몇개의 레코드(게시글)을 가지고 있어?
-		int recordTotalCount = this.getRecordCount();
+		int recordTotalCount = this.getRecordCount(searchOption, searchText);
+		System.out.println("search 카운트 : " + recordTotalCount);
 
 		// 총 몇개의 페이지가 만들어질까?
 		int pageTotalCount = 0;
@@ -60,9 +75,10 @@ public class Qb_BoardDAO {
 		return pageTotalCount;
 	}
 
-	public String getPageNavi(int currentPage) throws Exception {
+	public String getPageNavi(int currentPage, String searchOption, String searchText) throws Exception {
 		// 총 몇개의 레코드(게시글)을 가지고 있어?
-		int recordTotalCount = this.getRecordCount();
+		
+		int recordTotalCount = this.getRecordCount(searchOption, searchText);
 
 		// 총 몇개의 페이지가 만들어질까?
 		int pageTotalCount = 0;
@@ -73,7 +89,7 @@ public class Qb_BoardDAO {
 			// 그 외에는 하나 더해줘야지!
 			pageTotalCount = recordTotalCount / paging_Statics.RECORD_COUNT_PER_PAGE + 1;
 		}
-		
+
 		// 현재 클라이언트가 있는 페이지의 위치야
 		// int currentPage = 4;
 
@@ -99,46 +115,82 @@ public class Qb_BoardDAO {
 		}
 
 		String pageNavi = "";
-		if (needPrev) {
-			pageNavi += "<a href='/qb_list.board?cpage=" + (startNavi - 1) + "'>< </a>";
-		}
-		for (int i = startNavi; i <= endNavi; i++) {
-			pageNavi += "<a href='/qb_list.board?cpage=" + i + "'>" + i + "</a> ";
-		}
-		if (needNext) {
-			pageNavi += "<a href='/qb_list.board?cpage=" + (endNavi + 1) + "'> ></a>";
+		
+		if(searchText != null && !searchText.equals("")) {
+			if(searchOption.equals("qb_mem_id")||searchOption.equals("qb_title")) { 
+				if (needPrev) {
+//					fb_list.board?cpage=1&searchOption=fb_mem_id&searchText=hosboy93
+					pageNavi += "<a href='/qb_list.board?cpage="+(startNavi-1)+"&searchOption="+searchOption+"&searchText="+searchText+ "'>< </a>";
+					
+				}
+				for (int i = startNavi; i <= endNavi; i++) {
+					pageNavi += "<a href='/qb_list.board?cpage=" + i + "&searchOption="+searchOption+"&searchText="+searchText+"'>" + i + "</a> ";
+					
+				}
+				if (needNext) {
+					pageNavi += "<a href='/qb_list.board?cpage="+(endNavi+1)+ "&searchOption="+searchOption+"&searchText="+searchText+"'> ></a>";
+				
+				}	
+				System.out.println(pageNavi);
+			}
+		}else {
+			if (needPrev) {
+//				fb_list.board?cpage=3
+				pageNavi += "<a href='/qb_list.board?cpage=" + (startNavi - 1) + "'>< </a>";
+			}
+			for (int i = startNavi; i <= endNavi; i++) {
+				pageNavi += "<a href='/qb_list.board?cpage=" + i + "'>" + i + "</a> ";
+			}
+			if (needNext) {
+				pageNavi += "<a href='/qb_list.board?cpage=" + (endNavi + 1) + "'> ></a>";
+			}	
 		}
 		return pageNavi;
-	}
+	}	
+//
+//	public List<Qb_BoardDTO> selectAll() throws Exception {
+//		String sql = "select * from questionboard";
+//		try (Connection con = this.getConnection();
+//				PreparedStatement pstat = con.prepareStatement(sql);
+//				ResultSet rs = pstat.executeQuery()) {
+//
+//			List<Qb_BoardDTO> list = new ArrayList<>();
+//			while (rs.next()) {
+//				Qb_BoardDTO questionboard_dto = new Qb_BoardDTO();
+//
+//				questionboard_dto.setQb_seq(rs.getInt("qb_seq"));
+//				questionboard_dto.setQb_mem_id(rs.getString("qb_mem_id"));
+//				questionboard_dto.setQb_title(rs.getString("qb_title"));
+//				questionboard_dto.setQb_contents(rs.getString("qb_contents"));
+//				questionboard_dto.setQb_write_date(rs.getTimestamp("qb_write_date"));
+//				questionboard_dto.setQb_view_count(rs.getInt("qb_view_count"));
+//
+//				list.add(questionboard_dto);
+//			}
+//			return list;
+//		}
+//	}
 	
-	public List<Qb_BoardDTO> selectAll() throws Exception {
-		String sql = "select * from questionboard";
-		try (Connection con = this.getConnection();
-				PreparedStatement pstat = con.prepareStatement(sql);
-				ResultSet rs = pstat.executeQuery()) {
+	public List<Qb_BoardDTO> qbSelectByBound(int start, int end, String searchOption, String searchText) throws Exception {
 
-			List<Qb_BoardDTO> list = new ArrayList<>();			
-			while (rs.next()) {
-				Qb_BoardDTO questionboard_dto = new Qb_BoardDTO();
-				
-				questionboard_dto.setQb_seq(rs.getInt("qb_seq"));
-				questionboard_dto.setQb_mem_id(rs.getString("qb_mem_id"));
-				questionboard_dto.setQb_title(rs.getString("qb_title"));
-				questionboard_dto.setQb_contents(rs.getString("qb_contents"));
-				questionboard_dto.setQb_write_date(rs.getTimestamp("qb_write_date"));
-				questionboard_dto.setQb_view_count(rs.getInt("qb_view_count"));
-				
-				list.add(questionboard_dto);
+		String sql = null;
+		
+		if(searchText != null && !searchText.equals("")) { 
+			if(searchOption.equals("qb_mem_id") ) {
+				sql = "select * from (select q.*, row_number() over(order by q.qb_seq desc) rn from questionboard q join member m on(q.qb_mem_id=m.mem_id)) where (rn between ? and ?) and (qb_mem_id like '%"+searchText+"%') order by qb_seq desc ";
+				// where (rn between ? and ?) and
+				System.out.println("selectByBound 1의 : : " + sql);
+				System.out.println(sql);
+			}else if(searchOption.equals("qb_title")) {
+				sql = "select * from (select q.*, row_number() over(order by q.qb_seq desc) rn from questionboard q join member m on(q.qb_mem_id=m.mem_id)) where (rn between ? and ?) and (qb_title like '%"+searchText+"%') order by qb_seq desc ";
+				System.out.println("selectByBound 2의 : : " + sql);
 			}
-			return list;
+		}else {
+			sql = "select * from (select q.*, row_number() over(order by q.qb_seq desc) rn from questionboard q join member m on(q.qb_mem_id=m.mem_id)) where rn between ? and ?";
+			System.out.println("selectByBound 3의 : : " + sql);
 		}
-	}
-	
-	public List<Qb_BoardDTO> selectByBound(int start, int end) throws Exception {
-		String sql = "select * from (select q.*, row_number() over(order by q.qb_seq desc) rn from questionboard q join member m on(q.qb_mem_id=m.mem_id)) where rn between ? and ?";
-		try (Connection con = this.getConnection(); 
-			PreparedStatement pstat = con.prepareStatement(sql);) {
-
+		
+		try (Connection con = this.getConnection(); PreparedStatement pstat = con.prepareStatement(sql);) {
 			pstat.setInt(1, start);
 			pstat.setInt(2, end);
 			try (ResultSet rs = pstat.executeQuery()) {

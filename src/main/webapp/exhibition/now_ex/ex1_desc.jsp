@@ -575,7 +575,7 @@
           <div class="menu_top">
             <div id="desc">상세정보</div>
             <div id="review">이용후기</div>
-            <div id="expect">리뷰 남기기</div>
+            <div id="expect">부가 정보</div>
           </div>
           <hr>
           <div class="menu_content1">
@@ -600,37 +600,12 @@
    			 </table>
           </div>
           <div class="menu_content3">
-             <div class="wrap">
-        		<form name="reviewform" class="reviewform" method="post" action="/writeRv.rvboard" id="frmRv">
-            		<input type="hidden" name="rate" id="rate" value="0"/>
-            		<!-- <p class="title_star">별점과 리뷰를 남겨주세요.</p> -->
-     
-            		<div class="review_rating">
-                		<div class="warning_msg">별점을 선택해 주세요.</div>
-                		<div class="rating">
-                    			<!-- 해당 별점을 클릭하면 해당 별과 그 왼쪽의 모든 별의 체크박스에 checked 적용 -->
-                    		<input type="checkbox" name="rating" id="rating1" value="1" class="rate_radio" title="1점">
-                    		<label for="rating1"></label>
-                   		 	<input type="checkbox" name="rating" id="rating2" value="2" class="rate_radio" title="2점">
-                  	  		<label for="rating2"></label>
-                    		<input type="checkbox" name="rating" id="rating3" value="3" class="rate_radio" title="3점" >
-                    		<label for="rating3"></label>
-                    		<input type="checkbox" name="rating" id="rating4" value="4" class="rate_radio" title="4점">
-                    		<label for="rating4"></label>
-                    		<input type="checkbox" name="rating" id="rating5" value="5" class="rate_radio" title="5점">
-                    		<label for="rating5"></label>
-                		</div>
-           		 	</div>
-            		<div class="review_contents">
-                		<div class="warning_msg">5자 이상으로 작성해 주세요.</div>
-                		<textarea rows="10" class="review_textarea" name="re_contents"></textarea>
-            		</div>   
-            		<div class="cmd">
-            			<button name="save" id="save" type="button">등록</button>
-                		<!-- <input type="button" name="save" id="save" value="등록"> -->
-            		</div>
-        		</form>
-    		</div>
+             <p><h3>주최 / 후원</h3>
+			 	국립 현대 미술관/(주)현대 자동차</p>
+			 	<br>
+			 <p><h3>작가</h3>
+			 	새로운 질서 그 후...(윤충근, 기예림, 남선미, 이소현, 이지수)<br>
+			 	더 덕 어몽 어스(신희정, 이가영,  정만근, 손정아)</p>
         </div>
         </div>
       </div>
@@ -653,12 +628,22 @@
     	    return false;
     	}
       
+     
+      
       if(!$("#datepicker").val()) {
   	    alert("날짜를 선택하세요");
   	    return false;
   		}
-     
-          
+      
+      /* 로그아웃 상태 일 때 */
+      let uid = '<%=(String)session.getAttribute("loginId")%>';
+       
+      if(uid=="null"){ 
+    	  alert("로그인 후 이용가능합니다.");
+    	  location.replace("/login.jsp");
+    	  return false;
+      }
+      
       let price = $("#realprice").val(); 
       
 	  let result = confirm(price+"원 결제하시겠습니까?");
@@ -673,6 +658,15 @@
   <script>
   	/* 버튼 클릭시 */
   	 $("#save").on("click",function(){
+  		/* 로그아웃 상태 일 때 */
+  	      let uid = '<%=(String)session.getAttribute("loginId")%>';
+  	       
+  	      if(uid=="null"){ 
+  	    	  alert("로그인 후 이용가능합니다.");
+  	    	  location.replace("/login.jsp");
+  	    	  return false;
+  	      }
+  	      
   		 //별점 선택 안했으면 메시지 표시
          if(rating.rate == 0){
              rating.showMessage('rate');
