@@ -320,7 +320,7 @@
                 <label for="id">아이디</label>
               </div>
               <div class="input_id">
-                <input type="text" name="id" id="id" placeholder="아이디를 입력하세요">
+                <input type="text" name="id" id="id" placeholder="아이디를 입력하세요" minlength="6" maxlength="11">
                 <span id="id_dup_check_wrap"> <input type="button" value="중복확인" id="id_dup_check">
                 </span>
               </div>
@@ -329,13 +329,13 @@
                 <label for="pw1">패스워드</label>
               </div>
               <div class="input_pw">
-                <input type="password" name="pw1" id="pw1" placeholder="비밀번호를 입력하세요">
+                <input type="password" name="pw1" id="pw1" placeholder="비밀번호를 입력하세요" minlength="4">
               </div>
               <div class="label">
                 <label for="pw2">패스워드 확인</label>
               </div>
               <div class="input_pw2">
-                <input type="password" name="pw2" id="pw2" placeholder="비밀번호 확인을 입력하세요">
+                <input type="password" name="pw2" id="pw2" placeholder="비밀번호 확인을 입력하세요" minlength="4">
               </div>
               <div class="pw_check_result" id="pw_check_result">
 
@@ -344,13 +344,13 @@
                 <label for="name">이름</label>
               </div>
               <div class="input_name">
-                <input type="text" name="name" id="name" placeholder="이름을 입력하세요">
+                <input type="text" name="name" id="name" placeholder="이름을 입력하세요" minlength="2" maxlength="5">
               </div>
               <div class="label">
                 <label for="birth">생년월일</label>
               </div>
               <div class="input_birth">
-                <input type="date" name="birth" id="birth" min="1903-01-01" max="2021-12-23" required>
+                <input type="date" name="birth" id="birth" min="1903-01-01" max="2021-12-23">
               </div>
               <div class="label">
                 <label for="email">이메일</label>
@@ -369,8 +369,8 @@
                   <option value="017">017</option>
                   <option value="018">018</option>
                   <option value="019">019</option>
-                </select> - <input type="text" name="phone1" id="phone1"> - <input type="text" name="phone2"
-                  id="phone2">
+                </select> - <input type="text" name="phone1" id="phone1" maxlength="4"> - <input type="text" name="phone2"
+                  id="phone2"maxlength="4">
                   <span id="phone_dup_check_wrap"> <input type="button" value="전화번호인증" id="phone_dup_check">
               </div>
               <div class="phone_dup_check_result" id="phone_dup_check_result"></div>
