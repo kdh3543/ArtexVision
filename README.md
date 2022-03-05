@@ -33,7 +33,15 @@
 
 ![image](https://user-images.githubusercontent.com/91539013/156888857-0f23fbee-d71c-4a30-b4f0-72f1cffb4c54.png)
 
+#### 3. 회원정보 수정(원하는 정보만 수정 가능)
 
-#### 
+![image](https://user-images.githubusercontent.com/91539013/156888925-f396427d-62be-4cbc-9b4a-c12aee09ea8c.png)
 
-#### 
+#### 4-1. 정보 확인 후 회원탈퇴
+
+![image](https://user-images.githubusercontent.com/91539013/156888994-201cdf11-8cb3-43a2-8c56-69afb41a1dad.png)
+
+#### 4-2. 회원탈퇴 완료
+
+![image](https://user-images.githubusercontent.com/91539013/156889023-74ea7b40-123e-4ab1-95a2-d2ece5033931.png)
+
