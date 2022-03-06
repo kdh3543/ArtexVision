@@ -7,6 +7,16 @@
 
 #### 사이트 url: http://115.85.183.105:8080/artexMain/mainpage.jsp
 
+#### DB설계
+##### 1.
+
+![image](https://user-images.githubusercontent.com/91539013/156929938-7dd94200-ac4d-4afb-9f42-ed69bcc50511.png)
+
+##### 2.
+
+![image](https://user-images.githubusercontent.com/91539013/156929953-f82ce24a-c70c-4525-9321-97db57dc5974.png)
+
+### 페이지 설명
 #### 1-1. 회원가입 페이지
 
 ![image](https://user-images.githubusercontent.com/91539013/156888594-70a28dc5-7a22-4f1f-bd4d-182809c42305.png)
